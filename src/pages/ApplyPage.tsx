@@ -1,33 +1,33 @@
-import { useState } from 'react'
+import { useState } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
+import { Helmet } from "react-helmet-async"
 
+export default function ApplyPage(){
 
-type FormState = {
-  firstName: string
-  workEmail: string
-  workPhone: string
-  message: string
-  accurateInformation: boolean
+const initialState = {
+firstName:"",
+workEmail:"",
+workPhone:"",
+message:"",
+accurateInformation:false
 }
 
-const initialState: FormState = {
-  firstName: '',
-  workEmail: '',
-  workPhone: '',
-  message: '',
-  accurateInformation: false,
+const [form,setForm] = useState(initialState)
+const [status,setStatus] = useState<"idle"|"sending"|"success"|"error">("idle")
+const [captcha,setCaptcha] = useState<string | null>(null)
+
+function update(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+const {name,value,type} = e.target
+
+if(type==="checkbox"){
+const checked = (e.target as HTMLInputElement).checked
+setForm(prev=>({...prev,[name]:checked}))
+}else{
+setForm(prev=>({...prev,[name]:value}))
+}
 }
 
-export default function ApplyPage() {
-
-  const [form, setForm] = useState<FormState>(initialState)
-  const [status, setStatus] = useState<'idle'|'sending'|'success'|'error'>('idle')
-  const [captcha, setCaptcha] = useState<string | null>(null)
-
-  const update = (key: keyof FormState, value: string | boolean) =>
-    setForm(prev => ({...prev,[key]:value}))
-
- async function handleSubmit(e: React.FormEvent){
+async function handleSubmit(e: React.FormEvent){
 e.preventDefault()
 
 if(!captcha){
@@ -58,6 +58,7 @@ throw new Error(text)
 
 setStatus("success")
 setForm(initialState)
+setCaptcha(null)
 
 }catch(err){
 console.error(err)
@@ -65,103 +66,116 @@ setStatus("error")
 }
 }
 
-  return (
-    
-  <main className="mx-auto max-w-[1180px] px-5 pt-28">
+return(
+<>
+<Helmet>
+<title>Apply | Innovate With Aima</title>
+<meta
+name="description"
+content="Apply to join the Innovate With Aima network. Membership is selective and reviewed individually."
+/>
+</Helmet>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+<main className="mx-auto max-w-[1100px] px-4 md:px-8 pt-32 pb-24">
 
-      <div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-        <h1 className="text-5xl font-semibold">
-          Membership Application
-        </h1>
+{/* LEFT */}
 
-        <p className="mt-6 text-white/70">
-          Innovate With Aima operates on a selective membership basis.
-          Applications are reviewed individually.
-        </p>
+<div>
 
-        <div className="mt-10">
-          <h3 className="text-xl font-semibold mb-4">
-            Opening Hours
-          </h3>
+<h1 className="text-4xl font-semibold mb-6">
+Membership Application
+</h1>
 
-          <div className="space-y-1 text-white/70">
-            <p>Monday: 08:00am - 17:00pm</p>
-            <p>Tuesday: 08:00am - 17:00pm</p>
-            <p>Wednesday: 08:00am - 17:00pm</p>
-            <p>Thursday: 08:00am - 17:00pm</p>
-            <p>Friday: 08:00am - 17:00pm</p>
-            <p>Saturday: 08:00am - 17:00pm</p>
-            <p>Sunday: 08:00am - 17:00pm</p>
-          </div>
+<p className="text-white/70 leading-7">
+Innovate With Aima operates on a selective membership basis.
+Applications are reviewed individually. Acceptance is not guaranteed
+and depends on suitability, experience, and current network demand.
+</p>
 
-        </div>
+<p className="mt-6 text-white/60">
+To begin, please fill the application form:
+</p>
 
-      </div>
+<div className="mt-10 text-sm text-white/70 space-y-1">
+<p>Monday: 08:00am - 17:00pm</p>
+<p>Tuesday: 08:00am - 17:00pm</p>
+<p>Wednesday: 08:00am - 17:00pm</p>
+<p>Thursday: 08:00am - 17:00pm</p>
+<p>Friday: 08:00am - 17:00pm</p>
+<p>Saturday: 08:00am - 17:00pm</p>
+<p>Sunday: 08:00am - 17:00pm</p>
+</div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 bg-white/5 p-6 rounded-2xl"
-      >
+</div>
 
-        <input
-          placeholder="First name"
-          value={form.firstName}
-          onChange={e=>update('firstName',e.target.value)}
-          className="w-full p-3 rounded-xl bg-black/40"
-          required
-        />
+{/* RIGHT FORM */}
 
-        <input
-          placeholder="Work email"
-          value={form.workEmail}
-          onChange={e=>update('workEmail',e.target.value)}
-          className="w-full p-3 rounded-xl bg-black/40"
-          required
-        />
+<form onSubmit={handleSubmit} className="space-y-4">
 
-        <input
-          placeholder="Work phone"
-          value={form.workPhone}
-          onChange={e=>update('workPhone',e.target.value)}
-          className="w-full p-3 rounded-xl bg-black/40"
-          required
-        />
+<input
+name="firstName"
+placeholder="First Name"
+value={form.firstName}
+onChange={update}
+required
+className="w-full bg-black border border-white/10 rounded-xl px-4 py-3"
+/>
 
-        <textarea
-          placeholder="Message"
-          value={form.message}
-          onChange={e=>update('message',e.target.value)}
-          className="w-full p-3 rounded-xl bg-black/40"
-          required
-        />
+<input
+name="workEmail"
+type="email"
+placeholder="Work Email"
+value={form.workEmail}
+onChange={update}
+required
+className="w-full bg-black border border-white/10 rounded-xl px-4 py-3"
+/>
 
-        <label className="flex gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={form.accurateInformation}
-            onChange={e=>update('accurateInformation',e.target.checked)}
-            required
-          />
-          I confirm I provided accurate information
-        </label>
+<input
+name="workPhone"
+placeholder="Work Phone"
+value={form.workPhone}
+onChange={update}
+className="w-full bg-black border border-white/10 rounded-xl px-4 py-3"
+/>
 
-        <ReCAPTCHA
-          sitekey="6LfNWlMsAAAAAB2kkDpOPOf3sXYqYqUxMovVxtsq"
-          theme="dark"
-          onChange={(val)=>setCaptcha(val)}
-        />
+<textarea
+name="message"
+placeholder="Message"
+value={form.message}
+onChange={update}
+rows={5}
+className="w-full bg-black border border-white/10 rounded-xl px-4 py-3"
+/>
 
-        <button
+<label className="flex gap-2 text-sm text-white/70">
+<input
+type="checkbox"
+name="accurateInformation"
+checked={form.accurateInformation}
+onChange={update}
+/>
+I confirm the information provided is accurate
+</label>
+
+<div className="pt-2">
+<ReCAPTCHA
+sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+onChange={(val)=>setCaptcha(val)}
+theme="dark"
+/>
+</div>
+
+<button
 disabled={status==="sending"}
 className="w-full bg-[#5c6cff] py-3 rounded-full disabled:opacity-50"
 >
 {status==="sending" ? "Submitting..." : "Submit Application"}
 </button>
 
-        {status==="success" && (
+{status==="success" && (
 <p className="text-green-400 text-sm">
 Application submitted successfully
 </p>
@@ -169,14 +183,15 @@ Application submitted successfully
 
 {status==="error" && (
 <p className="text-red-400 text-sm">
-Submission failed. Try again.
+Submission failed. Please complete captcha and try again.
 </p>
 )}
 
-      </form>
+</form>
 
-    </div>
+</div>
 
-  </main>
-  )
+</main>
+</>
+)
 }
