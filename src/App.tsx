@@ -9,6 +9,8 @@ import PrivacyPage from './pages/PrivacyPage'
 import CookiesPage from './pages/CookiesPage'
 import CookieBanner from './components/CookieBanner'
 import ScrollToTop from "./components/ScrollToTop"
+import NotFound from './pages/NotFound'
+
 
 export default function App() {
   return (
@@ -27,7 +29,7 @@ export default function App() {
             <Route path="/terms" element={<TermsPage />} />
 <Route path="/privacy" element={<PrivacyPage />} />
 <Route path="/cookies" element={<CookiesPage />} />
-
+<Route path="*" element={<NotFound/>}/>
           </Routes>
           </main>
         </div>
