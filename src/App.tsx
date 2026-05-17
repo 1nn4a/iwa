@@ -18,7 +18,10 @@ import BlogSearchOverlay from './components/BlogSearchOverlay'
 function StartRedirect() {
   const navigate = useNavigate()
   useEffect(() => {
-    if (window.location.hostname === 'start.innovatewithaima.com') {
+    if (
+      window.location.hostname === 'start.innovatewithaima.com' &&
+      !window.location.pathname.startsWith('/blog')
+    ) {
       navigate('/blog', { replace: true })
     }
   }, [navigate])
