@@ -8,6 +8,8 @@ import ApplyPage from './pages/ApplyPage'
 import TermsPage from './pages/TermsPage'
 import PrivacyPage from './pages/PrivacyPage'
 import CookiesPage from './pages/CookiesPage'
+import BlogsPage from './pages/BlogsPage'
+import BlogPage from './pages/BlogPage'
 import CookieBanner from './components/CookieBanner'
 import ScrollToTop from './components/ScrollToTop'
 import NotFound from './pages/NotFound'
@@ -31,6 +33,8 @@ export default function App() {
                 <Route path="/terms" element={<TermsPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/cookies" element={<CookiesPage />} />
+                <Route path="/blog" element={<BlogsPage />} />
+                <Route path="/blog/:slug" element={<BlogPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

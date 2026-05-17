@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import './BlogSearchOverlay.css'
 import {
   blogs,
@@ -101,10 +102,8 @@ function CategoryIcon({ category }: { category: string }) {
 
 function BlogCard({ blog, onClose }: { blog: Blog; onClose: () => void }) {
   return (
-    <a
-      href={blog.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to={blog.url}
       className="bso-card"
       onClick={onClose}
     >
@@ -138,7 +137,7 @@ function BlogCard({ blog, onClose }: { blog: Blog; onClose: () => void }) {
       >
         <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>
-    </a>
+    </Link>
   )
 }
 
@@ -196,7 +195,6 @@ export default function BlogSearchOverlay({ isOpen, onClose }: Props) {
       <div className="bso-panel">
 
         <div className="bso-header">
-         
           <button className="bso-close" onClick={onClose} aria-label="Close article search">
             <svg
               width="12"
@@ -279,17 +277,15 @@ export default function BlogSearchOverlay({ isOpen, onClose }: Props) {
 
             <div className="bso-sidebar-label">Recent</div>
             {recentBlogs.map(blog => (
-              <a
+              <Link
                 key={blog.id}
-                href={blog.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                to={blog.url}
                 className="bso-recent-link"
                 onClick={onClose}
               >
                 <span className="bso-recent-dot" />
                 <span className="bso-recent-text">{blog.title}</span>
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -298,9 +294,7 @@ export default function BlogSearchOverlay({ isOpen, onClose }: Props) {
             {!isFiltered && (
               <div className="bso-default">
                 <div className="bso-welcome-h">The Intelligence Library</div>
-                <p className="bso-welcome-sub">
-                  
-                </p>
+                <p className="bso-welcome-sub"></p>
 
                 <div className="bso-pills" role="group" aria-label="Filter by category">
                   {BLOG_CATEGORIES.slice(1).map(cat => (
@@ -370,10 +364,8 @@ export default function BlogSearchOverlay({ isOpen, onClose }: Props) {
 
         <div className="bso-footer">
           <span className="bso-footer-note">{blogs.length} articles published</span>
-          <a
-            href="https://start.innovatewithaima.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/blog"
             className="bso-footer-cta"
             onClick={onClose}
           >
@@ -389,7 +381,7 @@ export default function BlogSearchOverlay({ isOpen, onClose }: Props) {
             >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
 
       </div>
