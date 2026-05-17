@@ -1,43 +1,48 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import DefinitionsPage from './pages/DefinitionsPage';
-import ApplyPage from './pages/ApplyPage';
+import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import DefinitionsPage from './pages/DefinitionsPage'
+import ApplyPage from './pages/ApplyPage'
 import TermsPage from './pages/TermsPage'
 import PrivacyPage from './pages/PrivacyPage'
 import CookiesPage from './pages/CookiesPage'
 import CookieBanner from './components/CookieBanner'
-import ScrollToTop from "./components/ScrollToTop"
+import ScrollToTop from './components/ScrollToTop'
 import NotFound from './pages/NotFound'
-
+import BlogSearchOverlay from './components/BlogSearchOverlay'
 
 export default function App() {
-  return (
-    
-    <BrowserRouter>
-    <div className="min-h-screen flex flex-col">
-      <div className="min-h-screen overflow-x-hidden">
-        <Navbar />
-        <ScrollToTop/>
-        <div className="pt-20">
-          <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/definitions" element={<DefinitionsPage />} />
-            <Route path="/apply" element={<ApplyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-<Route path="/privacy" element={<PrivacyPage />} />
-<Route path="/cookies" element={<CookiesPage />} />
-<Route path="*" element={<NotFound/>}/>
-          </Routes>
-          </main>
-        </div>
-        <Footer />
-        <CookieBanner />
-                </div>
+  const [blogSearchOpen, setBlogSearchOpen] = useState(false)
 
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen overflow-x-hidden">
+          <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />
+          <ScrollToTop />
+          <div className="pt-20">
+            <main className="flex-1">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/definitions" element={<DefinitionsPage />} />
+                <Route path="/apply" element={<ApplyPage />} />
+                <Route path="/terms" element={<TermsPage />} />
+                <Route path="/privacy" element={<PrivacyPage />} />
+                <Route path="/cookies" element={<CookiesPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
+          <Footer />
+          <CookieBanner />
+          <BlogSearchOverlay
+            isOpen={blogSearchOpen}
+            onClose={() => setBlogSearchOpen(false)}
+          />
+        </div>
       </div>
     </BrowserRouter>
-  );
+  )
 }

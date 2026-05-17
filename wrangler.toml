@@ -1,5 +1,14 @@
-name = "iwa"
+name = "innovate-with-aima"
+main = "src/index.ts"
 compatibility_date = "2024-01-01"
+
+[[routes]]
+pattern = "www.innovatewithaima.com/*"
+zone_name = "innovatewithaima.com"
+
+[[routes]]
+pattern = "innovatewithaima.com/*"
+zone_name = "innovatewithaima.com"
 
 pages_build_output_dir = "dist"
 

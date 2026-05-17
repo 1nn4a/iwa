@@ -162,7 +162,7 @@ I confirm the information provided is accurate
 
 <div className="pt-2">
 <ReCAPTCHA
-sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+sitekey="6LfNWlMsAAAAAB2kkDpOPOf3sXYqYqUxMovVxtsq"
 onChange={(val)=>setCaptcha(val)}
 theme="dark"
 />
