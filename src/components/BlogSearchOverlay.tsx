@@ -113,17 +113,15 @@ function BlogCard({ blog, onClose }: { blog: Blog; onClose: () => void }) {
       <div className="bso-card-body">
         <div className="bso-card-title">{blog.title}</div>
         <div className="bso-card-excerpt">{blog.excerpt}</div>
-        <div className="bso-card-meta">
-          <span className="bso-card-cat">{blog.category}</span>
-          {blog.publishedDate && (
-            <>
-              <span className="bso-card-sep" />
-              <span className="bso-card-date">{blog.publishedDate}</span>
-            </>
-          )}
-          <span className="bso-card-sep" />
-          <span className="bso-card-time">{blog.readTime} min read</span>
-        </div>
+      <div className="bso-card-meta">
+  {blog.publishedDate && (
+    <>
+      <span className="bso-card-date">{blog.publishedDate}</span>
+      <span className="bso-card-sep" />
+    </>
+  )}
+  <span className="bso-card-time">{blog.readTime} min read</span>
+</div>
       </div>
       <svg
         className="bso-card-arr"
