@@ -196,13 +196,7 @@ export default function BlogSearchOverlay({ isOpen, onClose }: Props) {
       <div className="bso-panel">
 
         <div className="bso-header">
-          <span className="bso-header-eyebrow">AiMA Intelligence Library</span>
-          <span className="bso-header-badge">
-            <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
-              <circle cx="3" cy="3" r="3" />
-            </svg>
-            {blogs.length} articles
-          </span>
+         
           <button className="bso-close" onClick={onClose} aria-label="Close article search">
             <svg
               width="12"
@@ -305,8 +299,7 @@ export default function BlogSearchOverlay({ isOpen, onClose }: Props) {
               <div className="bso-default">
                 <div className="bso-welcome-h">The Intelligence Library</div>
                 <p className="bso-welcome-sub">
-                  Operational frameworks, distribution architecture, and infrastructure thinking
-                  for operators building durable, compounding businesses.
+                  
                 </p>
 
                 <div className="bso-pills" role="group" aria-label="Filter by category">
