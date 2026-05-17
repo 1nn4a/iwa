@@ -75,8 +75,7 @@ content="Connect with skilled freelancers, contractors and entrepreneurs. We sim
           </p>
         </motion.div>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-3">
-          <a
+<div className="mt-10 flex flex-wrap gap-3">          <a
             href="https://www.innovatewithaima.com/definitions"
             className="rounded-full bg-black px-4 py-2 text-xs font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
           >
