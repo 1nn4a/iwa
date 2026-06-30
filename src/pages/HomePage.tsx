@@ -12,30 +12,42 @@ const fadeUp = {
   show: { opacity: 1, y: 0 },
 };
 
- const linkCards = [
+const linkCards = [
   {
     key: 'cleaners',
-    title: 'For Cleaners',
-    subtext: 'Grow your entire cleaning presence online',
+    title: null, // 'For Cleaners',
+    subtext: null, // 'Grow your entire cleaning presence online',
     href: 'https://forcleaners.co.uk',
     mobileImg: linksCleanersMobile,
     desktopImg: linksCleanersDesktop,
+    mobileAspect: 'aspect-[660/1020]',
+    desktopAspect: 'aspect-[1588/900]',  
+    mobileTextPos: 'items-start text-left px-5 pt-6',
+    desktopTextPos: 'items-center text-center px-8 pt-10',
   },
   {
     key: 'tradies',
-    title: 'Links For Tradies',
+    title:  null, // 'Links For Tradies',
     subtext: null,
     href: 'https://fortradies.co.uk',
     mobileImg: linksTradiesMobile,
     desktopImg: linksTradiesMobile,
+    mobileAspect: 'aspect-[660/1020]',
+    desktopAspect: 'aspect-[774/900]',  
+    mobileTextPos: 'items-start text-left px-5 pt-6',
+    desktopTextPos: 'items-center text-center px-6 pt-8',
   },
   {
     key: 'managers',
-    title: 'Links For Managers',
+    title:  null, //'Links For Managers',
     subtext: null,
     href: 'https://formanagers.co.uk',
     mobileImg: linksManagersMobile,
     desktopImg: linksManagersMobile,
+    mobileAspect: 'aspect-[660/1020]',
+    desktopAspect: 'aspect-[774/900]',
+    mobileTextPos: 'items-start text-left px-5 pt-6',
+    desktopTextPos: 'items-center text-center px-6 pt-8',
   },
 ];
 
@@ -87,8 +99,8 @@ content="Connect with skilled freelancers, contractors and entrepreneurs. We sim
 </Helmet>
 
 <main>
-      <section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-28 md:px-8">
-        <motion.div
+<section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-10 md:pt-14">
+          <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="show"
@@ -141,12 +153,16 @@ content="Connect with skilled freelancers, contractors and entrepreneurs. We sim
                 onContextMenu={(e) => e.preventDefault()}
                 draggable={false}
               />
-              <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-start px-5 pt-6 text-left">
-                <h3 className="text-xl font-thin font-['Inter'] text-white">{card.title}</h3>
-                {card.subtext && (
-                  <p className="mt-1 text-xs font-thin font-['Inter'] text-white/85">{card.subtext}</p>
-                )}
+  {/* <div className="absolute top-[8%] left-[34%] right-4 flex items-center min-h-[18%] pl-2">
+               <h3 className="text-lg font-semibold font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                  {card.title}
+                </h3>
               </div>
+              {card.subtext && (
+                <p className="absolute top-[22%] left-5 right-5 text-xs font-medium font-['Inter'] text-white/90 [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
+                  {card.subtext}
+                </p>
+              )} */}
               <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7M9 7h8v8" />
@@ -174,12 +190,12 @@ content="Connect with skilled freelancers, contractors and entrepreneurs. We sim
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
-            <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-8 pt-10 text-center">
+           {/* <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-8 pt-10 text-center">
               <h3 className="text-3xl font-thin font-['Inter'] text-white">{linkCards[0].title}</h3>
               {linkCards[0].subtext && (
                 <p className="mt-2 text-sm font-thin font-['Inter'] text-white/85">{linkCards[0].subtext}</p>
               )}
-            </div>
+            </div>*/}
             <span className="absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full bg-white">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 17L17 7M9 7h8v8" />
@@ -207,12 +223,12 @@ content="Connect with skilled freelancers, contractors and entrepreneurs. We sim
                 onContextMenu={(e) => e.preventDefault()}
                 draggable={false}
               />
-                <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-6 pt-8 text-center">
+              {/*  <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-6 pt-8 text-center">
                   <h3 className="text-2xl font-thin font-['Inter'] text-white">{card.title}</h3>
                   {card.subtext && (
                     <p className="mt-2 text-xs font-thin font-['Inter'] text-white/85">{card.subtext}</p>
                   )}
-                </div>
+                </div>*/}
                 <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 17L17 7M9 7h8v8" />
