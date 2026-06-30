@@ -88,23 +88,23 @@ export default function HomePage() {
 
       <main>
         <section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-10 md:pt-14">
-          <motion.div
+      <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="show"
             transition={{ duration: 0.6 }}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
            
-            <h1 className="max-w-3xl text-4xl leading-[0.95] font-semibold tracking-tight md:text-6xl">
+            <h1 className="max-w-3xl mx-auto text-4xl leading-[0.95] font-semibold tracking-tight md:text-6xl">
               A Private Professional Network for Specialist Businesses
             </h1>
-            <p className="mt-4 max-w-2xl text-xs leading-6 text-white/65 md:text-sm">
+            <p className="mt-4 max-w-2xl mx-auto text-xs leading-6 text-white/65 md:text-sm">
               We provide tools and a selective way for businesses to share paid opportunities with independent professionals. Without being a marketplace.
             </p>
           </motion.div>
 
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2 justify-center">
             <a
               href="https://www.innovatewithaima.com/definitions"
               className="rounded-full bg-black px-3 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"

@@ -10,7 +10,6 @@ import PrivacyPage from './pages/PrivacyPage'
 import CookiesPage from './pages/CookiesPage'
 import BlogsPage from './pages/BlogsPage'
 import BlogPage from './pages/BlogPage'
-import CookieBanner from './components/CookieBanner'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopButton from './components/ScrollToTopButton'
 import NotFound from './pages/NotFound'
@@ -54,8 +53,7 @@ export default function App() {
               </Routes>
             </main>
           </div>
-        <Footer />
-          <CookieBanner />
+  <Footer />
           <ScrollToTopButton />
           <BlogSearchOverlay
             isOpen={blogSearchOpen}
