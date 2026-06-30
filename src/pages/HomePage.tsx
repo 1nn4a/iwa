@@ -17,7 +17,7 @@ const linkCards = [
   {
     key: 'cleaners',
     title: 'For Cleaners',
-    subtext: null,
+    subtext: 'Grow your cleaning business online',
     href: 'https://forcleaners.co.uk',
     mobileImg: linksCleanersMobile,
     desktopImg: linksCleanersDesktop,
@@ -119,15 +119,13 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* CARDS AREA WITH BACKGROUND */}
           <div className="relative mt-10">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-50 pointer-events-none"
-              style={{ backgroundImage: `url(${cardsBg})` }}
-            />
+  <div
+    className="absolute top-5 left-1/2 -translate-x-1/2 w-screen h-full bg-cover bg-center opacity-40 pointer-events-none -z-10"
+    style={{ backgroundImage: `url(${cardsBg})` }}
+  />
 
-            {/* MOBILE CARDS */}
-            <div className="relative md:hidden flex flex-col gap-4">
+             <div className="relative md:hidden flex flex-col gap-4">
             {linkCards.map((card) => (
               <a
                 key={card.key}
@@ -149,8 +147,8 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {card.title && (
-                  <div className="absolute top-0 left-0 right-0 h-1/2 flex items-start pointer-events-none">
-                    <h3 className="pl-[35px] pt-6 text-left text-lg font-semibold font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+                    <h3 className="pl-[40px] pt-106 text-left text-lg font-black font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {card.title}
                     </h3>
                   </div>
@@ -164,10 +162,8 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* DESKTOP CARDS */}
-          <div className="relative hidden md:block">
-            {/* Row 1: cleaners (794x600) + first other card (387x600) */}
-            <div className="flex gap-4">
+           <div className="relative hidden md:block">
+             <div className="flex gap-4">
               <a
                 href={linkCards[0].href}
                 target="_blank"
@@ -220,7 +216,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {linkCards[1].title && (
                   <div className="absolute top-0 left-0 right-0 h-1/2 flex items-start pointer-events-none">
-                    <h3 className="pl-[40px] pt-8 text-left text-xl font-semibold font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                    <h3 className="pl-[40px] pt-8 text-left text-xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {linkCards[1].title}
                     </h3>
                   </div>
@@ -233,8 +229,7 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Row 2: remaining real card (managers) + 2 placeholders, total width matches row 1 (1197px) */}
-            <div className="mt-4 flex gap-4">
+             <div className="mt-4 flex gap-4">
               <a
                 href={linkCards[2].href}
                 target="_blank"
@@ -255,7 +250,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {linkCards[2].title && (
                   <div className="absolute top-0 left-0 right-0 h-1/2 flex items-start pointer-events-none">
-                    <h3 className="pl-[40px] pt-8 text-left text-xl font-semibold font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                    <h3 className="pl-[40px] pt-8 text-left text-xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {linkCards[2].title}
                     </h3>
                   </div>
@@ -267,20 +262,18 @@ export default function HomePage() {
                 </span>
               </a>
 
-              {/* Placeholder card 1 - swap href/img when ready */}
-              <a
+               <a
                 href="#"
                 className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center"
               >
-                <span className="text-white/40 text-sm">Placeholder image</span>
+                <span className="text-white/40 text-sm">For Designers - Coming soon</span>
               </a>
 
-              {/* Placeholder card 2 - swap href/img when ready */}
-              <a
+               <a
                 href="#"
                 className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center"
               >
-                <span className="text-white/40 text-sm">Placeholder image</span>
+                <span className="text-white/40 text-sm">For Aestheticians - Coming soon</span>
               </a>
             </div>
           </div>
