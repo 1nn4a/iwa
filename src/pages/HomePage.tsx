@@ -158,14 +158,13 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* DESKTOP CARDS */}
-          <div className="mt-10 hidden md:block">
-            <div className="w-1/2 mx-auto">
+           <div className="mt-10 hidden md:block">
+             <div className="flex gap-4">
               <a
                 href={linkCards[0].href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative block w-full aspect-[1588/1200] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+                className="relative block w-[794px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -181,7 +180,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {linkCards[0].title && (
                   <div className="absolute top-0 left-0 right-0 h-1/2 flex items-start pointer-events-none">
-                    <h3 className="pl-[15px] pt-8 text-left text-2xl font-semibold font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                    <h3 className="pl-[40px] pt-8 text-left text-2xl font-semibold font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {linkCards[0].title}
                     </h3>
                   </div>
@@ -192,44 +191,86 @@ export default function HomePage() {
                   </svg>
                 </span>
               </a>
+
+              <a
+                href={linkCards[1].href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-[387px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center select-none"
+                  style={{
+                    backgroundImage: `url(${linkCards[1].mobileImg})`,
+                    WebkitTouchCallout: 'none',
+                    WebkitUserSelect: 'none',
+                    userSelect: 'none',
+                  }}
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                {linkCards[1].title && (
+                  <div className="absolute top-0 left-0 right-0 h-1/2 flex items-start pointer-events-none">
+                    <h3 className="pl-[40px] pt-8 text-left text-xl font-semibold font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                      {linkCards[1].title}
+                    </h3>
+                  </div>
+                )}
+                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
+              </a>
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              {linkCards.slice(1).map((card) => (
-                <div key={card.key} className="w-1/2 mx-auto">
-                  <a
-                    href={card.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative block w-full aspect-[774/1200] rounded-[15px] overflow-hidden bg-[#5c6cff]"
-                  >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center select-none"
-                      style={{
-                        backgroundImage: `url(${card.mobileImg})`,
-                        WebkitTouchCallout: 'none',
-                        WebkitUserSelect: 'none',
-                        userSelect: 'none',
-                      }}
-                      onContextMenu={(e) => e.preventDefault()}
-                      draggable={false}
-                    />
-                    <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-                    {card.title && (
-                      <div className="absolute top-0 left-0 right-0 h-1/2 flex items-start pointer-events-none">
-                        <h3 className="pl-[15px] pt-8 text-left text-xl font-semibold font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-                          {card.title}
-                        </h3>
-                      </div>
-                    )}
-                    <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M7 17L17 7M9 7h8v8" />
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-              ))}
+             <div className="mt-4 flex gap-4">
+              <a
+                href={linkCards[2].href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center select-none"
+                  style={{
+                    backgroundImage: `url(${linkCards[2].mobileImg})`,
+                    WebkitTouchCallout: 'none',
+                    WebkitUserSelect: 'none',
+                    userSelect: 'none',
+                  }}
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                {linkCards[2].title && (
+                  <div className="absolute top-0 left-0 right-0 h-1/2 flex items-start pointer-events-none">
+                    <h3 className="pl-[40px] pt-8 text-left text-xl font-semibold font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                      {linkCards[2].title}
+                    </h3>
+                  </div>
+                )}
+                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
+              </a>
+
+               <a
+                href="#"
+                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center"
+              >
+                <span className="text-white/40 text-sm">Placeholder image</span>
+              </a>
+
+               <a
+                href="#"
+                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center"
+              >
+                <span className="text-white/40 text-sm">Placeholder image</span>
+              </a>
             </div>
           </div>
 
