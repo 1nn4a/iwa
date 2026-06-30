@@ -25,7 +25,7 @@ const linkCards = [
   },
   {
     key: 'cleaners',
-    title: 'For Cleaners - Try It Today',
+    title: 'Try It Today',
     subtext: 'Grow your entire cleaning business online',
     href: 'https://forcleaners.co.uk',
     mobileImg: linksCleanersMobile,
@@ -33,7 +33,7 @@ const linkCards = [
   },
   {
     key: 'tradies',
-    title: 'For Tradies - Invite Only',
+    title: 'Invite Only',
     subtext: null,
     href: 'https://fortradies.co.uk',
     mobileImg: linksTradiesMobile,
@@ -41,7 +41,7 @@ const linkCards = [
   },
   {
     key: 'managers',
-    title: 'For Managers - Invite Only',
+    title: 'Invite Only',
     subtext: null,
     href: 'https://formanagers.co.uk',
     mobileImg: linksManagersMobile,
