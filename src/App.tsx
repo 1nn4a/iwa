@@ -12,6 +12,7 @@ import BlogsPage from './pages/BlogsPage'
 import BlogPage from './pages/BlogPage'
 import CookieBanner from './components/CookieBanner'
 import ScrollToTop from './components/ScrollToTop'
+import ScrollToTopButton from './components/ScrollToTopButton'
 import NotFound from './pages/NotFound'
 import BlogSearchOverlay from './components/BlogSearchOverlay'
 
@@ -53,8 +54,9 @@ export default function App() {
               </Routes>
             </main>
           </div>
-          <Footer />
+        <Footer />
           <CookieBanner />
+          <ScrollToTopButton />
           <BlogSearchOverlay
             isOpen={blogSearchOpen}
             onClose={() => setBlogSearchOpen(false)}

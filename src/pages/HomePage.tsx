@@ -1,12 +1,43 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import hero from '../assets/iwa.png'
+import linksCleanersMobile from '../assets/linksforcleaners#q3062026.jpg'
+import linksTradiesMobile from '../assets/linksfortradies#q3062026.jpg'
+import linksManagersMobile from '../assets/linksformangers#q3062026.jpg'
+import linksCleanersDesktop from '../assets/linksforcleaners#q601240412.jpg'
 import { Helmet } from "react-helmet-async"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0 },
 };
+
+ const linkCards = [
+  {
+    key: 'cleaners',
+    title: 'For Cleaners',
+    subtext: 'Grow your entire cleaning presence online',
+    href: 'https://forcleaners.co.uk',
+    mobileImg: linksCleanersMobile,
+    desktopImg: linksCleanersDesktop,
+  },
+  {
+    key: 'tradies',
+    title: 'Links For Tradies',
+    subtext: null,
+    href: 'https://fortradies.co.uk',
+    mobileImg: linksTradiesMobile,
+    desktopImg: linksTradiesMobile,
+  },
+  {
+    key: 'managers',
+    title: 'Links For Managers',
+    subtext: null,
+    href: 'https://formanagers.co.uk',
+    mobileImg: linksManagersMobile,
+    desktopImg: linksManagersMobile,
+  },
+];
 
 const cards = [
   {
@@ -67,28 +98,266 @@ content="Connect with skilled freelancers, contractors and entrepreneurs. We sim
           <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/55">
             Private professional network
           </p>
-          <h1 className="max-w-3xl text-5xl leading-[0.95] font-semibold tracking-tight md:text-7xl">
+       <h1 className="max-w-3xl text-4xl leading-[0.95] font-semibold tracking-tight md:text-6xl">
             A Private Professional Network for Specialist Businesses
           </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-6 text-white/65 md:text-base">
-            We provide a selective way for businesses to share paid opportunities with independent professionals. Without being a marketplace.
+          <p className="mt-4 max-w-2xl text-xs leading-6 text-white/65 md:text-sm">
+            We provide tools and a selective way for businesses to share paid opportunities with independent professionals. Without being a marketplace.
           </p>
         </motion.div>
-
-<div className="mt-10 flex flex-wrap gap-3">          <a
-            href="https://www.innovatewithaima.com/definitions"
-            className="rounded-full bg-black px-4 py-2 text-xs font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
+ <div className="mt-6 flex flex-wrap gap-2">          
+           <a href="https://www.innovatewithaima.com/definitions"
+            className="rounded-full bg-black px-3 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
           >
             Learn More
           </a>
           <Link
             to="https://group.innovatewithaima.com/submit-an-opportunity"
-            className="rounded-full bg-[#5c6cff] px-4 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"
+            className="rounded-full bg-[#5c6cff] px-3 py-1.5 text-[11px] font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"
           >
             Submit an Opportunity
           </Link>
         </div>
 
+
+ 
+         <div className="mt-10 md:hidden flex flex-col gap-4">
+          {linkCards.map((card) => (
+            <a
+              key={card.key}
+              href={card.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative block w-full aspect-[660/1020] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center select-none"
+                style={{
+                  backgroundImage: `url(${card.mobileImg})`,
+                  WebkitTouchCallout: 'none',
+                  WebkitUserSelect: 'none',
+                  userSelect: 'none',
+                }}
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+              />
+              <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-start px-5 pt-6 text-left">
+                <h3 className="text-xl font-thin font-['Inter'] text-white">{card.title}</h3>
+                {card.subtext && (
+                  <p className="mt-1 text-xs font-thin font-['Inter'] text-white/85">{card.subtext}</p>
+                )}
+              </div>
+              <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-10 hidden md:block">
+        <a
+            href={linkCards[0].href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative block w-full aspect-[1588/1200] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+          >
+           <div
+                  className="absolute inset-0 bg-cover bg-center select-none"
+                  style={{
+                    backgroundImage: `url(${linkCards[0].desktopImg})`,
+                    WebkitTouchCallout: 'none',
+                    WebkitUserSelect: 'none',
+                    userSelect: 'none',
+                  }}
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable={false}
+                />
+            <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-8 pt-10 text-center">
+              <h3 className="text-3xl font-thin font-['Inter'] text-white">{linkCards[0].title}</h3>
+              {linkCards[0].subtext && (
+                <p className="mt-2 text-sm font-thin font-['Inter'] text-white/85">{linkCards[0].subtext}</p>
+              )}
+            </div>
+            <span className="absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full bg-white">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17L17 7M9 7h8v8" />
+              </svg>
+            </span>
+          </a>
+
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            {linkCards.slice(1).map((card) => (
+              <a
+                key={card.key}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full aspect-[774/1200] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+              >
+               <div
+                className="absolute inset-0 bg-cover bg-center select-none"
+                style={{
+                  backgroundImage: `url(${card.mobileImg})`,
+                  WebkitTouchCallout: 'none',
+                  WebkitUserSelect: 'none',
+                  userSelect: 'none',
+                }}
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+              />
+                <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-6 pt-8 text-center">
+                  <h3 className="text-2xl font-thin font-['Inter'] text-white">{card.title}</h3>
+                  {card.subtext && (
+                    <p className="mt-2 text-xs font-thin font-['Inter'] text-white/85">{card.subtext}</p>
+                  )}
+                </div>
+                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            disabled
+            className="rounded-full bg-white/10 px-4 md:px-8 py-2 text-xs font-medium text-white/70 cursor-not-allowed"
+          >
+            More
+          </button>
+        </div>
+
+         <div className="mt-6 flex flex-wrap gap-2">
+           <a href="https://www.innovatewithaima.com/definitions"
+            className="rounded-full bg-black px-3 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
+          >
+            Learn More
+          </a>
+          <Link
+            to="https://group.innovatewithaima.com/submit-an-opportunity"
+            className="rounded-full bg-[#5c6cff] px-3 py-1.5 text-[11px] font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"
+          >
+            Submit an Opportunity
+          </Link>
+        </div>
+
+        <div className="mt-10 md:hidden flex flex-col gap-4">
+          {linkCards.map((card) => (
+            <a
+              key={card.key}
+              href={card.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative block w-full aspect-[660/1020] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center select-none"
+                style={{
+                  backgroundImage: `url(${card.mobileImg})`,
+                  WebkitTouchCallout: 'none',
+                  WebkitUserSelect: 'none',
+                  userSelect: 'none',
+                }}
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+              />
+              <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-start px-5 pt-6 text-left">
+                <h3 className="text-xl font-thin font-['Inter'] text-white">{card.title}</h3>
+                {card.subtext && (
+                  <p className="mt-1 text-xs font-thin font-['Inter'] text-white/85">{card.subtext}</p>
+                )}
+              </div>
+              <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-10 hidden md:block">
+          <a
+            href={linkCards[0].href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative block w-full aspect-[1588/1200] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center select-none"
+              style={{
+                backgroundImage: `url(${linkCards[0].desktopImg})`,
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+              }}
+              onContextMenu={(e) => e.preventDefault()}
+              draggable={false}
+            />
+            <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-8 pt-10 text-center">
+              <h3 className="text-3xl font-thin font-['Inter'] text-white">{linkCards[0].title}</h3>
+              {linkCards[0].subtext && (
+                <p className="mt-2 text-sm font-thin font-['Inter'] text-white/85">{linkCards[0].subtext}</p>
+              )}
+            </div>
+            <span className="absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full bg-white">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17L17 7M9 7h8v8" />
+              </svg>
+            </span>
+          </a>
+
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            {linkCards.slice(1).map((card) => (
+              <a
+                key={card.key}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full aspect-[774/1200] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center select-none"
+                  style={{
+                    backgroundImage: `url(${card.desktopImg})`,
+                    WebkitTouchCallout: 'none',
+                    WebkitUserSelect: 'none',
+                    userSelect: 'none',
+                  }}
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable={false}
+                />
+                <div className="absolute inset-x-0 top-0 h-1/2 flex flex-col justify-start items-center px-6 pt-8 text-center">
+                  <h3 className="text-2xl font-thin font-['Inter'] text-white">{card.title}</h3>
+                  {card.subtext && (
+                    <p className="mt-2 text-xs font-thin font-['Inter'] text-white/85">{card.subtext}</p>
+                  )}
+                </div>
+                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            disabled
+            className="rounded-full bg-white/10 px-4 md:px-8 py-2 text-xs font-medium text-white/70 cursor-not-allowed"
+          >
+            More
+          </button>
+        </div>
         <div className="mt-12 grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
           {cards.map((card, i) => (
             <motion.article
