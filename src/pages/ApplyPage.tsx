@@ -16,8 +16,7 @@ content="Apply to join the Innovate With Aima network. Membership is selective a
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-{/* LEFT */}
-
+ 
 <div>
 
 <h1 className="text-4xl font-semibold mb-6">
@@ -30,9 +29,7 @@ Applications are reviewed individually. Acceptance is not guaranteed
 and depends on suitability, experience, and current network demand.
 </p>
 
-<p className="mt-6 text-white/60">
-We aim to get back to you within 2 days.
-</p>
+
 
 <div className="mt-10 text-sm text-white/70 space-y-1">
 <p>Monday: 08:00am - 17:00pm</p>
@@ -46,8 +43,7 @@ We aim to get back to you within 2 days.
 
 </div>
 
-{/* RIGHT: CONTACT */}
-
+ 
 <div className="space-y-6">
 
 <div>
