@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import hero from '../assets/iwa.png'
-import linksCleanersMobile from '../assets/linksforcleaners#q3062026.jpg'
-import linksTradiesMobile from '../assets/linksfortradies#q3062026.jpg'
-import linksManagersMobile from '../assets/linksformangers#q3062026.jpg'
-import linksCleanersDesktop from '../assets/linksforcleaners#q601240412.jpg'
+import linksCleanersMobile from '../assets/linksforcleaners@.q3062026.jpg'
+import linksTradiesMobile from '../assets/linksfortradies@.q3062026.jpg'
+import linksManagersMobile from '../assets/linksformangers@.q3062026.jpg'
+import linksCleanersDesktop from '../assets/linksforcleaners@.q601240412.jpg'
 import { Helmet } from "react-helmet-async"
 
 const fadeUp = {
