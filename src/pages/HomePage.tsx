@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import hero from '../assets/iwa.png'
+import cardsBg from '../assets/iwa@.20250410.png'
 import linksCleanersMobile from '../assets/linksforcleaners@.q3062026.jpg'
 import linksTradiesMobile from '../assets/linksfortradies@.q3062026.jpg'
 import linksManagersMobile from '../assets/linksformangers@.q3062026.jpg'
@@ -94,9 +95,7 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/55">
-              Private professional network
-            </p>
+           
             <h1 className="max-w-3xl text-4xl leading-[0.95] font-semibold tracking-tight md:text-6xl">
               A Private Professional Network for Specialist Businesses
             </h1>
@@ -120,8 +119,15 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* MOBILE CARDS */}
-          <div className="mt-10 md:hidden flex flex-col gap-4">
+          {/* CARDS AREA WITH BACKGROUND */}
+          <div className="relative mt-10">
+            <div
+              className="absolute inset-0 bg-cover bg-center opacity-50 pointer-events-none"
+              style={{ backgroundImage: `url(${cardsBg})` }}
+            />
+
+            {/* MOBILE CARDS */}
+            <div className="relative md:hidden flex flex-col gap-4">
             {linkCards.map((card) => (
               <a
                 key={card.key}
@@ -158,8 +164,10 @@ export default function HomePage() {
             ))}
           </div>
 
-           <div className="mt-10 hidden md:block">
-             <div className="flex gap-4">
+          {/* DESKTOP CARDS */}
+          <div className="relative hidden md:block">
+            {/* Row 1: cleaners (794x600) + first other card (387x600) */}
+            <div className="flex gap-4">
               <a
                 href={linkCards[0].href}
                 target="_blank"
@@ -225,7 +233,8 @@ export default function HomePage() {
               </a>
             </div>
 
-             <div className="mt-4 flex gap-4">
+            {/* Row 2: remaining real card (managers) + 2 placeholders, total width matches row 1 (1197px) */}
+            <div className="mt-4 flex gap-4">
               <a
                 href={linkCards[2].href}
                 target="_blank"
@@ -258,20 +267,23 @@ export default function HomePage() {
                 </span>
               </a>
 
-               <a
+              {/* Placeholder card 1 - swap href/img when ready */}
+              <a
                 href="#"
                 className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center"
               >
                 <span className="text-white/40 text-sm">Placeholder image</span>
               </a>
 
-               <a
+              {/* Placeholder card 2 - swap href/img when ready */}
+              <a
                 href="#"
                 className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center"
               >
                 <span className="text-white/40 text-sm">Placeholder image</span>
               </a>
             </div>
+          </div>
           </div>
 
           <div className="mt-6 flex justify-center">
