@@ -3,6 +3,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
+import bgImg from '../assets/iwa@.20260701.png';
+import linksForBrandImg from '../assets/linksfor@.q010726.jpg';
+import cleanfluencerImg from '../assets/linksforcleaners@.cprogramme.jpg';
+import linksForTradiesImg from '../assets/linksfortradies@.q3062026.jpg';
+import linksForCleanersImg from '../assets/linksforcleaners@.instantq.jpg';
+import linksForManagersImg from '../assets/linksformangers@.q3062026.jpg';
+import linksForAestheticsImg from '../assets/linksforaesthetics@.q3010726.jpg';
+
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0 },
@@ -23,14 +31,14 @@ const marketingCard: ProductCard = {
   section: '',
   title: 'LinksFor',
   subtitle: 'Where your audience becomes your customers',
-  img: 'https://www.innovatewithaima.com/assets/linksfor@.q010726.jpg',
+  img: linksForBrandImg,
 };
 
 const firstCard: ProductCard = {
   product_line: 'product_line_creator_monetisation',
   title: 'Content Rewards',
   subtitle: 'Turn what you already post into revenue',
-  img: 'https://www.innovatewithaima.com/assets/linksforcleaners@.cprogramme.jpg',
+  img: cleanfluencerImg,
   href: 'https://profile.forcleaners.co.uk/create',
 };
 
@@ -39,7 +47,7 @@ const businessSolutions: ProductCard[] = [
     product_line: 'product_line_trade_services',
     title: 'LinksForTradies',
     subtitle: 'Invite only',
-    img: 'https://innovatewithaima.com/assets/linksfortradies@.q3062026.jpg',
+    img: linksForTradiesImg,
     href: '/product-trades-form',
     internal: true,
   },
@@ -47,14 +55,14 @@ const businessSolutions: ProductCard[] = [
     product_line: 'product_line_home_services',
     title: 'LinksForCleaners',
     subtitle: 'Market your entire cleaning business online',
-    img: 'https://www.innovatewithaima.com/assets/linksforcleaners@.instantq.jpg',
+    img: linksForCleanersImg,
     href: 'https://links.forcleaners.co.uk',
   },
   {
     product_line: 'product_line_property_management',
     title: 'LinksForManagers',
     subtitle: 'Invite only',
-    img: 'https://www.innovatewithaima.com/assets/linksformangers@.q3062026.jpg',
+    img: linksForManagersImg,
     href: '/product-property-form',
     internal: true,
   },
@@ -62,7 +70,7 @@ const businessSolutions: ProductCard[] = [
     product_line: 'product_line_beauty_wellness',
     title: 'LinksForAesthetics',
     subtitle: 'Invite only',
-    img: 'https://www.innovatewithaima.com/assets/linksforaesthetics@.q3010726.jpg',
+    img: linksForAestheticsImg,
     href: '/product-beauty-form',
     internal: true,
   },
@@ -119,8 +127,8 @@ export default function ProductsPage() {
 
       <div
         className="relative min-h-screen"
-        style={{
-          backgroundImage: `url(https://www.innovatewithaima.com/assets/iwa@.20260701.png)`,
+       style={{
+          backgroundImage: `url(${bgImg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
