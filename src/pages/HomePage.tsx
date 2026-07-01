@@ -143,7 +143,7 @@ export default function HomePage() {
 
           <div className="relative mt-10">
   <div
-    className="absolute top-5 left-1/2 -translate-x-1/2 w-screen h-full bg-cover bg-center opacity-40 pointer-events-none -z-10"
+    className="absolute top-5 left-1/2 -translate-x-1/2 w-screen h-full bg-cover bg-center opacity-100 pointer-events-none -z-10"
     style={{ backgroundImage: `url(${cardsBg})` }}
   />
 
