@@ -194,8 +194,7 @@ export default function HomePage() {
           </div>
 
            <div className="relative hidden md:block">
-             <div className="flex gap-4">
-              
+<div className="flex gap-4 justify-center">              
               <div
                 className="relative block w-[794px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
               >
@@ -253,8 +252,8 @@ export default function HomePage() {
               </a>
             </div>
 
-             <div className="mt-4 flex gap-4">
-              <Link
+<div className="mt-4 flex gap-4 justify-center">
+                <Link
                 to={linkCards[3].href!}
                 className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
               >
