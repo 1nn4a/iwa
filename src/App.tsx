@@ -1,3 +1,4 @@
+//App.tsx
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
@@ -16,7 +17,7 @@ import ScrollToTopButton from './components/ScrollToTopButton'
 import NotFound from './pages/NotFound'
 import BlogSearchOverlay from './components/BlogSearchOverlay'
 import ProductFormPage from './pages/ProductFormPage'
-
+import ProductsPage from './pages/ProductsPage'
 function StartRedirect() {
   const navigate = useNavigate()
   useEffect(() => {
@@ -49,7 +50,8 @@ function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boole
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/cookies" element={<CookiesPage />} />
                 <Route path="/blog" element={<BlogsPage />} />
-              <Route path="/blog/:slug" element={<BlogPage />} />
+<Route path="/blog/:slug" element={<BlogPage />} />
+<Route path="/en/products" element={<ProductsPage />} />
 <Route path="/product-trades-form"   element={<ProductFormPage product="trades"   />} />
 <Route path="/product-beauty-form"   element={<ProductFormPage product="beauty"   />} />
 <Route path="/product-property-form" element={<ProductFormPage product="property" />} />

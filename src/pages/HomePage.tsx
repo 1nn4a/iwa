@@ -1,3 +1,4 @@
+//HomePage.tsx
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -353,13 +354,12 @@ We enable specialist businesses and independent professionals to connect, share 
           </div>
 
           <div className="mt-6 flex justify-center">
-            <button
-              type="button"
-              disabled
-              className="rounded-full bg-white/10 px-4 md:px-8 py-2 text-xs font-medium text-white/70 cursor-not-allowed"
-            >
-              More
-            </button>
+           <Link
+  to="/en/products"
+  className="rounded-full bg-white/10 px-4 md:px-8 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-white/20"
+>
+  More
+</Link>
           </div>
 
           <div className="mt-12 grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
