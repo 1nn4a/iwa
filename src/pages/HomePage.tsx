@@ -144,14 +144,13 @@ We enable specialist businesses and independent professionals to connect, share 
             </Link>
           </div>
 
-          <div className="relative mt-10">
+<div className="relative mt-10">
  <div
-  className="absolute top-5 left-1/2 -translate-x-1/2 w-screen opacity-100 pointer-events-none -z-10"
+  className="absolute inset-0 opacity-100 pointer-events-none -z-10"
   style={{
     backgroundImage: `url(${cardsBg})`,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
-    aspectRatio: '853 / 1216',
   }}
 />
 
