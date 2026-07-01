@@ -112,8 +112,9 @@ const cls = "relative block w-full max-w-[430px] aspect-[660/1020] rounded-[15px
 export default function ProductsPage() {
   return (
     <>
-      <Helmet>
+    <Helmet>
         <title>Products</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div
