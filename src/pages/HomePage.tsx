@@ -28,7 +28,7 @@ const linkCards = [
   {
     key: 'cleaners',
     title: 'Try It Today',
-    subtext: 'Grow your entire cleaning business online',
+    subtext: 'Grow your entire cleaning business online with LinksForCleaners',
     href: 'https://forcleaners.co.uk',
     mobileImg: linksCleanersMobile,
     desktopImg: linksCleanersMobile,
@@ -240,7 +240,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {linkCards[1].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[128px] pt-16 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                    <h3 className="pl-[128px] pt-16 text-left text-xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {linkCards[1].title}
                     </h3>
                   </div>
@@ -272,7 +272,7 @@ export default function HomePage() {
                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {linkCards[3].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[113px] pt-12 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                    <h3 className="pl-[113px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {linkCards[3].title}
                     </h3>
                   </div>
@@ -302,7 +302,7 @@ export default function HomePage() {
              <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {linkCards[2].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[113px] pt-12 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                    <h3 className="pl-[135px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {linkCards[2].title}
                     </h3>
                   </div>
@@ -332,7 +332,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 {linkCards[4].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[113px] pt-12 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                    <h3 className="pl-[135px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                       {linkCards[4].title}
                     </h3>
                   </div>
