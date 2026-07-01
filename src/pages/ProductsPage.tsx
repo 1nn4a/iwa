@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 import bgImg from '../assets/iwa@.20260701.png';
-import linksForBrandImg from '../assets/linksfor@.q010726.jpg';
+import linksForBrandImg from '../assets/linksfor@.q01072026.jpg';
 import cleanfluencerImg from '../assets/linksforcleaners@.cprogramme.jpg';
 import linksForTradiesImg from '../assets/linksfortradies@.q3062026.jpg';
 import linksForCleanersImg from '../assets/linksforcleaners@.instantq.jpg';
