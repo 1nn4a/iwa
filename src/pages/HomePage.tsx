@@ -146,7 +146,20 @@ We enable specialist businesses and independent professionals to connect, share 
 
 <div className="relative mt-10">
  <div
-  className="absolute inset-0 opacity-100 pointer-events-none -z-10"
+  className="hidden md:block absolute pointer-events-none -z-10"
+  style={{
+    backgroundImage: `url(${cardsBg})`,
+    width: '1197px',
+    height: '1216px',
+    top: 0,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundSize: '1197px 1216px',
+    backgroundRepeat: 'no-repeat',
+  }}
+/>
+<div
+  className="md:hidden absolute inset-0 opacity-100 pointer-events-none -z-10"
   style={{
     backgroundImage: `url(${cardsBg})`,
     backgroundSize: '100% 100%',
