@@ -11,6 +11,7 @@ import CookiesPage from './pages/CookiesPage'
 import BlogsPage from './pages/BlogsPage'
 import BlogPage from './pages/BlogPage'
 import ScrollToTop from './components/ScrollToTop'
+import { useLocation } from 'react-router-dom'
 import ScrollToTopButton from './components/ScrollToTopButton'
 import NotFound from './pages/NotFound'
 import BlogSearchOverlay from './components/BlogSearchOverlay'
@@ -29,19 +30,18 @@ function StartRedirect() {
   return null
 }
 
-export default function App() {
-  const [blogSearchOpen, setBlogSearchOpen] = useState(false)
+function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boolean, setBlogSearchOpen: (v: boolean) => void }) {
+  const location = useLocation()
+  const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
 
   return (
-    <BrowserRouter>
-      <StartRedirect />
-      <div className="min-h-screen flex flex-col">
-        <div className="min-h-screen overflow-x-hidden">
-          <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />
-          <ScrollToTop />
-          <div className="pt-20">
-            <main className="flex-1">
-              <Routes>
+    <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen overflow-x-hidden">
+        {!isFormPage && <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />}
+        <ScrollToTop />
+        <div className={isFormPage ? '' : 'pt-20'}>
+          <main className="flex-1">
+            <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/definitions" element={<DefinitionsPage />} />
                 <Route path="/apply" element={<ApplyPage />} />
@@ -55,16 +55,27 @@ export default function App() {
 <Route path="/product-property-form" element={<ProductFormPage product="property" />} />
 <Route path="*" element={<NotFound />} />
               </Routes>
-            </main>
-          </div>
-  <Footer />
-          <ScrollToTopButton />
+          </main>
+        </div>
+        {!isFormPage && <Footer />}
+        {!isFormPage && <ScrollToTopButton />}
+        {!isFormPage && (
           <BlogSearchOverlay
             isOpen={blogSearchOpen}
             onClose={() => setBlogSearchOpen(false)}
           />
-        </div>
+        )}
       </div>
+    </div>
+  )
+}
+
+export default function App() {
+  const [blogSearchOpen, setBlogSearchOpen] = useState(false)
+  return (
+    <BrowserRouter>
+      <StartRedirect />
+      <AppShell blogSearchOpen={blogSearchOpen} setBlogSearchOpen={setBlogSearchOpen} />
     </BrowserRouter>
   )
 }
