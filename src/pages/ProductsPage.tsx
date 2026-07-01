@@ -25,6 +25,7 @@ type ProductCard = {
   img: string;
   href?: string;
   internal?: boolean;
+  darkText?: boolean;
 };
 
 const marketingCard: ProductCard = {
@@ -33,6 +34,7 @@ const marketingCard: ProductCard = {
   title: 'LinksFor',
   subtitle: 'Where your audience becomes your customers',
   img: linksForBrandImg,
+  darkText: true,
 };
 
 const firstCard: ProductCard = {
@@ -45,13 +47,15 @@ const firstCard: ProductCard = {
 
 const businessSolutions: ProductCard[] = [
   {
-    product_line: 'product_line_trade_services',
-    title: 'LinksForTradies',
-    subtitle: 'Invite only',
-    img: linksForTradiesImg,
-    href: '/product-trades-form',
-    internal: true,
-  },
+  
+  product_line: 'product_line_trade_services',
+  title: 'LinksForTradies',
+  subtitle: 'Invite only',
+  img: linksForTradiesImg,
+  href: '/product-trades-form',
+  internal: true,
+  darkText: true,
+},
   {
     product_line: 'product_line_home_services',
     title: 'LinksForCleaners',
@@ -86,18 +90,18 @@ function ProductCardTile({ card }: { card: ProductCard }) {
         onContextMenu={(e) => e.preventDefault()}
         draggable={false}
       />
-      {card.title && (
-        <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-          <div className="pl-[130px] md:pl-[140px] pt-15 text-left">
-            <h3 className="text-lg font-black font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-              {card.title}
-            </h3>
-            <p className="text-xs font-medium font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-              {card.subtitle}
-            </p>
-          </div>
-        </div>
-      )}
+  {card.title && (
+  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+    <div className="pl-[120px] md:pl-[140px] pt-11.5 text-left">
+      <h3 className={`text-lg font-black font-['Inter'] leading-tight ${card.darkText ? 'text-black' : 'text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]'}`}>
+        {card.title}
+      </h3>
+      <p className={`text-xs font-medium font-['Inter'] leading-tight ${card.darkText ? 'text-black' : 'text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]'}`}>
+        {card.subtitle}
+      </p>
+    </div>
+  </div>
+)}
       {card.href && (
         <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
