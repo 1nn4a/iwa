@@ -12,15 +12,15 @@ interface Props {
 
  
 const PRODUCTS: { id: ProductId; label: string; sub: string }[] = [
-  { id: 'trades',   label: 'Trades',             sub: 'ForTradies — skilled trade professionals' },
-  { id: 'property', label: 'Property',            sub: 'ForManagers — property & FM network' },
-  { id: 'beauty',   label: 'Beauty & Aesthetics', sub: 'ForAesthetics — beauty professionals' },
+  { id: 'trades',   label: 'Trades',             sub: 'Trades (skilled trade professionals)' },
+  { id: 'property', label: 'Property',            sub: 'Managers (property & FM network)' },
+  { id: 'beauty',   label: 'Beauty & Aesthetics', sub: 'Aestheticians (beauty professionals)' },
 ]
 
 const META: Record<ProductId, { title: string }> = {
-  trades:   { title: 'ForTradies'    },
-  property: { title: 'ForManagers'   },
-  beauty:   { title: 'ForAesthetics' },
+  trades:   { title: 'Trades'    },
+  property: { title: 'Property'  },
+  beauty:   { title: 'Aestheticians' },
 }
 
 const RATE_KEY = 'iwa_submit_ts'
@@ -159,8 +159,8 @@ export default function ProductFormPage({ product }: Props) {
   return (
     <>
       <Helmet>
-        <title>{meta.title} — Request Early Access · Innovate With Aima</title>
-        <meta name="description" content={`Request early access to ${meta.title} from the Innovate With Aima professional network.`} />
+      <title>{meta.title} — See If This Is For You · Innovate With Aima</title>
+<meta name="description" content={`Find out if ${meta.title} is right for you, part of the Innovate With Aima professional network.`} />
         <meta name="robots" content="noindex, nofollow" />
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Helmet>
@@ -192,21 +192,21 @@ export default function ProductFormPage({ product }: Props) {
 
            <img src={logo} alt="Innovate With Aima" className="h-7 w-auto" />
 
-           <button
-            type="button"
-            onClick={handleShare}
-            className="flex items-center gap-[5px] text-[15px] font-medium min-w-[60px] justify-end"
-            style={{ color: '#5c6cff' }}
-            aria-label="Share this page"
-          >
-            Share
+          <button
+  type="button"
+  onClick={handleShare}
+  className="flex items-center gap-[5px] text-[15px] font-medium justify-end"
+  style={{ color: '#5c6cff' }}
+  aria-label="Share with a colleague"
+>
+  Share with a colleague
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
             </svg>
           </button>
         </div>
 
-         <div className="flex-1 overflow-y-auto">
+<div className="flex-1 overflow-y-auto" style={{ overscrollBehaviorY: 'contain' }}>
           <div className="flex flex-col items-center px-4 pt-5 pb-6">
             <div className="w-full max-w-[420px] flex flex-col gap-3">
 
@@ -216,9 +216,9 @@ export default function ProductFormPage({ product }: Props) {
                 transition={{ duration: 0.3 }}
                 className="text-center pb-1"
               >
-                <h1 className="text-[26px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
-                  Request Early Access
-                </h1>
+              <h1 className="text-[26px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
+  See If This Is For You
+</h1>
               </motion.div>
 
                <AnimatePresence mode="wait">
@@ -416,13 +416,11 @@ export default function ProductFormPage({ product }: Props) {
                       }}
                       aria-busy={phase === 'loading'}
                     >
-                      {phase === 'loading' && <Spinner />}
-                      {phase === 'loading' ? 'Submitting…' : phase === 'error' ? 'Try Again' : 'Request Early Access'}
+                  {phase === 'loading' && <Spinner />}
+{phase === 'loading' ? 'Submitting…' : phase === 'error' ? 'Try Again' : 'Learn More'}
                     </motion.button>
 
-                    <p className="text-center text-[11px] leading-relaxed" style={{ color: '#aeaeb2' }}>
-                      Share with a colleague.
-                    </p>
+                   
                   </motion.div>
                 )}
               </AnimatePresence>
