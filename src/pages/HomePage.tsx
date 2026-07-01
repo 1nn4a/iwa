@@ -122,8 +122,7 @@ export default function HomePage() {
               A Private Professional Network for Specialist Businesses
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-xs leading-6 text-white/65 md:text-sm">
-              We provide specialist businesses and independent professionals with a curated environment where relevant opportunities are shared professionally and long-term collaborations can grow naturally.
-            </p>
+We enable specialist businesses and independent professionals to connect, share opportunities, and build long-term working relationships.            </p>
           </motion.div>
 
           <div className="mt-6 flex flex-wrap gap-2 justify-center">
