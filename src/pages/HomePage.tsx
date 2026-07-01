@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import hero from '../assets/iwa.png'
 import cardsBg from '../assets/iwa@.20250410.png'
@@ -98,6 +100,8 @@ const faqs = [
 ];
 
 export default function HomePage() {
+    const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <>
       <Helmet>
@@ -109,7 +113,7 @@ export default function HomePage() {
       </Helmet>
 
       <main>
-        <section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-10 md:pt-14">
+<section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-28 md:pt-32">
       <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -428,14 +432,32 @@ We enable specialist businesses and independent professionals to connect, share 
           </div>
 
           <div className="mt-12 grid gap-10 grid-cols-1 md:grid-cols-[1fr_0.95fr] md:items-start">
-            <div className="space-y-7">
-              {faqs.map(([q, a]) => (
-                <div key={q} className="border-b border-white/10 pb-6">
-                  <h3 className="text-2xl font-medium tracking-tight">{q}</h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65">{a}</p>
-                </div>
-              ))}
-            </div>
+           <div className="space-y-3">
+  {faqs.map(([q, a], i) => {
+    const isOpen = openFaq === i;
+    return (
+      <div key={q} className="border-b border-white/10">
+        <button
+          type="button"
+          onClick={() => setOpenFaq(isOpen ? null : i)}
+          className="flex w-full items-center justify-between py-6 text-left"
+        >
+          <h3 className="text-2xl font-medium tracking-tight">{q}</h3>
+          <svg
+            width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+            className={`shrink-0 ml-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        {isOpen && (
+          <p className="pb-6 max-w-2xl text-sm leading-7 text-white/65">{a}</p>
+        )}
+      </div>
+    );
+  })}
+</div>
 
             <div className="rounded-2xl overflow-hidden border border-white/10">
               <img src={hero} className="w-full h-full object-cover" />
