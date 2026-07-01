@@ -14,6 +14,7 @@ import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopButton from './components/ScrollToTopButton'
 import NotFound from './pages/NotFound'
 import BlogSearchOverlay from './components/BlogSearchOverlay'
+import ProductFormPage from './pages/ProductFormPage'
 
 function StartRedirect() {
   const navigate = useNavigate()
@@ -48,8 +49,11 @@ export default function App() {
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/cookies" element={<CookiesPage />} />
                 <Route path="/blog" element={<BlogsPage />} />
-                <Route path="/blog/:slug" element={<BlogPage />} />
-                <Route path="*" element={<NotFound />} />
+              <Route path="/blog/:slug" element={<BlogPage />} />
+<Route path="/product-trades-form"   element={<ProductFormPage product="trades"   />} />
+<Route path="/product-beauty-form"   element={<ProductFormPage product="beauty"   />} />
+<Route path="/product-property-form" element={<ProductFormPage product="property" />} />
+<Route path="*" element={<NotFound />} />
               </Routes>
             </main>
           </div>

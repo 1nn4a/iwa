@@ -2,4 +2,10 @@ name = "innovate-with-aima"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "dist"
 
+  [[d1_databases]]
+binding = "iwa_product_interest"
+
+database_name = "iwa-product-interest"
+
+database_id = "f0a28bc4-9232-46f9-96c6-2bb866e8e773"
 [vars]
