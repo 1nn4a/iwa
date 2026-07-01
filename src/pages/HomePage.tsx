@@ -7,6 +7,8 @@ import linksTradiesMobile from '../assets/linksfortradies@.q3062026.jpg'
 import linksManagersMobile from '../assets/linksformangers@.q3062026.jpg'
 import aimaDesktopImg from '../assets/aima@.q602014412.jpg'
 import aimaMobileImg from '../assets/aima@.q3010726.jpg'
+import linksAestheticsMobile from '../assets/linksforaesthetics@.q3010726.jpg'
+
 import { Helmet } from "react-helmet-async"
 
 const fadeUp = {
@@ -39,13 +41,21 @@ const linkCards = [
     mobileImg: linksTradiesMobile,
     desktopImg: linksTradiesMobile,
   },
-  {
+{
     key: 'managers',
     title: 'Invite Only',
     subtext: null,
     href: 'https://formanagers.co.uk',
     mobileImg: linksManagersMobile,
     desktopImg: linksManagersMobile,
+  },
+  {
+    key: 'aesthetics',
+    title: 'Invite Only',
+    subtext: null,
+    href: 'https://foraesthetics.co.uk',
+    mobileImg: linksAestheticsMobile,
+    desktopImg: linksAestheticsMobile,
   },
 ];
 
@@ -173,9 +183,7 @@ export default function HomePage() {
               );
             })}
 
-            <div className="relative block w-full aspect-[660/1020] rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center">
-              <span className="text-white/40 text-sm">For Aestheticians - Coming soon</span>
-            </div>
+          
           </div>
 
            <div className="relative hidden md:block">
@@ -304,10 +312,35 @@ export default function HomePage() {
               </a>
 
               
-               <a href="#"
-                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#3a3f5c] flex items-center justify-center"
+         <a href={linkCards[4].href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
               >
-                <span className="text-white/40 text-sm">For Aestheticians - Coming soon</span>
+                <div
+                  className="absolute inset-0 bg-cover bg-center select-none"
+                  style={{
+                    backgroundImage: `url(${linkCards[4].desktopImg})`,
+                    WebkitTouchCallout: 'none',
+                    WebkitUserSelect: 'none',
+                    userSelect: 'none',
+                  }}
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                {linkCards[4].title && (
+                  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+                    <h3 className="pl-[113px] pt-12 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+                      {linkCards[4].title}
+                    </h3>
+                  </div>
+                )}
+                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
               </a>
             </div>
           </div>
