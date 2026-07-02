@@ -33,8 +33,7 @@ async function verifyTurnstile(token: string, secret: string, ip: string): Promi
 
 const EMAIL_RE       = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE_RE       = /^(\+44\s?|0)[1-9]\d{8,9}$/
-const SERVER_RATE_MS = 60_000
-function json(body: unknown, status = 200): Response {
+ function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -71,7 +70,7 @@ export async function handleProductInterestCallback(
     return err('Invalid JSON body', 400)
   }
 
-   const { email, phone, wants_callback, preferred_day, preferred_time, turnstile_token } = payload
+    const { email, phone, wants_callback, preferred_day, preferred_time, turnstile_token } = payload
 
   const turnstileIp = request.headers.get('CF-Connecting-IP') ?? ''
   const turnstileOk  = await verifyTurnstile(turnstile_token, env.TURNSTILE_SECRET_KEY, turnstileIp)
@@ -94,22 +93,6 @@ const normalizedPhoneCheck = phone ? phone.replace(/[\s()-]/g, '') : ''
 
 const cleanEmail = email.trim().toLowerCase().slice(0, 320)
   const cleanPhone = phone ? phone.trim().slice(0, 32) : null
-
- const cutoff = new Date(Date.now() - SERVER_RATE_MS).toISOString()
-
-  const { results: emailRowsAll } = await env.iwa_product_interest.prepare(
-    `SELECT id FROM product_interest
-     WHERE email = ? AND created_at > ? AND wants_callback IS NOT NULL`,
-  )
-    .bind(cleanEmail, cutoff)
-    .all()
-
-  if (emailRowsAll.length > 0) {
-    const message = emailRowsAll.length === 1
-      ? 'Just a moment — give it a few seconds and try again.'
-      : 'Too many requests. Please wait before submitting again.'
-    return err(message, 429)
-  }
 
   try {
     const result = await env.iwa_product_interest.prepare(

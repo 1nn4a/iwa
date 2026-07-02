@@ -189,8 +189,7 @@ const [phone,         setPhone]         = useState('+44 ')
 const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
    const [phase2Error,   setPhase2Error]   = useState(false)
 
- // after
-  const turnstileWidgetId  = useState<{ current: string | null }>(() => ({ current: null }))[0]
+   const turnstileWidgetId  = useState<{ current: string | null }>(() => ({ current: null }))[0]
   const turnstileContainer = useState<{ current: HTMLDivElement | null }>(() => ({ current: null }))[0]
   const submitInFlight     = useState<{ current: boolean }>(() => ({ current: false }))[0]
 
