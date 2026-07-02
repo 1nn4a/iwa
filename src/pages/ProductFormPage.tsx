@@ -14,6 +14,7 @@ import marketingCard2 from '../assets/lfc01062603xiwa.jpg'
       render: (el: string | HTMLElement, opts: Record<string, unknown>) => string
       execute: (widgetId: string) => void
       reset:   (widgetId: string) => void
+      remove:  (widgetId: string) => void
     }
   }
 }
@@ -188,8 +189,8 @@ const [phone,         setPhone]         = useState('+44 ')
 const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
    const [phase2Error,   setPhase2Error]   = useState(false)
 
-   const turnstileWidgetId  = useState<{ current: string | null }>(() => ({ current: null }))[0]
-  const turnstileResolver  = useState<{ current: ((token: string) => void) | null }>(() => ({ current: null }))[0]
+ // after
+  const turnstileWidgetId  = useState<{ current: string | null }>(() => ({ current: null }))[0]
   const turnstileContainer = useState<{ current: HTMLDivElement | null }>(() => ({ current: null }))[0]
   const submitInFlight     = useState<{ current: boolean }>(() => ({ current: false }))[0]
 
@@ -202,37 +203,29 @@ const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>
     document.head.appendChild(script)
   }, [])
 
-  function ensureTurnstileWidget() {
-    if (turnstileWidgetId.current || !window.turnstile || !turnstileContainer.current) return
-    turnstileWidgetId.current = window.turnstile.render(turnstileContainer.current, {
-      sitekey: TURNSTILE_SITE_KEY,
-      size:    'invisible',
-      callback: (token: string) => {
-        turnstileResolver.current?.(token)
-        turnstileResolver.current = null
-      },
-      'error-callback': () => {
-        turnstileResolver.current?.('')
-        turnstileResolver.current = null
-      },
-    })
-  }
-
-function getTurnstileToken(): Promise<string> {
+  function getTurnstileToken(): Promise<string> {
     return new Promise(resolve => {
-      const tryExecute = () => {
+      const tryRender = () => {
         if (window.turnstile && turnstileContainer.current) {
-          ensureTurnstileWidget()
-          turnstileResolver.current = resolve
           if (turnstileWidgetId.current) {
-            window.turnstile.reset(turnstileWidgetId.current)
-            window.turnstile.execute(turnstileWidgetId.current)
+            try { window.turnstile.remove(turnstileWidgetId.current) } catch { /* already gone */ }
+            turnstileWidgetId.current = null
           }
+          turnstileWidgetId.current = window.turnstile.render(turnstileContainer.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            size:    'invisible',
+            callback: (token: string) => {
+              resolve(token)
+            },
+            'error-callback': () => {
+              resolve('')
+            },
+          })
         } else {
-          setTimeout(tryExecute, 150)
+          setTimeout(tryRender, 150)
         }
       }
-      tryExecute()
+      tryRender()
     })
   }
   const [showBackPill,  setShowBackPill]  = useState(false)
