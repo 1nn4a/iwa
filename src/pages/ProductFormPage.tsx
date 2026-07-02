@@ -161,8 +161,9 @@ const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'err
   const [wantsCallback, setWantsCallback] = useState(false)
   const [preferredDay,  setPreferredDay]  = useState('')
   const [preferredTime, setPreferredTime] = useState('')
-  const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
+ const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
   const [phase2Error,   setPhase2Error]   = useState('')
+  const [showBackPill,  setShowBackPill]  = useState(false)
 
   const DAYS  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
   const TIMES = ['Morning', 'Afternoon', 'Evening']
@@ -222,6 +223,7 @@ const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'err
 localStorage.setItem(RATE_KEY, String(Date.now()))
       setPhase('idle')
       setStep(2)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (err: any) {
       setApiError(err.message ?? 'Something went wrong. Please try again.')
       setPhase('error')
@@ -279,7 +281,13 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
           }}
         >
            <a
-            href="/#"
+         href="/#"
+            onClick={(e) => {
+              if (step === 2 && phase !== 'success') {
+                e.preventDefault()
+                setShowBackPill(true)
+              }
+            }}
             className="flex items-center gap-[5px] text-[15px] font-medium min-w-[60px]"
             style={{ color: '#5c6cff' }}
             aria-label="Back to home"
@@ -308,8 +316,48 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
             </svg>
-          </button>
+         </button>
         </div>
+
+        <AnimatePresence>
+          {showBackPill && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="flex justify-center pt-3"
+            >
+              <div
+                className="flex items-center gap-1 rounded-full px-1.5 py-1.5"
+                style={{
+                  background:           'rgba(242,242,247,0.92)',
+                  backdropFilter:       'blur(20px) saturate(1.6)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(1.6)',
+                  border:               '0.5px solid rgba(60,60,67,0.14)',
+                  boxShadow:            '0 4px 16px rgba(0,0,0,0.1)',
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setShowBackPill(false)}
+                  className="rounded-full px-4 py-[7px] text-[13px] font-semibold"
+                  style={{ color: '#6e6e73' }}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setStep(1); setShowBackPill(false) }}
+                  className="rounded-full px-4 py-[7px] text-[13px] font-semibold text-white"
+                  style={{ background: 'linear-gradient(135deg, #5c6cff 0%, #8a96ff 100%)' }}
+                >
+                  Back
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
 <div className="flex-1 flex">
           <div className="flex-1 lg:w-[58%] lg:flex-none">
@@ -372,7 +420,7 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
                             </p>
                           </motion.div>
 
-                          <motion.a
+                     <motion.a
                             href="/#"
                             initial={{ opacity: 0, y: 6 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -388,6 +436,10 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
                           </motion.a>
                         </div>
                       </GlassCard>
+
+                      <div className="lg:hidden pt-8 flex justify-center">
+                        <MarketingCards />
+                      </div>
                     </motion.div>
              ) : step === 2 ? (
                     <motion.div
@@ -508,7 +560,7 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
                         </AnimatePresence>
                       </GlassCard>
 
-                      <AnimatePresence>
+                <AnimatePresence>
                         {phase2 === 'error' && phase2Error && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
@@ -523,6 +575,17 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
                           </motion.div>
                         )}
                       </AnimatePresence>
+
+                      <p className="text-[13px] leading-relaxed text-center px-2" style={{ color: '#6e6e73' }}>
+                        Our solutions are helping dozens of professionals capture more leads, showcase their services, and earn passive income. We're now bringing the same technology to Trades, Property, Aesthetics, and other specialist industries. Register your interest today to help shape future products and receive early partner access.
+                      </p>
+
+                      <p className="text-[11px] leading-snug text-center px-2" style={{ color: '#8e8e93' }}>
+                        By submitting, you confirm your details are accurate and agree to our{' '}
+                        <a href="/privacy" style={{ color: '#5c6cff', textDecoration: 'underline' }}>
+                          Privacy Policy
+                        </a>.
+                      </p>
 
                       <motion.button
                         type="button"
