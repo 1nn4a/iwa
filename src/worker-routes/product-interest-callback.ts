@@ -69,20 +69,17 @@ const normalizedPhoneCheck = phone ? phone.replace(/[\s()-]/g, '') : ''
 const cleanEmail = email.trim().toLowerCase().slice(0, 320)
   const cleanPhone = phone ? phone.trim().slice(0, 32) : null
 
-const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
-  const cutoff = new Date(Date.now() - SERVER_RATE_MS).toISOString()
+ const cutoff = new Date(Date.now() - SERVER_RATE_MS).toISOString()
 
- 
-
-  const { results: ipRowsAll } = await env.iwa_product_interest.prepare(
+  const { results: emailRowsAll } = await env.iwa_product_interest.prepare(
     `SELECT id FROM product_interest
-     WHERE ip = ? AND created_at > ?`,
+     WHERE email = ? AND created_at > ? AND wants_callback IS NOT NULL`,
   )
-    .bind(ip, cutoff)
+    .bind(cleanEmail, cutoff)
     .all()
 
-  if (ipRowsAll.length > 0) {
-    const message = ipRowsAll.length === 1
+  if (emailRowsAll.length > 0) {
+    const message = emailRowsAll.length === 1
       ? 'Just a moment — give it a few seconds and try again.'
       : 'Too many requests. Please wait before submitting again.'
     return err(message, 429)

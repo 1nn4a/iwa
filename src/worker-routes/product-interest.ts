@@ -78,18 +78,17 @@ export async function handleProductInterest(
   const cleanProds   = JSON.stringify([...new Set(products)])    
   const cleanPrimary = primary_product
 
-   const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
-  const cutoff = new Date(Date.now() - SERVER_RATE_MS).toISOString()
+ const cutoff = new Date(Date.now() - SERVER_RATE_MS).toISOString()
 
-  const { results: ipRows } = await env.iwa_product_interest.prepare(
+  const { results: emailRows } = await env.iwa_product_interest.prepare(
     `SELECT id FROM product_interest
-     WHERE ip = ? AND created_at > ?
+     WHERE email = ? AND created_at > ?
      LIMIT 1`,
   )
-    .bind(ip, cutoff)
+    .bind(cleanEmail, cutoff)
     .all()
 
-if (ipRows.length > 0) {
+if (emailRows.length > 0) {
     return err('Too many requests. Please wait before submitting again.', 429)
   }
 
@@ -105,17 +104,16 @@ const { results: dupRows } = await env.iwa_product_interest.prepare(
     return json({ ok: true }, 201)
   }
 
-   try {
+    try {
     await env.iwa_product_interest.prepare(
-      `INSERT INTO product_interest (name, email, products, primary_product, ip, created_at)
-       VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO product_interest (name, email, products, primary_product, created_at)
+       VALUES (?, ?, ?, ?, ?)`,
     )
       .bind(
         cleanName,
         cleanEmail,
         cleanProds,
         cleanPrimary,
-        ip,
         new Date().toISOString(),
       )
       .run()
