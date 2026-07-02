@@ -59,7 +59,7 @@ function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boole
               </Routes>
           </main>
         </div>
-        {!isFormPage && <Footer />}
+        <Footer variant={isFormPage ? 'light' : 'dark'} />
         {!isFormPage && <ScrollToTopButton />}
         {!isFormPage && (
           <BlogSearchOverlay

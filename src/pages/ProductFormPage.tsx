@@ -133,8 +133,8 @@ function MarketingCards() {
 
 function MarketingPanel() {
   return (
-    <div
-      className="hidden lg:flex lg:w-1/2 flex-shrink-0 flex-col items-center justify-center relative px-8"
+<div
+      className="hidden lg:flex lg:w-[42%] flex-shrink-0 flex-col items-center justify-center relative px-8"
       style={{
         background:  '#FAFAFA',
         borderLeft:  '1px solid rgba(60,60,67,0.14)',
@@ -226,8 +226,8 @@ export default function ProductFormPage({ product }: Props) {
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Helmet>
 
-      <div
-        className="h-[100dvh] flex flex-col overflow-hidden"
+   <div
+        className="min-h-[100dvh] flex flex-col"
         style={{ background: 'linear-gradient(180deg, #f2f2f7 0%, #e5e5ed 100%)' }}
       >
          <div
@@ -272,8 +272,8 @@ export default function ProductFormPage({ product }: Props) {
           </button>
         </div>
 
-        <div className="flex-1 flex overflow-hidden">
-          <div className="flex-1 lg:w-1/2 lg:flex-none overflow-y-auto" style={{ overscrollBehaviorY: 'contain' }}>
+<div className="flex-1 flex">
+          <div className="flex-1 lg:w-[58%] lg:flex-none">
             <div className="flex flex-col items-center px-4 pt-5 pb-6 lg:min-h-full lg:justify-center lg:pt-6">
               <div className="w-full max-w-[420px] flex flex-col gap-3">
 
@@ -468,8 +468,14 @@ export default function ProductFormPage({ product }: Props) {
                             {apiError}
                           </motion.div>
                         )}
-                      </AnimatePresence>
+             </AnimatePresence>
 
+                <p className="text-[11px] leading-snug text-center px-2" style={{ color: '#8e8e93' }}>
+                        By submitting, you confirm your details are accurate and agree to our{' '}
+                        <a href="/privacy" style={{ color: '#5c6cff', textDecoration: 'underline' }}>
+                          Privacy Policy
+                        </a>.
+                      </p>
                        <motion.button
                         type="button"
                         onClick={phase === 'error' ? () => { setPhase('idle'); setApiError('') } : handleSubmit}

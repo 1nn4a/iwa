@@ -44,9 +44,9 @@ We are the data controller for all personal data collected through our website, 
 
 <ul className="mt-2 space-y-1 list-disc list-inside">
 <li>Name, email, phone number, and company details via contact forms</li>
+<li>Name, email, and product interest via our product interest / early access forms</li>
 <li>Notes or information shared during calls or meetings with Partners</li>
-<li>Basic technical data when using our website</li>
-</ul>
+<li>Basic technical data when using our website, including IP address</li></ul>
 
 <p className="mt-2">
 We do not collect sensitive personal data (e.g., financial account info beyond payment processing via WHOP, racial/ethnic data, health info).
@@ -67,7 +67,7 @@ We do not collect sensitive personal data (e.g., financial account info beyond p
 </ul>
 
 <p className="mt-2">
-We rely primarily on legitimate interest as the legal basis for processing, and consent where required (e.g., marketing emails if opted in).
+We rely primarily on legitimate interest as the legal basis for processing, and consent where required. By submitting a product interest form, you consent to being contacted, including for marketing purposes, about the relevant product(s).
 </p>
 </section>
 
@@ -92,11 +92,11 @@ Data shared is limited to what is strictly necessary for the purpose.
 
 <p>We keep personal data only as long as necessary:</p>
 
-<ul className="mt-2 space-y-1 list-disc list-inside">
+ <ul className="mt-2 space-y-1 list-disc list-inside">
 <li>Contact-form and call information: retained for a reasonable period to manage relationships (~3–5 years or as required by law)</li>
+<li>Product interest / early access form data: retained for as long as needed to follow up and for marketing purposes, unless you ask us to delete it sooner</li>
 <li>Membership-related data: retained for the duration of membership + any required accounting or legal periods</li>
 </ul>
-
 <p className="mt-2">
 Inactive or outdated accounts may be anonymised or deleted.
 </p>

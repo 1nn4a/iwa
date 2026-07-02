@@ -1,14 +1,20 @@
+//Footer.tsx
 import footer from '../assets/footer.png'
 
-export default function Footer() {
+interface FooterProps {
+  variant?: 'dark' | 'light'
+}
+
+export default function Footer({ variant = 'dark' }: FooterProps) {
+  const isLight = variant === 'light'
   return (
-    <footer className="mt-24 border-t border-white/8 text-white">
+    <footer className={`${isLight ? '' : 'mt-24'} border-t ${isLight ? 'border-black/10 bg-white text-black' : 'border-white/8 text-white'}`}>
 
       <div className="mx-auto max-w-[1180px] px-5 py-16 md:px-8">
 
         <div className="grid md:grid-cols-3 gap-10 items-center">
 
-          <div className="text-sm text-white/70">
+          <div className={`text-sm ${isLight ? 'text-black/70' : 'text-white/70'}`}>
             <p>© 2026 Innovatewithaima. All rights reserved.</p>
 
             <div className="flex gap-4 mt-3">
@@ -22,7 +28,7 @@ export default function Footer() {
             <img src={footer} className="h-16 opacity-90" />
           </div>
 
-          <div className="flex flex-col text-center md:text-left items-end gap-2 text-sm text-white/70">
+          <div className={`flex flex-col text-center md:text-left items-end gap-2 text-sm ${isLight ? 'text-black/70' : 'text-white/70'}`}>
 
             <a href="https://www.innovatewithaima.com/definitions">Definitions</a>
 
