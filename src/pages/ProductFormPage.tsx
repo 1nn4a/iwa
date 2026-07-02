@@ -177,16 +177,17 @@ const [phone,         setPhone]         = useState('+44 ')
 const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
   const [phase2Error,   setPhase2Error]   = useState(false)
 const [showBackPill,  setShowBackPill]  = useState(false)
+const [showPhoneTip,  setShowPhoneTip]  = useState(false)
   const [countdown,     setCountdown]     = useState(15)
   const DAYS  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
   const TIMES = ['Morning', 'Afternoon', 'Evening']
 const nameErr  = touched.name  && name.trim().length < 2  ? 'Please enter your full name'        : ''
   const emailErr = touched.email && !EMAIL_RE.test(email)   ? 'Please enter a valid email address' : ''
-  const phoneErr = phone.trim() !== '+44' && phone.trim() !== ''
-    && !PHONE_RE.test(phone.replace(/[\s()-]/g, ''))
+const normalizedPhone = phone.replace(/[\s()-]/g, '')
+  const phoneErr = normalizedPhone !== '' && normalizedPhone !== '+44'
+    && !PHONE_RE.test(normalizedPhone)
     ? 'Please enter a valid phone number'
     : ''
-
 useEffect(() => {
     if (phase !== 'success') return
     setCountdown(15)
@@ -270,9 +271,9 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
       const res = await fetch('/api/product-interest-callback', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+     body: JSON.stringify({
           email:          email.trim().toLowerCase(),
-          phone:          phone.trim() || null,
+          phone:          (normalizedPhone === '' || normalizedPhone === '+44') ? null : phone.trim(),
           wants_callback: wantsCallback,
           preferred_day:  wantsCallback ? preferredDay  : null,
           preferred_time: wantsCallback ? preferredTime : null,
@@ -539,7 +540,7 @@ if (!res.ok) {
                       className="flex flex-col gap-3"
                     >
                       <GlassCard>
-                        <div className="px-4 pt-4 pb-3">
+                     <div className="px-4 pt-4 pb-3 relative">
                           <label
                             htmlFor="pf-phone"
                             className="block text-[10px] font-semibold tracking-[0.1em] uppercase mb-[6px]"
@@ -547,27 +548,43 @@ if (!res.ok) {
                           >
                             Mobile Number
                           </label>
-                      <input
+                          <input
                             id="pf-phone"
                             type="tel"
                             value={phone}
-                            onChange={e => setPhone(e.target.value)}
+                            onChange={e => { setPhone(e.target.value); setShowPhoneTip(false) }}
                             placeholder="Optional"
                             autoComplete="tel"
                             inputMode="tel"
                             className="w-full bg-transparent outline-none placeholder-[#c7c7cc]"
                             style={{ color: '#1c1c1e', fontSize: '16px' }}
-                            aria-describedby={phoneErr ? 'pf-phone-err' : undefined}
+                            aria-describedby={phoneErr ? 'pf-phone-err' : showPhoneTip ? 'pf-phone-tip' : undefined}
                             aria-invalid={!!phoneErr}
                           />
                           <span id="pf-phone-err"><FieldError msg={phoneErr} /></span>
+                          <AnimatePresence>
+                            {showPhoneTip && (
+                              <motion.div
+                                id="pf-phone-tip"
+                                initial={{ opacity: 0, y: -4 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -4 }}
+                                transition={{ duration: 0.18 }}
+                                className="absolute left-4 right-4 top-full mt-1 rounded-[10px] px-3 py-2 text-[12px] font-medium text-white z-10"
+                                style={{ background: '#1c1c1e' }}
+                                role="alert"
+                              >
+                                Please enter a mobile number so we can call you back
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
 
                         <Divider />
 
-                        <button
+                    <button
                           type="button"
-                          onClick={() => setWantsCallback(v => !v)}
+                          onClick={() => { setWantsCallback(v => !v); setShowPhoneTip(false) }}
                           className="w-full flex items-center justify-between px-4 py-[13px] text-left"
                           aria-pressed={wantsCallback}
                         >
@@ -678,10 +695,16 @@ if (!res.ok) {
                         </a>.
                       </p>
 
-                      <motion.button
+                 <motion.button
                         type="button"
-                        onClick={handleFinalSubmit}
-disabled={phase2 === 'loading' || !!phoneErr || (wantsCallback && (!preferredDay || !preferredTime))}
+                        onClick={() => {
+                          if (wantsCallback && (normalizedPhone === '' || normalizedPhone === '+44')) {
+                            setShowPhoneTip(true)
+                            return
+                          }
+                          handleFinalSubmit()
+                        }}
+                        disabled={phase2 === 'loading' || !!phoneErr || (wantsCallback && (!preferredDay || !preferredTime))}
                         whileTap={{ scale: 0.97 }}
                         className="w-full rounded-[14px] py-[14px] text-[16px] font-semibold text-white flex items-center justify-center gap-2"
                         style={{
@@ -691,8 +714,12 @@ disabled={phase2 === 'loading' || !!phoneErr || (wantsCallback && (!preferredDay
                         }}
                         aria-busy={phase2 === 'loading'}
                       >
-                        {phase2 === 'loading' && <Spinner />}
-                        {phase2 === 'loading' ? 'Submitting…' : 'Finish'}
+                {phase2 === 'loading' && <Spinner />}
+                        {phase2 === 'loading'
+                          ? 'Submitting…'
+                          : (normalizedPhone === '' || normalizedPhone === '+44')
+                            ? 'Skip'
+                            : 'Finish'}
                       </motion.button>
                     </motion.div>
                   ) : (

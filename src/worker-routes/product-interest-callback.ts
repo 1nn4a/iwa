@@ -56,9 +56,9 @@ export async function handleProductInterestCallback(
   if (!email || typeof email !== 'string' || !EMAIL_RE.test(email) || email.length > 320) {
     return err('Invalid email address', 400)
   }
-if (phone !== null && phone.trim() !== '') {
-    const normalizedPhone = phone.replace(/[\s()-]/g, '')
-    if (typeof phone !== 'string' || phone.length > 32 || !PHONE_RE.test(normalizedPhone)) {
+const normalizedPhoneCheck = phone ? phone.replace(/[\s()-]/g, '') : ''
+  if (phone !== null && normalizedPhoneCheck !== '' && normalizedPhoneCheck !== '+44') {
+    if (typeof phone !== 'string' || phone.length > 32 || !PHONE_RE.test(normalizedPhoneCheck)) {
       return err('Invalid phone number', 400)
     }
   }
