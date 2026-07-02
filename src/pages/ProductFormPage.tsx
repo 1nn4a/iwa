@@ -8,8 +8,19 @@ import marketingCard1 from '../assets/lfc01062602xiwa.jpg'
 import marketingCard2 from '../assets/lfc01062603xiwa.jpg'
 
  
-export type ProductId = 'trades' | 'beauty' | 'property'
+ declare global {
+  interface Window {
+    turnstile?: {
+      render: (el: string | HTMLElement, opts: Record<string, unknown>) => string
+      execute: (widgetId: string) => void
+      reset:   (widgetId: string) => void
+    }
+  }
+}
 
+const TURNSTILE_SITE_KEY = '0x4AAAAAADuk1fQt_-6mUPl2'
+
+export type ProductId = 'trades' | 'beauty' | 'property'
 interface Props {
   product: ProductId
 }
@@ -175,8 +186,51 @@ const [phone,         setPhone]         = useState('+44 ')
   const [preferredDay,  setPreferredDay]  = useState('')
   const [preferredTime, setPreferredTime] = useState('')
 const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
-  const [phase2Error,   setPhase2Error]   = useState(false)
-const [showBackPill,  setShowBackPill]  = useState(false)
+   const [phase2Error,   setPhase2Error]   = useState(false)
+
+  const turnstileWidgetId  = useState<{ current: string | null }>(() => ({ current: null }))[0]
+  const turnstileResolver  = useState<{ current: ((token: string) => void) | null }>(() => ({ current: null }))[0]
+  const turnstileContainer = useState<{ current: HTMLDivElement | null }>(() => ({ current: null }))[0]
+
+  useEffect(() => {
+    if (document.getElementById('cf-turnstile-script')) return
+    const script = document.createElement('script')
+    script.id = 'cf-turnstile-script'
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+    script.async = true
+    document.head.appendChild(script)
+  }, [])
+
+  function ensureTurnstileWidget() {
+    if (turnstileWidgetId.current || !window.turnstile || !turnstileContainer.current) return
+    turnstileWidgetId.current = window.turnstile.render(turnstileContainer.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      size:    'invisible',
+      callback: (token: string) => {
+        turnstileResolver.current?.(token)
+        turnstileResolver.current = null
+      },
+      'error-callback': () => {
+        turnstileResolver.current?.('')
+        turnstileResolver.current = null
+      },
+    })
+  }
+
+  function getTurnstileToken(): Promise<string> {
+    return new Promise(resolve => {
+      const tryExecute = () => {
+        if (window.turnstile && turnstileContainer.current) {
+          ensureTurnstileWidget()
+          turnstileResolver.current = resolve
+          if (turnstileWidgetId.current) window.turnstile.execute(turnstileWidgetId.current)
+        } else {
+          setTimeout(tryExecute, 150)
+        }
+      }
+      tryExecute()
+    })
+  }const [showBackPill,  setShowBackPill]  = useState(false)
 const [showPhoneTip,  setShowPhoneTip]  = useState(false)
   const [countdown,     setCountdown]     = useState(15)
   const DAYS  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
@@ -225,7 +279,7 @@ useEffect(() => {
     } catch { /* cancelled */ }
   }
 
-  async function handleSubmit() {
+   async function handleSubmit() {
     setTouched({ name: true, email: true })
     if (name.trim().length < 2 || !EMAIL_RE.test(email)) return
 
@@ -239,6 +293,7 @@ useEffect(() => {
     setApiError(false)
 
     try {
+      const turnstileToken = await getTurnstileToken()
       const res = await fetch('/api/product-interest', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -247,6 +302,7 @@ useEffect(() => {
           email:           email.trim().toLowerCase(),
           products:        [...interests],
           primary_product: product,
+          turnstile_token: turnstileToken,
         }),
       })
 
@@ -267,7 +323,8 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
     setPhase2('loading')
     setPhase2Error(false)
 
-    try {
+     try {
+      const turnstileToken = await getTurnstileToken()
       const res = await fetch('/api/product-interest-callback', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -277,6 +334,7 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
           wants_callback: wantsCallback,
           preferred_day:  wantsCallback ? preferredDay  : null,
           preferred_time: wantsCallback ? preferredTime : null,
+          turnstile_token: turnstileToken,
         }),
       })
 
@@ -299,11 +357,11 @@ if (!res.ok) {
         <meta name="robots" content="noindex, nofollow" />
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Helmet>
-
-   <div
+    <div
         className="min-h-[100dvh] flex flex-col"
         style={{ background: 'linear-gradient(180deg, #f2f2f7 0%, #e5e5ed 100%)' }}
       >
+        <div ref={el => { turnstileContainer.current = el }} style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} />
          <div
           className="flex-shrink-0 flex items-center justify-between px-5 py-3 relative"
           style={{

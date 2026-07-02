@@ -1,7 +1,8 @@
 /// <reference types="@cloudflare/workers-types" />
 
-interface Env {
+ interface Env {
   iwa_product_interest: D1Database
+  TURNSTILE_SECRET_KEY: string
 }
 interface CallbackPayload {
   email:          string
@@ -9,6 +10,25 @@ interface CallbackPayload {
   wants_callback: boolean
   preferred_day:  string | null
   preferred_time: string | null
+  turnstile_token: string
+}
+
+async function verifyTurnstile(token: string, secret: string, ip: string): Promise<boolean> {
+  if (!token || typeof token !== 'string') return false
+  const body = new URLSearchParams()
+  body.set('secret', secret)
+  body.set('response', token)
+  body.set('remoteip', ip)
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body,
+    })
+    const data: { success: boolean } = await res.json()
+    return data.success === true
+  } catch {
+    return false
+  }
 }
 
 const EMAIL_RE       = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -51,7 +71,13 @@ export async function handleProductInterestCallback(
     return err('Invalid JSON body', 400)
   }
 
-  const { email, phone, wants_callback, preferred_day, preferred_time } = payload
+   const { email, phone, wants_callback, preferred_day, preferred_time, turnstile_token } = payload
+
+  const turnstileIp = request.headers.get('CF-Connecting-IP') ?? ''
+  const turnstileOk  = await verifyTurnstile(turnstile_token, env.TURNSTILE_SECRET_KEY, turnstileIp)
+  if (!turnstileOk) {
+    return err('Verification failed. Please try again.', 400)
+  }
 
   if (!email || typeof email !== 'string' || !EMAIL_RE.test(email) || email.length > 320) {
     return err('Invalid email address', 400)

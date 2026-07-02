@@ -2,14 +2,34 @@
 
  
 
-interface Env {
+ interface Env {
   iwa_product_interest: D1Database
+  TURNSTILE_SECRET_KEY: string
 }
 interface Payload {
   name:            string
   email:           string
   products:        string[]
   primary_product: string
+  turnstile_token: string
+}
+
+async function verifyTurnstile(token: string, secret: string, ip: string): Promise<boolean> {
+  if (!token || typeof token !== 'string') return false
+  const body = new URLSearchParams()
+  body.set('secret', secret)
+  body.set('response', token)
+  body.set('remoteip', ip)
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body,
+    })
+    const data: { success: boolean } = await res.json()
+    return data.success === true
+  } catch {
+    return false
+  }
 }
 
 const VALID_PRODUCTS = new Set(['trades', 'beauty', 'property'])
@@ -53,7 +73,13 @@ export async function handleProductInterest(
     return err('Invalid JSON body', 400)
   }
 
-  const { name, email, products, primary_product } = payload
+   const { name, email, products, primary_product, turnstile_token } = payload
+
+  const turnstileIp = request.headers.get('CF-Connecting-IP') ?? ''
+  const turnstileOk  = await verifyTurnstile(turnstile_token, env.TURNSTILE_SECRET_KEY, turnstileIp)
+  if (!turnstileOk) {
+    return err('Verification failed. Please try again.', 400)
+  }
 
   if (!name || typeof name !== 'string' || name.trim().length < 2 || name.trim().length > 120) {
     return err('Invalid name', 400)
