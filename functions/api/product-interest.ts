@@ -2,6 +2,7 @@ import { handleProductInterest } from '../../src/worker-routes/product-interest'
 
 interface Env {
   iwa_product_interest: D1Database
+  TURNSTILE_SECRET_KEY: string
 }
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
