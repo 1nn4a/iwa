@@ -263,7 +263,7 @@ export default function ProductFormPage({ product }: Props) {
   onClick={handleShare}
   className="flex items-center gap-[5px] text-[15px] font-medium justify-end"
   style={{ color: '#5c6cff' }}
-  aria-label="Spread the word"
+  aria-label="Tell a colleague"
 >
   Share with a colleague
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
