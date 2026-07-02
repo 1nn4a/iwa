@@ -15,7 +15,6 @@ interface Payload {
 const VALID_PRODUCTS = new Set(['trades', 'beauty', 'property'])
 const EMAIL_RE       = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const SERVER_RATE_MS = 60_000    
-const MAX_EMAIL_DAY  = 3      
 
 function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -90,24 +89,9 @@ export async function handleProductInterest(
     .bind(ip, cutoff)
     .all()
 
-  if (ipRows.length > 0) {
+if (ipRows.length > 0) {
     return err('Too many requests. Please wait before submitting again.', 429)
   }
-
-   const dayAgo = new Date(Date.now() - 86_400_000).toISOString()
-
-  const { results: emailRows } = await env.iwa_product_interest.prepare(
-    `SELECT COUNT(*) AS cnt FROM product_interest
-     WHERE email = ? AND created_at > ?`,
-  )
-    .bind(cleanEmail, dayAgo)
-    .all()
-
-  const emailCount = (emailRows[0] as any)?.cnt ?? 0
-  if (emailCount >= MAX_EMAIL_DAY) {
-    return err('This email has already submitted recently. Please contact us directly.', 429)
-  }
-
    try {
     await env.iwa_product_interest.prepare(
       `INSERT INTO product_interest (name, email, products, primary_product, ip, created_at)

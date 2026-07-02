@@ -1,6 +1,6 @@
 //ProductFormPage.tsx
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
 import logo from '../assets/aima.png'
@@ -156,22 +156,45 @@ export default function ProductFormPage({ product }: Props) {
 const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [apiError,  setApiError]  = useState('')
 
-  const [step,          setStep]          = useState<1 | 2>(1)
-  const [phone,         setPhone]         = useState('')
+  const [step,          setStep]          = useState<1 | 2>(1) 
+   useEffect(() => {
+    const url = new URL(window.location.href)
+    if (url.searchParams.has('step')) {
+      url.searchParams.delete('step')
+      window.history.replaceState(null, '', url.toString())
+    }
+    setStep(1)
+   }, [])
+    const [phone,         setPhone]         = useState('')
   const [wantsCallback, setWantsCallback] = useState(false)
   const [preferredDay,  setPreferredDay]  = useState('')
   const [preferredTime, setPreferredTime] = useState('')
  const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
   const [phase2Error,   setPhase2Error]   = useState('')
-  const [showBackPill,  setShowBackPill]  = useState(false)
-
+const [showBackPill,  setShowBackPill]  = useState(false)
+  const [countdown,     setCountdown]     = useState(15)
   const DAYS  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
   const TIMES = ['Morning', 'Afternoon', 'Evening']
   const nameErr  = touched.name  && name.trim().length < 2  ? 'Please enter your full name'        : ''
   const emailErr = touched.email && !EMAIL_RE.test(email)   ? 'Please enter a valid email address' : ''
 
-  function toggleInterest(id: ProductId) {
-    setInterests(prev => {
+useEffect(() => {
+    if (phase !== 'success') return
+    setCountdown(15)
+    const interval = setInterval(() => {
+      setCountdown(c => c - 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [phase])
+
+  useEffect(() => {
+    if (phase !== 'success') return
+    if (countdown <= 0) {
+      window.location.href = '/#'
+    }
+  }, [countdown, phase])
+
+  function toggleInterest(id: ProductId) {    setInterests(prev => {
       if (prev.has(id) && prev.size === 1) return prev
       const next = new Set(prev)
       next.has(id) ? next.delete(id) : next.add(id)
@@ -179,8 +202,10 @@ const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'err
     })
   }
 
-  async function handleShare() {
-    const url = window.location.href
+ async function handleShare() {
+    const shareUrl = new URL(window.location.href)
+    shareUrl.searchParams.delete('step')
+    const url = shareUrl.toString()
     try {
       if (navigator.share) {
         await navigator.share({ title: `${meta.title} — Early Access`, url })
@@ -215,9 +240,8 @@ const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'err
         }),
       })
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error((data as any).error ?? 'Submission failed. Please try again.')
+   if (!res.ok) {
+        throw new Error('CONTACT_US')
       }
 
 localStorage.setItem(RATE_KEY, String(Date.now()))
@@ -225,11 +249,10 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
       setStep(2)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (err: any) {
-      setApiError(err.message ?? 'Something went wrong. Please try again.')
+      setApiError('Something went wrong on our end. Please contact us directly and we\'ll sort it out.')
       setPhase('error')
     }
   }
-
   async function handleFinalSubmit() {
     setPhase2('loading')
     setPhase2Error('')
@@ -247,14 +270,14 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
         }),
       })
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error((data as any).error ?? 'Submission failed. Please try again.')
+if (!res.ok) {
+        throw new Error('CONTACT_US')
       }
 
       setPhase('success')
+      setStep(1)
     } catch (err: any) {
-      setPhase2Error(err.message ?? 'Something went wrong. Please try again.')
+      setPhase2Error('Something went wrong on our end. Please contact us directly and we\'ll sort it out.')
       setPhase2('error')
     }
   }
@@ -420,13 +443,42 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
                             </p>
                           </motion.div>
 
-                     <motion.a
-                            href="/#"
+                   <motion.div
                             initial={{ opacity: 0, y: 6 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
+                            className="mt-6 flex flex-col items-center gap-2"
+                          >
+                            <div className="relative w-[36px] h-[36px]">
+                              <svg width="36" height="36" viewBox="0 0 36 36" className="-rotate-90">
+                                <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(92,108,255,0.15)" strokeWidth="3" />
+                                <motion.circle
+                                  cx="18" cy="18" r="15.5" fill="none"
+                                  stroke="#5c6cff" strokeWidth="3" strokeLinecap="round"
+                                  strokeDasharray={2 * Math.PI * 15.5}
+                                  animate={{ strokeDashoffset: 2 * Math.PI * 15.5 * (1 - countdown / 15) }}
+                                  transition={{ duration: 1, ease: 'linear' }}
+                                />
+                              </svg>
+                              <span
+                                className="absolute inset-0 flex items-center justify-center text-[12px] font-semibold"
+                                style={{ color: '#5c6cff' }}
+                              >
+                                {Math.max(countdown, 0)}
+                              </span>
+                            </div>
+                            <p className="text-[12px]" style={{ color: '#8e8e93' }}>
+                              Redirecting you in {Math.max(countdown, 0)}s
+                            </p>
+                          </motion.div>
+
+                          <motion.a
+                            href="/#"
+                            initial={{ opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}
                             whileTap={{ scale: 0.97 }}
-                            className="mt-7 inline-flex items-center rounded-full px-7 py-[13px] text-[15px] font-semibold text-white"
+                            className="mt-4 inline-flex items-center rounded-full px-7 py-[13px] text-[15px] font-semibold text-white"
                             style={{
                               background: 'linear-gradient(135deg, #5c6cff 0%, #8a96ff 100%)',
                               boxShadow:  '0 4px 16px rgba(92,108,255,0.35)',
