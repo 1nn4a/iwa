@@ -42,7 +42,7 @@ const firstCard: ProductCard = {
   title: 'Content Rewards',
   subtitle: 'Turn what you already post into revenue',
   img: cleanfluencerImg,
-  href: 'https://profile.forcleaners.co.uk/create',
+  href: '/en/links-for-cleaners',
 };
 
 const businessSolutions: ProductCard[] = [
@@ -61,7 +61,7 @@ const businessSolutions: ProductCard[] = [
     title: 'LinksForCleaners',
     subtitle: 'Market your entire cleaning business online',
     img: linksForCleanersImg,
-    href: 'https://links.forcleaners.co.uk',
+    href: '/en/links-for-cleaners',
   },
   {
     product_line: 'product_line_property_management',

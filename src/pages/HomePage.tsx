@@ -30,9 +30,9 @@ const linkCards = [
   },
   {
     key: 'cleaners',
-    title: 'Try It Today',
+    title: 'Join a growing platform',
     subtext: 'Grow your entire cleaning business online with LinksForCleaners',
-    href: 'https://forcleaners.co.uk',
+    href: '/en/links-for-cleaners',
     mobileImg: linksCleanersMobile,
     desktopImg: linksCleanersMobile,
   },

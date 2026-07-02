@@ -27,7 +27,7 @@ const META: Record<ProductId, { title: string }> = {
   beauty:   { title: 'Aestheticians' },
 }
 
-const MARKETING_URL = 'https://links.forcleaners.co.uk'
+const MARKETING_URL = '/en/links-for-cleaners'
 
 const RATE_KEY = 'iwa_submit_ts'
 const RATE_MS  = 60_000
@@ -153,9 +153,19 @@ export default function ProductFormPage({ product }: Props) {
   const [email,     setEmail]     = useState('')
   const [interests, setInterests] = useState<Set<ProductId>>(new Set([product]))
   const [touched,   setTouched]   = useState({ name: false, email: false })
-  const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [apiError,  setApiError]  = useState('')
 
+  const [step,          setStep]          = useState<1 | 2>(1)
+  const [phone,         setPhone]         = useState('')
+  const [wantsCallback, setWantsCallback] = useState(false)
+  const [preferredDay,  setPreferredDay]  = useState('')
+  const [preferredTime, setPreferredTime] = useState('')
+  const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
+  const [phase2Error,   setPhase2Error]   = useState('')
+
+  const DAYS  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+  const TIMES = ['Morning', 'Afternoon', 'Evening']
   const nameErr  = touched.name  && name.trim().length < 2  ? 'Please enter your full name'        : ''
   const emailErr = touched.email && !EMAIL_RE.test(email)   ? 'Please enter a valid email address' : ''
 
@@ -209,14 +219,43 @@ export default function ProductFormPage({ product }: Props) {
         throw new Error((data as any).error ?? 'Submission failed. Please try again.')
       }
 
-      localStorage.setItem(RATE_KEY, String(Date.now()))
-      setPhase('success')
+localStorage.setItem(RATE_KEY, String(Date.now()))
+      setPhase('idle')
+      setStep(2)
     } catch (err: any) {
       setApiError(err.message ?? 'Something went wrong. Please try again.')
       setPhase('error')
     }
   }
 
+  async function handleFinalSubmit() {
+    setPhase2('loading')
+    setPhase2Error('')
+
+    try {
+      const res = await fetch('/api/product-interest-callback', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email:          email.trim().toLowerCase(),
+          phone:          phone.trim() || null,
+          wants_callback: wantsCallback,
+          preferred_day:  wantsCallback ? preferredDay  : null,
+          preferred_time: wantsCallback ? preferredTime : null,
+        }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error((data as any).error ?? 'Submission failed. Please try again.')
+      }
+
+      setPhase('success')
+    } catch (err: any) {
+      setPhase2Error(err.message ?? 'Something went wrong. Please try again.')
+      setPhase2('error')
+    }
+  }
   return (
     <>
       <Helmet>
@@ -277,15 +316,25 @@ export default function ProductFormPage({ product }: Props) {
             <div className="flex flex-col items-center px-4 pt-5 pb-6 lg:min-h-full lg:justify-center lg:pt-6">
               <div className="w-full max-w-[420px] flex flex-col gap-3">
 
-                 <motion.div
+               <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                   className="text-center pb-1"
                 >
+                  {phase !== 'success' && (
+                    <p className="text-[12px] font-semibold mb-2" style={{ color: '#5c6cff' }}>
+                      Step {step} of 2
+                    </p>
+                  )}
                 <h1 className="text-[26px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
     Access the right products
   </h1>
+  {phase !== 'success' && step === 1 && (
+    <p className="mt-2 text-[13px] leading-relaxed" style={{ color: '#6e6e73' }}>
+      Our solutions are helping dozens of professionals capture more leads, showcase their services, and earn passive income. We're now bringing the same technology to Trades, Property, Aesthetics, and other specialist industries. Register your interest today to help shape future products and receive early partner access.
+    </p>
+  )}
                 </motion.div>
 
                  <AnimatePresence mode="wait">
@@ -339,6 +388,158 @@ export default function ProductFormPage({ product }: Props) {
                           </motion.a>
                         </div>
                       </GlassCard>
+                    </motion.div>
+             ) : step === 2 ? (
+                    <motion.div
+                      key="step2"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.28 }}
+                      className="flex flex-col gap-3"
+                    >
+                      <GlassCard>
+                        <div className="px-4 pt-4 pb-3">
+                          <label
+                            htmlFor="pf-phone"
+                            className="block text-[10px] font-semibold tracking-[0.1em] uppercase mb-[6px]"
+                            style={{ color: '#8e8e93' }}
+                          >
+                            Mobile Number
+                          </label>
+                          <input
+                            id="pf-phone"
+                            type="tel"
+                            value={phone}
+                            onChange={e => setPhone(e.target.value)}
+                            placeholder="Optional"
+                            autoComplete="tel"
+                            inputMode="tel"
+                            className="w-full bg-transparent outline-none placeholder-[#c7c7cc]"
+                            style={{ color: '#1c1c1e', fontSize: '16px' }}
+                          />
+                        </div>
+
+                        <Divider />
+
+                        <button
+                          type="button"
+                          onClick={() => setWantsCallback(v => !v)}
+                          className="w-full flex items-center justify-between px-4 py-[13px] text-left"
+                          aria-pressed={wantsCallback}
+                        >
+                          <p className="text-[14px] font-medium" style={{ color: '#1c1c1e' }}>
+                            I'd prefer a callback
+                          </p>
+                          <div
+                            className="flex-shrink-0 w-[24px] h-[24px] rounded-[7px] flex items-center justify-center"
+                            style={{
+                              background: wantsCallback ? 'linear-gradient(145deg, #5c6cff, #8a96ff)' : 'rgba(120,120,128,0.18)',
+                            }}
+                          >
+                            <AnimatePresence>
+                              {wantsCallback && (
+                                <motion.svg
+                                  key="check"
+                                  initial={{ scale: 0, opacity: 0 }}
+                                  animate={{ scale: 1, opacity: 1 }}
+                                  exit={{ scale: 0, opacity: 0 }}
+                                  transition={{ type: 'spring', stiffness: 500, damping: 22 }}
+                                  width="12" height="12" viewBox="0 0 13 13" fill="none" aria-hidden="true"
+                                >
+                                  <path d="M2.5 6.5l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                </motion.svg>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        </button>
+
+                        <AnimatePresence>
+                          {wantsCallback && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <Divider />
+                              <div className="px-4 pt-3 pb-4 grid grid-cols-2 gap-3">
+                                <div>
+                                  <label
+                                    htmlFor="pf-day"
+                                    className="block text-[10px] font-semibold tracking-[0.1em] uppercase mb-[6px]"
+                                    style={{ color: '#8e8e93' }}
+                                  >
+                                    Preferred Day
+                                  </label>
+                                  <select
+                                    id="pf-day"
+                                    value={preferredDay}
+                                    onChange={e => setPreferredDay(e.target.value)}
+                                    className="w-full bg-transparent outline-none"
+                                    style={{ color: '#1c1c1e', fontSize: '15px' }}
+                                  >
+                                    <option value="">Select</option>
+                                    {DAYS.map(d => <option key={d} value={d}>{d}</option>)}
+                                  </select>
+                                </div>
+                                <div>
+                                  <label
+                                    htmlFor="pf-time"
+                                    className="block text-[10px] font-semibold tracking-[0.1em] uppercase mb-[6px]"
+                                    style={{ color: '#8e8e93' }}
+                                  >
+                                    Preferred Time
+                                  </label>
+                                  <select
+                                    id="pf-time"
+                                    value={preferredTime}
+                                    onChange={e => setPreferredTime(e.target.value)}
+                                    className="w-full bg-transparent outline-none"
+                                    style={{ color: '#1c1c1e', fontSize: '15px' }}
+                                  >
+                                    <option value="">Select</option>
+                                    {TIMES.map(t => <option key={t} value={t}>{t}</option>)}
+                                  </select>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </GlassCard>
+
+                      <AnimatePresence>
+                        {phase2 === 'error' && phase2Error && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="rounded-[14px] px-4 py-3 text-[13px] leading-snug"
+                            style={{ background: 'rgba(255,59,48,0.09)', border: '1px solid rgba(255,59,48,0.22)', color: '#c0392b' }}
+                            role="alert"
+                          >
+                            {phase2Error}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      <motion.button
+                        type="button"
+                        onClick={handleFinalSubmit}
+                        disabled={phase2 === 'loading' || (wantsCallback && (!preferredDay || !preferredTime))}
+                        whileTap={{ scale: 0.97 }}
+                        className="w-full rounded-[14px] py-[14px] text-[16px] font-semibold text-white flex items-center justify-center gap-2"
+                        style={{
+                          background: 'linear-gradient(135deg, #5c6cff 0%, #8a96ff 100%)',
+                          boxShadow:  '0 4px 18px rgba(92,108,255,0.36)',
+                          opacity:    phase2 === 'loading' ? 0.72 : 1,
+                        }}
+                        aria-busy={phase2 === 'loading'}
+                      >
+                        {phase2 === 'loading' && <Spinner />}
+                        {phase2 === 'loading' ? 'Submitting…' : 'Finish'}
+                      </motion.button>
                     </motion.div>
                   ) : (
                     <motion.div

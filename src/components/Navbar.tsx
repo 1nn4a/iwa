@@ -23,7 +23,7 @@ const NAV_TREE: NavSection[] = [
   {
     label: 'Solutions',
     items: [
-      { label: 'Links for Cleaners', href: 'https://forcleaners.co.uk', external: true },
+      { label: 'Links for Cleaners', href: '/en/links-for-cleaners', external: true },
       { label: 'Browse all', to: '/en/products' },
     ],
   },

@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound'
 import BlogSearchOverlay from './components/BlogSearchOverlay'
 import ProductFormPage from './pages/ProductFormPage'
 import ProductsPage from './pages/ProductsPage'
+import LinksForCleaners from './pages/LinksForCleaners'
 function StartRedirect() {
   const navigate = useNavigate()
   useEffect(() => {
@@ -32,15 +33,16 @@ function StartRedirect() {
 }
 
 function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boolean, setBlogSearchOpen: (v: boolean) => void }) {
-  const location = useLocation()
-  const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
-
+const location = useLocation()
+const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
+const isNoPaddingPage = isFormPage || location.pathname === '/en/links-for-cleaners'
+const isLightFooterPage = isFormPage || location.pathname === '/en/links-for-cleaners'
   return (
     <div className="min-h-screen flex flex-col">
       <div className="min-h-screen overflow-x-hidden">
         {!isFormPage && <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />}
         <ScrollToTop />
-        <div className={isFormPage ? '' : 'pt-20'}>
+<div className={isNoPaddingPage ? '' : 'pt-20'}>
           <main className="flex-1">
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -52,6 +54,7 @@ function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boole
                 <Route path="/blog" element={<BlogsPage />} />
 <Route path="/blog/:slug" element={<BlogPage />} />
 <Route path="/en/products" element={<ProductsPage />} />
+<Route path="/en/links-for-cleaners" element={<LinksForCleaners />} />
 <Route path="/product-trades-form"   element={<ProductFormPage product="trades"   />} />
 <Route path="/product-beauty-form"   element={<ProductFormPage product="beauty"   />} />
 <Route path="/product-property-form" element={<ProductFormPage product="property" />} />
@@ -59,7 +62,7 @@ function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boole
               </Routes>
           </main>
         </div>
-        <Footer variant={isFormPage ? 'light' : 'dark'} />
+<Footer variant={isLightFooterPage ? 'light' : 'dark'} />
         {!isFormPage && <ScrollToTopButton />}
         {!isFormPage && (
           <BlogSearchOverlay
