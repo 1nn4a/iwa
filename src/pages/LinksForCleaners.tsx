@@ -290,19 +290,19 @@ export default function LinksForCleaners() {
             width: 100%;
           }
 
-        .lfc-hero {
+ .lfc-hero {
   background-color: ${BANNER_COLOR};
-  padding: 92px 16px 40px;
+  padding: 92px 0 0;
 }
 
-          .lfc-hero-card {
-            max-width: 1180px;
-            margin: 0 auto;
-            background-color: ${BANNER_COLOR};
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-          }
+        .lfc-hero-card {
+  max-width: 1180px;
+  margin: 0 auto;
+  background-color: ${BANNER_COLOR};
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+}
 
           .lfc-hero-toprow {
             display: flex;
@@ -456,15 +456,15 @@ export default function LinksForCleaners() {
             pointer-events: none;
           }
 
-          .lfc-hero-image-blend {
+  .lfc-hero-image-blend {
   position: absolute;
   inset: 0;
   background: ${BANNER_COLOR};
   opacity: 0.9;
-  -webkit-mask-image: linear-gradient(to top, black 0%, black 10%, transparent 45%);
-  mask-image: linear-gradient(to top, black 0%, black 10%, transparent 45%);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  -webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 50%);
+  mask-image: linear-gradient(to top, black 0%, black 20%, transparent 50%);
+  backdrop-filter: blur(45px);
+  -webkit-backdrop-filter: blur(45px);
   pointer-events: none;
 }
 
@@ -585,8 +585,16 @@ export default function LinksForCleaners() {
   border-radius: 16px;
 }
 
-            .lfc-hero-image {
+           .lfc-hero-image {
               object-position: center top;
+            }
+
+            .lfc-hero {
+              padding: 92px 16px 40px;
+            }
+
+            .lfc-hero-card {
+              border-radius: 20px;
             }
 
           }
