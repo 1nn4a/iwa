@@ -220,7 +220,7 @@ export default function ProductFormPage({ product }: Props) {
   return (
     <>
       <Helmet>
-      <title>{meta.title} — See If This Is For You · Innovate With Aima</title>
+      <title>{meta.title} — Access the right products · Innovate With Aima</title>
 <meta name="description" content={`Find out if ${meta.title} is right for you, part of the Innovate With Aima professional network.`} />
         <meta name="robots" content="noindex, nofollow" />
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -284,7 +284,7 @@ export default function ProductFormPage({ product }: Props) {
                   className="text-center pb-1"
                 >
                 <h1 className="text-[26px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
-    See If This Is For You
+    Access the right products
   </h1>
                 </motion.div>
 
@@ -364,7 +364,7 @@ export default function ProductFormPage({ product }: Props) {
                             value={name}
                             onChange={e => setName(e.target.value)}
                             onBlur={() => setTouched(t => ({ ...t, name: true }))}
-                            placeholder="Jane Smith"
+                            placeholder="Your name"
                             autoComplete="name"
                             className="w-full bg-transparent outline-none placeholder-[#c7c7cc]"
                             style={{ color: '#1c1c1e', fontSize: '16px' }}
@@ -390,7 +390,7 @@ export default function ProductFormPage({ product }: Props) {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             onBlur={() => setTouched(t => ({ ...t, email: true }))}
-                            placeholder="jane@example.com"
+                            placeholder="your@email.com"
                             autoComplete="email"
                             inputMode="email"
                             className="w-full bg-transparent outline-none placeholder-[#c7c7cc]"

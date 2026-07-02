@@ -136,13 +136,15 @@ We enable specialist businesses and independent professionals to connect, share 
               className="rounded-full bg-black px-3 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
             >
               Learn More
-            </a>
-            <Link
-              to="https://group.innovatewithaima.com/submit-an-opportunity"
+           </a>
+            
+             <a href="https://group.innovatewithaima.com/submit-an-opportunity"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[#5c6cff] px-3 py-1.5 text-[11px] font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"
             >
               Submit an Opportunity
-            </Link>
+            </a>
           </div>
 
 <div className="relative mt-10">
@@ -428,9 +430,9 @@ We enable specialist businesses and independent professionals to connect, share 
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1180px] px-4 md:px-8 py-20 md:px-8">
-          <div className="text-center">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/55">FAQ</p>
+       <section id="faq" className="mx-auto max-w-[1180px] px-4 md:px-8 py-20 md:px-8">
+  <div className="text-center">
+    <p className="text-xs uppercase tracking-[0.3em] text-white/55">FAQ</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">Have questions about your next gig?</h2>
             <p className="mt-3 text-white/60">Get answers.</p>
           </div>
