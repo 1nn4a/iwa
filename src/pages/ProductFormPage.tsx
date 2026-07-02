@@ -32,7 +32,7 @@ const MARKETING_URL = '/en/links-for-cleaners'
 const RATE_KEY = 'iwa_submit_ts'
 const RATE_MS  = 60_000
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
+const PHONE_RE = /^(\+44\s?|0)[1-9]\d{8,9}$/
  
 function isRateLimited(): boolean {
   const last = localStorage.getItem(RATE_KEY)
@@ -154,7 +154,7 @@ export default function ProductFormPage({ product }: Props) {
   const [interests, setInterests] = useState<Set<ProductId>>(new Set([product]))
   const [touched,   setTouched]   = useState({ name: false, email: false })
 const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [apiError,  setApiError]  = useState('')
+  const [apiError,  setApiError]  = useState(false)
 
   const [step,          setStep]          = useState<1 | 2>(1) 
  useEffect(() => {
@@ -170,18 +170,22 @@ const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'err
     }
     setStep(1)
    }, [])
-    const [phone,         setPhone]         = useState('')
+const [phone,         setPhone]         = useState('+44 ')
   const [wantsCallback, setWantsCallback] = useState(false)
   const [preferredDay,  setPreferredDay]  = useState('')
   const [preferredTime, setPreferredTime] = useState('')
- const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
-  const [phase2Error,   setPhase2Error]   = useState('')
+const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
+  const [phase2Error,   setPhase2Error]   = useState(false)
 const [showBackPill,  setShowBackPill]  = useState(false)
   const [countdown,     setCountdown]     = useState(15)
   const DAYS  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
   const TIMES = ['Morning', 'Afternoon', 'Evening']
-  const nameErr  = touched.name  && name.trim().length < 2  ? 'Please enter your full name'        : ''
+const nameErr  = touched.name  && name.trim().length < 2  ? 'Please enter your full name'        : ''
   const emailErr = touched.email && !EMAIL_RE.test(email)   ? 'Please enter a valid email address' : ''
+  const phoneErr = phone.trim() !== '+44' && phone.trim() !== ''
+    && !PHONE_RE.test(phone.replace(/[\s()-]/g, ''))
+    ? 'Please enter a valid phone number'
+    : ''
 
 useEffect(() => {
     if (phase !== 'success') return
@@ -224,14 +228,14 @@ useEffect(() => {
     setTouched({ name: true, email: true })
     if (name.trim().length < 2 || !EMAIL_RE.test(email)) return
 
-    if (isRateLimited()) {
-      setApiError('Please wait a moment before submitting again.')
+ if (isRateLimited()) {
+      setApiError(false)
       setPhase('error')
       return
     }
 
     setPhase('loading')
-    setApiError('')
+    setApiError(false)
 
     try {
       const res = await fetch('/api/product-interest', {
@@ -253,14 +257,14 @@ localStorage.setItem(RATE_KEY, String(Date.now()))
       setPhase('idle')
       setStep(2)
       window.scrollTo({ top: 0, behavior: 'smooth' })
-    } catch (err: any) {
-      setApiError('Something went wrong on our end. Please contact us directly and we\'ll sort it out.')
+} catch (err: any) {
+      setApiError(true)
       setPhase('error')
     }
   }
-  async function handleFinalSubmit() {
+ async function handleFinalSubmit() {
     setPhase2('loading')
-    setPhase2Error('')
+    setPhase2Error(false)
 
     try {
       const res = await fetch('/api/product-interest-callback', {
@@ -281,8 +285,8 @@ if (!res.ok) {
 
       setPhase('success')
       setStep(1)
-    } catch (err: any) {
-      setPhase2Error('Something went wrong on our end. Please contact us directly and we\'ll sort it out.')
+} catch (err: any) {
+      setPhase2Error(true)
       setPhase2('error')
     }
   }
@@ -347,6 +351,33 @@ if (!res.ok) {
          </button>
         </div>
 
+      <AnimatePresence>
+          {phase2 === 'error' && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="flex justify-center pt-3"
+            >
+              <div
+                className="flex items-center gap-2 rounded-full px-4 py-[9px] text-[13px] font-semibold"
+                style={{
+                  background: 'rgba(255,59,48,0.09)',
+                  border:     '1px solid rgba(255,59,48,0.22)',
+                  color:      '#c0392b',
+                }}
+                role="alert"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 8v5M12 17h.01M10.29 3.86l-8.18 14.18A2 2 0 003.82 21h16.36a2 2 0 001.71-3.96L13.71 3.86a2 2 0 00-3.42 0z" />
+                </svg>
+                We ran into an error, please try again.
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <AnimatePresence>
           {showBackPill && (
             <motion.div
@@ -406,7 +437,7 @@ if (!res.ok) {
                 <h1 className="text-[26px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
     Access the right products
   </h1>
-  {phase !== 'success' && step === 1 && (
+{phase !== 'success' && (
     <p className="mt-2 text-[13px] leading-relaxed" style={{ color: '#6e6e73' }}>
       Our solutions are helping dozens of professionals capture more leads, showcase their services, and earn passive income. We're now bringing the same technology to Trades, Property, Aesthetics, and other specialist industries. Register your interest today to help shape future products and receive early partner access.
     </p>
@@ -516,7 +547,7 @@ if (!res.ok) {
                           >
                             Mobile Number
                           </label>
-                          <input
+                      <input
                             id="pf-phone"
                             type="tel"
                             value={phone}
@@ -526,7 +557,10 @@ if (!res.ok) {
                             inputMode="tel"
                             className="w-full bg-transparent outline-none placeholder-[#c7c7cc]"
                             style={{ color: '#1c1c1e', fontSize: '16px' }}
+                            aria-describedby={phoneErr ? 'pf-phone-err' : undefined}
+                            aria-invalid={!!phoneErr}
                           />
+                          <span id="pf-phone-err"><FieldError msg={phoneErr} /></span>
                         </div>
 
                         <Divider />
@@ -618,7 +652,7 @@ if (!res.ok) {
                       </GlassCard>
 
                 <AnimatePresence>
-                        {phase2 === 'error' && phase2Error && (
+                     {phase2 === 'error' && phase2Error && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
@@ -628,14 +662,14 @@ if (!res.ok) {
                             style={{ background: 'rgba(255,59,48,0.09)', border: '1px solid rgba(255,59,48,0.22)', color: '#c0392b' }}
                             role="alert"
                           >
-                            {phase2Error}
+                            Something went wrong on our end. Please contact us at{' '}
+                            <a href="mailto:contact@innovatewithaima.com" style={{ color: '#c0392b', textDecoration: 'underline' }}>
+                              contact@innovatewithaima.com
+                            </a>{' '}
+                            and we'll sort it out.
                           </motion.div>
                         )}
-                      </AnimatePresence>
-
-                      <p className="text-[13px] leading-relaxed text-center px-2" style={{ color: '#6e6e73' }}>
-                        Our solutions are helping dozens of professionals capture more leads, showcase their services, and earn passive income. We're now bringing the same technology to Trades, Property, Aesthetics, and other specialist industries. Register your interest today to help shape future products and receive early partner access.
-                      </p>
+               </AnimatePresence>
 
                       <p className="text-[11px] leading-snug text-center px-2" style={{ color: '#8e8e93' }}>
                         By submitting, you confirm your details are accurate and agree to our{' '}
@@ -647,7 +681,7 @@ if (!res.ok) {
                       <motion.button
                         type="button"
                         onClick={handleFinalSubmit}
-                        disabled={phase2 === 'loading' || (wantsCallback && (!preferredDay || !preferredTime))}
+disabled={phase2 === 'loading' || !!phoneErr || (wantsCallback && (!preferredDay || !preferredTime))}
                         whileTap={{ scale: 0.97 }}
                         className="w-full rounded-[14px] py-[14px] text-[16px] font-semibold text-white flex items-center justify-center gap-2"
                         style={{
@@ -776,7 +810,7 @@ if (!res.ok) {
                       </div>
 
                        <AnimatePresence>
-                        {phase === 'error' && apiError && (
+                   {phase === 'error' && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
@@ -786,7 +820,17 @@ if (!res.ok) {
                             style={{ background: 'rgba(255,59,48,0.09)', border: '1px solid rgba(255,59,48,0.22)', color: '#c0392b' }}
                             role="alert"
                           >
-                            {apiError}
+                            {apiError ? (
+                              <>
+                                Something went wrong on our end. Please contact us at{' '}
+                                <a href="mailto:contact@innovatewithaima.com" style={{ color: '#c0392b', textDecoration: 'underline' }}>
+                                  contact@innovatewithaima.com
+                                </a>{' '}
+                                and we'll sort it out.
+                              </>
+                            ) : (
+                              'Please wait a moment before submitting again.'
+                            )}
                           </motion.div>
                         )}
              </AnimatePresence>
@@ -799,21 +843,20 @@ if (!res.ok) {
                       </p>
                        <motion.button
                         type="button"
-                        onClick={phase === 'error' ? () => { setPhase('idle'); setApiError('') } : handleSubmit}
-                        disabled={phase === 'loading'}
+                        onClick={phase === 'error' ? () => window.location.reload() : handleSubmit}
+                disabled={phase === 'loading'}
                         whileTap={{ scale: 0.97 }}
                         className="w-full rounded-[14px] py-[14px] text-[16px] font-semibold text-white flex items-center justify-center gap-2"
                         style={{
                           background: 'linear-gradient(135deg, #5c6cff 0%, #8a96ff 100%)',
                           boxShadow:  '0 4px 18px rgba(92,108,255,0.36)',
-                          opacity:    phase === 'loading' ? 0.72 : 1,
+                          opacity:    (phase === 'loading' || phase === 'error') ? 0.72 : 1,
                         }}
                         aria-busy={phase === 'loading'}
                       >
-                    {phase === 'loading' && <Spinner />}
-  {phase === 'loading' ? 'Submitting…' : phase === 'error' ? 'Try Again' : 'Learn More'}
+                    {(phase === 'loading' || phase === 'error') && <Spinner />}
+  {phase === 'loading' ? 'Submitting…' : phase === 'error' ? 'Refreshing…' : 'Learn More'}
                       </motion.button>
-
                       <div className="lg:hidden pt-8 flex justify-center">
                         <MarketingCards />
                       </div>

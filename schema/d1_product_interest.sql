@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS product_interest (
   products        TEXT    NOT NULL,    
   primary_product TEXT    NOT NULL,
   ip              TEXT,
-  created_at      TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at      TEXT    NOT NULL DEFAULT (datetime('now')),
+  UNIQUE (email, primary_product)
 );
 
  CREATE INDEX IF NOT EXISTS idx_pi_email_created

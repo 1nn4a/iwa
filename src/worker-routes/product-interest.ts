@@ -92,6 +92,19 @@ export async function handleProductInterest(
 if (ipRows.length > 0) {
     return err('Too many requests. Please wait before submitting again.', 429)
   }
+
+const { results: dupRows } = await env.iwa_product_interest.prepare(
+    `SELECT id FROM product_interest
+     WHERE email = ? AND primary_product = ?
+     LIMIT 1`,
+  )
+    .bind(cleanEmail, cleanPrimary)
+    .all()
+
+  if (dupRows.length > 0) {
+    return json({ ok: true }, 201)
+  }
+
    try {
     await env.iwa_product_interest.prepare(
       `INSERT INTO product_interest (name, email, products, primary_product, ip, created_at)
