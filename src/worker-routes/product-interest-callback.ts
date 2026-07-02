@@ -71,8 +71,7 @@ export async function handleProductInterestCallback(
     return err('Invalid JSON body', 400)
   }
 
-// after
-  const { email, phone, wants_callback, preferred_day, preferred_time, turnstile_token } = payload
+   const { email, phone, wants_callback, preferred_day, preferred_time, turnstile_token } = payload
 
   const turnstileIp = request.headers.get('CF-Connecting-IP') ?? ''
   const turnstileOk  = await verifyTurnstile(turnstile_token, env.TURNSTILE_SECRET_KEY, turnstileIp)

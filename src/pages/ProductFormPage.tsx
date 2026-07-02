@@ -188,9 +188,10 @@ const [phone,         setPhone]         = useState('+44 ')
 const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>('idle')
    const [phase2Error,   setPhase2Error]   = useState(false)
 
-  const turnstileWidgetId  = useState<{ current: string | null }>(() => ({ current: null }))[0]
+   const turnstileWidgetId  = useState<{ current: string | null }>(() => ({ current: null }))[0]
   const turnstileResolver  = useState<{ current: ((token: string) => void) | null }>(() => ({ current: null }))[0]
   const turnstileContainer = useState<{ current: HTMLDivElement | null }>(() => ({ current: null }))[0]
+  const submitInFlight     = useState<{ current: boolean }>(() => ({ current: false }))[0]
 
   useEffect(() => {
     if (document.getElementById('cf-turnstile-script')) return
@@ -217,20 +218,24 @@ const [phase2,        setPhase2]        = useState<'idle' | 'loading' | 'error'>
     })
   }
 
-  function getTurnstileToken(): Promise<string> {
+function getTurnstileToken(): Promise<string> {
     return new Promise(resolve => {
       const tryExecute = () => {
         if (window.turnstile && turnstileContainer.current) {
           ensureTurnstileWidget()
           turnstileResolver.current = resolve
-          if (turnstileWidgetId.current) window.turnstile.execute(turnstileWidgetId.current)
+          if (turnstileWidgetId.current) {
+            window.turnstile.reset(turnstileWidgetId.current)
+            window.turnstile.execute(turnstileWidgetId.current)
+          }
         } else {
           setTimeout(tryExecute, 150)
         }
       }
       tryExecute()
     })
-  }const [showBackPill,  setShowBackPill]  = useState(false)
+  }
+  const [showBackPill,  setShowBackPill]  = useState(false)
 const [showPhoneTip,  setShowPhoneTip]  = useState(false)
   const [countdown,     setCountdown]     = useState(15)
   const DAYS  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
@@ -282,10 +287,13 @@ useEffect(() => {
    async function handleSubmit() {
     setTouched({ name: true, email: true })
     if (name.trim().length < 2 || !EMAIL_RE.test(email)) return
+    if (submitInFlight.current) return
+    submitInFlight.current = true
 
  if (isRateLimited()) {
       setApiError(false)
       setPhase('error')
+      submitInFlight.current = false
       return
     }
 
@@ -310,20 +318,24 @@ useEffect(() => {
         throw new Error('CONTACT_US')
       }
 
-localStorage.setItem(RATE_KEY, String(Date.now()))
+ localStorage.setItem(RATE_KEY, String(Date.now()))
       setPhase('idle')
       setStep(2)
       window.scrollTo({ top: 0, behavior: 'smooth' })
 } catch (err: any) {
       setApiError(true)
       setPhase('error')
+    } finally {
+      submitInFlight.current = false
     }
   }
- async function handleFinalSubmit() {
+  async function handleFinalSubmit() {
+    if (submitInFlight.current) return
+    submitInFlight.current = true
     setPhase2('loading')
     setPhase2Error(false)
 
-     try {
+    try {
       const turnstileToken = await getTurnstileToken()
       const res = await fetch('/api/product-interest-callback', {
         method:  'POST',
@@ -342,11 +354,13 @@ if (!res.ok) {
         throw new Error('CONTACT_US')
       }
 
-      setPhase('success')
+       setPhase('success')
       setStep(1)
 } catch (err: any) {
       setPhase2Error(true)
       setPhase2('error')
+    } finally {
+      submitInFlight.current = false
     }
   }
   return (
