@@ -124,6 +124,13 @@ const cls = "relative block w-full max-w-[430px] aspect-[660/1020] rounded-[15px
 
 export default function ProductsPage() {
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const previousBackground = document.body.style.background;
     document.body.style.background = `url(${bgImg}) center top / cover no-repeat, #083a6f`;
     return () => {

@@ -157,7 +157,12 @@ const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'err
   const [apiError,  setApiError]  = useState('')
 
   const [step,          setStep]          = useState<1 | 2>(1) 
-   useEffect(() => {
+ useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+    window.scrollTo(0, 0)
+
     const url = new URL(window.location.href)
     if (url.searchParams.has('step')) {
       url.searchParams.delete('step')

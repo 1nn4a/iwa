@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-
+import { useEffect } from 'react';
 const defs = [
   {
     title: '“ASSOCIATION” / “NETWORK”',
@@ -62,8 +62,14 @@ const defs = [
     text: 'Refers to Innovatewithaima Ltd, a company registered in England and Wales (Company No. 15918798), with its registered office: 124 City Road, London, England, EC1V 2NX.',
   },
 ];
-
 export default function DefinitionsPage() {
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="mx-auto max-w-[1180px] px-5 pt-28 md:px-8">
       <motion.section

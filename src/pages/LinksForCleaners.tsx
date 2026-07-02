@@ -1,5 +1,5 @@
 // LinksForCleaners.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -150,6 +150,13 @@ const changelog: ChangelogEntry[] = [
 
 export default function LinksForCleaners() {
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleTellColleague = async () => {
     const shareData = {
