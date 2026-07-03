@@ -221,7 +221,7 @@ export default function LinksForCleaners() {
                   Providing cleaning businesses and clean-fluencers with personalised marketing pages designed to turn social media engagement into revenue streams from brands and clients.
                 </p>
 
-                <div className="lfc-cta-row">
+               <div className="lfc-cta-row">
                   
                   <a  href="https://profile.forcleaners.co.uk/create"
                     target="_blank"
@@ -237,6 +237,14 @@ export default function LinksForCleaners() {
                     className="lfc-btn-secondary"
                   >
                     See how it works
+                  </a>
+
+                  <a  href="https://links.forcleaners.co.uk/cleansco"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="lfc-btn-secondary"
+                  >
+                    See a live profile
                   </a>
                 </div>
               </div>

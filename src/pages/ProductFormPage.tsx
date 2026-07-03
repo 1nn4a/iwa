@@ -143,16 +143,196 @@ function MarketingCards() {
   )
 }
 
-function MarketingPanel() {
+function ProcessSteps({ activeStep }: { activeStep: number }) {
+  const steps = [
+    { n: 1, label: 'Application received', desc: 'We confirm your details are in' },
+    { n: 2, label: 'Review', desc: 'Our team looks over your request' },
+    { n: 3, label: 'Call or email', desc: 'You hear from us directly' },
+  ]
   return (
+    <div className="w-full max-w-[420px] flex flex-col gap-4">
+      <p
+        className="text-[10px] font-semibold tracking-[0.1em] uppercase px-1"
+        style={{ color: '#8e8e93' }}
+      >
+        What happens next
+      </p>
+      <GlassCard>
+        <div className="px-5 py-5 flex flex-col gap-4">
+          {steps.map((s, i) => {
+            const active = i === activeStep
+            const done   = i < activeStep
+            return (
+              <div key={s.n} className="flex items-start gap-3">
+                <div className="relative flex-shrink-0 w-[26px] h-[26px] rounded-full flex items-center justify-center text-[12px] font-bold overflow-hidden">
+                  {!active && !done && (
+                    <div className="absolute inset-0 rounded-full" style={{ background: 'rgba(120,120,128,0.18)' }} />
+                  )}
+                  {done && !active && (
+                    <div
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: 'linear-gradient(145deg, #5c6cff 0%, #8a96ff 100%)' }}
+                    />
+                  )}
+                  {active && (
+                    <motion.div
+                      layoutId="liquid-step-indicator"
+                      transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: 'linear-gradient(145deg, #5c6cff 0%, #8a96ff 100%)' }}
+                    />
+                  )}
+                  <span className="relative z-10" style={{ color: (active || done) ? '#ffffff' : '#8e8e93' }}>
+                    {s.n}
+                  </span>
+                </div>
+                <motion.div animate={{ opacity: active ? 1 : 0.55 }} transition={{ duration: 0.3 }}>
+                  <p className="text-[13px] font-semibold" style={{ color: active ? '#1c1c1e' : '#8e8e93' }}>{s.label}</p>
+                  <p className="text-[12px] mt-[1px]" style={{ color: '#8e8e93' }}>{s.desc}</p>
+                </motion.div>
+              </div>
+            )
+          })}
+        </div>
+      </GlassCard>
+    </div>
+  )
+}
+
+function PanelSlideshow() {
+  const [slide, setSlide]           = useState(0)
+  const [activeStep, setActiveStep] = useState(0)
+  const STEP_MS = 900
+
+  useEffect(() => {
+    if (slide === 0) {
+      setActiveStep(0)
+      const id = setTimeout(() => setSlide(1), 5000)
+      return () => clearTimeout(id)
+    }
+    setActiveStep(0)
+    const t1 = setTimeout(() => setActiveStep(1), STEP_MS)
+    const t2 = setTimeout(() => setActiveStep(2), STEP_MS * 2)
+    const t3 = setTimeout(() => setSlide(0), STEP_MS * 3 + 700)
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
+  }, [slide])
+
+  const slides = [<MarketingCards key="cards" />, <ProcessSteps key="steps" activeStep={activeStep} />]
+
+  return (
+    <div className="w-full flex flex-col items-center gap-4">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={slide}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.32 }}
+          className="w-full flex justify-center"
+        >
+          {slides[slide]}
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="flex items-center gap-[6px]">
+        {[0, 1].map(i => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => setSlide(i)}
+            aria-label={`Show slide ${i + 1}`}
+            className="rounded-full"
+            style={{
+              width:      slide === i ? 16 : 6,
+              height:     6,
+              background: slide === i ? '#5c6cff' : 'rgba(120,120,128,0.3)',
+              transition: 'width 0.25s, background 0.25s',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function CompactProcessSteps() {
+  const steps = ['Received', 'Review', 'Callback/Email']
+  const [activeStep, setActiveStep] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveStep(s => (s + 1) % steps.length)
+    }, 1500)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div
+      className="lg:hidden w-full rounded-[14px] px-4 py-3 flex items-center justify-between"
+      style={{
+        background:           'rgba(255,255,255,0.6)',
+        backdropFilter:       'blur(20px) saturate(1.4)',
+        WebkitBackdropFilter: 'blur(20px) saturate(1.4)',
+        border:               '1px solid rgba(255,255,255,0.85)',
+        boxShadow:            '0 1px 12px rgba(0,0,0,0.05)',
+      }}
+    >
+      {steps.map((label, i) => {
+        const active = i === activeStep
+        const done   = i < activeStep
+        return (
+          <div key={label} className="flex items-center" style={{ flex: i < steps.length - 1 ? 1 : undefined }}>
+            <div className="flex flex-col items-center gap-1">
+              <div className="relative w-[20px] h-[20px] rounded-full flex items-center justify-center text-[10px] font-bold overflow-hidden">
+                {!active && !done && (
+                  <div className="absolute inset-0 rounded-full" style={{ background: 'rgba(120,120,128,0.18)' }} />
+                )}
+                {done && !active && (
+                  <div
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'linear-gradient(145deg, #5c6cff 0%, #8a96ff 100%)' }}
+                  />
+                )}
+                {active && (
+                  <motion.div
+                    layoutId="liquid-compact-step-indicator"
+                    transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'linear-gradient(145deg, #5c6cff 0%, #8a96ff 100%)' }}
+                  />
+                )}
+                <span className="relative z-10" style={{ color: (active || done) ? '#ffffff' : '#8e8e93' }}>
+                  {i + 1}
+                </span>
+              </div>
+              <motion.p
+                animate={{ opacity: active ? 1 : 0.6 }}
+                transition={{ duration: 0.3 }}
+                className="text-[9.5px] font-semibold text-center leading-tight whitespace-nowrap"
+                style={{ color: active ? '#1c1c1e' : '#8e8e93' }}
+              >
+                {label}
+              </motion.p>
+            </div>
+            {i < steps.length - 1 && (
+              <div className="h-[1.5px] flex-1 mx-1 mt-[-14px]" style={{ background: 'rgba(120,120,128,0.22)' }} />
+            )}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+function MarketingPanel() {  return (
 <div
       className="hidden lg:flex lg:w-[42%] flex-shrink-0 flex-col items-center justify-center relative px-8"
-      style={{
+   style={{
         background:  '#FAFAFA',
         borderLeft:  '1px solid rgba(60,60,67,0.14)',
       }}
     >
-      <MarketingCards />
+      <PanelSlideshow />
     </div>
   )
 }
@@ -168,8 +348,9 @@ export default function ProductFormPage({ product }: Props) {
 const [phase,     setPhase]     = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [apiError,  setApiError]  = useState(false)
 
-  const [step,          setStep]          = useState<1 | 2>(1) 
- useEffect(() => {
+const [step,          setStep]          = useState<1 | 2>(1)
+  const [showSubtext,   setShowSubtext]   = useState(false)
+   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'
     }
@@ -499,13 +680,74 @@ if (!res.ok) {
                       Step {step} of 2
                     </p>
                   )}
-                <h1 className="text-[26px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
+           <h1 className="text-[26px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
     Access the right products
   </h1>
 {phase !== 'success' && (
-    <p className="mt-2 text-[13px] leading-relaxed" style={{ color: '#6e6e73' }}>
-      Our solutions are helping dozens of professionals capture more leads, showcase their services, and earn passive income. We're now bringing the same technology to Trades, Property, Aesthetics, and other specialist industries. Register your interest today to help shape future products and receive early partner access.
-    </p>
+<>
+      <motion.button
+        type="button"
+        onClick={() => setShowSubtext(v => !v)}
+        aria-expanded={showSubtext}
+        aria-label="Show more"
+        whileTap={{ scale: 0.94 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 24 }}
+        className="lg:hidden mx-auto mt-2 flex flex-col items-center justify-center"
+      >
+        <div className="h-[16px] flex items-center justify-center overflow-hidden">
+          <AnimatePresence mode="wait">
+            {!showSubtext && (
+              <motion.span
+                key="label"
+                initial={{ opacity: 0, y: -2 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -2 }}
+                transition={{ duration: 0.16 }}
+                className="text-[11px] font-medium"
+                style={{ color: '#8e8e93' }}
+              >
+                Tap to learn more
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
+        <motion.svg
+          animate={{ rotate: showSubtext ? 180 : 0 }}
+          transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+          width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="#8e8e93" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          aria-hidden="true"
+          className="mt-[2px]"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </motion.svg>
+      </motion.button>
+<div className="lg:hidden overflow-hidden">
+        <AnimatePresence initial={false}>
+          {showSubtext && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{
+                height:  { type: 'spring', stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 },
+              }}
+              className="flex flex-col gap-3 mt-2"
+            >
+              <p className="text-[13px] leading-relaxed" style={{ color: '#6e6e73' }}>
+                Our solutions are helping dozens of professionals capture more leads, showcase their services, and earn passive income. We're now bringing the same technology to Trades, Property, Aesthetics, and other specialist industries. Register your interest today to help shape future products and receive early partner access.
+              </p>
+              <CompactProcessSteps />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <p className="hidden lg:block mt-2 text-[13px] leading-relaxed" style={{ color: '#6e6e73' }}>
+        Our solutions are helping dozens of professionals capture more leads, showcase their services, and earn passive income. We're now bringing the same technology to Trades, Property, Aesthetics, and other specialist industries. Register your interest today to help shape future products and receive early partner access.
+      </p>
+    </>
   )}
                 </motion.div>
 
@@ -534,7 +776,7 @@ if (!res.ok) {
                             </svg>
                           </motion.div>
 
-                          <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                 <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                             <h2 className="text-[22px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
                               Application Received
                             </h2>
@@ -590,7 +832,7 @@ if (!res.ok) {
                         </div>
                       </GlassCard>
 
-                      <div className="lg:hidden pt-8 flex justify-center">
+        <div className="lg:hidden pt-8 flex justify-center">
                         <MarketingCards />
                       </div>
                     </motion.div>
@@ -948,7 +1190,7 @@ if (!res.ok) {
                     {(phase === 'loading' || phase === 'error') && <Spinner />}
   {phase === 'loading' ? 'Submitting…' : phase === 'error' ? 'Refreshing…' : 'Learn More'}
                       </motion.button>
-                      <div className="lg:hidden pt-8 flex justify-center">
+      <div className="lg:hidden pt-8 flex justify-center">
                         <MarketingCards />
                       </div>
                     </motion.div>
