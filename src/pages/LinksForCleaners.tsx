@@ -366,7 +366,7 @@ export default function LinksForCleaners() {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-top: 80px;
+  padding-top: 150px;
 }
        .lfc-badge {
   position: relative;
@@ -442,7 +442,7 @@ export default function LinksForCleaners() {
             font-weight: 700;
             text-decoration: none;
           }
-            .lfc-btn-tertiary {
+ .lfc-btn-tertiary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -595,6 +595,10 @@ export default function LinksForCleaners() {
   min-height: 0;
   overflow: visible;
 }
+  .lfc-heading {
+              font-size: 54px;
+              max-width: 560px;
+            }
 .lfc-hero-image-blend {
               opacity: 0.94;
               -webkit-mask-image: linear-gradient(to top, black 0%, black 8%, rgba(0,0,0,0.6) 30%, transparent 65%);
@@ -611,7 +615,7 @@ export default function LinksForCleaners() {
             }
 
             .lfc-heading {
-              font-size: 42px;
+              font-size: 62px;
             }
 
             .lfc-subheading {
@@ -624,7 +628,7 @@ export default function LinksForCleaners() {
   flex: 1;
   margin-top: 0;
   aspect-ratio: auto;
-  height: 560px;
+  height: 480px;
   border-radius: 16px;
 }
 
@@ -633,7 +637,7 @@ export default function LinksForCleaners() {
             }
 
             .lfc-hero {
-              padding: 92px 16px 40px;
+              padding: 72px 16px 40px;
             }
 
             .lfc-hero-card {
