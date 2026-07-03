@@ -112,7 +112,7 @@ function ProductCardTile({ card }: { card: ProductCard }) {
     </>
   );
 
-const cls = "relative block w-full max-w-[430px] aspect-[660/1020] rounded-[15px] overflow-hidden bg-[#5c6cff]";
+const cls = "relative block w-full max-w-[430px] aspect-[660/1020] rounded-[45px] overflow-hidden bg-[#5c6cff]";
   if (!card.href) return <div className={cls}>{inner}</div>;
   if (card.internal) return <Link to={card.href} className={cls}>{inner}</Link>;
   return (

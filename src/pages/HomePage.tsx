@@ -114,7 +114,7 @@ export default function HomePage() {
       </Helmet>
 
       <main>
-<section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-28 md:pt-32">
+<section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-10 md:pt-18">
       <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -148,12 +148,13 @@ We enable specialist businesses and independent professionals to connect, share 
           </div>
 
 <div className="relative mt-10">
- <div
-  className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-full opacity-100 pointer-events-none -z-10"
+<div
+  className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-full opacity-50 pointer-events-none -z-10"
   style={{
     backgroundImage: `url(${cardsBg})`,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
+    top: '15px',
   }}
 />
 
@@ -185,7 +186,7 @@ We enable specialist businesses and independent professionals to connect, share 
               </>
             )
 
-            const cls = "relative block w-full aspect-[660/1020] rounded-[15px] overflow-hidden bg-[#5c6cff]"
+            const cls = "relative block w-full aspect-[660/1020] rounded-[45px] overflow-hidden bg-[#5c6cff]"
 
             if (!card.href) {
               return <div key={card.key} className={cls}>{inner}</div>
@@ -206,7 +207,7 @@ We enable specialist businesses and independent professionals to connect, share 
            <div className="relative hidden md:block">
 <div className="flex gap-4 justify-center">              
               <div
-                className="relative block w-[794px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
+                className="relative block w-[794px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -233,7 +234,7 @@ We enable specialist businesses and independent professionals to connect, share 
                 href={linkCards[1].href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative block w-[387px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
+                className="relative block w-[387px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -265,7 +266,7 @@ We enable specialist businesses and independent professionals to connect, share 
 <div className="mt-4 flex gap-4 justify-center">
                 <Link
                 to={linkCards[3].href!}
-                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
+                className="relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -295,7 +296,7 @@ We enable specialist businesses and independent professionals to connect, share 
               
               <Link
                 to={linkCards[2].href!}   
-                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
+                className="relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -325,7 +326,7 @@ We enable specialist businesses and independent professionals to connect, share 
               
           <Link
                 to={linkCards[4].href!}
-                className="relative block w-[388px] h-[600px] shrink-0 rounded-[15px] overflow-hidden bg-[#5c6cff]"
+                className="relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -418,7 +419,7 @@ We enable specialist businesses and independent professionals to connect, share 
         </section>
 
         <section id="framework" className="mx-auto max-w-[1180px] px-4 md:px-8 py-12 md:px-8">
-          <div className="rounded-[28px] border border-white/10 bg-black/55 px-6 py-16 text-center shadow-2xl shadow-black/30 md:px-10">
+          <div className="rounded-[45px] border border-white/10 bg-black/55 px-6 py-16 text-center shadow-2xl shadow-black/30 md:px-10">
             <p className="text-xs uppercase tracking-[0.3em] text-[#8da2ff]">How the network works</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">Our Operating Framework</h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/68 md:text-base">
