@@ -239,10 +239,10 @@ export default function LinksForCleaners() {
                     See how it works
                   </a>
 
-                  <a  href="https://links.forcleaners.co.uk/cleansco"
+               <a  href="https://links.forcleaners.co.uk/cleansco"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="lfc-btn-secondary"
+                    className="lfc-btn-tertiary"
                   >
                     See a live profile
                   </a>
@@ -305,9 +305,9 @@ export default function LinksForCleaners() {
             width: 100%;
           }
 
- .lfc-hero {
+.lfc-hero {
   background-color: ${BANNER_COLOR};
-  padding: 92px 0 0;
+  padding: 64px 0 0;
 }
 
         .lfc-hero-card {
@@ -319,11 +319,11 @@ export default function LinksForCleaners() {
   position: relative;
 }
 
-          .lfc-hero-toprow {
+       .lfc-hero-toprow {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 24px 0;
+            padding: 20px 24px 20px;
             color: #ffffff;
           }
 
@@ -442,6 +442,22 @@ export default function LinksForCleaners() {
             font-weight: 700;
             text-decoration: none;
           }
+            .lfc-btn-tertiary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 22px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+          }
 .lfc-hero-image-wrap {
   position: absolute;
   inset: 0;
@@ -454,13 +470,13 @@ export default function LinksForCleaners() {
   z-index: 0;
 }
 
- .lfc-hero-image {
+.lfc-hero-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
 }
 
           .lfc-hero-image-tint {
@@ -471,7 +487,7 @@ export default function LinksForCleaners() {
             pointer-events: none;
           }
 
-  .lfc-hero-image-blend {
+.lfc-hero-image-blend {
   position: absolute;
   inset: 0;
   background: ${BANNER_COLOR};
@@ -481,6 +497,9 @@ export default function LinksForCleaners() {
   backdrop-filter: blur(45px);
   -webkit-backdrop-filter: blur(45px);
   pointer-events: none;
+  border-radius: inherit;
+  clip-path: inset(0 round inherit);
+  -webkit-clip-path: inset(0 round inherit);
 }
 
           .lfc-changelog {
@@ -576,6 +595,15 @@ export default function LinksForCleaners() {
   min-height: 0;
   overflow: visible;
 }
+.lfc-hero-image-blend {
+              opacity: 0.94;
+              -webkit-mask-image: linear-gradient(to top, black 0%, black 8%, rgba(0,0,0,0.6) 30%, transparent 65%);
+              mask-image: linear-gradient(to top, black 0%, black 8%, rgba(0,0,0,0.6) 30%, transparent 65%);
+              backdrop-filter: blur(70px);
+              -webkit-backdrop-filter: blur(70px);
+              clip-path: inset(0 round 16px);
+              -webkit-clip-path: inset(0 round 16px);
+            }
 
             .lfc-hero-content {
               flex: 1;
