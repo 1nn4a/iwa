@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet-async';
 
 import heroImg from '../assets/linksforcleaners@.instantq.jpg';
 import shareImg from '../assets/lfc01062602xiwa.jpg';
+import QuickNav from '../components/QuickNav';
+import Blueprints from '../components/Blueprints';
 const BANNER_COLOR = '#083a6f';
 
 type ChangelogEntry = {
@@ -249,19 +251,13 @@ export default function LinksForCleaners() {
       <div className="product-member-launch-lfc">
         <section className="lfc-hero">
           <div className="lfc-hero-card">
-            <div className="lfc-hero-toprow">
+      <div className="lfc-hero-toprow">
               <Link to="/" className="lfc-back-btn">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 6l-6 6 6 6" />
                 </svg>
                 Back
               </Link>
-              <button type="button" className="lfc-tell-btn" onClick={handleTellColleague}>
-                {copied ? 'Link copied' : 'Tell a colleague'}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14" />
-                </svg>
-              </button>
             </div>
 
             <div className="lfc-hero-body">
@@ -276,24 +272,7 @@ export default function LinksForCleaners() {
                   Providing cleaning businesses and clean-fluencers with personalised marketing pages designed to turn social media engagement into revenue streams from brands and clients.
                 </p>
 
-               <div className="lfc-cta-row">
-                  
-                  <a  href="https://profile.forcleaners.co.uk/create"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="lfc-btn-primary"
-                  >
-                    Get started
-                  </a>
-                  
-                  <a  href="https://forcleaners.co.uk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="lfc-btn-secondary"
-                  >
-                    See how it works
-                  </a>
-
+     <div className="lfc-cta-row">
                <a  href="https://links.forcleaners.co.uk/cleansco"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -301,10 +280,17 @@ export default function LinksForCleaners() {
                   >
                     See a live profile
                   </a>
+                  <a  href="https://profile.forcleaners.co.uk/create"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="lfc-register-link"
+                  >
+                    Register
+                  </a>
                 </div>
               </div>
 
-              <div className="lfc-hero-image-wrap">
+            <div className="lfc-hero-image-wrap">
                 <img
                   src={heroImg}
                   alt=""
@@ -319,13 +305,16 @@ export default function LinksForCleaners() {
                 <div className="lfc-hero-image-blend" />
               </div>
             </div>
-          </div>
-        </section>
 
- <section className="lfc-faq">
+         </div>
+    </section>
+
+    <QuickNav onTellColleague={handleTellColleague} tellLabel={copied ? 'Link copied' : 'Tell a colleague'} />
+
+        <section className="lfc-faq" id="faq">
           <div className="lfc-faq-inner">
-            <p className="lfc-faq-eyebrow">Quick answers</p>
-            <h2 className="lfc-faq-heading">Things people actually ask</h2>
+            <p className="lfc-faq-eyebrow">Common Questions</p>
+            <h2 className="lfc-faq-heading">About Links For Cleaners</h2>
             {[
               {
                 q: "Do I need a website to market my cleaning business?",
@@ -353,8 +342,10 @@ export default function LinksForCleaners() {
           </div>
         </section>
 
-        <section className="lfc-changelog">          <div className="lfc-changelog-inner">
-            <h2 className="lfc-changelog-header">ChangeLog</h2>
+<Blueprints />
+
+    <section className="lfc-changelog" id="changelog">          <div className="lfc-changelog-inner">
+                      <h2 className="lfc-changelog-header">ChangeLog</h2>
 
             {changelog.map((entry) => (
               <article key={entry.version} className="lfc-entry">
@@ -436,12 +427,12 @@ export default function LinksForCleaners() {
             min-height: 44px;
           }
 
-         .lfc-hero-body {
+.lfc-hero-body {
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 24px 24px 32px;
-  min-height: 560px;
+  min-height: 620px;
   overflow: hidden;
 }
 
@@ -527,15 +518,26 @@ export default function LinksForCleaners() {
             font-weight: 700;
             text-decoration: none;
           }
- .lfc-btn-tertiary {
+.lfc-register-link {
             display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          }
+
+ .lfc-btn-tertiary {
+             display: inline-flex;
             align-items: center;
             justify-content: center;
             min-height: 44px;
             padding: 0 22px;
             border-radius: 999px;
-            background: rgba(255,255,255,0.14);
-            border: 1px solid rgba(255,255,255,0.22);
+            background: linear-gradient(135deg, rgba(212,175,90,0.28) 0%, rgba(255,215,140,0.18) 100%);
+            border: 1px solid rgba(230,190,110,0.45);
             color: #ffffff;
             font-size: 13px;
             font-weight: 700;
@@ -561,10 +563,10 @@ export default function LinksForCleaners() {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: 60% 30%;
 }
 
-          .lfc-hero-image-tint {
+.lfc-hero-image-tint {
             position: absolute;
             inset: 0;
             background: ${BANNER_COLOR};
@@ -597,14 +599,13 @@ export default function LinksForCleaners() {
             margin: 0 auto;
           }
 
-          .lfc-changelog-header {
+  .lfc-changelog-header {
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 28px;
             color: #0a0a0a;
             margin: 0 0 32px;
           }
-
           .lfc-entry {
             padding: 24px 0;
             border-top: 1px solid rgba(0,0,0,0.08);
@@ -725,9 +726,12 @@ export default function LinksForCleaners() {
               padding: 72px 16px 40px;
             }
 
-            .lfc-hero-card {
+       .lfc-hero-card {
               border-radius: 20px;
             }
+
+   
+           
 
           }
  .lfc-faq {
