@@ -269,7 +269,7 @@ export default function LinksForCleaners() {
                 </h1>
 
                 <p className="lfc-subheading">
-                  Providing cleaning businesses and clean-fluencers with personalised marketing pages designed to turn social media engagement into brand deals and clients.
+                  Providing cleaning businesses with personalised marketing pages designed to turn social media engagement into clients.
                 </p>
 
      <div className="lfc-cta-row">
