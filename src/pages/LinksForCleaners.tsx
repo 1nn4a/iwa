@@ -182,14 +182,69 @@ export default function LinksForCleaners() {
   };
 
   return (
-    <>
-   <Helmet>
-  <title>Product-Innovate With Aima</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <meta property="og:image" content={shareImg} />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content={shareImg} />
-</Helmet>
+<>
+      <Helmet>
+        <title>LinksForCleaners – Market Your Cleaning Business Online | Innovate With Aima</title>
+        <meta name="description" content="Personalised marketing pages for cleaning businesses and clean-fluencers in the UK. Instant quotes, booking tools, and social proof — all from one link." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="LinksForCleaners – Market Your Cleaning Business Online" />
+        <meta property="og:description" content="Turn your social media following into cleaning clients. Instant quotes, Checkatrade reviews, and booking flows — built for UK cleaners." />
+        <meta property="og:image" content={shareImg} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.innovatewithaima.com/linksforcleaners" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="LinksForCleaners – Market Your Cleaning Business Online" />
+        <meta name="twitter:description" content="Personalised marketing pages for UK cleaning businesses. Quotes, bookings, and affiliate earnings from one link." />
+        <meta name="twitter:image" content={shareImg} />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How can a cleaning business get more clients from Facebook?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "LinksForCleaners gives cleaning businesses a single branded profile link for their social media bio. Visitors can request an instant quote, book a clean, or view pricing directly from that link — no website needed. Profiles include Checkatrade and Google review aggregation to build trust instantly."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there a free quote tool for self-employed cleaners in the UK?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. LinksForCleaners includes an instant quote flow built for UK independent cleaners. Customers enter property size, service type, and postcode and receive a price range immediately. Cleaners can also offer fixed-price, callback, or booking-first flows depending on how they prefer to work."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a clean-fluencer and how do they earn money?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A clean-fluencer is a content creator in the cleaning niche who builds an audience on platforms like TikTok, Instagram, or YouTube. LinksForCleaners lets clean-fluencers earn passive income by sharing an affiliate profile link — when their followers sign up for cleaning services or purchase recommended products through that link, the creator earns a commission."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need a website to market my cleaning business online?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. LinksForCleaners provides a personalised marketing page that works as a full storefront — including services, pricing, reviews, and booking — accessible from a single shareable link. It is designed for UK cleaning businesses that want a professional online presence without building or maintaining a website."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I get more cleaning clients without paying for ads?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "LinksForCleaners is built to convert existing social media traffic into paying clients without ad spend. A branded profile page with instant quotes, visible pricing, and real reviews from Checkatrade and Google means visitors who find you organically can book or enquire immediately."
+                }
+              }
+            ]
+          }
+        `}</script>
+      </Helmet>
 
       <div className="product-member-launch-lfc">
         <section className="lfc-hero">
@@ -267,8 +322,38 @@ export default function LinksForCleaners() {
           </div>
         </section>
 
-        <section className="lfc-changelog">
-          <div className="lfc-changelog-inner">
+ <section className="lfc-faq">
+          <div className="lfc-faq-inner">
+            <p className="lfc-faq-eyebrow">Quick answers</p>
+            <h2 className="lfc-faq-heading">Things people actually ask</h2>
+            {[
+              {
+                q: "Do I need a website to market my cleaning business?",
+                a: "No. Your LinksForCleaners profile can work as your online business storefront."
+              },
+              {
+                q: "How do I get more cleaning clients without running ads?",
+                a: "Put your profile link in your bio. Visitors who find you organically or through content can price up and enquire instantly."
+              },
+              {
+                q: "Can I earn money from my cleaning content on TikTok or Instagram?",
+                a: "A clean-fluencer is a content creator in the cleaning niche who builds an audience on platforms like TikTok, Instagram, or YouTube. LinksForCleaners lets clean-fluencers earn commissions by driving impressions to their profile link, when a vistor signs up for cleaning services or purchase recommended products through that link, the creator earns a commission."
+
+              },
+              {
+                q: "Is there an instant quote tool for UK cleaners?",
+                a: "Built in. Customers enter postcode, property size, and service type and see a price range immediately. You get the full job details by email and dashboard notification."
+              },
+            ].map(({ q, a }, i) => (
+              <div key={i} className="lfc-faq-item">
+                <h3 className="lfc-faq-q">{q}</h3>
+                <p className="lfc-faq-a">{a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="lfc-changelog">          <div className="lfc-changelog-inner">
             <h2 className="lfc-changelog-header">ChangeLog</h2>
 
             {changelog.map((entry) => (
@@ -645,8 +730,47 @@ export default function LinksForCleaners() {
             }
 
           }
+ .lfc-faq {
+            background: #f7f7f8;
+            padding: 64px 16px;
+          }
+          .lfc-faq-inner {
+            max-width: 720px;
+            margin: 0 auto;
+          }
+          .lfc-faq-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #5c6cff;
+            margin: 0 0 12px;
+          }
+          .lfc-faq-heading {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: #0a0a0a;
+            margin: 0 0 40px;
+          }
+          .lfc-faq-item {
+            padding: 24px 0;
+            border-top: 1px solid rgba(0,0,0,0.08);
+          }
+          .lfc-faq-q {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 0 0 8px;
+          }
+          .lfc-faq-a {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(0,0,0,0.6);
+            margin: 0;
+          }
         `}</style>
-      </div>
+              </div>
     </>
   );
 }
