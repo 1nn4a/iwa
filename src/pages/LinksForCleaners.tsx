@@ -186,16 +186,16 @@ export default function LinksForCleaners() {
   return (
 <>
       <Helmet>
-        <title>LinksForCleaners – Market Your Cleaning Business Online | Innovate With Aima</title>
+        <title>LinksForCleaners- Market Your Cleaning Business Online | Innovate With Aima</title>
         <meta name="description" content="Personalised marketing pages for cleaning businesses and clean-fluencers in the UK. Instant quotes, booking tools, and social proof — all from one link." />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="LinksForCleaners – Market Your Cleaning Business Online" />
+        <meta property="og:title" content="LinksForCleaners- Market Your Cleaning Business Online" />
         <meta property="og:description" content="Turn your social media following into cleaning clients. Instant quotes, Checkatrade reviews, and booking flows — built for UK cleaners." />
         <meta property="og:image" content={shareImg} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.innovatewithaima.com/en/links-for-cleaners" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="LinksForCleaners – Market Your Cleaning Business Online" />
+        <meta name="twitter:title" content="LinksForCleaners- Market Your Cleaning Business Online" />
         <meta name="twitter:description" content="Personalised marketing pages for UK cleaning businesses. Quotes, bookings, and affiliate earnings from one link." />
         <meta name="twitter:image" content={shareImg} />
         <script type="application/ld+json">{`
@@ -383,11 +383,10 @@ export default function LinksForCleaners() {
             width: 100%;
           }
 
-.lfc-hero {
+ .lfc-hero {
   background-color: ${BANNER_COLOR};
-  padding: 64px 0 0;
+  padding-top: 80px;
 }
-
         .lfc-hero-card {
   max-width: 1180px;
   margin: 0 auto;
@@ -397,13 +396,13 @@ export default function LinksForCleaners() {
   position: relative;
 }
 
-       .lfc-hero-toprow {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 24px 20px;
-            color: #ffffff;
-          }
+   .lfc-hero-toprow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 24px;
+  color: #ffffff;
+}
 
           .lfc-back-btn {
             display: inline-flex;
@@ -434,17 +433,17 @@ export default function LinksForCleaners() {
   display: flex;
   flex-direction: column;
   padding: 24px 24px 32px;
-  min-height: 620px;
+  min-height: 550px;
   overflow: hidden;
 }
 
-.lfc-hero-content {
+ .lfc-hero-content {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-top: 150px;
+  padding-top: 120px;
 }
        .lfc-badge {
   position: relative;
@@ -568,8 +567,8 @@ export default function LinksForCleaners() {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center center;
+  object-fit: cover;
+  object-position: top;
 }
 
 .lfc-hero-image-tint {
@@ -709,11 +708,11 @@ export default function LinksForCleaners() {
             }
 
             .lfc-heading {
-              font-size: 62px;
+              font-size: 45px;
             }
 
             .lfc-subheading {
-              font-size: 19px;
+              font-size: 15px;
             }
 
         .lfc-hero-image-wrap {
@@ -726,9 +725,11 @@ export default function LinksForCleaners() {
   border-radius: 16px;
 }
 
-           .lfc-hero-image {
-              object-position: center center;
-            }
+@media (min-width: 600px) {
+  .lfc-hero-image {
+    object-position: top;
+  }
+}
 
             .lfc-hero {
               padding: 72px 16px 40px;

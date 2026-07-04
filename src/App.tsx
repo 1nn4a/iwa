@@ -36,8 +36,9 @@ function StartRedirect() {
 
 function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boolean, setBlogSearchOpen: (v: boolean) => void }) {
 const location = useLocation()
-const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
-const isNoPaddingPage = isFormPage
+ const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
+const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'].includes(location.pathname)
+const isNoPaddingPage = isFormPage || isProductLandingPage
 const isLightFooterPage = isFormPage
   return (
     <div className="min-h-screen flex flex-col">

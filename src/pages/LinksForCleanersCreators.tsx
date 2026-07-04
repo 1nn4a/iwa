@@ -30,10 +30,10 @@ export default function LinksForCleanersCreators() {
   return (
     <>
       <Helmet>
-        <title>LinksForCleaners Creator Programme – Turn Cleaning Content Into Rewards | Innovate With Aima</title>
+        <title>LinksForCleaners Creator Programme- Turn Cleaning Content Into Rewards | Innovate With Aima</title>
         <meta name="description" content="A personalised profile for cleaning creators. Organise content, recommend products, attract brand deals and earn affiliate income from one link." />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="LinksForCleaners Creator Programme – Turn Content Into Income" />
+        <meta property="og:title" content="LinksForCleaners Creator Programme- Turn Content Into Income" />
         <meta property="og:description" content="Build a cleaning creator profile that works while you create. Affiliate links, brand deals, and bookings from one profile." />
         <meta property="og:image" content={shareImg} />
         <meta property="og:type" content="website" />
@@ -197,12 +197,11 @@ export default function LinksForCleanersCreators() {
        
 
        <style>{`
-       .lfcc-page {
-            width: 100%;
-            background: #083a6f;
-            margin-top: -80px;
-            padding-top: 80px;
-          }
+      .lfcc-page {
+  width: 100%;
+  background: #083a6f;
+  padding-top: 80px;
+}
           .lfcc-grid {
             display: grid;
             grid-template-columns: 1fr;

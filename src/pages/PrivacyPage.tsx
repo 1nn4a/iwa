@@ -13,7 +13,7 @@ return(
 <h1 className="text-5xl font-semibold mb-8">Privacy Policy</h1>
 
 <p className="text-white/70 mb-2">
-Innovatewithaima Ltd – Privacy Policy
+Innovatewithaima Ltd - Privacy Policy
 </p>
 
 <p className="text-white/50 mb-10">
