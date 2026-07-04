@@ -42,7 +42,7 @@ const firstCard: ProductCard = {
   title: 'Content Rewards',
   subtitle: 'Turn what you already post into revenue',
   img: cleanfluencerImg,
-  href: '/en/links-for-cleaners',
+  href: '/en/cleaning-programme',
 };
 
 const businessSolutions: ProductCard[] = [

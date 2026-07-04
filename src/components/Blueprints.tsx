@@ -230,18 +230,22 @@ export default function Blueprints() {
           flex-direction: column;
           gap: 12px;
         }
-        .lfc-modal-input {
-          min-height: 44px;
-          padding: 0 16px;
-          border-radius: 999px;
-          border: 1px solid rgba(0,0,0,0.15);
-          font-size: 14px;
-        }
-        .lfc-modal-submit {
-          border: none;
-          background: ${BANNER_COLOR};
-          color: #ffffff;
-        }
+     .lfc-modal-input {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-size: 14px;
+  background: #ffffff;
+  color: #0a0a0a;
+}
+      .lfc-modal-submit {
+  border: none;
+  background: ${BANNER_COLOR};
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(8,58,111,0.35);
+}
         .lfc-modal-success {
           font-size: 14px;
           color: #0a0a0a;

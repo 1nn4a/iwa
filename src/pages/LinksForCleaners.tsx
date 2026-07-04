@@ -193,58 +193,58 @@ export default function LinksForCleaners() {
         <meta property="og:description" content="Turn your social media following into cleaning clients. Instant quotes, Checkatrade reviews, and booking flows — built for UK cleaners." />
         <meta property="og:image" content={shareImg} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.innovatewithaima.com/linksforcleaners" />
+        <meta property="og:url" content="https://www.innovatewithaima.com/en/links-for-cleaners" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="LinksForCleaners – Market Your Cleaning Business Online" />
         <meta name="twitter:description" content="Personalised marketing pages for UK cleaning businesses. Quotes, bookings, and affiliate earnings from one link." />
         <meta name="twitter:image" content={shareImg} />
         <script type="application/ld+json">{`
           {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "How can a cleaning business get more clients from Facebook?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "LinksForCleaners gives cleaning businesses a single branded profile link for their social media bio. Visitors can request an instant quote, book a clean, or view pricing directly from that link — no website needed. Profiles include Checkatrade and Google review aggregation to build trust instantly."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is there a free quote tool for self-employed cleaners in the UK?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. LinksForCleaners includes an instant quote flow built for UK independent cleaners. Customers enter property size, service type, and postcode and receive a price range immediately. Cleaners can also offer fixed-price, callback, or booking-first flows depending on how they prefer to work."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is a clean-fluencer and how do they earn money?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "A clean-fluencer is a content creator in the cleaning niche who builds an audience on platforms like TikTok, Instagram, or YouTube. LinksForCleaners lets clean-fluencers earn passive income by sharing an affiliate profile link — when their followers sign up for cleaning services or purchase recommended products through that link, the creator earns a commission."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Do I need a website to market my cleaning business online?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No. LinksForCleaners provides a personalised marketing page that works as a full storefront — including services, pricing, reviews, and booking — accessible from a single shareable link. It is designed for UK cleaning businesses that want a professional online presence without building or maintaining a website."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How do I get more cleaning clients without paying for ads?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "LinksForCleaners is built to convert existing social media traffic into paying clients without ad spend. A branded profile page with instant quotes, visible pricing, and real reviews from Checkatrade and Google means visitors who find you organically can book or enquire immediately."
-                }
-              }
-            ]
-          }
+   "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can a cleaning business get more clients from Facebook?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cleaning businesses are more likely to generate enquiries from Facebook when every post, comment and message directs potential customers to one professional destination. A single page containing services, pricing, reviews and clear enquiry options reduces friction and makes it easier for visitors to take action. Links For Cleaners brings these elements together in one organised system with a shareable profile designed to convert social media traffic into enquiries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free quote tool for self-employed cleaners in the UK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many self-employed cleaners now use online quote tools to qualify enquiries before speaking with customers. Instant pricing helps set expectations and reduces repetitive conversations while still allowing businesses to decide how they handle bookings. Links For Cleaners includes configurable instant quote flows alongside fixed-price, callback and walkthrough options, bringing enquiries, quoting and bookings into one organised system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a clean-fluencer and how do they earn money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A clean-fluencer is a content creator who shares cleaning-related content across platforms such as TikTok, Instagram or YouTube. Many creators generate income by recommending products and services through affiliate programmes, earning commission when qualifying purchases are made through their links. Links For Cleaners allows creators to organise affiliate links, showcase trusted recommendations and manage their audience from one professional profile as part of the Creator Programme."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a website to market my cleaning business online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not always. Many independent cleaning businesses successfully market themselves using a dedicated profile that clearly presents their services, reviews, pricing and enquiry options from a single shareable link. This approach is often quicker to maintain while still providing customers with the information they need. Links For Cleaners brings these capabilities together in one organised system designed specifically for specialist cleaning businesses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get more cleaning clients without paying for ads?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Growing without paid advertising usually depends on converting existing visibility more effectively. Improving social profiles, encouraging reviews, making pricing easier to understand and reducing the steps required to enquire can all increase conversion from organic traffic. Links For Cleaners brings enquiries, reviews, instant quoting and booking journeys together in one organised system, helping businesses make better use of the visitors they already receive."
+      }
+    }
+  ]
+}
         `}</script>
       </Helmet>
 
@@ -269,7 +269,7 @@ export default function LinksForCleaners() {
                 </h1>
 
                 <p className="lfc-subheading">
-                  Providing cleaning businesses and clean-fluencers with personalised marketing pages designed to turn social media engagement into revenue streams from brands and clients.
+                  Providing cleaning businesses and clean-fluencers with personalised marketing pages designed to turn social media engagement into brand deals and clients.
                 </p>
 
      <div className="lfc-cta-row">
@@ -285,7 +285,7 @@ export default function LinksForCleaners() {
                     rel="noopener noreferrer"
                     className="lfc-register-link"
                   >
-                    Register
+                    Create an account
                   </a>
                 </div>
               </div>
@@ -311,36 +311,38 @@ export default function LinksForCleaners() {
 
     <QuickNav onTellColleague={handleTellColleague} tellLabel={copied ? 'Link copied' : 'Tell a colleague'} />
 
-        <section className="lfc-faq" id="faq">
-          <div className="lfc-faq-inner">
-            <p className="lfc-faq-eyebrow">Common Questions</p>
-            <h2 className="lfc-faq-heading">About Links For Cleaners</h2>
-            {[
-              {
-                q: "Do I need a website to market my cleaning business?",
-                a: "No. Your LinksForCleaners profile can work as your online business storefront."
-              },
-              {
-                q: "How do I get more cleaning clients without running ads?",
-                a: "Put your profile link in your bio. Visitors who find you organically or through content can price up and enquire instantly."
-              },
-              {
-                q: "Can I earn money from my cleaning content on TikTok or Instagram?",
-                a: "A clean-fluencer is a content creator in the cleaning niche who builds an audience on platforms like TikTok, Instagram, or YouTube. LinksForCleaners lets clean-fluencers earn commissions by driving impressions to their profile link, when a vistor signs up for cleaning services or purchase recommended products through that link, the creator earns a commission."
+<section className="lfc-faq" id="faq">
+  <div className="lfc-faq-inner">
+    <p className="lfc-faq-eyebrow">Frequently Asked Questions</p>
+    <h2 className="lfc-faq-heading">
+      Common Questions from UK Cleaning Businesses
+    </h2>
 
-              },
-              {
-                q: "Is there an instant quote tool for UK cleaners?",
-                a: "Built in. Customers enter postcode, property size, and service type and see a price range immediately. You get the full job details by email and dashboard notification."
-              },
-            ].map(({ q, a }, i) => (
-              <div key={i} className="lfc-faq-item">
-                <h3 className="lfc-faq-q">{q}</h3>
-                <p className="lfc-faq-a">{a}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+    {[
+      {
+        q: "Can I customise how customers receive quotes?",
+        a: "Yes. Every business works differently, so you decide how enquiries are handled. Offer instant quotes, fixed-price services, callback requests, walkthrough bookings or booking-first flows, with pricing bands, discounts and service settings tailored to your business. Links For Cleaners brings these capabilities together in one organised system."
+      },
+      {
+        q: "What happens after someone submits an enquiry?",
+        a: "Customers can request a callback, book a walkthrough or continue through your chosen enquiry journey. You'll receive the job details through your dashboard and email, and you can connect your existing scheduling tools to receive notifications there too. Links For Cleaners keeps the entire enquiry journey organised from first click to follow-up."
+      },
+      {
+        q: "Can I see how people interact with my profile?",
+        a: "Yes. Profile Analytics shows unique visitors, total profile views, traffic sources, link clicks, enquiry starts and completed bookings, helping you understand how customers discover your business and where opportunities are created. Links For Cleaners brings these insights together in one organised dashboard."
+      },
+      {
+        q: "Can I share my profile anywhere?",
+        a: "Yes. Every profile is designed to be shared across social media, messaging apps, QR codes, business cards and printed materials. Your profile is also indexable by search engines, giving customers one professional place to discover your services, pricing and enquiry options."
+      }
+    ].map(({ q, a }, i) => (
+      <div key={i} className="lfc-faq-item">
+        <h3 className="lfc-faq-q">{q}</h3>
+        <p className="lfc-faq-a">{a}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
 <Blueprints />
 
@@ -465,23 +467,25 @@ export default function LinksForCleaners() {
             user-select: none;
           }
 
-          .lfc-heading {
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 30px;
-            line-height: 1.1;
-            max-width: 460px;
-            margin: 0;
-          }
+       .lfc-heading {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.1;
+  max-width: 460px;
+  margin: 0;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.6);
+}
 
-          .lfc-subheading {
-            color: rgba(255,255,255,0.75);
-            font-size: 14px;
-            line-height: 1.6;
-            max-width: 460px;
-            margin: 0;
-          }
+     .lfc-subheading {
+  color: rgba(255,255,255,0.9);
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 460px;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+}
 
           .lfc-cta-row {
             display: flex;
@@ -547,9 +551,11 @@ export default function LinksForCleaners() {
           }
 .lfc-hero-image-wrap {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 680px;  
   width: 100%;
-  height: 100%;
   aspect-ratio: unset;
   border-radius: 0;
   overflow: hidden;
@@ -562,13 +568,13 @@ export default function LinksForCleaners() {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 60% 30%;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .lfc-hero-image-tint {
             position: absolute;
-            inset: 0;
+            inset: -1px;
             background: ${BANNER_COLOR};
             opacity: 0.2;
             pointer-events: none;
@@ -576,11 +582,11 @@ export default function LinksForCleaners() {
 
 .lfc-hero-image-blend {
   position: absolute;
-  inset: 0;
+  inset: -2px;
   background: ${BANNER_COLOR};
-  opacity: 0.9;
-  -webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 50%);
-  mask-image: linear-gradient(to top, black 0%, black 20%, transparent 50%);
+  opacity: 0.95;
+  -webkit-mask-image: linear-gradient(to top, black -5%, black 22%, transparent 55%);
+  mask-image: linear-gradient(to top, black -5%, black 22%, transparent 55%);
   backdrop-filter: blur(45px);
   -webkit-backdrop-filter: blur(45px);
   pointer-events: none;
@@ -671,7 +677,8 @@ export default function LinksForCleaners() {
             margin-bottom: 6px;
           }
 
-          @media (min-width: 768px) {
+
+          @media (min-width: 600px) {
  .lfc-hero-body {
   position: static;
   flex-direction: row;
@@ -686,9 +693,10 @@ export default function LinksForCleaners() {
               max-width: 560px;
             }
 .lfc-hero-image-blend {
+              inset: -1px;
               opacity: 0.94;
-              -webkit-mask-image: linear-gradient(to top, black 0%, black 8%, rgba(0,0,0,0.6) 30%, transparent 65%);
-              mask-image: linear-gradient(to top, black 0%, black 8%, rgba(0,0,0,0.6) 30%, transparent 65%);
+              -webkit-mask-image: linear-gradient(to top, black 0%, black 14%, rgba(0,0,0,0.6) 35%, transparent 60%);
+              mask-image: linear-gradient(to top, black 0%, black 14%, rgba(0,0,0,0.6) 35%, transparent 60%);
               backdrop-filter: blur(70px);
               -webkit-backdrop-filter: blur(70px);
               clip-path: inset(0 round 16px);
@@ -705,7 +713,7 @@ export default function LinksForCleaners() {
             }
 
             .lfc-subheading {
-              font-size: 15px;
+              font-size: 19px;
             }
 
         .lfc-hero-image-wrap {
@@ -719,7 +727,7 @@ export default function LinksForCleaners() {
 }
 
            .lfc-hero-image {
-              object-position: center top;
+              object-position: center center;
             }
 
             .lfc-hero {
@@ -727,11 +735,18 @@ export default function LinksForCleaners() {
             }
 
        .lfc-hero-card {
-              border-radius: 20px;
+              border-radius: 30px;
             }
 
    
-           
+           @media (min-width: 600px) and (max-width: 1025px) {
+            .lfc-heading {
+              font-size: 35px;
+            }
+            .lfc-subheading {
+              font-size: 16px;
+            }
+          }
 
           }
  .lfc-faq {
