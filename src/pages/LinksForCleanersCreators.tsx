@@ -7,6 +7,7 @@ import heroDesktopImg from '../assets/linksforcleaners@.dprogramme.jpg';
 import heroMobileImg from '../assets/linksforcleaners@.pprogramme.jpg';
 import shareImg from '../assets/linksforcleaners@.cprogramme.jpg';
 // import QuickNav from '../components/QuickNav';
+import GlossyButton from '../components/GlossyButton';
 
 const faqs: [string, string][] = [
   ['What is a clean-fluencer?', 'A clean-fluencer is a creator who shares cleaning-related content across platforms such as TikTok, Instagram or YouTube. Many build audiences around cleaning tips, product reviews, transformations and business advice. Links For Cleaners provides a professional profile where creators can organise their content, recommendations, affiliate links and business enquiries in one place.'],
@@ -106,10 +107,9 @@ export default function LinksForCleanersCreators() {
           </button>
         </div>
 
-        <section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-4 pb-16">
-          <div className="lfcc-grid">
-            {/* HERO CARD */}
-            <div className="lfcc-hero-card">
+<section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-4 pb-1">
+            <div className="lfcc-grid">
+             <div className="lfcc-hero-card">
               <div
                 className="absolute inset-0 bg-cover bg-center select-none hidden md:block"
                 style={{ backgroundImage: `url(${heroDesktopImg})`, WebkitTouchCallout: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
@@ -122,16 +122,22 @@ export default function LinksForCleanersCreators() {
               />
             <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
-            <a href="https://profile.forcleaners.co.uk/create"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Create an account"
-                className="absolute bottom-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </a>
+          <GlossyButton
+    as="a"
+    
+    
+    
+    href="https://profile.forcleaners.co.uk/create"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Create an account"
+    shape="circle"
+    className="absolute bottom-4 right-4 z-20"
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  </GlossyButton>
 
               <div className="relative z-10 flex h-full flex-col items-center justify-center text-center p-8 md:p-10">
                 <div className="max-w-sm">

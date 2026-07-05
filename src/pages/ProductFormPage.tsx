@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async'
 import logo from '../assets/aima.png'
 import marketingCard1 from '../assets/lfc01062602xiwa.jpg'
 import marketingCard2 from '../assets/lfc01062603xiwa.jpg'
+import GlossyButton from '../components/GlossyButton';
 
  
  declare global {
@@ -815,20 +816,13 @@ if (!res.ok) {
                             </p>
                           </motion.div>
 
-                          <motion.a
+                      <GlossyButton
+                            as="a"
                             href="/#"
-                            initial={{ opacity: 0, y: 6 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="mt-4 inline-flex items-center rounded-full px-7 py-[13px] text-[15px] font-semibold text-white"
-                            style={{
-                              background: 'linear-gradient(135deg, #5c6cff 0%, #8a96ff 100%)',
-                              boxShadow:  '0 4px 16px rgba(92,108,255,0.35)',
-                            }}
+                            className="mt-4"
                           >
                             Back to Home
-                          </motion.a>
+                          </GlossyButton>
                         </div>
                       </GlassCard>
 
@@ -1001,8 +995,7 @@ if (!res.ok) {
                         </a>.
                       </p>
 
-                 <motion.button
-                        type="button"
+               <GlossyButton
                         onClick={() => {
                           if (wantsCallback && (normalizedPhone === '' || normalizedPhone === '+44')) {
                             setShowPhoneTip(true)
@@ -1011,13 +1004,8 @@ if (!res.ok) {
                           handleFinalSubmit()
                         }}
                         disabled={phase2 === 'loading' || !!phoneErr || (wantsCallback && (!preferredDay || !preferredTime))}
-                        whileTap={{ scale: 0.97 }}
-                        className="w-full rounded-[14px] py-[14px] text-[16px] font-semibold text-white flex items-center justify-center gap-2"
-                        style={{
-                          background: 'linear-gradient(135deg, #5c6cff 0%, #8a96ff 100%)',
-                          boxShadow:  '0 4px 18px rgba(92,108,255,0.36)',
-                          opacity:    phase2 === 'loading' ? 0.72 : 1,
-                        }}
+                        className="w-full"
+                        style={{ opacity: phase2 === 'loading' ? 0.72 : 1 }}
                         aria-busy={phase2 === 'loading'}
                       >
                 {phase2 === 'loading' && <Spinner />}
@@ -1026,7 +1014,7 @@ if (!res.ok) {
                           : (normalizedPhone === '' || normalizedPhone === '+44')
                             ? 'Skip'
                             : 'Finish'}
-                      </motion.button>
+                      </GlossyButton>
                     </motion.div>
                   ) : (
                     <motion.div
@@ -1174,22 +1162,16 @@ if (!res.ok) {
                           Privacy Policy
                         </a>.
                       </p>
-                       <motion.button
-                        type="button"
+                  <GlossyButton
                         onClick={phase === 'error' ? () => window.location.reload() : handleSubmit}
                 disabled={phase === 'loading'}
-                        whileTap={{ scale: 0.97 }}
-                        className="w-full rounded-[14px] py-[14px] text-[16px] font-semibold text-white flex items-center justify-center gap-2"
-                        style={{
-                          background: 'linear-gradient(135deg, #5c6cff 0%, #8a96ff 100%)',
-                          boxShadow:  '0 4px 18px rgba(92,108,255,0.36)',
-                          opacity:    (phase === 'loading' || phase === 'error') ? 0.72 : 1,
-                        }}
+                        className="w-full"
+                        style={{ opacity: (phase === 'loading' || phase === 'error') ? 0.72 : 1 }}
                         aria-busy={phase === 'loading'}
                       >
                     {(phase === 'loading' || phase === 'error') && <Spinner />}
   {phase === 'loading' ? 'Submitting…' : phase === 'error' ? 'Refreshing…' : 'Learn More'}
-                      </motion.button>
+                      </GlossyButton>
       <div className="lg:hidden pt-8 flex justify-center">
                         <MarketingCards />
                       </div>

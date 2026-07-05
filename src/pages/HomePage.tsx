@@ -11,6 +11,8 @@ import linksManagersMobile from '../assets/linksformangers@.q3062026.jpg'
 import aimaDesktopImg from '../assets/aima@.q602014412.jpg'
 import aimaMobileImg from '../assets/aima@.q3010726.jpg'
 import linksAestheticsMobile from '../assets/linksforaesthetics@.q3010726.jpg'
+import GlossyButton from '../components/GlossyButton';
+
 
 import { Helmet } from "react-helmet-async"
 
@@ -177,11 +179,11 @@ We enable specialist businesses and independent professionals to connect, share 
                   </div>
                 )}
                 {card.href && (
-                  <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M7 17L17 7M9 7h8v8" />
-                    </svg>
-                  </span>
+             <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 17L17 7M9 7h8v8" />
+  </svg>
+</GlossyButton>
                 )}
               </>
             )
@@ -255,11 +257,11 @@ We enable specialist businesses and independent professionals to connect, share 
                     </h3>
                   </div>
                 )}
-                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 17L17 7M9 7h8v8" />
-                  </svg>
-                </span>
+            <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 17L17 7M9 7h8v8" />
+  </svg>
+</GlossyButton>
               </a>
             </div>
 
@@ -287,11 +289,11 @@ We enable specialist businesses and independent professionals to connect, share 
                     </h3>
                   </div>
                 )}
-                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 17L17 7M9 7h8v8" />
-                  </svg>
-                </span>
+             <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 17L17 7M9 7h8v8" />
+  </svg>
+</GlossyButton>
  </Link>
               
               <Link
@@ -317,11 +319,11 @@ We enable specialist businesses and independent professionals to connect, share 
                     </h3>
                   </div>
                 )}
-                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 17L17 7M9 7h8v8" />
-                  </svg>
-                </span>
+        <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 17L17 7M9 7h8v8" />
+  </svg>
+</GlossyButton>
  </Link>
               
           <Link
@@ -347,22 +349,19 @@ We enable specialist businesses and independent professionals to connect, share 
                     </h3>
                   </div>
                 )}
-                <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 17L17 7M9 7h8v8" />
-                  </svg>
-                </span>
+            <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 17L17 7M9 7h8v8" />
+  </svg>
+</GlossyButton>
  </Link>            </div>
           </div>
           </div>
 
-          <div className="mt-6 flex justify-center">
-           <Link
-  to="/en/products"
-  className="rounded-full bg-white/10 px-4 md:px-8 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-white/20"
->
+      <div className="mt-6 flex justify-center">
+           <GlossyButton as={Link} to="/en/products">
   More
-</Link>
+</GlossyButton>
           </div>
 
           <div className="mt-12 grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">

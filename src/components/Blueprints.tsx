@@ -1,6 +1,7 @@
 // Blueprints.tsx
 import { useState } from 'react';
 import { useTurnstile } from '../hooks/useTurnstile';
+import GlossyButton from './GlossyButton';
 
 const BANNER_COLOR = '#083a6f';
 
@@ -48,9 +49,9 @@ export default function Blueprints() {
           <p className="lfc-blueprints-copy">
             A guided playbook for getting the most out of your profile, from first setup through to day to day running. Getting started steps, feature breakdowns, and the operational playbook, all in one place.
           </p>
-          <button type="button" className="lfc-btn-primary lfc-blueprints-btn" onClick={() => setOpen(true)}>
+       <GlossyButton onClick={() => setOpen(true)}>
             Notify me
-          </button>
+          </GlossyButton>
         </div>
       </section>
 
@@ -113,16 +114,16 @@ export default function Blueprints() {
       )}
 
       <style>{`
-        .lfc-blueprints {
-          background: #ffffff;
-          padding: 64px 16px;
-        }
-        .lfc-blueprints-inner {
+    .lfc-blueprints {
+  background: ${BANNER_COLOR};
+  padding: 64px 16px;
+}
+       .lfc-blueprints-inner {
           max-width: 720px;
           margin: 0 auto;
           padding: 40px;
           border-radius: 20px;
-          background: ${BANNER_COLOR};
+          background: #0a4e8f;
         }
         .lfc-blueprints-inner .lfc-faq-eyebrow {
           color: #ffffff;
@@ -138,9 +139,7 @@ export default function Blueprints() {
           margin: 0 0 24px;
           max-width: 560px;
         }
-        .lfc-blueprints-btn {
-          border: none;
-        }
+       
 
         .lfc-modal-overlay {
           position: fixed;

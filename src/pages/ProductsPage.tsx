@@ -11,6 +11,7 @@ import linksForTradiesImg from '../assets/linksfortradies@.q3062026.jpg';
 import linksForCleanersImg from '../assets/linksforcleaners@.instantq.jpg';
 import linksForManagersImg from '../assets/linksformangers@.q3062026.jpg';
 import linksForAestheticsImg from '../assets/linksforaesthetics@.q3010726.jpg';
+import GlossyButton from '../components/GlossyButton';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
@@ -102,12 +103,12 @@ function ProductCardTile({ card }: { card: ProductCard }) {
     </div>
   </div>
 )}
-      {card.href && (
-        <span className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c6cff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+  {card.href && (
+        <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
-        </span>
+        </GlossyButton>
       )}
     </>
   );

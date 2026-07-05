@@ -1,5 +1,5 @@
-//Navbar
-import { useState, useEffect, useRef } from 'react'
+// Navbar.tsx
+ import { useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo.png'
 
@@ -49,6 +49,65 @@ const NAV_TREE: NavSection[] = [
     ],
   },
 ]
+
+const whiteGlossyStyle = `
+  .navbar-white-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    border-radius: 999px;
+    width: 100%;
+    height: 44px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #083a6f;
+    background: radial-gradient(
+      ellipse 110% 120% at 50% 18%,
+      #FFFFFF 0%,
+      #FDFEFF 15%,
+      #FAFCFF 25%,
+      #F5F8FC 35%,
+      #EFF3F9 45%,
+      #E8EDF5 55%,
+      #E1E7F0 65%,
+      #D9E0EC 75%,
+      #D2DAE8 83%,
+      #CCD5E4 90%,
+      #C6D0E1 95%,
+      #C0CADD 100%
+    );
+    box-shadow:
+      0 6px 22px 0 rgba(8, 58, 111, 0.18),
+      inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  }
+  .navbar-white-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.5) 0%,
+      rgba(255,255,255,0.2) 30%,
+      rgba(255,255,255,0.0) 45%
+    );
+  }
+  .navbar-white-btn:active {
+    transform: translateY(1px);
+  }
+  .navbar-white-btn-content {
+    position: relative;
+    z-index: 2;
+  }
+`
 
 function ChevronIcon({ open }: { open: boolean }) {
   return (
@@ -212,23 +271,20 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
           </div>
 
         </div>
+      </header>
 
-        {mobileOpen && (
-          <div className="md:hidden border-t border-white/8 bg-black/60 backdrop-blur-xl">
-            <nav className="max-w-[1180px] mx-auto px-4 py-3 flex flex-col gap-0.5" aria-label="Mobile navigation">
-
-              <div className="px-3 pt-1 pb-2">
-                <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/25">Navigate</span>
-              </div>
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-0 top-[65px] z-50 bg-black overflow-y-auto">
+          <nav className="max-w-[1180px] mx-auto px-4 py-4 flex flex-col" aria-label="Mobile navigation">
 
               {NAV_TREE.map(section => {
                 const isOpen = openMobileSection === section.label
                 return (
-                  <div key={section.label} className="border-b border-white/7 last:border-b-0">
+                  <div key={section.label} className="border-b border-white/10">
                     <button
                       type="button"
                       onClick={() => setOpenMobileSection(isOpen ? null : section.label)}
-                      className="flex w-full items-center justify-between px-3 py-3 rounded-lg text-sm font-semibold text-white/85 hover:text-white hover:bg-white/6 transition-all"
+                      className="flex w-full items-center justify-between py-5 text-xl font-semibold text-white"
                       aria-expanded={isOpen}
                     >
                       {section.label}
@@ -236,13 +292,13 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
                     </button>
 
                     {isOpen && (
-                      <div className="pb-2 pl-3 flex flex-col gap-0.5">
+                      <div className="pb-4 flex flex-col gap-1">
                         {section.items.map(item => (
                           <NavItemLink
                             key={item.label}
                             item={item}
                             onClick={closeMobile}
-                            className="px-3 py-2.5 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/6 transition-all"
+                            className="py-3 text-lg text-white/70 hover:text-white transition-all"
                           />
                         ))}
                       </div>
@@ -253,30 +309,25 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
 
               <button
                 onClick={() => { closeMobile(); onOpenBlogSearch() }}
-                className="flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium text-white/50 hover:text-white/85 hover:bg-white/5 transition-all text-left border border-white/7 bg-white/[0.02] mt-2"
+                className="flex items-center gap-3 py-5 text-xl font-semibold text-white text-left border-b border-white/10"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
                   <circle cx="11" cy="11" r="8" />
                   <path d="M21 21l-4.35-4.35" />
                 </svg>
                 Search articles
-                <span className="ml-auto text-[10px] text-white/25 font-medium">16 published</span>
               </button>
 
-              <div className="pt-2 pb-1">
-                <NavLink
-                  to="/apply"
-                  onClick={closeMobile}
-                  className="flex items-center justify-center w-full h-10 rounded-full bg-white/10 text-sm font-semibold text-white hover:bg-white/16 transition-all"
-                >
-                  Enquire
+              <div className="pt-6">
+                <NavLink to="/apply" onClick={closeMobile} className="navbar-white-btn">
+                  <span className="navbar-white-btn-content">Enquire</span>
                 </NavLink>
               </div>
 
             </nav>
+            <style>{whiteGlossyStyle}</style>
           </div>
         )}
-      </header>
 
       {mobileOpen && (
         <div

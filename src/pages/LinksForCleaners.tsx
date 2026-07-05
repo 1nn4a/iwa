@@ -7,6 +7,7 @@ import heroImg from '../assets/linksforcleaners@.instantq.jpg';
 import shareImg from '../assets/lfc01062602xiwa.jpg';
 import QuickNav from '../components/QuickNav';
 import Blueprints from '../components/Blueprints';
+import GlossyButton from '../components/GlossyButton';
 const BANNER_COLOR = '#083a6f';
 
 type ChangelogEntry = {
@@ -273,19 +274,15 @@ export default function LinksForCleaners() {
                 </p>
 
      <div className="lfc-cta-row">
-               <a  href="https://links.forcleaners.co.uk/cleansco"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="lfc-btn-tertiary"
-                  >
-                    See a live profile
-                  </a>
-                  <a  href="https://profile.forcleaners.co.uk/create"
+         <GlossyButton as="a" href="https://www.forcleaners.co.uk" target="_blank" rel="noopener noreferrer">
+    Visit Site
+  </GlossyButton>
+                  <a  href="https://links.forcleaners.co.uk/cleansco"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="lfc-register-link"
                   >
-                    Create an account
+                    See a live profile
                   </a>
                 </div>
               </div>
@@ -532,22 +529,7 @@ export default function LinksForCleaners() {
             text-underline-offset: 3px;
           }
 
- .lfc-btn-tertiary {
-             display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 44px;
-            padding: 0 22px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, rgba(212,175,90,0.28) 0%, rgba(255,215,140,0.18) 100%);
-            border: 1px solid rgba(230,190,110,0.45);
-            color: #ffffff;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-          }
+ 
 .lfc-hero-image-wrap {
   position: absolute;
   top: 0;
@@ -594,87 +576,87 @@ export default function LinksForCleaners() {
   -webkit-clip-path: inset(0 round inherit);
 }
 
-          .lfc-changelog {
-            background: #ffffff;
-            padding: 48px 16px 64px;
-          }
+.lfc-changelog {
+  background: ${BANNER_COLOR};
+  padding: 48px 16px 24px;
+}
 
-          .lfc-changelog-inner {
-            max-width: 900px;
-            margin: 0 auto;
-          }
+.lfc-changelog-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-  .lfc-changelog-header {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 28px;
-            color: #0a0a0a;
-            margin: 0 0 32px;
-          }
-          .lfc-entry {
-            padding: 24px 0;
-            border-top: 1px solid rgba(0,0,0,0.08);
-          }
+.lfc-changelog-header {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: #ffffff;
+  margin: 0 0 32px;
+}
+.lfc-entry {
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
 
-          .lfc-entry-head {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-          }
+.lfc-entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
 
-          .lfc-entry-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: #0a0a0a;
-            margin: 0;
-          }
+.lfc-entry-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
 
-          .lfc-entry-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 10px;
-            border-radius: 999px;
-          }
+.lfc-entry-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
 
-          .lfc-entry-badge-new {
-            background: rgba(92,108,255,0.12);
-            color: #5c6cff;
-          }
+.lfc-entry-badge-new {
+  background: rgba(92,108,255,0.18);
+  color: #8da2ff;
+}
 
-          .lfc-entry-badge-fix {
-            background: rgba(0,0,0,0.06);
-            color: #444444;
-          }
+.lfc-entry-badge-fix {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.75);
+}
 
-          .lfc-entry-date {
-            font-size: 12px;
-            color: rgba(0,0,0,0.45);
-          }
+.lfc-entry-date {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
 
-          .lfc-entry-section {
-            margin-top: 10px;
-          }
+.lfc-entry-section {
+  margin-top: 10px;
+}
 
-          .lfc-entry-sublabel {
-            font-size: 13px;
-            font-weight: 700;
-            color: #0a0a0a;
-            margin: 12px 0 6px;
-          }
+.lfc-entry-sublabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 12px 0 6px;
+}
 
-          .lfc-entry-list {
-            margin: 0;
-            padding-left: 18px;
-          }
+.lfc-entry-list {
+  margin: 0;
+  padding-left: 18px;
+}
 
-          .lfc-entry-list li {
-            font-size: 14px;
-            line-height: 1.6;
-            color: rgba(0,0,0,0.7);
-            margin-bottom: 6px;
-          }
+.lfc-entry-list li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 6px;
+}
 
 
           @media (min-width: 600px) {
@@ -750,45 +732,45 @@ export default function LinksForCleaners() {
           }
 
           }
- .lfc-faq {
-            background: #f7f7f8;
-            padding: 64px 16px;
-          }
-          .lfc-faq-inner {
-            max-width: 720px;
-            margin: 0 auto;
-          }
-          .lfc-faq-eyebrow {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #5c6cff;
-            margin: 0 0 12px;
-          }
-          .lfc-faq-heading {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 28px;
-            color: #0a0a0a;
-            margin: 0 0 40px;
-          }
-          .lfc-faq-item {
-            padding: 24px 0;
-            border-top: 1px solid rgba(0,0,0,0.08);
-          }
-          .lfc-faq-q {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0a0a0a;
-            margin: 0 0 8px;
-          }
-          .lfc-faq-a {
-            font-size: 14px;
-            line-height: 1.7;
-            color: rgba(0,0,0,0.6);
-            margin: 0;
-          }
+.lfc-faq {
+  background: ${BANNER_COLOR};
+  padding: 64px 16px;
+}
+.lfc-faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.lfc-faq-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8da2ff;
+  margin: 0 0 12px;
+}
+.lfc-faq-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: #ffffff;
+  margin: 0 0 40px;
+}
+.lfc-faq-item {
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.lfc-faq-q {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+.lfc-faq-a {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+}
         `}</style>
               </div>
     </>
