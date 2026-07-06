@@ -141,10 +141,11 @@ export default function ProductsPage() {
 
   return (
     <>
-    <Helmet>
-        <title>Products</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
+  <Helmet>
+  <title>Products</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://innovatewithaima.com/en/products" />
+</Helmet>
 
    <div
         className="fixed inset-0 -z-10"

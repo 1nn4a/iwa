@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 const defs = [
   {
     title: '“ASSOCIATION” / “NETWORK”',
@@ -70,7 +71,11 @@ export default function DefinitionsPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+return (
+    <>
+    <Helmet>
+      <link rel="canonical" href="https://innovatewithaima.com/definitions" />
+    </Helmet>
     <main className="mx-auto max-w-[1180px] px-5 pt-28 md:px-8">
       <motion.section
         initial={{ opacity: 0, y: 18 }}
@@ -101,7 +106,8 @@ export default function DefinitionsPage() {
             <p className="mt-3 text-sm leading-7 text-white/72 md:text-base">{item.text}</p>
           </motion.article>
         ))}
-      </section>
+ </section>
     </main>
+    </>
   );
 }

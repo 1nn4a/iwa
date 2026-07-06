@@ -539,12 +539,13 @@ if (!res.ok) {
   }
   return (
     <>
-      <Helmet>
-      <title>{meta.title} — Access the right products · Innovate With Aima</title>
+   <Helmet>
+<title>{meta.title} -Access the right products · Innovate With Aima</title>
 <meta name="description" content={`Find out if ${meta.title} is right for you, part of the Innovate With Aima professional network.`} />
-        <meta name="robots" content="noindex, nofollow" />
-         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-      </Helmet>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href={`https://innovatewithaima.com/product-${product}-form`} />
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</Helmet>
     <div
         className="min-h-[100dvh] flex flex-col"
         style={{ background: 'linear-gradient(180deg, #f2f2f7 0%, #e5e5ed 100%)' }}

@@ -107,14 +107,11 @@ export default function HomePage() {
 
   return (
     <>
-      <Helmet>
-        <title>Client acquisition network for specialised businesses</title>
-        <meta
-          name="description"
-          content="Connect with skilled freelancers, contractors and entrepreneurs. We simplify client acquisition and manage relationships for reliable results."
-        />
-      </Helmet>
-
+   <Helmet>
+  <title>Client acquisition network for specialised businesses</title>
+  <meta name="description" content="Connect with skilled freelancers, contractors and entrepreneurs. We simplify client acquisition and manage relationships for reliable results." />
+  <link rel="canonical" href="https://innovatewithaima.com/" />
+</Helmet>
       <main>
 <section className="mx-auto max-w-[1180px] px-4 md:px-8 pt-10 md:pt-18">
       <motion.div

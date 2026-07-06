@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import {
   blogs,
   searchBlogs,
@@ -151,7 +152,11 @@ export default function BlogsPage() {
     setQuery('')
   }
 
-  return (
+return (
+    <>
+    <Helmet>
+      <link rel="canonical" href="https://innovatewithaima.com/blog" />
+    </Helmet>
     <div className="bsp-wrap">
       <div className="bsp-hero">
         <div className="bsp-eyebrow">Intelligence Library</div>
@@ -304,7 +309,8 @@ export default function BlogsPage() {
             </div>
           )}
         </main>
-      </div>
+  </div>
     </div>
+    </>
   )
 }

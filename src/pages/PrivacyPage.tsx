@@ -6,6 +6,7 @@ return(
 <Helmet>
 <title>Privacy Policy | Innovate With Aima</title>
 <meta name="description" content="Privacy policy for Innovate With Aima explaining how we collect, use and protect personal data in accordance with UK data protection laws."/>
+<link rel="canonical" href="https://innovatewithaima.com/privacy" />
 </Helmet>
 
 <main className="mx-auto max-w-[900px] px-5 pt-32 pb-24">
@@ -17,7 +18,7 @@ Innovatewithaima Ltd - Privacy Policy
 </p>
 
 <p className="text-white/50 mb-10">
-Last updated: 07/01/2026
+Last updated: 06/07/2026
 </p>
 
 <div className="space-y-8 text-white/75 leading-7">

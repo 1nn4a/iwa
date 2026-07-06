@@ -38,7 +38,9 @@ export default function LinksForCleanersCreators() {
         <meta property="og:description" content="Build a cleaning creator profile that works while you create. Affiliate links, brand deals, and bookings from one profile." />
         <meta property="og:image" content={shareImg} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.innovatewithaima.com/en/cleaning-programme" />
+<meta property="og:url" content="https://innovatewithaima.com/en/cleaning-programme" />
+<meta property="og:url" content="https://innovatewithaima.com/en/cleaning-programme" />
+<link rel="canonical" href="https://innovatewithaima.com/en/cleaning-programme" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="LinksForCleaners Creator Programme" />
         <meta name="twitter:description" content="A personalised profile for cleaning creators. Content, recommendations and affiliate income from one link." />

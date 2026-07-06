@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { blogs } from '../data/blogs'
 import './blog.css'
 
@@ -56,11 +57,15 @@ export default function BlogPage() {
     return () => { document.title = prev }
   }, [blog])
 
-  if (!blog) return <Navigate to="/blog" replace />
+if (!blog) return <Navigate to="/blog" replace />
 
   const blocks = parseContent(blog.content)
 
   return (
+    <>
+    <Helmet>
+      <link rel="canonical" href={`https://innovatewithaima.com${blog.url}`} />
+    </Helmet>
     <div className="bp-wrap">
       <div className="bp-inner">
 
@@ -120,7 +125,8 @@ export default function BlogPage() {
           <span className="bp-foot-date">Updated {blog.modifiedDate}</span>
         </div>
 
-      </div>
     </div>
+    </div>
+    </>
   )
 }

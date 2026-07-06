@@ -6,6 +6,7 @@ return (
 <Helmet>
 <title>Terms & Conditions | Innovate With Aima</title>
 <meta name="description" content="Network participation terms and conditions for Innovate With Aima including membership, opportunities, payments, confidentiality and conduct requirements."/>
+<link rel="canonical" href="https://innovatewithaima.com/terms" />
 </Helmet>
 
 <main className="mx-auto max-w-[900px] px-5 pt-32 pb-24 text-white">

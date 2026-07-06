@@ -194,7 +194,9 @@ export default function LinksForCleaners() {
         <meta property="og:description" content="Turn your social media following into cleaning clients. Instant quotes, Checkatrade reviews, and booking flows — built for UK cleaners." />
         <meta property="og:image" content={shareImg} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.innovatewithaima.com/en/links-for-cleaners" />
+<meta property="og:url" content="https://innovatewithaima.com/en/links-for-cleaners" />
+<meta property="og:url" content="https://innovatewithaima.com/en/links-for-cleaners" />
+<link rel="canonical" href="https://innovatewithaima.com/en/links-for-cleaners" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="LinksForCleaners- Market Your Cleaning Business Online" />
         <meta name="twitter:description" content="Personalised marketing pages for UK cleaning businesses. Quotes, bookings, and affiliate earnings from one link." />
@@ -236,12 +238,20 @@ export default function LinksForCleaners() {
         "text": "Not always. Many independent cleaning businesses successfully market themselves using a dedicated profile that clearly presents their services, reviews, pricing and enquiry options from a single shareable link. This approach is often quicker to maintain while still providing customers with the information they need. Links For Cleaners brings these capabilities together in one organised system designed specifically for specialist cleaning businesses."
       }
     },
-    {
+   {
       "@type": "Question",
       "name": "How do I get more cleaning clients without paying for ads?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Growing without paid advertising usually depends on converting existing visibility more effectively. Improving social profiles, encouraging reviews, making pricing easier to understand and reducing the steps required to enquire can all increase conversion from organic traffic. Links For Cleaners brings enquiries, reviews, instant quoting and booking journeys together in one organised system, helping businesses make better use of the visitors they already receive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Links For Cleaners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Links For Cleaners is a shareable profile link that brings together everything people need to know about your cleaning business or brand in one place. It can include your services, reviews, social media, recommended products and enquiry options, making it easier for potential customers to discover, trust and contact you. It's designed for cleaning professionals and creators across England (including the North East, North West, Yorkshire and the Humber, East Midlands, West Midlands, East of England, London, South East and South West), as well as Scotland, Wales and Northern Ireland."
       }
     }
   ]
@@ -315,7 +325,7 @@ export default function LinksForCleaners() {
       Common Questions from UK Cleaning Businesses
     </h2>
 
-    {[
+{([
       {
         q: "Can I customise how customers receive quotes?",
         a: "Yes. Every business works differently, so you decide how enquiries are handled. Offer instant quotes, fixed-price services, callback requests, walkthrough bookings or booking-first flows, with pricing bands, discounts and service settings tailored to your business. Links For Cleaners brings these capabilities together in one organised system."
@@ -328,11 +338,19 @@ export default function LinksForCleaners() {
         q: "Can I see how people interact with my profile?",
         a: "Yes. Profile Analytics shows unique visitors, total profile views, traffic sources, link clicks, enquiry starts and completed bookings, helping you understand how customers discover your business and where opportunities are created. Links For Cleaners brings these insights together in one organised dashboard."
       },
-      {
+   {
         q: "Can I share my profile anywhere?",
         a: "Yes. Every profile is designed to be shared across social media, messaging apps, QR codes, business cards and printed materials. Your profile is also indexable by search engines, giving customers one professional place to discover your services, pricing and enquiry options."
+      },
+      {
+        q: "What is Links For Cleaners?",
+        a: (
+          <>
+            Links For Cleaners is a shareable profile link that brings together everything people need to know about your cleaning business or brand in one place. It can include your services, reviews, social media, recommended products and enquiry options, making it easier for potential customers to discover, trust and contact you. It's designed for cleaning professionals and creators across England, Scotland, Wales and Northern Ireland. You can secure your brand by visiting <a href="https://links.forcleaners.co.uk" className="lfc-faq-link">links.forcleaners.co.uk</a>.
+          </>
+  )
       }
-    ].map(({ q, a }, i) => (
+    ] as { q: string; a: React.ReactNode }[]).map(({ q, a }, i) => (
       <div key={i} className="lfc-faq-item">
         <h3 className="lfc-faq-q">{q}</h3>
         <p className="lfc-faq-a">{a}</p>
@@ -770,6 +788,12 @@ export default function LinksForCleaners() {
   line-height: 1.7;
   color: rgba(255,255,255,0.65);
   margin: 0;
+}
+.lfc-faq-link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
 }
         `}</style>
               </div>

@@ -6,10 +6,8 @@ return(
 <>
 <Helmet>
 <title>Apply | Innovate With Aima</title>
-<meta
-name="description"
-content="Apply to join the Innovate With Aima network. Membership is selective and reviewed individually."
-/>
+<meta name="description" content="Apply to join the Innovate With Aima network. Membership is selective and reviewed individually." />
+<link rel="canonical" href="https://innovatewithaima.com/apply" />
 </Helmet>
 
 <main className="mx-auto max-w-[1100px] px-4 md:px-8 pt-32 pb-24">
