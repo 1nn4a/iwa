@@ -343,7 +343,7 @@ export default function LinksForCleaners() {
         a: "Yes. Every profile is designed to be shared across social media, messaging apps, QR codes, business cards and printed materials. Your profile is also indexable by search engines, giving customers one professional place to discover your services, pricing and enquiry options."
       },
       {
-        q: "What is Links For Cleaners?",
+        q: "What are Links For Cleaners?",
         a: (
           <>
             Links For Cleaners is a shareable profile link that brings together everything people need to know about your cleaning business or brand in one place. It can include your services, reviews, social media, recommended products and enquiry options, making it easier for potential customers to discover, trust and contact you. It's designed for cleaning professionals and creators across England, Scotland, Wales and Northern Ireland. You can secure your brand by visiting <a href="https://links.forcleaners.co.uk" className="lfc-faq-link">links.forcleaners.co.uk</a>.
