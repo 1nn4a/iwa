@@ -326,6 +326,14 @@ export default function LinksForCleaners() {
     </h2>
 
 {([
+   {
+        q: "What are Links For Cleaners?",
+        a: (
+          <>
+            Links For Cleaners is a shareable profile link that brings together everything people need to know about your cleaning business or brand in one place. It can include your services, reviews, social media, recommended products and enquiry options, making it easier for potential customers to discover, trust and contact you. It's designed for cleaning professionals and creators across England, Scotland, Wales and Northern Ireland. You can secure your brand by visiting <a href="https://links.forcleaners.co.uk" className="lfc-faq-link">links.forcleaners.co.uk</a>.
+          </>
+  )
+      },
       {
         q: "Can I customise how customers receive quotes?",
         a: "Yes. Every business works differently, so you decide how enquiries are handled. Offer instant quotes, fixed-price services, callback requests, walkthrough bookings or booking-first flows, with pricing bands, discounts and service settings tailored to your business. Links For Cleaners brings these capabilities together in one organised system."
@@ -341,15 +349,8 @@ export default function LinksForCleaners() {
    {
         q: "Can I share my profile anywhere?",
         a: "Yes. Every profile is designed to be shared across social media, messaging apps, QR codes, business cards and printed materials. Your profile is also indexable by search engines, giving customers one professional place to discover your services, pricing and enquiry options."
-      },
-      {
-        q: "What are Links For Cleaners?",
-        a: (
-          <>
-            Links For Cleaners is a shareable profile link that brings together everything people need to know about your cleaning business or brand in one place. It can include your services, reviews, social media, recommended products and enquiry options, making it easier for potential customers to discover, trust and contact you. It's designed for cleaning professionals and creators across England, Scotland, Wales and Northern Ireland. You can secure your brand by visiting <a href="https://links.forcleaners.co.uk" className="lfc-faq-link">links.forcleaners.co.uk</a>.
-          </>
-  )
       }
+     
     ] as { q: string; a: React.ReactNode }[]).map(({ q, a }, i) => (
       <div key={i} className="lfc-faq-item">
         <h3 className="lfc-faq-q">{q}</h3>
