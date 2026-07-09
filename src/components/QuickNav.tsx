@@ -16,7 +16,7 @@ export default function QuickNav({ onTellColleague, tellLabel }: QuickNavProps) 
 
   const items = [
     { id: 'faq', label: 'Quick answers' },
-    { id: 'blueprints', label: 'Cleaning Blueprints' },
+    { id: 'blueprints', label: 'Feature in your area' },
     { id: 'changelog', label: 'ChangeLog' },
   ];
 

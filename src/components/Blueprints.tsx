@@ -5,12 +5,9 @@ import GlossyButton from './GlossyButton';
 
 const BANNER_COLOR = '#083a6f';
 
-type BlueprintTab = 'getting-started' | 'features' | 'operations';
-
 export default function Blueprints() {
   const { turnstileContainer, getTurnstileToken } = useTurnstile();
   const [open, setOpen] = useState(false);
-  const [tab, setTab] = useState<BlueprintTab>('getting-started');
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -45,12 +42,13 @@ export default function Blueprints() {
       <div ref={el => { turnstileContainer.current = el }} style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} />
    <section className="lfc-blueprints" id="blueprints">
         <div className="lfc-blueprints-inner">
-          <h2 className="lfc-faq-heading">Cleaning Blueprints</h2>
+          <p className="lfc-faq-eyebrow">Grow your online presence</p>
+          <h2 className="lfc-faq-heading">Exist online in more places</h2>
           <p className="lfc-blueprints-copy">
-            A guided playbook for getting the most out of your profile, from first setup through to day to day running. Getting started steps, feature breakdowns, and the operational playbook, all in one place.
+            Turn your cleaning brand into an online asset. Get featured through local area pages, create a stronger digital footprint, and give customers one trusted place to discover your services, reviews and booking options.
           </p>
        <GlossyButton onClick={() => setOpen(true)}>
-            Notify me
+            Get early access
           </GlossyButton>
         </div>
       </section>
@@ -64,35 +62,16 @@ export default function Blueprints() {
               </svg>
             </button>
 
-  <h3 className="lfc-modal-heading">Cleaning Blueprints</h3>
-            <p className="lfc-modal-subheading">Sign up to be the first to know when Cleaning Blueprints goes live.</p>
+  <h3 className="lfc-modal-heading">Build your online presence</h3>
+            <p className="lfc-modal-subheading">Leave your details to be notified when new opportunities become available for cleaning businesses to grow their online presence.</p>
 
-            <div className="lfc-modal-tabs">
-              <button type="button" className={`lfc-modal-tab ${tab === 'getting-started' ? 'lfc-modal-tab-active' : ''}`} onClick={() => setTab('getting-started')}>
-                Getting started
-              </button>
-              <button type="button" className={`lfc-modal-tab ${tab === 'features' ? 'lfc-modal-tab-active' : ''}`} onClick={() => setTab('features')}>
-                Features in depth
-              </button>
-              <button type="button" className={`lfc-modal-tab ${tab === 'operations' ? 'lfc-modal-tab-active' : ''}`} onClick={() => setTab('operations')}>
-                Operations
-              </button>
-            </div>
-
-            <div className="lfc-modal-tab-content">
-              {tab === 'getting-started' && (
-                <p>A guided setup path that gets your profile live, priced, and ready to share in one sitting. Step by step, no guesswork.</p>
-              )}
-              {tab === 'features' && (
-                <p>A full breakdown of quotes, bookings, themes, and analytics: how each one works and how to get the most from it.</p>
-              )}
-              {tab === 'operations' && (
-                <p>The playbook for running day to day: managing enquiries, keeping pricing sharp, and turning visitors into repeat clients.</p>
-              )}
+            <div className="lfc-modal-body">
+              <p>Links For Cleaners is expanding how cleaning businesses can be discovered online.</p>
+              <p>From local area features to stronger profile visibility, we are building ways for cleaners to turn their online presence into something that works beyond social media.</p>
             </div>
 
             {submitted ? (
-              <p className="lfc-modal-success">You are on the list. We will let you know the moment Blueprints is ready.</p>
+              <p className="lfc-modal-success">You're on the list. We'll let you know when new ways to grow your cleaning business online become available.</p>
             ) : (
               <form className="lfc-modal-form" onSubmit={handleSubmit}>
                 <input
@@ -104,7 +83,7 @@ export default function Blueprints() {
                   className="lfc-modal-input"
                 />
                 <button type="submit" className="lfc-btn-primary lfc-modal-submit" disabled={submitting}>
-                  {submitting ? 'Submitting' : 'Sign up to be the first to know'}
+                  {submitting ? 'Submitting' : 'Get notified'}
                 </button>
                 {error && <p className="lfc-modal-error">{error}</p>}
               </form>
@@ -190,39 +169,17 @@ export default function Blueprints() {
           color: rgba(0,0,0,0.6);
           margin: 0 0 24px;
         }
-        .lfc-modal-tabs {
-          display: flex;
-          gap: 6px;
-          background: #f7f7f8;
-          border-radius: 999px;
-          padding: 4px;
-          margin-bottom: 20px;
-        }
-        .lfc-modal-tab {
-          flex: 1;
-          border: none;
-          background: transparent;
-          border-radius: 999px;
-          padding: 8px 10px;
-          font-size: 12px;
-          font-weight: 700;
-          color: rgba(0,0,0,0.5);
-          cursor: pointer;
-        }
-        .lfc-modal-tab-active {
-          background: #ffffff;
-          color: #083a6f;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        }
-        .lfc-modal-tab-content {
-          min-height: 72px;
+        .lfc-modal-body {
           margin-bottom: 24px;
         }
-        .lfc-modal-tab-content p {
+        .lfc-modal-body p {
           font-size: 14px;
           line-height: 1.7;
           color: rgba(0,0,0,0.7);
-          margin: 0;
+          margin: 0 0 12px;
+        }
+        .lfc-modal-body p:last-child {
+          margin-bottom: 0;
         }
         .lfc-modal-form {
           display: flex;

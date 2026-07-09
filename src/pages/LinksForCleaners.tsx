@@ -330,7 +330,7 @@ export default function LinksForCleaners() {
         q: "What are Links For Cleaners?",
         a: (
           <>
-            Links For Cleaners is a shareable profile link that brings together everything people need to know about your cleaning business or brand in one place. It can include your services, reviews, social media, recommended products and enquiry options, making it easier for potential customers to discover, trust and contact you. It's designed for cleaning professionals and creators across England, Scotland, Wales and Northern Ireland. You can secure your brand by visiting <a href="https://links.forcleaners.co.uk" className="lfc-faq-link">links.forcleaners.co.uk</a>.
+            Links For Cleaners is a shareable profile link that brings together everything people need to know about your cleaning business or brand in one place. It can include your services, reviews, social media, recommended products and enquiry options, making it easier for potential customers to discover, trust and contact you. It's designed for cleaning professionals and creators across England, Scotland, Wales and Northern Ireland. You can read more about claiming a page for your brand by visiting <a href="https://links.forcleaners.co.uk" className="lfc-faq-link">links.forcleaners.co.uk</a>.
           </>
   )
       },
