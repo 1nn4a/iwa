@@ -42,13 +42,13 @@ export default function Blueprints() {
       <div ref={el => { turnstileContainer.current = el }} style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} />
    <section className="lfc-blueprints" id="blueprints">
         <div className="lfc-blueprints-inner">
-          <p className="lfc-faq-eyebrow">Grow your online presence</p>
-          <h2 className="lfc-faq-heading">Exist online in more places</h2>
+          <p className="lfc-faq-eyebrow">Grow your digital footprint</p>
+          <h2 className="lfc-faq-heading">Get discovered beyond social media</h2>
           <p className="lfc-blueprints-copy">
-            Turn your cleaning brand into an online asset. Get featured through local area pages, create a stronger digital footprint, and give customers one trusted place to discover your services, reviews and booking options.
+            Your cleaning business already exists online through social media, reviews, and recommendations. Links For Cleaners helps turn that presence into a stronger business asset through profiles, local features, and future visibility opportunities.
           </p>
        <GlossyButton onClick={() => setOpen(true)}>
-            Get early access
+            Get considered
           </GlossyButton>
         </div>
       </section>
@@ -62,16 +62,16 @@ export default function Blueprints() {
               </svg>
             </button>
 
-  <h3 className="lfc-modal-heading">Build your online presence</h3>
-            <p className="lfc-modal-subheading">Leave your details to be notified when new opportunities become available for cleaning businesses to grow their online presence.</p>
+  <h3 className="lfc-modal-heading">Visibility Opportunities</h3>
+            <p className="lfc-modal-subheading">Join the list to be considered for future cleaning business features and online visibility opportunities.</p>
 
             <div className="lfc-modal-body">
-              <p>Links For Cleaners is expanding how cleaning businesses can be discovered online.</p>
-              <p>From local area features to stronger profile visibility, we are building ways for cleaners to turn their online presence into something that works beyond social media.</p>
+              <p>Links For Cleaners is building new ways for cleaning businesses to be discovered online.</p>
+              <p>Create your profile, opt in for consideration, and your business may be selected for relevant local features, industry spotlights, and discovery campaigns.</p>
             </div>
 
             {submitted ? (
-              <p className="lfc-modal-success">You're on the list. We'll let you know when new ways to grow your cleaning business online become available.</p>
+              <p className="lfc-modal-success">You're on the list. We'll notify you when new visibility opportunities become available.</p>
             ) : (
               <form className="lfc-modal-form" onSubmit={handleSubmit}>
                 <input
@@ -83,7 +83,7 @@ export default function Blueprints() {
                   className="lfc-modal-input"
                 />
                 <button type="submit" className="lfc-btn-primary lfc-modal-submit" disabled={submitting}>
-                  {submitting ? 'Submitting' : 'Get notified'}
+                  {submitting ? 'Submitting' : 'Join visibility opportunities'}
                 </button>
                 {error && <p className="lfc-modal-error">{error}</p>}
               </form>
