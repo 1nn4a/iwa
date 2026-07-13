@@ -276,11 +276,11 @@ export default function LinksForCleaners() {
                 
 
                 <h1 className="lfc-heading">
-                  Market your entire cleaning business online
+                  Stand out with a Link For Cleaners
                 </h1>
 
                 <p className="lfc-subheading">
-                  Providing cleaning businesses with personalised marketing pages designed to turn social media engagement into clients.
+                  A cleaning profile that converts while you operate
                 </p>
 
      <div className="lfc-cta-row">
