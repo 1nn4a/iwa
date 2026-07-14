@@ -146,7 +146,7 @@ function MarketingCards() {
 
 function ProcessSteps({ activeStep }: { activeStep: number }) {
   const steps = [
-    { n: 1, label: 'Application received', desc: 'We confirm your details are in' },
+    { n: 1, label: 'Received', desc: 'We confirm your details are in' },
     { n: 2, label: 'Review', desc: 'Our team looks over your request' },
     { n: 3, label: 'Call or email', desc: 'You hear from us directly' },
   ]
@@ -780,7 +780,7 @@ if (!res.ok) {
 
                  <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                             <h2 className="text-[22px] font-bold tracking-tight" style={{ color: '#1c1c1e' }}>
-                              Application Received
+                              
                             </h2>
                             <p className="mt-2 text-[14px] leading-relaxed" style={{ color: '#6e6e73' }}>
                               We'll review your request for{' '}

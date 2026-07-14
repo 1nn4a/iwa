@@ -131,10 +131,10 @@ We enable specialist businesses and independent professionals to connect, share 
 
           <div className="mt-6 flex flex-wrap gap-2 justify-center">
             <a
-              href="https://www.innovatewithaima.com/definitions"
+              href="https://www.innovatewithaima.com/apply"
               className="rounded-full bg-black px-3 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
             >
-              Learn More
+              Apply to IWA
            </a>
             
              <a href="https://group.innovatewithaima.com/submit-an-opportunity"
