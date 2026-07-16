@@ -27,9 +27,7 @@ const changelog: ChangelogEntry[] = [
     sections: [
       {
         items: [
-          'Fixed a bug where some quote form submissions could fail instead of creating a quote request',
-          'Resolved the issue affecting a small number of profiles, quote requests are working normally again',
-          'No action needed on your end',
+                 'Fixed a bug where some quote form submissions could fail instead of submitting correctly. Resolved for affected profiles, nothing for you to do.',
         ],
       },
     ],
