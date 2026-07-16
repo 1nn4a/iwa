@@ -27,7 +27,7 @@ const changelog: ChangelogEntry[] = [
     sections: [
       {
         items: [
-          'Fixed a bug where some quote form submissions could fail instead of submitting correctly. Resolved for affected profiles, nothing for you to do.',
+        'Fixed a bug where some quote form submissions could fail instead of submitting correctly. Resolved for affected profiles, nothing for you to do.',
         ],
       },
     ],
