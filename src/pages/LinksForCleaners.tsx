@@ -20,6 +20,21 @@ type ChangelogEntry = {
 
 const changelog: ChangelogEntry[] = [
   {
+    version: 'v6.8',
+    title: 'Bug fix',
+    badge: 'Fix',
+    date: '16 July 2026',
+    sections: [
+      {
+        items: [
+          'Fixed a bug where some quote form submissions could fail instead of creating a quote request',
+          'Resolved the issue affecting a small number of profiles, quote requests are working normally again',
+          'No action needed on your end',
+        ],
+      },
+    ],
+  },
+  {
     version: 'v6.7',
     title: 'Visibility Opportunities',
     badge: 'New',
@@ -27,10 +42,8 @@ const changelog: ChangelogEntry[] = [
     sections: [
       {
         items: [
-          'Opt in from your dashboard to become eligible for future Links For Cleaners visibility opportunities',
-          'Selected businesses may be featured through local cleaning spotlights, industry content, and discovery campaigns',
-          'Eligibility is based on factors including location, profile quality, services, and campaign requirements',
-          'Notifications sent when relevant opportunities become available',
+                  'Fixed a bug where some quote form submissions could fail instead of submitting correctly. Resolved for affected profiles, nothing for you to do.',
+
         ],
       },
     ],
