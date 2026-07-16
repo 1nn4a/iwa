@@ -144,7 +144,7 @@ export default function LinksForCleanersCreators() {
               <div className="relative z-10 flex h-full flex-col items-center justify-center text-center p-8 md:p-10">
                 <div className="max-w-sm">
                   <h1 className="text-2xl md:text-3xl font-black font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-                    Stand out with a Link For Cleaners.
+                    Stand out with a Link For Cleaners
                   </h1>
                   <p className="mt-3 text-sm leading-6 text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
                     Organise content, recommend products, attract brand opportunities and earn affiliate income from one personalised profile.
