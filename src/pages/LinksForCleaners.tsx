@@ -20,7 +20,7 @@ type ChangelogEntry = {
 
 const changelog: ChangelogEntry[] = [
   {
-    version: 'v6.8',
+    version: 'v6.7.1',
     title: 'Bug fix',
     badge: 'Fix',
     date: '16 July 2026',
@@ -34,20 +34,22 @@ const changelog: ChangelogEntry[] = [
       },
     ],
   },
-  {
-    version: 'v6.7',
-    title: 'Visibility Opportunities',
-    badge: 'New',
-    date: '9 July 2026',
-    sections: [
-      {
-        items: [
-                  'Fixed a bug where some quote form submissions could fail instead of submitting correctly. Resolved for affected profiles, nothing for you to do.',
-
-        ],
-      },
-    ],
-  },
+ {
+  version: 'v6.7',
+  title: 'Visibility Opportunities',
+  badge: 'New',
+  date: '9 July 2026',
+  sections: [
+    {
+      items: [
+        'Opt in from your dashboard to become eligible for future Links For Cleaners visibility opportunities',
+        'Selected businesses may be featured through local cleaning spotlights, industry content, and discovery campaigns',
+        'Eligibility is based on factors including location, profile quality, services, and campaign requirements',
+        'Notifications sent when relevant opportunities become available',
+      ],
+    },
+  ],
+},
   {
     version: 'v6.6',
     title: 'Bug fix',
