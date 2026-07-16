@@ -4,6 +4,13 @@ import App from './App'
 import './index.css'
 import { HelmetProvider } from "react-helmet-async"
 
+const redirect = sessionStorage.redirect;
+if (redirect && redirect !== location.href) {
+  sessionStorage.removeItem('redirect');
+  history.replaceState(null, '', redirect);
+}
+
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>

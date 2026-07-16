@@ -1,5 +1,1 @@
-https://start.innovatewithaima.com/blog/*  https://innovatewithaima.com/blog/:splat  301
-https://start.innovatewithaima.com/*  https://innovatewithaima.com/blog  301
-
-_/assets/*  /assets/:splat  200
-/* /index.html 200
+/assets/*  /assets/:splat  200
