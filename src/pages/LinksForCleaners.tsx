@@ -20,34 +20,21 @@ type ChangelogEntry = {
 
 const changelog: ChangelogEntry[] = [
   {
-  version: 'v6.7',
-  title: 'Visibility Opportunities',
-  badge: 'New',
-  date: '9 July 2026',
-  sections: [
-    {
-      items: [
-        'Opt in from your dashboard to become eligible for future Links For Cleaners visibility opportunities',
-        'Selected businesses may be featured through local cleaning spotlights, industry content, and discovery campaigns',
-        'Eligibility is based on factors including location, profile quality, services, and campaign requirements',
-        'Notifications sent when relevant opportunities become available',
-      ],
-    },
-  ],
-},
-{
-  version: 'v6.6',
-  title: 'Bug fix',
-  badge: 'Fix',
-  date: '1 July 2026',
-  sections: [
-    {
-      items: [
-        'Fixed a bug where dismissing a link suggestion could leave an empty link behind on your profile. Cleaned up for all affected accounts, nothing for you to do.',
-      ],
-    },
-  ],
-},
+    version: 'v6.7',
+    title: 'Visibility Opportunities',
+    badge: 'New',
+    date: '9 July 2026',
+    sections: [
+      {
+        items: [
+          'Opt in from your dashboard to become eligible for future Links For Cleaners visibility opportunities',
+          'Selected businesses may be featured through local cleaning spotlights, industry content, and discovery campaigns',
+          'Eligibility is based on factors including location, profile quality, services, and campaign requirements',
+          'Notifications sent when relevant opportunities become available',
+        ],
+      },
+    ],
+  },
   {
     version: 'v6.6',
     title: 'Bug fix',
