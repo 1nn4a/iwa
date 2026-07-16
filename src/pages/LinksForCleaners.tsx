@@ -23,11 +23,11 @@ const changelog: ChangelogEntry[] = [
     version: 'v6.7.1',
     title: 'Bug fix',
     badge: 'Fix',
-    date: '16 July 2026',
+    date: '15 July 2026',
     sections: [
       {
         items: [
-                 'Fixed a bug where some quote form submissions could fail instead of submitting correctly. Resolved for affected profiles, nothing for you to do.',
+          'Fixed a bug where some quote form submissions could fail instead of submitting correctly. Resolved for affected profiles, nothing for you to do.',
         ],
       },
     ],
