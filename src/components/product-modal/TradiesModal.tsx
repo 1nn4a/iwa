@@ -1,6 +1,6 @@
 // components/product-modal/TradiesModal.tsx
 import ProductModal, { type ProductModalFaq } from './ProductModal';
-import iwaLogo from '../../assets/iwa.png';
+import aimaLogo from '../../assets/iwa.png';
 
 const faqs: ProductModalFaq[] = [
   { q: 'Who can apply for Links For Tradies?', a: 'Access is invite-only and reviewed individually. Applications are accepted from tradespeople who meet our suitability criteria.' },
@@ -24,7 +24,7 @@ export default function TradiesModal({ isOpen, onClose }: Props) {
       subtitle="Invite Only - A tradesperson profile that converts while you're on the job: services, reviews and enquiries in one shareable link."
       brandName="Stay Updated"
       brandHref="https://instagram.com/@innovatewithaima"
-      brandLogo={iwaLogo}
+      brandLogo={aimaLogo}
       ctaLabel="Apply for Invite"
       ctaHref="/product-trades-form"
       learnMoreHref="/product-trades-form"

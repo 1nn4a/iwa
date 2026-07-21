@@ -1,6 +1,6 @@
 // components/product-modal/ManagersModal.tsx
 import ProductModal, { type ProductModalFaq } from './ProductModal';
-import iwaLogo from '../../assets/iwa.png';
+import aimaLogo from '../../assets/iwa.png';
 
 const faqs: ProductModalFaq[] = [
   { q: 'Who can apply for Links For Managers?', a: 'Access is invite-only and reviewed individually. Applications are accepted from property managers who meet our suitability criteria.' },
@@ -25,7 +25,7 @@ export default function ManagersModal({ isOpen, onClose }: Props) {
       subtitle="Invite Only - A property management profile that converts while you operate: listings, reviews and enquiries in one shareable link."
       brandName="Stay Updated"
       brandHref="https://instagram.com/@innovatewithaima"
-      brandLogo={iwaLogo}
+      brandLogo={aimaLogo}
       ctaLabel="Apply for Invite"
       ctaHref="/product-property-form"
       learnMoreHref="/product-property-form"

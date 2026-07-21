@@ -1,6 +1,6 @@
 // components/product-modal/AestheticsModal.tsx
 import ProductModal, { type ProductModalFaq } from './ProductModal';
-import iwaLogo from '../../assets/iwa.png';
+import aimaLogo from '../../assets/iwa.png';
 
 const faqs: ProductModalFaq[] = [
   { q: 'Who can apply for Links For Aesthetics?', a: 'Access is invite-only and reviewed individually. Applications are accepted from aesthetics professionals who meet our suitability criteria.' },
@@ -24,7 +24,7 @@ export default function AestheticsModal({ isOpen, onClose }: Props) {
       subtitle="Invite Only - An aesthetics profile that converts while you treat clients: services, reviews and bookings in one shareable link."
       brandName="Stay Updated"
       brandHref="https://instagram.com/@innovatewithaima"
-      brandLogo={iwaLogo}
+      brandLogo={aimaLogo}
       ctaLabel="Apply for Invite"
       ctaHref="/product-beauty-form"
       learnMoreHref="/product-beauty-form"

@@ -12,6 +12,7 @@ export interface ProductModalProps {
   isOpen: boolean;
   onClose: () => void;
   videoSrc?: string;
+  posterSrc?: string;
   title: string;
   subtitle: string;
   brandName: string;
@@ -29,6 +30,7 @@ export default function ProductModal({
   isOpen,
   onClose,
   videoSrc,
+  posterSrc,
   title,
   subtitle,
   brandName,
@@ -113,13 +115,19 @@ export default function ProductModal({
           <div className="pm-video-wrap">
             {videoState !== 'ready' && (
               <div className="pm-skeleton">
-                <div className="pm-shimmer" />
+                {posterSrc ? (
+                  <img src={posterSrc} alt="" className="pm-poster" />
+                ) : (
+                  <div className="pm-shimmer" />
+                )}
                 {videoState === 'error' && (
                   <div className="pm-video-placeholder">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M15 10l5-3v10l-5-3" />
-                      <rect x="1" y="5" width="14" height="14" rx="2.5" />
-                    </svg>
+                    {!posterSrc && (
+                      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 10l5-3v10l-5-3" />
+                        <rect x="1" y="5" width="14" height="14" rx="2.5" />
+                      </svg>
+                    )}
                     <span>Video coming soon</span>
                   </div>
                 )}
@@ -161,9 +169,9 @@ export default function ProductModal({
                 <img src={brandLogo} alt="" className="pm-brand-logo" />
                 <span className="pm-brand-name">{brandName}</span>
               </a>
-              <GlossyButton as="a" href={brandHref} target="_blank" rel="noopener noreferrer" className="pm-follow-btn">
+              <a href={brandHref} target="_blank" rel="noopener noreferrer" className="pm-follow-btn">
                 Follow
-              </GlossyButton>
+              </a>
             </div>
 
             <div className="pm-cta-row">
@@ -299,7 +307,15 @@ const PM_STYLES = `
 .pm-brand-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
 .pm-brand-logo { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; background: #ffffff; }
 .pm-brand-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); }
-.pm-follow-btn { min-height: 32px !important; padding: 0 16px !important; font-size: 12px !important; }
+.pm-follow-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 32px; padding: 0 16px; border-radius: 999px;
+  background: transparent; border: 1px solid rgba(255,255,255,0.3);
+  color: #ffffff; font-size: 12px; font-weight: 700; text-decoration: none;
+  transition: background 0.2s ease;
+}
+.pm-follow-btn:hover { background: rgba(255,255,255,0.08); }
+.pm-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 .pm-cta-row { margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; }
 .pm-dots-wrap { position: relative; }
 .pm-dots-menu {
