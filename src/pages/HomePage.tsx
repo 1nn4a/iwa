@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import hero from '../assets/iwa.png'
 import cardsBg from '../assets/iwa@.20250410.png'
 import linksCleanersMobile from '../assets/linksforcleaners@.q3062026.jpg'
@@ -12,6 +12,11 @@ import aimaDesktopImg from '../assets/aima@.q602014412.jpg'
 import aimaMobileImg from '../assets/aima@.q3010726.jpg'
 import linksAestheticsMobile from '../assets/linksforaesthetics@.q3010726.jpg'
 import GlossyButton from '../components/GlossyButton';
+import LinksForCleanersModal from '../components/product-modal/LinksForCleanersModal';
+import AimaModal from '../components/product-modal/AimaModal';
+import TradiesModal from '../components/product-modal/TradiesModal';
+import ManagersModal from '../components/product-modal/ManagersModal';
+import AestheticsModal from '../components/product-modal/AestheticsModal';
 
 
 import { Helmet } from "react-helmet-async"
@@ -104,6 +109,19 @@ const faqs = [
 
 export default function HomePage() {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const activeProduct = searchParams.get('product');
+
+    const openProduct = (key: string) => {
+      const next = new URLSearchParams(searchParams);
+      next.set('product', key);
+      setSearchParams(next);
+    };
+    const closeProduct = () => {
+      const next = new URLSearchParams(searchParams);
+      next.delete('product');
+      setSearchParams(next);
+    };
 
   return (
     <>
@@ -167,7 +185,7 @@ We enable specialist businesses and independent professionals to connect, share 
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
-                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 {card.title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
                     <h3 className="pl-[130px] pt-16 text-left text-lg font-black font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
@@ -185,18 +203,12 @@ We enable specialist businesses and independent professionals to connect, share 
               </>
             )
 
-            const cls = "relative block w-full aspect-[660/1020] rounded-[45px] overflow-hidden bg-[#5c6cff]"
+            const cls = "group relative block w-full aspect-[660/1020] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
 
-            if (!card.href) {
-              return <div key={card.key} className={cls}>{inner}</div>
-            }
-            if (card.internal) {
-              return <Link key={card.key} to={card.href} className={cls}>{inner}</Link>
-            }
             return (
-              <a key={card.key} href={card.href} target="_blank" rel="noopener noreferrer" className={cls}>
+              <button key={card.key} type="button" onClick={() => openProduct(card.key)} className={cls}>
                 {inner}
-              </a>
+              </button>
             )
           })}
 
@@ -205,8 +217,10 @@ We enable specialist businesses and independent professionals to connect, share 
 
            <div className="relative hidden md:block">
 <div className="flex gap-4 justify-center">              
-              <div
-                className="relative block w-[794px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
+              <button
+                type="button"
+                onClick={() => openProduct(linkCards[0].key)}
+                className="group relative block w-[794px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -219,7 +233,7 @@ We enable specialist businesses and independent professionals to connect, share 
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
-                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 {linkCards[0].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
                     <h3 className="pl-[120px] pt-11 text-left text-2xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
@@ -227,13 +241,12 @@ We enable specialist businesses and independent professionals to connect, share 
                     </h3>
                   </div>
                 )}
-              </div>
+              </button>
 
-              <a
-                href={linkCards[1].href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block w-[387px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
+              <button
+                type="button"
+                onClick={() => openProduct(linkCards[1].key)}
+                className="group relative block w-[387px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -246,7 +259,7 @@ We enable specialist businesses and independent professionals to connect, share 
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
-                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 {linkCards[1].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
                     <h3 className="pl-[128px] pt-16 text-left text-xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
@@ -259,13 +272,14 @@ We enable specialist businesses and independent professionals to connect, share 
     <path d="M7 17L17 7M9 7h8v8" />
   </svg>
 </GlossyButton>
-              </a>
+              </button>
             </div>
 
 <div className="mt-4 flex gap-4 justify-center">
-                <Link
-                to={linkCards[3].href!}
-                className="relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
+                <button
+                type="button"
+                onClick={() => openProduct(linkCards[3].key)}
+                className="group relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -278,7 +292,7 @@ We enable specialist businesses and independent professionals to connect, share 
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
-               <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 {linkCards[3].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
                     <h3 className="pl-[113px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
@@ -291,11 +305,12 @@ We enable specialist businesses and independent professionals to connect, share 
     <path d="M7 17L17 7M9 7h8v8" />
   </svg>
 </GlossyButton>
- </Link>
+ </button>
               
-              <Link
-                to={linkCards[2].href!}   
-                className="relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
+              <button
+                type="button"
+                onClick={() => openProduct(linkCards[2].key)}
+                className="group relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -308,7 +323,7 @@ We enable specialist businesses and independent professionals to connect, share 
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
-             <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 {linkCards[2].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
                     <h3 className="pl-[135px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
@@ -321,11 +336,12 @@ We enable specialist businesses and independent professionals to connect, share 
     <path d="M7 17L17 7M9 7h8v8" />
   </svg>
 </GlossyButton>
- </Link>
+ </button>
               
-          <Link
-                to={linkCards[4].href!}
-                className="relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff]"
+          <button
+                type="button"
+                onClick={() => openProduct(linkCards[4].key)}
+                className="group relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center select-none"
@@ -338,7 +354,7 @@ We enable specialist businesses and independent professionals to connect, share 
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
-                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 {linkCards[4].title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
                     <h3 className="pl-[135px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
@@ -351,7 +367,7 @@ We enable specialist businesses and independent professionals to connect, share 
     <path d="M7 17L17 7M9 7h8v8" />
   </svg>
 </GlossyButton>
- </Link>            </div>
+ </button>            </div>
           </div>
           </div>
 
@@ -479,6 +495,12 @@ We enable specialist businesses and independent professionals to connect, share 
             </Link>
           </div>
         </section>
+
+        <LinksForCleanersModal isOpen={activeProduct === 'cleaners'} onClose={closeProduct} />
+        <AimaModal isOpen={activeProduct === 'aima'} onClose={closeProduct} />
+        <TradiesModal isOpen={activeProduct === 'tradies'} onClose={closeProduct} />
+        <ManagersModal isOpen={activeProduct === 'managers'} onClose={closeProduct} />
+        <AestheticsModal isOpen={activeProduct === 'aesthetics'} onClose={closeProduct} />
       </main>
     </>
   );
