@@ -2,31 +2,29 @@
 import ProductModal, { type ProductModalFaq } from './ProductModal';
 const faqs: ProductModalFaq[] = [
   {
-    q: 'What are Links For Cleaners?',
+    q: 'What is Links For Cleaners?',
     a: (
       <>
-        Links For Cleaners is a shareable profile link that brings together everything people need to know about your
-        cleaning business or brand in one place — services, reviews, social media, recommended products and enquiry
-        options, all designed for cleaning professionals and creators across the UK. Read more at{' '}
+        Links For Cleaners helps UK cleaning businesses build a stronger online presence with a professional business profile. Bring together your services, reviews, before and after work, booking options, social links and more in one place. Learn more at{' '}
         <a href="https://links.forcleaners.co.uk">links.forcleaners.co.uk</a>.
       </>
     ),
   },
   {
-    q: 'Can I customise how customers receive quotes?',
-    a: 'Yes. Offer instant quotes, fixed-price services, callback requests, walkthrough bookings or booking-first flows, with pricing bands, discounts and service settings tailored to your business.',
+    q: 'How do enquiries work?',
+    a: 'Choose how customers contact you with instant quotes, fixed pricing, callback requests, walkthrough bookings or booking first journeys. Every enquiry is built around the way your business operates.',
   },
   {
-    q: 'What happens after someone submits an enquiry?',
-    a: "Customers can request a callback, book a walkthrough or continue through your chosen enquiry journey. You'll receive job details through your dashboard and email, and can connect existing scheduling tools too.",
+    q: 'What happens after someone gets in touch?',
+    a: 'Receive new enquiries through your dashboard and email with the information you need to follow up quickly. You can also connect your existing scheduling workflow.',
   },
   {
-    q: 'Can I see how people interact with my profile?',
-    a: 'Yes. Profile Analytics shows unique visitors, total profile views, traffic sources, link clicks, enquiry starts and completed bookings.',
+    q: 'Can I measure how my profile is performing?',
+    a: 'Yes. Track profile views, unique visitors, traffic sources, link clicks, enquiry starts and completed bookings from one analytics dashboard.',
   },
   {
-    q: 'Can I share my profile anywhere?',
-    a: 'Yes. Every profile is shareable across social media, messaging apps, QR codes, business cards and print, and is also indexable by search engines.',
+    q: 'Where can I share my profile?',
+    a: 'Your profile works across Instagram, TikTok, Facebook, WhatsApp, QR codes, business cards and printed marketing materials. It can also be discovered through search engines.',
   },
 ];
 
@@ -42,7 +40,7 @@ export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
       onClose={onClose}
       videoSrc="https://fordesigners.online/product/video/For Cleaners.mp4"
       title="Links For Cleaners"
-      subtitle="Market Your Cleaning Business Online · Personalised marketing pages for cleaning businesses and clean-fluencers in the UK. Instant quotes, booking tools, and social proof all from one link."
+      subtitle="Professional business profiles built for UK cleaning businesses. Stay visible, capture enquiries and bring everything your customers need into one place."
       brandName="Links For Cleaners"
       brandHref="https://instagram.com/linksforcleaners"
       brandLogo="https://links.forcleaners.co.uk/linksforcleanerscouk.png"
