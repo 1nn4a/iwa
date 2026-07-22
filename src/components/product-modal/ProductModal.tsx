@@ -108,12 +108,12 @@ const [videoState, setVideoState] = useState<'loading' | 'ready' | 'error'>('loa
 
   return createPortal(
     <div className="pm-overlay" role="dialog" aria-modal="true" onClick={onClose}>
+   <button type="button" className="pm-close" onClick={onClose} aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
       <div className="pm-panel" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="pm-close" onClick={onClose} aria-label="Close">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 6l12 12M18 6L6 18" />
-          </svg>
-        </button>
 
         <div className="pm-top">
           <div className="pm-video-wrap">
@@ -287,12 +287,14 @@ const PM_STYLES = `
   padding: 28px;
 }
 .pm-close {
-  position: absolute; top: 20px; right: 20px; z-index: 5;
-  width: 36px; height: 36px; border-radius: 50%;
+  position: fixed; top: 16px; right: 16px; z-index: 200;
+  width: 40px; height: 40px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.08); color: #ffffff; border: none; cursor: pointer;
+  background: rgba(255,255,255,0.12); color: #ffffff; border: none; cursor: pointer;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
-.pm-close:hover { background: rgba(255,255,255,0.16); }
+.pm-close:hover { background: rgba(255,255,255,0.22); }
 .pm-top { display: flex; flex-direction: column; gap: 24px; }
 .pm-video-wrap {
   position: relative; width: 100%; max-width: 300px; margin: 0 auto;

@@ -33,8 +33,15 @@ interface Props {
   onClose: () => void;
 }
 
-const PREVIEW_IMAGES = Array.from({ length: 8 }, (_, i) => `https://fordesigners.online/ui/preview/IMG_${6113 + i}.jpeg`);
+import img6113 from '../../assets/preview/IMG_6113.jpeg';
+import img6114 from '../../assets/preview/IMG_6114.jpeg';
+import img6115 from '../../assets/preview/IMG_6115.jpeg';
+import img6116 from '../../assets/preview/IMG_6116.jpeg';
+import img6117 from '../../assets/preview/IMG_6117.jpeg';
+ import img6120 from '../../assets/preview/IMG_6120.jpeg';
+import img6121 from '../../assets/preview/IMG_6121.jpeg';
 
+const PREVIEW_IMAGES = [img6113,img6114,img6115,img6116,img6117,img6120,img6121];
 export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
   return (
     <ProductModal
