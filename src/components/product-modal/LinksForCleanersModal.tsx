@@ -33,13 +33,13 @@ interface Props {
   onClose: () => void;
 }
 
-import img6113 from '../../assets/preview/IMG_6113.jpeg';
-import img6114 from '../../assets/preview/IMG_6114.jpeg';
-import img6115 from '../../assets/preview/IMG_6115.jpeg';
-import img6116 from '../../assets/preview/IMG_6116.jpeg';
-import img6117 from '../../assets/preview/IMG_6117.jpeg';
- import img6120 from '../../assets/preview/IMG_6120.jpeg';
-import img6121 from '../../assets/preview/IMG_6121.jpeg';
+import img6113 from '../../assets/preview/IMG_6113.jpg';
+import img6114 from '../../assets/preview/IMG_6114.jpg';
+import img6115 from '../../assets/preview/IMG_6115.jpg';
+import img6116 from '../../assets/preview/IMG_6116.jpg';
+import img6117 from '../../assets/preview/IMG_6117.jpg';
+ import img6120 from '../../assets/preview/IMG_6120.jpg';
+import img6121 from '../../assets/preview/IMG_6121.jpg';
 
 const PREVIEW_IMAGES = [img6113,img6114,img6115,img6116,img6117,img6120,img6121];
 export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
