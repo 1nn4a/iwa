@@ -42,7 +42,7 @@ export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
       onClose={onClose}
       videoSrc="https://fordesigners.online/product/video/For Cleaners.mp4"
       title="Links For Cleaners"
-      subtitle="LinksForCleaners - Market Your Cleaning Business Online · Personalised marketing pages for cleaning businesses and clean-fluencers in the UK. Instant quotes, booking tools, and social proof all from one link."
+      subtitle="Market Your Cleaning Business Online · Personalised marketing pages for cleaning businesses and clean-fluencers in the UK. Instant quotes, booking tools, and social proof all from one link."
       brandName="Links For Cleaners"
       brandHref="https://instagram.com/linksforcleaners"
       brandLogo="https://links.forcleaners.co.uk/linksforcleanerscouk.png"
