@@ -24,7 +24,7 @@ export default function ManagersModal({ isOpen, onClose }: Props) {
        title="Links For Managers"
       subtitle="Invite Only - A property management profile that converts while you operate: listings, reviews and enquiries in one shareable link."
       brandName="Stay Updated"
-      brandHref="https://instagram.com/@innovatewithaima"
+      brandHref="https://instagram.com/innovatewithaima"
       brandLogo={aimaLogo}
       ctaLabel="Apply for Invite"
       ctaHref="/product-property-form"

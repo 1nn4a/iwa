@@ -23,7 +23,7 @@ export default function TradiesModal({ isOpen, onClose }: Props) {
    title="Links For Tradies"
       subtitle="Invite Only - A tradesperson profile that converts while you're on the job: services, reviews and enquiries in one shareable link."
       brandName="Stay Updated"
-      brandHref="https://instagram.com/@innovatewithaima"
+      brandHref="https://instagram.com/innovatewithaima"
       brandLogo={aimaLogo}
       ctaLabel="Apply for Invite"
       ctaHref="/product-trades-form"

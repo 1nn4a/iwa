@@ -44,7 +44,7 @@ export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
       title="Links For Cleaners"
       subtitle="LinksForCleaners - Market Your Cleaning Business Online · Personalised marketing pages for cleaning businesses and clean-fluencers in the UK. Instant quotes, booking tools, and social proof all from one link."
       brandName="Links For Cleaners"
-      brandHref="https://instagram.com/@linksforcleaners"
+      brandHref="https://instagram.com/linksforcleaners"
       brandLogo="https://links.forcleaners.co.uk/linksforcleanerscouk.png"
       ctaLabel="Create a Profile"
       ctaHref="https://profile.forcleaners.co.uk/create"

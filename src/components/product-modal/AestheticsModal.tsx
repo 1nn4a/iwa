@@ -23,7 +23,7 @@ export default function AestheticsModal({ isOpen, onClose }: Props) {
     title="Links For Aesthetics"
       subtitle="Invite Only - An aesthetics profile that converts while you treat clients: services, reviews and bookings in one shareable link."
       brandName="Stay Updated"
-      brandHref="https://instagram.com/@innovatewithaima"
+      brandHref="https://instagram.com/innovatewithaima"
       brandLogo={aimaLogo}
       ctaLabel="Apply for Invite"
       ctaHref="/product-beauty-form"
