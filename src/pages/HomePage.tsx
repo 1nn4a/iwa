@@ -216,160 +216,161 @@ We enable specialist businesses and independent professionals to connect, share 
           </div>
 
            <div className="relative hidden md:block">
-<div className="flex gap-4 justify-center">              
-              <button
-                type="button"
-                onClick={() => openProduct(linkCards[0].key)}
-                className="group relative block w-[794px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center select-none"
-                  style={{
-                    backgroundImage: `url(${linkCards[0].desktopImg})`,
-                    WebkitTouchCallout: 'none',
-                    WebkitUserSelect: 'none',
-                    userSelect: 'none',
-                  }}
-                  onContextMenu={(e) => e.preventDefault()}
-                  draggable={false}
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
-                {linkCards[0].title && (
-                  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[120px] pt-11 text-left text-2xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-                      {linkCards[0].title}
-                    </h3>
-                  </div>
-                )}
-              </button>
+  <div className="grid grid-cols-[2fr_1fr] gap-4 justify-center">
+    <button
+      type="button"
+      onClick={() => openProduct(linkCards[0].key)}
+      className="group relative block w-full aspect-[794/600] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center select-none"
+        style={{
+          backgroundImage: `url(${linkCards[0].desktopImg})`,
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+        }}
+        onContextMenu={(e) => e.preventDefault()}
+        draggable={false}
+      />
+      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
+      {linkCards[0].title && (
+        <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+          <h3 className="pl-[6%] pt-[7%] text-left text-2xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+            {linkCards[0].title}
+          </h3>
+        </div>
+      )}
+    </button>
 
-              <button
-                type="button"
-                onClick={() => openProduct(linkCards[1].key)}
-                className="group relative block w-[387px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center select-none"
-                  style={{
-                    backgroundImage: `url(${linkCards[1].mobileImg})`,
-                    WebkitTouchCallout: 'none',
-                    WebkitUserSelect: 'none',
-                    userSelect: 'none',
-                  }}
-                  onContextMenu={(e) => e.preventDefault()}
-                  draggable={false}
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
-                {linkCards[1].title && (
-                  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[128px] pt-16 text-left text-xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-                      {linkCards[1].title}
-                    </h3>
-                  </div>
-                )}
-            <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 17L17 7M9 7h8v8" />
-  </svg>
-</GlossyButton>
-              </button>
-            </div>
+    <button
+      type="button"
+      onClick={() => openProduct(linkCards[1].key)}
+      className="group relative block w-full aspect-[387/600] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center select-none"
+        style={{
+          backgroundImage: `url(${linkCards[1].mobileImg})`,
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+        }}
+        onContextMenu={(e) => e.preventDefault()}
+        draggable={false}
+      />
+      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
+      {linkCards[1].title && (
+        <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+          <h3 className="pl-[10%] pt-[12%] text-left text-xl font-black font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+            {linkCards[1].title}
+          </h3>
+        </div>
+      )}
+      <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 17L17 7M9 7h8v8" />
+        </svg>
+      </GlossyButton>
+    </button>
+  </div>
 
-<div className="mt-4 flex gap-4 justify-center">
-                <button
-                type="button"
-                onClick={() => openProduct(linkCards[3].key)}
-                className="group relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center select-none"
-                  style={{
-                    backgroundImage: `url(${linkCards[3].mobileImg})`,
-                    WebkitTouchCallout: 'none',
-                    WebkitUserSelect: 'none',
-                    userSelect: 'none',
-                  }}
-                  onContextMenu={(e) => e.preventDefault()}
-                  draggable={false}
-                />
-               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
-                {linkCards[3].title && (
-                  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[113px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-                      {linkCards[3].title}
-                    </h3>
-                  </div>
-                )}
-             <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 17L17 7M9 7h8v8" />
-  </svg>
-</GlossyButton>
- </button>
-              
-              <button
-                type="button"
-                onClick={() => openProduct(linkCards[2].key)}
-                className="group relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center select-none"
-                  style={{
-                    backgroundImage: `url(${linkCards[2].mobileImg})`,
-                    WebkitTouchCallout: 'none',
-                    WebkitUserSelect: 'none',
-                    userSelect: 'none',
-                  }}
-                  onContextMenu={(e) => e.preventDefault()}
-                  draggable={false}
-                />
-             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
-                {linkCards[2].title && (
-                  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[135px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-                      {linkCards[2].title}
-                    </h3>
-                  </div>
-                )}
-        <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 17L17 7M9 7h8v8" />
-  </svg>
-</GlossyButton>
- </button>
-              
-          <button
-                type="button"
-                onClick={() => openProduct(linkCards[4].key)}
-                className="group relative block w-[388px] h-[600px] shrink-0 rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center select-none"
-                  style={{
-                    backgroundImage: `url(${linkCards[4].desktopImg})`,
-                    WebkitTouchCallout: 'none',
-                    WebkitUserSelect: 'none',
-                    userSelect: 'none',
-                  }}
-                  onContextMenu={(e) => e.preventDefault()}
-                  draggable={false}
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
-                {linkCards[4].title && (
-                  <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
-                    <h3 className="pl-[135px] pt-14 text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-                      {linkCards[4].title}
-                    </h3>
-                  </div>
-                )}
-            <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 17L17 7M9 7h8v8" />
-  </svg>
-</GlossyButton>
- </button>            </div>
-          </div>
-          </div>
+  <div className="mt-4 grid grid-cols-3 gap-4">
+    <button
+      type="button"
+      onClick={() => openProduct(linkCards[3].key)}
+      className="group relative block w-full aspect-[388/600] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center select-none"
+        style={{
+          backgroundImage: `url(${linkCards[3].mobileImg})`,
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+        }}
+        onContextMenu={(e) => e.preventDefault()}
+        draggable={false}
+      />
+      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
+      {linkCards[3].title && (
+        <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+          <h3 className="pl-[9%] pt-[11%] text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+            {linkCards[3].title}
+          </h3>
+        </div>
+      )}
+      <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 17L17 7M9 7h8v8" />
+        </svg>
+      </GlossyButton>
+    </button>
+
+    <button
+      type="button"
+      onClick={() => openProduct(linkCards[2].key)}
+      className="group relative block w-full aspect-[388/600] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center select-none"
+        style={{
+          backgroundImage: `url(${linkCards[2].mobileImg})`,
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+        }}
+        onContextMenu={(e) => e.preventDefault()}
+        draggable={false}
+      />
+      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
+      {linkCards[2].title && (
+        <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+          <h3 className="pl-[11%] pt-[11%] text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+            {linkCards[2].title}
+          </h3>
+        </div>
+      )}
+      <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 17L17 7M9 7h8v8" />
+        </svg>
+      </GlossyButton>
+    </button>
+
+    <button
+      type="button"
+      onClick={() => openProduct(linkCards[4].key)}
+      className="group relative block w-full aspect-[388/600] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center select-none"
+        style={{
+          backgroundImage: `url(${linkCards[4].desktopImg})`,
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+        }}
+        onContextMenu={(e) => e.preventDefault()}
+        draggable={false}
+      />
+      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
+      {linkCards[4].title && (
+        <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
+          <h3 className="pl-[11%] pt-[11%] text-left text-xl font-semi font-['Inter'] text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+            {linkCards[4].title}
+          </h3>
+        </div>
+      )}
+     <GlossyButton as="span" shape="circle" className="absolute bottom-4 right-4 z-10">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 17L17 7M9 7h8v8" />
+        </svg>
+      </GlossyButton>
+    </button>
+  </div>
+</div>
+</div>
 
       <div className="mt-6 flex justify-center">
            <GlossyButton as={Link} to="/en/products">

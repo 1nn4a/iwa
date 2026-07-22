@@ -246,20 +246,20 @@ export default function LinksForCleanersCreators() {
             cursor: pointer;
           }
 
-       @media (min-width: 768px) {
-            .lfcc-grid {
-              grid-template-columns: 794px 1fr;
-              align-items: stretch;
-              justify-content: flex-start;
-            }
-            .lfcc-hero-card {
-              aspect-ratio: auto;
-              height: 600px;
-            }
-            .lfcc-faq-panel {
-              align-self: center;
-            }
-          }
+    @media (min-width: 768px) {
+  .lfcc-grid {
+    grid-template-columns: 2fr minmax(280px, 1fr);
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .lfcc-hero-card {
+    aspect-ratio: auto;
+    height: min(600px, 58vw);
+  }
+  .lfcc-faq-panel {
+    align-self: center;
+  }
+}
         `}</style>
       </div>
     </>
