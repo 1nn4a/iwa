@@ -21,6 +21,8 @@ export interface ProductModalProps {
   brandLogo: string;
   ctaLabel: string;
   ctaHref: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
   learnMoreHref: string;
   shareUrl: string;
   shareTitle?: string;
@@ -40,6 +42,8 @@ export default function ProductModal({
   brandLogo,
   ctaLabel,
   ctaHref,
+    secondaryCtaLabel,
+  secondaryCtaHref,
   learnMoreHref,
   shareUrl,
   shareTitle,
@@ -178,10 +182,21 @@ const [videoState, setVideoState] = useState<'loading' | 'ready' | 'error'>('loa
               </a>
             </div>
 
-            <div className="pm-cta-row">
+         <div className="pm-cta-row">
               <GlossyButton as="a" href={ctaHref} target="_blank" rel="noopener noreferrer" className="pm-cta-btn">
                 {ctaLabel}
               </GlossyButton>
+
+              {secondaryCtaLabel && secondaryCtaHref && (
+                
+                 <a href={secondaryCtaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pm-secondary-btn"
+                >
+                  {secondaryCtaLabel}
+                </a>
+              )}
 
               <div className="pm-dots-wrap">
                 <GlossyButton shape="circle" onClick={() => setMenuOpen((v) => !v)} aria-label="More options">
@@ -348,6 +363,22 @@ const PM_STYLES = `
   transition: background 0.2s ease;
 }
 .pm-follow-btn:hover { background: rgba(255,255,255,0.08); }
+.pm-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.pm-secondary-btn:hover { background: rgba(255,255,255,0.08); }
 .pm-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 .pm-cta-row { margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; }
 .pm-dots-wrap { position: relative; }

@@ -44,7 +44,7 @@ import img6121 from '../../assets/IMG_6121.jpg';
 const PREVIEW_IMAGES = [img6113,img6114,img6115,img6116,img6117,img6120,img6121];
 export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
   return (
-    <ProductModal
+ <ProductModal
       isOpen={isOpen}
       onClose={onClose}
       previewImages={PREVIEW_IMAGES}
@@ -56,8 +56,10 @@ export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
       brandLogo="https://links.forcleaners.co.uk/linksforcleanerscouk.png"
       ctaLabel="Create a Profile"
       ctaHref="https://profile.forcleaners.co.uk/create"
+      secondaryCtaLabel="See how it works"
+      secondaryCtaHref="https://forcleaners.co.uk/service-estimator/setup"
       learnMoreHref="/en/links-for-cleaners"
-      shareUrl="https://links.forcleaners.co.uk"
+      shareUrl="https://www.innovatewithaima.com/en/links-for-cleaners"
       shareTitle="LinksForCleaners"
       faqs={faqs}
     />
