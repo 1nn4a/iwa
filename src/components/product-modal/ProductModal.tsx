@@ -13,6 +13,7 @@ export interface ProductModalProps {
   onClose: () => void;
   videoSrc?: string;
   posterSrc?: string;
+  previewImages?: string[];
   title: string;
   subtitle: string;
   brandName: string;
@@ -31,6 +32,7 @@ export default function ProductModal({
   onClose,
   videoSrc,
   posterSrc,
+  previewImages,
   title,
   subtitle,
   brandName,
@@ -43,20 +45,22 @@ export default function ProductModal({
   shareTitle,
   faqs,
 }: ProductModalProps) {
-  const [videoState, setVideoState] = useState<'loading' | 'ready' | 'error'>('loading');
+const [videoState, setVideoState] = useState<'loading' | 'ready' | 'error'>('loading');
   const [isPlaying, setIsPlaying] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState<boolean[]>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
+ useEffect(() => {
     if (!isOpen) return;
     setVideoState(videoSrc ? 'loading' : 'error');
     setIsPlaying(true);
     setMenuOpen(false);
     setOpenFaq(null);
     setCopied(false);
+    setImgLoaded(previewImages ? new Array(previewImages.length).fill(false) : []);
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = '';
@@ -202,8 +206,35 @@ export default function ProductModal({
           </div>
         </div>
 
+{previewImages && previewImages.length > 0 && (
+          <div className="pm-preview">
+            <p className="pm-preview-eyebrow">Preview</p>
+            <div className="pm-preview-grid">
+              {previewImages.map((src, i) => (
+                <div key={i} className="pm-preview-item">
+                  {!imgLoaded[i] && <div className="pm-preview-shimmer" />}
+                  <img
+                    src={src}
+                    alt=""
+                    loading="lazy"
+                    className="pm-preview-img"
+                    style={{ opacity: imgLoaded[i] ? 1 : 0 }}
+                    onLoad={() =>
+                      setImgLoaded((prev) => {
+                        const next = [...prev];
+                        next[i] = true;
+                        return next;
+                      })
+                    }
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="pm-faq">
-          <p className="pm-faq-eyebrow">FAQ</p>
+                    <p className="pm-faq-eyebrow">FAQ</p>
           {faqs.map((f, i) => {
             const open = openFaq === i;
             return (
@@ -339,6 +370,23 @@ const PM_STYLES = `
 .pm-faq-chevron.is-open { transform: rotate(180deg); }
 .pm-faq-a { margin: 0 0 16px; font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.6); }
 .pm-faq-a a { color: #ffffff; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+
+.pm-preview { margin-top: 36px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
+.pm-preview-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8da2ff; margin: 0 0 14px; }
+.pm-preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.pm-preview-item { position: relative; aspect-ratio: 1179 / 2379; border-radius: 14px; overflow: hidden; background: #141b2e; }
+.pm-preview-shimmer {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(255,255,255,0.03) 30%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.03) 70%);
+  background-size: 200% 100%;
+  animation: pm-shimmer 1.4s ease-in-out infinite;
+}
+.pm-preview-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s ease; }
+
+@media (min-width: 768px) {
+  .pm-preview-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .pm-preview-item { border-radius: 16px; }
+}
 
 @media (min-width: 768px) {
   .pm-panel { padding: 40px; border-radius: 40px; }

@@ -33,11 +33,14 @@ interface Props {
   onClose: () => void;
 }
 
+const PREVIEW_IMAGES = Array.from({ length: 8 }, (_, i) => `https://fordesigners.online/ui/preview/IMG_${6113 + i}.jpeg`);
+
 export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
   return (
     <ProductModal
       isOpen={isOpen}
       onClose={onClose}
+      previewImages={PREVIEW_IMAGES}
       videoSrc="https://fordesigners.online/product/video/For Cleaners.mp4"
       title="Links For Cleaners"
       subtitle="Professional business profiles built for UK cleaning businesses. Stay visible, capture enquiries and bring everything your customers need into one place."
