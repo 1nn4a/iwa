@@ -155,7 +155,7 @@ We enable specialist businesses and independent professionals to connect, share 
               Apply to IWA
            </a>
             
-             <a href="https://group.innovatewithaima.com/submit-an-opportunity"
+             <a href="https://innovatewithaima.com/group/submit-an-opportunity"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-[#5c6cff] px-3 py-1.5 text-[11px] font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"

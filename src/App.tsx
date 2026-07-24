@@ -19,9 +19,10 @@ import BlogSearchOverlay from './components/BlogSearchOverlay'
 import ProductFormPage from './pages/ProductFormPage'
 import ProductsPage from './pages/ProductsPage'
 import LinksForCleaners from './pages/LinksForCleaners'
-import LinksForCleanersCreators from './pages/LinksForCleanersCreators'
+ import LinksForCleanersCreators from './pages/LinksForCleanersCreators'
+import SubmitOpportunityPage from './pages/SubmitOpportunityPage'
 
-function StartRedirect() {
+ function StartRedirect() {
   const navigate = useNavigate()
   useEffect(() => {
     if (
@@ -30,6 +31,10 @@ function StartRedirect() {
     ) {
       navigate('/blog', { replace: true })
     }
+   if (window.location.hostname === 'group.innovatewithaima.com') {
+      window.location.replace('https://innovatewithaima.com/group/submit-an-opportunity')
+      return
+    }
   }, [navigate])
   return null
 }
@@ -37,9 +42,10 @@ function StartRedirect() {
 function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boolean, setBlogSearchOpen: (v: boolean) => void }) {
 const location = useLocation()
  const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
-const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'].includes(location.pathname)
-const isNoPaddingPage = isFormPage || isProductLandingPage
-const isLightFooterPage = isFormPage
+const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme', '/group/submit-an-opportunity'].includes(location.pathname)
+ const isNoPaddingPage = isFormPage || isProductLandingPage
+ 
+ const isLightFooterPage = isFormPage
   return (
     <div className="min-h-screen flex flex-col">
       <div className="min-h-screen overflow-x-hidden">
@@ -62,8 +68,8 @@ const isLightFooterPage = isFormPage
 <Route path="/product-trades-form"   element={<ProductFormPage product="trades"   />} />
 <Route path="/product-beauty-form"   element={<ProductFormPage product="beauty"   />} />
 <Route path="/product-property-form" element={<ProductFormPage product="property" />} />
-<Route path="*" element={<NotFound />} />
-              </Routes>
+ <Route path="/group/submit-an-opportunity" element={<SubmitOpportunityPage />} />
+<Route path="*" element={<NotFound />} />              </Routes>
           </main>
         </div>
 <Footer variant={isLightFooterPage ? 'light' : 'dark'} />
