@@ -17,8 +17,8 @@ interface NavItem {
 interface NavSection {
   label: string
   items: NavItem[]
+  to?: string
 }
-
 const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com'
 
 const NAV_TREE: NavSection[] = [
@@ -44,12 +44,10 @@ const NAV_TREE: NavSection[] = [
       { label: 'Key Principles', to: '/definitions' },
     ],
   },
-  {
-    label: 'About',
-    items: [
-      { label: 'Contact', to: '/apply' },
-      { label: 'Home', to: '/' },
-    ],
+ {
+    label: 'Home',
+    items: [],
+    to: '/',
   },
 ]
 
@@ -150,9 +148,10 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
-  const location = useLocation()
-  const isNetworkActive = location.pathname.startsWith('/deals')
-
+ const location = useLocation()
+  function isSectionActive(section: NavSection) {
+    return section.items.some(item => item.to && location.pathname.startsWith(item.to))
+  }
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -200,9 +199,25 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
           </a>
 
           <nav ref={navRef} className={`hidden items-center gap-1 md:flex ${isGroupDomain ? 'ml-auto' : ''}`} aria-label="Primary navigation">
-   {NAV_TREE.map(section => {
+  {NAV_TREE.map(section => {
+              const isActiveSection = isSectionActive(section)
+              if (section.to) {
+                return (
+                  <NavLink
+                    key={section.label}
+                    to={section.to}
+                    end
+                    className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+                      isActiveSection
+                        ? 'text-white bg-[#5c6cff] shadow-md shadow-[#5c6cff]/30'
+                        : 'text-white/65 font-medium hover:text-white hover:bg-white/6'
+                    }`}
+                  >
+                    {section.label}
+                  </NavLink>
+                )
+              }
               const isOpen = openMenu === section.label
-              const isActiveSection = isNetworkActive && section.label === 'Network'
               return (
                 <div key={section.label} className="relative">
             <button
@@ -286,9 +301,9 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
         <div className="md:hidden fixed inset-0 top-[65px] z-50 bg-black overflow-y-auto">
           <nav className="max-w-[1180px] mx-auto px-4 py-4 flex flex-col" aria-label="Mobile navigation">
 
-        {NAV_TREE.map(section => {
+    {NAV_TREE.map(section => {
                 const isOpen = openMobileSection === section.label
-                const isActiveSection = isNetworkActive && section.label === 'Network'
+                const isActiveSection = isSectionActive(section)
                 return (
                   <div key={section.label} className="border-b border-white/10">
                     <button

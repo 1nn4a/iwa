@@ -30,7 +30,7 @@ export const deals: Deal[] = [
     company: 'Links For Cleaners',
     dealTitle: '50% off Annual Plans for 1 year',
     savingsLabel: 'Save up to £600',
-    logo: '/assets/appicons/lfc-icon.PNG',
+    logo: '../assets/appicons/lfc-icon.PNG',
     category: 'Business Tools',
     overview: [
       'Links For Cleaners is a professional business profile built specifically for UK cleaning businesses, helping you bring everything your customers need into one place.',
@@ -64,7 +64,7 @@ export const deals: Deal[] = [
     company: 'Links For Cleaners Cleanfluencer Program',
     dealTitle: '£5 Starting Bonus',
     savingsLabel: 'Save up to £5',
-    logo: '/assets/appicons/lfc-icon.PNG',
+    logo: '../assets/appicons/lfc-icon.PNG',
     category: 'Creator Programs',
     overview: [
       'The Links For Cleaners Cleanfluencer Program rewards creators and cleaning professionals for recommending products they already use and trust.',

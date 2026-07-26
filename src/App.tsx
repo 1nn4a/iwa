@@ -1,6 +1,6 @@
 //App.tsx
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -76,8 +76,17 @@ const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'
 <Route path="/product-beauty-form"   element={<ProductFormPage product="beauty"   />} />
 <Route path="/product-property-form" element={<ProductFormPage product="property" />} />
 <Route path="/group/submit-an-opportunity" element={<SubmitOpportunityPage />} />
-<Route path="/deals" element={<DealsPage />} />
-<Route path="/deals/:slug" element={<DealPage />} />
+{window.location.hostname === 'group.innovatewithaima.com' ? (
+  <>
+    <Route path="/deals" element={<DealsPage />} />
+    <Route path="/deals/:slug" element={<DealPage />} />
+  </>
+) : (
+  <>
+    <Route path="/deals" element={<Navigate to="/" replace />} />
+    <Route path="/deals/:slug" element={<Navigate to="/" replace />} />
+  </>
+)}
 <Route path="*" element={<NotFound />} />
              </Routes>
           </main>
