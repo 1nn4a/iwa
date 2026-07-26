@@ -1,6 +1,6 @@
 // src/data/deals-content.ts
  
-import lfcIcon from '../assets/lfc-icon.png'
+import lfcIcon from '../assets/lfc-icon1.png'
 export type Deal = {
   slug: string
   company: string
