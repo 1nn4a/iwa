@@ -23,7 +23,7 @@ import LinksForCleaners from './pages/LinksForCleaners'
 import SubmitOpportunityPage from './pages/SubmitOpportunityPage'
 import DealsPage from './pages/DealsPage'
 import DealPage from './pages/DealPage'
- function StartRedirect() {
+function StartRedirect() {
   const navigate = useNavigate()
   useEffect(() => {
     if (
@@ -38,6 +38,9 @@ import DealPage from './pages/DealPage'
     ) {
       window.location.replace('https://innovatewithaima.com/group/submit-an-opportunity')
       return
+    }
+    if (window.location.hostname === 'group.innovatewithaima.com') {
+      document.body.classList.add('group-domain')
     }
   }, [navigate])
   return null

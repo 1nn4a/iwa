@@ -1,6 +1,6 @@
 // Navbar.tsx
  import { useState, useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../assets/logo.png'
 
 interface NavbarProps {
@@ -150,6 +150,8 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
+  const location = useLocation()
+  const isNetworkActive = location.pathname.startsWith('/deals')
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -191,16 +193,16 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   return (
     <>
     <header className="fixed left-0 top-0 z-50 w-full border-b border-white/8 bg-black/45 backdrop-blur-xl">
-        <div className={`flex items-center justify-between py-3 ${isGroupDomain ? 'w-full px-5 md:px-10' : 'mx-auto max-w-[1180px] px-4 md:px-8'}`}>
+      <div className={`flex items-center py-3 ${isGroupDomain ? 'w-full justify-start px-5 md:px-10' : 'mx-auto max-w-[1180px] justify-between px-4 md:px-8'}`}>
 
           <a href="https://www.innovatewithaima.com/" className="flex items-center gap-2 flex-shrink-0">
             <img src={logo} className="h-10" alt="AiMA" />
           </a>
 
-          <nav ref={navRef} className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
-     {NAV_TREE.map(section => {
+          <nav ref={navRef} className={`hidden items-center gap-1 md:flex ${isGroupDomain ? 'ml-auto' : ''}`} aria-label="Primary navigation">
+   {NAV_TREE.map(section => {
               const isOpen = openMenu === section.label
-              const isActiveSection = isGroupDomain && section.label === 'Network'
+              const isActiveSection = isNetworkActive && section.label === 'Network'
               return (
                 <div key={section.label} className="relative">
             <button
@@ -249,7 +251,7 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
             </button>
           </nav>
 
-          <div className="flex items-center gap-3">
+      <div className={`flex items-center gap-3 ${isGroupDomain ? 'md:ml-3' : ''}`}>
             <NavLink
               to="/apply"
               className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/16 transition-all"
@@ -284,9 +286,9 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
         <div className="md:hidden fixed inset-0 top-[65px] z-50 bg-black overflow-y-auto">
           <nav className="max-w-[1180px] mx-auto px-4 py-4 flex flex-col" aria-label="Mobile navigation">
 
-           {NAV_TREE.map(section => {
+        {NAV_TREE.map(section => {
                 const isOpen = openMobileSection === section.label
-                const isActiveSection = isGroupDomain && section.label === 'Network'
+                const isActiveSection = isNetworkActive && section.label === 'Network'
                 return (
                   <div key={section.label} className="border-b border-white/10">
                     <button
