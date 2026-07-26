@@ -1,4 +1,4 @@
-import lfcIcon from '../assets/lfc-icon1.png'
+import lfcIcon from 'public/assets/lfc-icon1.png'
 
 export type Deal = {
   slug: string
