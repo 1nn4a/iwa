@@ -152,7 +152,7 @@ We enable specialist businesses and independent professionals to connect, share 
               href="https://www.innovatewithaima.com/apply"
               className="rounded-full bg-black px-3 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
             >
-              Apply to IWA
+              Access Deals
            </a>
             
              <a href="https://innovatewithaima.com/group/submit-an-opportunity"
