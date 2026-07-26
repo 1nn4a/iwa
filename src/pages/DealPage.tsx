@@ -163,6 +163,24 @@ export default function DealPage() {
                 </div>
               </div>
 
+              <div className={glassCard}>
+                <div className={glassSheen} style={glassSheenStyle} />
+                <div className="relative">
+                  <h3 className="text-sm font-semibold text-[#083a6f]">Have a Deal to Promote?</h3>
+                  <p className="mt-1.5 text-xs leading-5 text-[#083a6f]/60">
+                    Submit an opportunity for the network to consider.
+                  </p>
+                  <a
+                    href="https://innovatewithaima.com/group/submit-an-opportunity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-[#5c6cff]/15 bg-[#5c6cff]/10 py-2.5 text-xs font-semibold text-[#5c6cff] backdrop-blur-md transition hover:bg-[#5c6cff]/20"
+                  >
+                    Submit an Opportunity
+                  </a>
+                </div>
+              </div>
+
               {moreDeals.length > 0 && (
                 <div className={glassCard}>
                   <div className={glassSheen} style={glassSheenStyle} />

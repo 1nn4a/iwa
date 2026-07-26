@@ -22,10 +22,10 @@ interface NavSection {
 const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com'
 
 const NAV_TREE: NavSection[] = [
-  {
+{
     label: 'Solutions',
     items: [
-      { label: 'Links for Cleaners', href: '/en/links-for-cleaners', external: true },
+      { label: 'Links for Cleaners', to: '/en/links-for-cleaners' },
       { label: 'Browse all', to: '/en/products' },
     ],
   },
@@ -148,9 +148,13 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
  const location = useLocation()
- function isSectionActive(section: NavSection) {
+  function isSectionActive(section: NavSection) {
     if (section.to) return location.pathname === section.to
-    return section.items.some(item => item.to && location.pathname.startsWith(item.to))
+    return section.items.some(item => {
+      if (item.to) return location.pathname.startsWith(item.to)
+      if (item.href) return location.pathname === new URL(item.href, window.location.origin).pathname
+      return false
+    })
   }
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
