@@ -1,4 +1,5 @@
-// src/data/deals.ts
+import lfcIcon from '../assets/lfc-icon.png'
+
 export type Deal = {
   slug: string
   company: string
@@ -30,7 +31,7 @@ export const deals: Deal[] = [
     company: 'Links For Cleaners',
     dealTitle: '50% off Annual Plans for 1 year',
     savingsLabel: 'Save up to £600',
-    logo: '/assets/lfc-icon.PNG',
+    logo: lfcIcon,
     category: 'Business Tools',
     overview: [
       'Links For Cleaners is a professional business profile built specifically for UK cleaning businesses, helping you bring everything your customers need into one place.',
@@ -63,9 +64,9 @@ export const deals: Deal[] = [
     slug: 'links-for-cleaners-cleanfluencer-program',
     company: 'Links For Cleaners Cleanfluencer Program',
     dealTitle: '£5 Starting Bonus',
-    savingsLabel: 'Save up to £5',
-    logo: '/assets/lfc-icon.PNG',
-        category: 'Creator Programs',
+   savingsLabel: 'Save up to £5',
+    logo: lfcIcon,
+    category: 'Creator Programs',
     overview: [
       'The Links For Cleaners Cleanfluencer Program rewards creators and cleaning professionals for recommending products they already use and trust.',
       'Build your own storefront, share your recommendations, and earn commission from qualifying purchases while helping others discover products used by real cleaning businesses.',
