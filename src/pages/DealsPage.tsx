@@ -51,8 +51,8 @@ export default function DealsPage() {
                   }}
                 />
                 <div className="relative flex items-start justify-between">
-                  {deal.logo ? (
-                    <img src={deal.logo} alt="" className="h-10 w-10 rounded-[10px] object-cover shadow-sm" />
+                 {deal.logo ? (
+                    <img src={deal.logo} alt="" className="h-10 w-10 rounded-[10px] object-contain" />
                   ) : (
                     <div className="h-10 w-10 rounded-[10px] bg-[#5c6cff]/12" />
                   )}
