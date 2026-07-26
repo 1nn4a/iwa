@@ -21,7 +21,8 @@ import ProductsPage from './pages/ProductsPage'
 import LinksForCleaners from './pages/LinksForCleaners'
  import LinksForCleanersCreators from './pages/LinksForCleanersCreators'
 import SubmitOpportunityPage from './pages/SubmitOpportunityPage'
-
+import DealsPage from './pages/DealsPage'
+import DealPage from './pages/DealPage'
  function StartRedirect() {
   const navigate = useNavigate()
   useEffect(() => {
@@ -31,7 +32,10 @@ import SubmitOpportunityPage from './pages/SubmitOpportunityPage'
     ) {
       navigate('/blog', { replace: true })
     }
-   if (window.location.hostname === 'group.innovatewithaima.com') {
+  if (
+      window.location.hostname === 'group.innovatewithaima.com' &&
+      !window.location.pathname.startsWith('/deals')
+    ) {
       window.location.replace('https://innovatewithaima.com/group/submit-an-opportunity')
       return
     }
@@ -68,8 +72,11 @@ const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'
 <Route path="/product-trades-form"   element={<ProductFormPage product="trades"   />} />
 <Route path="/product-beauty-form"   element={<ProductFormPage product="beauty"   />} />
 <Route path="/product-property-form" element={<ProductFormPage product="property" />} />
- <Route path="/group/submit-an-opportunity" element={<SubmitOpportunityPage />} />
-<Route path="*" element={<NotFound />} />              </Routes>
+<Route path="/group/submit-an-opportunity" element={<SubmitOpportunityPage />} />
+<Route path="/deals" element={<DealsPage />} />
+<Route path="/deals/:slug" element={<DealPage />} />
+<Route path="*" element={<NotFound />} />
+             </Routes>
           </main>
         </div>
 <Footer variant={isLightFooterPage ? 'light' : 'dark'} />

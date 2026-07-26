@@ -14,7 +14,7 @@ export default function Footer({ variant = 'dark' }: FooterProps) {
 
   return (
 <footer className={`border-t ${border} ${isLight ? 'bg-white text-black' : 'bg-[#083a6f] text-white'}`}>
-        <div className="mx-auto max-w-[1180px] px-5 py-12 md:px-8">
+        <div className={`px-5 py-12 md:px-8 ${typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com' ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
 
         <div className="flex flex-col md:flex-row md:justify-between gap-10">
 

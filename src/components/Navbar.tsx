@@ -19,6 +19,8 @@ interface NavSection {
   items: NavItem[]
 }
 
+const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com'
+
 const NAV_TREE: NavSection[] = [
   {
     label: 'Solutions',
@@ -32,6 +34,7 @@ const NAV_TREE: NavSection[] = [
     items: [
       { label: 'Membership', to: '/apply' },
       { label: 'Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
+      { label: 'Deals', to: '/deals' },
     ],
   },
   {
@@ -142,7 +145,6 @@ function NavItemLink({ item, onClick, className }: { item: NavItem; onClick: () 
     </a>
   )
 }
-
 export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openMenu, setOpenMenu] = useState<string | null>(null)
@@ -188,22 +190,27 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/8 bg-black/45 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-3 md:px-8">
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/8 bg-black/45 backdrop-blur-xl">
+        <div className={`flex items-center justify-between py-3 ${isGroupDomain ? 'w-full px-5 md:px-10' : 'mx-auto max-w-[1180px] px-4 md:px-8'}`}>
 
           <a href="https://www.innovatewithaima.com/" className="flex items-center gap-2 flex-shrink-0">
             <img src={logo} className="h-10" alt="AiMA" />
           </a>
 
           <nav ref={navRef} className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
-            {NAV_TREE.map(section => {
+     {NAV_TREE.map(section => {
               const isOpen = openMenu === section.label
+              const isActiveSection = isGroupDomain && section.label === 'Network'
               return (
                 <div key={section.label} className="relative">
-                  <button
+            <button
                     type="button"
                     onClick={() => setOpenMenu(isOpen ? null : section.label)}
-                    className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm text-white/65 font-medium hover:text-white hover:bg-white/6 transition-all"
+                    className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+                      isActiveSection
+                        ? 'text-white bg-[#5c6cff] shadow-md shadow-[#5c6cff]/30'
+                        : 'text-white/65 font-medium hover:text-white hover:bg-white/6'
+                    }`}
                     aria-expanded={isOpen}
                   >
                     {section.label}
@@ -277,14 +284,15 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
         <div className="md:hidden fixed inset-0 top-[65px] z-50 bg-black overflow-y-auto">
           <nav className="max-w-[1180px] mx-auto px-4 py-4 flex flex-col" aria-label="Mobile navigation">
 
-              {NAV_TREE.map(section => {
+           {NAV_TREE.map(section => {
                 const isOpen = openMobileSection === section.label
+                const isActiveSection = isGroupDomain && section.label === 'Network'
                 return (
                   <div key={section.label} className="border-b border-white/10">
                     <button
                       type="button"
                       onClick={() => setOpenMobileSection(isOpen ? null : section.label)}
-                      className="flex w-full items-center justify-between py-5 text-xl font-semibold text-white"
+                      className={`flex w-full items-center justify-between py-5 text-xl font-semibold ${isActiveSection ? 'text-[#8da2ff]' : 'text-white'}`}
                       aria-expanded={isOpen}
                     >
                       {section.label}
