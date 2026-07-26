@@ -34,8 +34,7 @@ const NAV_TREE: NavSection[] = [
     items: [
       { label: 'Membership', to: '/apply' },
       { label: 'Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
-      { label: 'Deals', to: '/deals' },
-    ],
+      { label: 'Deals', href: 'https://group.innovatewithaima.com/deals' },    ],
   },
   {
     label: 'Framework',
@@ -149,7 +148,8 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
  const location = useLocation()
-  function isSectionActive(section: NavSection) {
+ function isSectionActive(section: NavSection) {
+    if (section.to) return location.pathname === section.to
     return section.items.some(item => item.to && location.pathname.startsWith(item.to))
   }
   useEffect(() => {
