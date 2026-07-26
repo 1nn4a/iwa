@@ -21,10 +21,7 @@ export type Deal = {
   footerLine: string
 }
 
-// This is the seed/fallback array — the real source of truth is
-// GET /api/deals and GET /api/deals/:slug. Edit src/data/deals-content.ts
-// (the server-side copy) to change what's actually served; keep this
-// file in sync so the fallback doesn't show stale content.
+ 
 export const deals: Deal[] = [
   {
     slug: 'links-for-cleaners',
