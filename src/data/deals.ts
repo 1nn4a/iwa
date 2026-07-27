@@ -1,4 +1,5 @@
- 
+ // src/data/deals.ts
+
 export type Deal = {
   slug: string
   company: string
