@@ -48,8 +48,7 @@ const NAV_TREE_ALL: NavSection[] = [
   {
     label: 'Framework',
     items: [
-      { label: 'FAQ', to: '/#faq' },
-      { label: 'Key Principles', to: '/definitions' },
+       { label: 'Key Principles', to: '/definitions' },
     ],
   },
 isGroupDomain
