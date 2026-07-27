@@ -29,12 +29,14 @@ const NAV_TREE: NavSection[] = [
       { label: 'Browse all', to: '/en/products' },
     ],
   },
-  {
+{
     label: 'Network',
     items: [
       { label: 'Membership', to: '/apply' },
       { label: 'Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
-      { label: 'Deals', href: 'https://group.innovatewithaima.com/deals' },    ],
+      { label: 'Deals', href: 'https://group.innovatewithaima.com/deals' },
+      { label: 'Join', href: 'https://group.innovatewithaima.com/join' },
+    ],
   },
   {
     label: 'Framework',

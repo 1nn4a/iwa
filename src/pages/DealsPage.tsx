@@ -18,12 +18,11 @@ const filteredDeals = deals.filter(d =>
         <link rel="canonical" href="https://group.innovatewithaima.com/deals" />
       </Helmet>
       <div className="min-h-screen" style={{ background: '#FAF9F6' }}>
-        <main className="mx-auto max-w-[1180px] px-4 pb-24 pt-32 md:px-8">
-       // AFTER (title block replaced with image banner + search)
+       <main className="mx-auto max-w-[1180px] px-4 pb-24 pt-32 md:px-8">
 <div className="relative -mx-4 -mt-32 overflow-hidden md:-mx-8 md:-mt-32">
   <div className="relative h-[280px] w-full sm:h-[340px] md:h-[400px]">
     <img
-      src="/src/assets/deals-hero.png"
+      src="/src/assets/deals-hero.jpg"
       alt=""
       className="absolute inset-0 h-full w-full object-cover object-center"
     />
