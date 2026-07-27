@@ -35,10 +35,16 @@ function StartRedirect() {
     }
 if (
       window.location.hostname === 'group.innovatewithaima.com' &&
+      window.location.pathname === '/apply'
+    ) {
+      window.location.replace('https://innovatewithaima.com/apply')
+      return
+    }
+    if (
+      window.location.hostname === 'group.innovatewithaima.com' &&
       !window.location.pathname.startsWith('/deals') &&
       !window.location.pathname.startsWith('/join') &&
-      window.location.pathname !== '/' &&
-      window.location.pathname !== '/apply'
+      window.location.pathname !== '/'
     ) {
       window.location.replace('https://innovatewithaima.com/group/submit-an-opportunity')
       return

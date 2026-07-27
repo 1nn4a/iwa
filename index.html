@@ -5,7 +5,7 @@
  <script>
     if (window.location.hostname === 'group.innovatewithaima.com') {
       var p = window.location.pathname
-      var safe = p === '/' || p === '/apply' || p.indexOf('/deals') === 0 || p.indexOf('/join') === 0 || p.indexOf('/group/submit-an-opportunity') === 0
+var safe = p === '/' || p.indexOf('/deals') === 0 || p.indexOf('/join') === 0 || p.indexOf('/group/submit-an-opportunity') === 0
       if (safe) {
         document.documentElement.classList.add('group-domain-pending')
       }

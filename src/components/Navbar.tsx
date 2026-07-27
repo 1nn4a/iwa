@@ -21,8 +21,7 @@ interface NavSection {
 }
 const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com'
 
-const GROUP_DOMAIN_SAFE_PATHS = ['/', '/apply', '/deals', '/join', '/group/submit-an-opportunity']
-
+const GROUP_DOMAIN_SAFE_PATHS = ['/', '/deals', '/join', '/group/submit-an-opportunity']
 function isSafeOnGroupDomain(item: NavItem) {
   const path = item.to ?? (item.href ? new URL(item.href, 'https://group.innovatewithaima.com').pathname : '')
   return GROUP_DOMAIN_SAFE_PATHS.some(safe => path === safe || path.startsWith(safe + '/'))
@@ -39,7 +38,9 @@ const NAV_TREE_ALL: NavSection[] = [
 {
     label: 'Network',
     items: [
-      { label: 'Membership', to: '/apply' },
+      isGroupDomain
+        ? { label: 'Membership', href: 'https://innovatewithaima.com/apply', external: true }
+        : { label: 'Membership', to: '/apply' },
       { label: 'Submit Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
       { label: 'View Deals', href: 'https://group.innovatewithaima.com/deals' },
       { label: 'Ambassador Programme', href: 'https://group.innovatewithaima.com/join' },    ],
@@ -295,12 +296,21 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
           </nav>
 
       <div className={`flex items-center gap-3 ${isGroupDomain ? 'md:ml-3' : ''}`}>
-            <NavLink
-              to="/apply"
-              className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/16 transition-all"
-            >
-              Enquire
-            </NavLink>
+          {isGroupDomain ? (
+              
+                <a href="https://innovatewithaima.com/apply"
+                className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/16 transition-all"
+              >
+                Enquire
+              </a>
+            ) : (
+              <NavLink
+                to="/apply"
+                className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/16 transition-all"
+              >
+                Enquire
+              </NavLink>
+            )}
 
             <button
               className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-white/10 bg-white/[0.04] text-white/60 hover:text-white hover:border-white/20 hover:bg-white/[0.09] transition-all"
@@ -372,9 +382,15 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
               </button>
 
               <div className="pt-6">
-                <NavLink to="/apply" onClick={closeMobile} className="navbar-white-btn">
-                  <span className="navbar-white-btn-content">Enquire</span>
-                </NavLink>
+         {isGroupDomain ? (
+                  <a href="https://innovatewithaima.com/apply" className="navbar-white-btn">
+                    <span className="navbar-white-btn-content">Enquire</span>
+                  </a>
+                ) : (
+                  <NavLink to="/apply" onClick={closeMobile} className="navbar-white-btn">
+                    <span className="navbar-white-btn-content">Enquire</span>
+                  </NavLink>
+                )}
               </div>
 
             </nav>
