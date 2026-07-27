@@ -2,9 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-     <script>
+ <script>
     if (window.location.hostname === 'group.innovatewithaima.com') {
-      document.documentElement.classList.add('group-domain-pending')
+      var p = window.location.pathname
+      var safe = p === '/' || p === '/apply' || p.indexOf('/deals') === 0 || p.indexOf('/join') === 0 || p.indexOf('/group/submit-an-opportunity') === 0
+      if (safe) {
+        document.documentElement.classList.add('group-domain-pending')
+      }
     }
   </script>
     <link rel="icon" type="image/jpeg" href="/favicon.png" />

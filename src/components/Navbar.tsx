@@ -21,7 +21,14 @@ interface NavSection {
 }
 const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com'
 
-const NAV_TREE: NavSection[] = [
+const GROUP_DOMAIN_SAFE_PATHS = ['/', '/apply', '/deals', '/join', '/group/submit-an-opportunity']
+
+function isSafeOnGroupDomain(item: NavItem) {
+  const path = item.to ?? (item.href ? new URL(item.href, 'https://group.innovatewithaima.com').pathname : '')
+  return GROUP_DOMAIN_SAFE_PATHS.some(safe => path === safe || path.startsWith(safe + '/'))
+}
+
+const NAV_TREE_ALL: NavSection[] = [
 {
     label: 'Solutions',
     items: [
@@ -33,23 +40,31 @@ const NAV_TREE: NavSection[] = [
     label: 'Network',
     items: [
       { label: 'Membership', to: '/apply' },
-      { label: 'Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
-      { label: 'Deals', href: 'https://group.innovatewithaima.com/deals' },
+      { label: 'Submit Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
+      { label: 'View Deals', href: 'https://group.innovatewithaima.com/deals' },
       { label: 'Ambassador Programme', href: 'https://group.innovatewithaima.com/join' },    ],
   },
   {
     label: 'Framework',
     items: [
-      { label: 'FAQ', href: '/#faq' },
+      { label: 'FAQ', to: '/#faq' },
       { label: 'Key Principles', to: '/definitions' },
     ],
   },
  {
     label: 'Home',
-    items: [],
+    items: [
+      { label: 'Back to Home', to: '/' },
+    ],
     to: '/',
   },
 ]
+
+const NAV_TREE: NavSection[] = isGroupDomain
+  ? NAV_TREE_ALL
+      .map(section => ({ ...section, items: section.items.filter(isSafeOnGroupDomain) }))
+      .filter(section => section.to || section.items.length > 0)
+  : NAV_TREE_ALL
 
 const whiteGlossyStyle = `
   .navbar-white-btn {
