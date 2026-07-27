@@ -9,7 +9,7 @@ import NetworkJoinGate from '../components/NetworkJoinGate'
 export default function DealsPage() {
 const { deals, loading } = useDeals()
 const [searchQuery, setSearchQuery] = useState('')
-const [joinOpen, setJoinOpen] = useState(false)
+const [openSlug, setOpenSlug] = useState<string | null>(null)
 const [applied, setApplied] = useState(false)
 const filteredDeals = deals.filter(d =>
   d.dealTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -113,17 +113,25 @@ const filteredDeals = deals.filter(d =>
                     )}
                   </div>
 
-                  {deal.locked && (
+            {deal.locked && openSlug !== deal.slug && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-[18px] bg-white/50 backdrop-blur-[2px]">
                       <p className="text-sm font-semibold text-[#083a6f]">Members-only deal</p>
                       <button
                         type="button"
-                        onClick={(e) => { e.preventDefault(); setJoinOpen(true) }}
+                        onClick={(e) => { e.preventDefault(); setOpenSlug(deal.slug) }}
                         className="inline-flex items-center gap-1 rounded-full bg-[#5c6cff] px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-[#5c6cff]/30 hover:bg-[#4a5aee] transition"
                       >
                         Join the Network →
                       </button>
                     </div>
+                  )}
+
+                  {deal.locked && openSlug === deal.slug && (
+                    <NetworkJoinGate
+                      compact
+                      onClose={() => setOpenSlug(null)}
+                      onJoined={() => { setApplied(true); setOpenSlug(null) }}
+                    />
                   )}
                 </CardWrapper>
               )
@@ -132,13 +140,7 @@ const filteredDeals = deals.filter(d =>
         </main>
       </div>
 
-   {joinOpen && (
-        <NetworkJoinGate
-          onClose={() => setJoinOpen(false)}
-          onJoined={() => setApplied(true)}
-        />
-      )}
-
+  
       {applied && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#083a6f] px-5 py-3 text-sm text-white shadow-lg">
           Thanks! We'll email you once you're approved.
