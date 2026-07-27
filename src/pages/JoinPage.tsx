@@ -31,7 +31,7 @@ export default function JoinPage() {
       </Helmet>
       <div className="min-h-screen" style={{ background: '#FAF9F6' }}>
         <main className="mx-auto max-w-[1180px] px-4 pb-24 pt-32 md:px-8">
-          <div className="relative -mx-4 -mt-32 overflow-hidden md:-mx-8 md:-mt-32">
+<div className="relative left-1/2 -ml-[50vw] -mt-32 w-screen overflow-hidden">
             <div className="relative h-[280px] w-full sm:h-[340px] md:h-[400px]">
            <img
                 src={dealsHero}

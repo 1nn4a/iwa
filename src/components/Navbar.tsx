@@ -196,8 +196,8 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
 
   return (
     <>
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/8 bg-black/45 backdrop-blur-xl">
-<div className={`flex items-center py-3 mx-auto max-w-[1180px] justify-between px-4 md:px-8 ${isGroupDomain ? 'md:w-full md:max-w-none md:justify-start md:px-5 lg:px-10' : ''}`}>
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/8 bg-black/45 backdrop-blur-xl [transform:translateZ(0)]">
+    <div className={`flex items-center py-3 mx-auto max-w-[1180px] justify-between px-4 md:px-8 ${isGroupDomain ? 'md:w-full md:max-w-none md:justify-start md:px-5 lg:px-10' : ''}`}>
           <a href="https://www.innovatewithaima.com/" className="flex items-center gap-2 flex-shrink-0">
             <img src={logo} className="h-10" alt="AiMA" />
           </a>

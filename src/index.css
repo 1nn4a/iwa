@@ -6,10 +6,12 @@
 
   html {
     scroll-behavior: smooth;
+    overscroll-behavior-y: none;
   }
 
 body {
     margin: 0;
+    overscroll-behavior-y: none;
     background:
       radial-gradient(circle at top center, rgba(73, 102, 255, 0.45), transparent 34%),
       radial-gradient(circle at bottom left, rgba(73, 102, 255, 0.18), transparent 26%),
