@@ -52,7 +52,8 @@ function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boole
 const location = useLocation()
  const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
 const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme', '/group/submit-an-opportunity'].includes(location.pathname)
- const isNoPaddingPage = isFormPage || isProductLandingPage
+ const isFullBleedHeroPage = location.pathname === '/deals' || location.pathname.startsWith('/deals/') || location.pathname === '/join'
+ const isNoPaddingPage = isFormPage || isProductLandingPage || isFullBleedHeroPage
  
  const isLightFooterPage = isFormPage
   return (
