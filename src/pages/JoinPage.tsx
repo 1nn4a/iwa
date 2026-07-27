@@ -1,7 +1,7 @@
 // src/pages/JoinPage.tsx
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-
+import dealsHero from '../assets/deals-hero.jpg'
 interface AmbassadorPosition {
   slug: string
   title: string
@@ -34,7 +34,7 @@ export default function JoinPage() {
           <div className="relative -mx-4 -mt-32 overflow-hidden md:-mx-8 md:-mt-32">
             <div className="relative h-[280px] w-full sm:h-[340px] md:h-[400px]">
            <img
-                src="/src/assets/deals-hero.jpg"
+                src={dealsHero}
                 alt=""
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />

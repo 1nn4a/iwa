@@ -35,8 +35,7 @@ const NAV_TREE: NavSection[] = [
       { label: 'Membership', to: '/apply' },
       { label: 'Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
       { label: 'Deals', href: 'https://group.innovatewithaima.com/deals' },
-      { label: 'Join', href: 'https://group.innovatewithaima.com/join' },
-    ],
+      { label: 'Ambassador Programme', href: 'https://group.innovatewithaima.com/join' },    ],
   },
   {
     label: 'Framework',

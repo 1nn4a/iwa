@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useDeals } from '../hooks/useDeals'
+import dealsHero from '../assets/deals-hero.jpg'
 
 export default function DealsPage() {
 const { deals, loading } = useDeals()
@@ -21,9 +22,9 @@ const filteredDeals = deals.filter(d =>
        <main className="mx-auto max-w-[1180px] px-4 pb-24 pt-32 md:px-8">
 <div className="relative -mx-4 -mt-32 overflow-hidden md:-mx-8 md:-mt-32">
   <div className="relative h-[280px] w-full sm:h-[340px] md:h-[400px]">
-    <img
-      src="/src/assets/deals-hero.jpg"
-      alt=""
+   <img
+        src={dealsHero}
+        alt=""
       className="absolute inset-0 h-full w-full object-cover object-center"
     />
     <div className="absolute inset-0 bg-black/25" />
