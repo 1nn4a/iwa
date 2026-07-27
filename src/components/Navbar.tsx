@@ -21,7 +21,7 @@ interface NavSection {
 }
 const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com'
 
-const GROUP_DOMAIN_SAFE_PATHS = ['/', '/deals', '/join', '/group/submit-an-opportunity']
+const GROUP_DOMAIN_SAFE_PATHS = ['/deals', '/join', '/group/submit-an-opportunity']
 function isSafeOnGroupDomain(item: NavItem) {
   const path = item.to ?? (item.href ? new URL(item.href, 'https://group.innovatewithaima.com').pathname : '')
   return GROUP_DOMAIN_SAFE_PATHS.some(safe => path === safe || path.startsWith(safe + '/'))
@@ -52,13 +52,20 @@ const NAV_TREE_ALL: NavSection[] = [
       { label: 'Key Principles', to: '/definitions' },
     ],
   },
- {
-    label: 'Home',
-    items: [
-      { label: 'Back to Home', to: '/' },
-    ],
-    to: '/',
-  },
+isGroupDomain
+  ? {
+      label: 'Home',
+      items: [
+        { label: 'Back to Home', href: 'https://innovatewithaima.com/', external: true },
+      ],
+    }
+  : {
+      label: 'Home',
+      items: [
+        { label: 'Back to Home', to: '/' },
+      ],
+      to: '/',
+    },
 ]
 
 const NAV_TREE: NavSection[] = isGroupDomain
