@@ -53,7 +53,7 @@ Without this layer, every lead requires manual processing. Manual processing doe
 Onboarding as First Deployment
 Onboarding is not an administrative formality. It is the first moment a client interacts with the machine behind your service. It either instils confidence in your operational capacity, or exposes the absence of one.
 
-A structured onboarding sequence should capture: client objectives on record, unstated constraints that have not yet been named, hard timelines and deliverable scope, and a clearly presented cost architecture. What they are paying for, what they are not, and what happens when scope moves.
+A structured onboarding sequence should capture- client objectives on record, unstated constraints that have not yet been named, hard timelines and deliverable scope, and a clearly presented cost architecture. What they are paying for, what they are not, and what happens when scope moves.
 
 The goal is not to impress. The goal is to remove ambiguity before it becomes a delivery liability.
 
