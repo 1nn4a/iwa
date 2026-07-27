@@ -19,6 +19,7 @@ export type Deal = {
   yearFounded: string
   country: string
   footerLine: string
+  locked?: boolean
 }
 
  
@@ -90,6 +91,46 @@ export const deals: Deal[] = [
     yearFounded: '2026',
     country: 'United Kingdom',
     footerLine: 'The Links For Cleaners Cleanfluencer Program helps your recommendations keep working long after the job is done.',
+  },
+  {
+    slug: 'locked-deal-1',
+    company: 'Coming Soon',
+    dealTitle: 'Members-only deal',
+    savingsLabel: 'Locked',
+    category: 'Business Tools',
+    overview: [''],
+    featureSections: [],
+    closingLine: '',
+    aboutDeal: '',
+    eligibility: [],
+    availability: 'United Kingdom',
+    aboutCompanyName: '',
+    aboutCompanyText: '',
+    companySize: '',
+    yearFounded: '',
+    country: 'United Kingdom',
+    footerLine: '',
+    locked: true,
+  },
+  {
+    slug: 'locked-deal-2',
+    company: 'Coming Soon',
+    dealTitle: 'Members-only deal',
+    savingsLabel: 'Locked',
+    category: 'Creator Programs',
+    overview: [''],
+    featureSections: [],
+    closingLine: '',
+    aboutDeal: '',
+    eligibility: [],
+    availability: 'United Kingdom',
+    aboutCompanyName: '',
+    aboutCompanyText: '',
+    companySize: '',
+    yearFounded: '',
+    country: 'United Kingdom',
+    footerLine: '',
+    locked: true,
   },
 ]
 

@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useDeals } from '../hooks/useDeals'
 import dealsHero from '../assets/deals-hero.jpg'
+import NetworkJoinGate from '../components/NetworkJoinGate'
 
 export default function DealsPage() {
 const { deals, loading } = useDeals()
 const [searchQuery, setSearchQuery] = useState('')
+const [joinOpen, setJoinOpen] = useState(false)
+const [applied, setApplied] = useState(false)
 const filteredDeals = deals.filter(d =>
   d.dealTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
   d.company.toLowerCase().includes(searchQuery.toLowerCase())
@@ -67,44 +70,88 @@ const filteredDeals = deals.filter(d =>
           {loading && <p className="mt-10 text-sm text-[#083a6f]/50">Loading deals…</p>}
 
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-{filteredDeals.map(deal => (
-                  <Link
-                key={deal.slug}
-                to={`/deals/${deal.slug}`}
-                className="group relative overflow-hidden rounded-[18px] border border-white/60 bg-white/55 p-6 shadow-[0_8px_30px_rgba(8,58,111,0.06)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-[#5c6cff]/40 hover:shadow-[0_14px_40px_rgba(8,58,111,0.12)]"
-              >
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-[18px]"
-                  style={{
-                    background:
-                      'linear-gradient(to bottom, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 35%, rgba(255,255,255,0) 55%)',
-                  }}
-                />
-                <div className="relative flex items-start justify-between">
-                 {deal.logo ? (
-                    <img src={deal.logo} alt="" className="h-10 w-10 rounded-[10px] object-contain" />
-                  ) : (
-                    <div className="h-10 w-10 rounded-[10px] bg-[#5c6cff]/12" />
-                  )}
-                  {deal.savingsLabel && (
-                    <span className="rounded-full border border-[#5c6cff]/15 bg-[#5c6cff]/10 px-3 py-1 text-[11px] font-medium text-[#5c6cff] backdrop-blur-md">
-                      {deal.savingsLabel}
-                    </span>
-                  )}
-                </div>
+{filteredDeals.map(deal => {
+              const CardWrapper = deal.locked ? 'div' : Link
+              const wrapperProps = deal.locked
+                ? {}
+                : { to: `/deals/${deal.slug}` }
+              return (
+                <CardWrapper
+                  key={deal.slug}
+                  {...(wrapperProps as any)}
+                  className="group relative overflow-hidden rounded-[18px] border border-white/60 bg-white/55 p-6 shadow-[0_8px_30px_rgba(8,58,111,0.06)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-[#5c6cff]/40 hover:shadow-[0_14px_40px_rgba(8,58,111,0.12)]"
+                >
+                  <div
+                    className="pointer-events-none absolute inset-0 rounded-[18px]"
+                    style={{
+                      background:
+                        'linear-gradient(to bottom, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 35%, rgba(255,255,255,0) 55%)',
+                    }}
+                  />
+                  <div className={deal.locked ? 'blur-[6px] select-none pointer-events-none' : ''}>
+                    <div className="relative flex items-start justify-between">
+                     {deal.logo ? (
+                        <img src={deal.logo} alt="" className="h-10 w-10 rounded-[10px] object-contain" />
+                      ) : (
+                        <div className="h-10 w-10 rounded-[10px] bg-[#5c6cff]/12" />
+                      )}
+                      {deal.savingsLabel && (
+                        <span className="rounded-full border border-[#5c6cff]/15 bg-[#5c6cff]/10 px-3 py-1 text-[11px] font-medium text-[#5c6cff] backdrop-blur-md">
+                          {deal.savingsLabel}
+                        </span>
+                      )}
+                    </div>
 
-                <p className="relative mt-5 text-sm font-semibold text-[#5c6cff]">{deal.dealTitle}</p>
-                <h3 className="relative mt-1.5 text-lg font-semibold text-[#083a6f]">{deal.company}</h3>
-                <p className="relative mt-1 text-xs font-medium text-[#083a6f]/45">{deal.category}</p>
+                    <p className="relative mt-5 text-sm font-semibold text-[#5c6cff]">{deal.dealTitle}</p>
+                    <h3 className="relative mt-1.5 text-lg font-semibold text-[#083a6f]">{deal.company}</h3>
+                    <p className="relative mt-1 text-xs font-medium text-[#083a6f]/45">{deal.category}</p>
 
-                <span className="relative mt-5 inline-flex items-center gap-1 text-xs font-semibold text-[#5c6cff] opacity-0 transition group-hover:opacity-100">
-                  View deal →
-                </span>
-              </Link>
-            ))}
-          </div>
+                    {!deal.locked && (
+                      <span className="relative mt-5 inline-flex items-center gap-1 text-xs font-semibold text-[#5c6cff] opacity-0 transition group-hover:opacity-100">
+                        View deal
+                      </span>
+                    )}
+                  </div>
+
+                  {deal.locked && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-[18px] bg-white/50 backdrop-blur-[2px]">
+                      <p className="text-sm font-semibold text-[#083a6f]">Members-only deal</p>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.preventDefault(); setJoinOpen(true) }}
+                        className="inline-flex items-center gap-1 rounded-full bg-[#5c6cff] px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-[#5c6cff]/30 hover:bg-[#4a5aee] transition"
+                      >
+                        Join the Network →
+                      </button>
+                    </div>
+                  )}
+                </CardWrapper>
+              )
+            })}
+         </div>
         </main>
       </div>
+
+   {joinOpen && (
+        <NetworkJoinGate
+          onClose={() => setJoinOpen(false)}
+          onJoined={() => setApplied(true)}
+        />
+      )}
+
+      {applied && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#083a6f] px-5 py-3 text-sm text-white shadow-lg">
+          Thanks! We'll email you once you're approved.
+          <button
+            type="button"
+            onClick={() => setApplied(false)}
+            className="text-white/60 hover:text-white"
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </>
   )
 }
