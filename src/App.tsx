@@ -54,13 +54,14 @@ const location = useLocation()
 const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme', '/group/submit-an-opportunity'].includes(location.pathname)
  const isFullBleedHeroPage = location.pathname === '/deals' || location.pathname.startsWith('/deals/') || location.pathname === '/join'
  const isNoPaddingPage = isFormPage || isProductLandingPage || isFullBleedHeroPage
- 
+ const isNoNavPage = isFormPage || location.pathname === '/group/submit-an-opportunity'
+
  const isLightFooterPage = isFormPage
   return (
     <div className="min-h-screen flex flex-col">
       <div className="min-h-screen overflow-x-hidden">
-        {!isFormPage && <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />}
-        <ScrollToTop />
+{!isNoNavPage && <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />}
+          <ScrollToTop />
 <div className={isNoPaddingPage ? '' : 'pt-20'}>
           <main className="flex-1">
             <Routes>
@@ -97,8 +98,8 @@ const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'
           </main>
         </div>
 <Footer variant={isLightFooterPage ? 'light' : 'dark'} />
-        {!isFormPage && <ScrollToTopButton />}
-        {!isFormPage && (
+{!isNoNavPage && <ScrollToTopButton />}
+        {!isNoNavPage && (
           <BlogSearchOverlay
             isOpen={blogSearchOpen}
             onClose={() => setBlogSearchOpen(false)}

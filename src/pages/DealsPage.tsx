@@ -84,9 +84,8 @@ const filteredDeals = deals.filter(d =>
     </button>
   </div>
 
-  {showJoinCard && (
+{showJoinCard && (
     <NetworkJoinGate
-      compact
       onClose={() => setShowJoinCard(false)}
       onJoined={() => { setApplied(true); setShowJoinCard(false) }}
     />
