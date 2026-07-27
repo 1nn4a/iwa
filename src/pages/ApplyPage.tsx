@@ -23,7 +23,7 @@ return(
       alt=""
       className="absolute inset-0 h-full w-full object-cover object-center"
     />
-    <div className="absolute inset-0 bg-black/25" />
+    <div className="absolute inset-0 bg-black/45" />
 
     <div className="relative flex h-full flex-col justify-center px-4 md:px-8">
       <h1 className="max-w-xl text-3xl font-semibold tracking-tight text-white md:text-5xl">

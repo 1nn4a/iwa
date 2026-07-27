@@ -11,6 +11,7 @@ const { deals, loading } = useDeals()
 const [searchQuery, setSearchQuery] = useState('')
 const [openSlug, setOpenSlug] = useState<string | null>(null)
 const [applied, setApplied] = useState(false)
+const [showJoinCard, setShowJoinCard] = useState(false)
 const filteredDeals = deals.filter(d =>
   d.dealTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
   d.company.toLowerCase().includes(searchQuery.toLowerCase())
@@ -30,7 +31,7 @@ const filteredDeals = deals.filter(d =>
         alt=""
       className="absolute inset-0 h-full w-full object-cover object-center"
     />
-    <div className="absolute inset-0 bg-black/25" />
+    <div className="absolute inset-0 bg-black/45" />
 
     <div className="relative flex h-full flex-col justify-center px-4 md:px-8">
       <h1 className="max-w-xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
@@ -69,7 +70,28 @@ const filteredDeals = deals.filter(d =>
 
           {loading && <p className="mt-10 text-sm text-[#083a6f]/50">Loading deals…</p>}
 
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+
+  <div className="group relative overflow-hidden rounded-[18px] border border-[#5c6cff]/20 bg-[#5c6cff]/5 p-6 shadow-[0_8px_30px_rgba(8,58,111,0.06)] backdrop-blur-xl flex flex-col items-center justify-center text-center">
+    <p className="text-sm font-semibold text-[#083a6f]">Unlock members-only deals</p>
+    <p className="mt-1 text-xs text-[#083a6f]/50">Join the network to see exclusive offers</p>
+    <button
+      type="button"
+      onClick={() => setShowJoinCard(true)}
+      className="mt-4 inline-flex items-center gap-1 rounded-full bg-[#5c6cff] px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-[#5c6cff]/30 hover:bg-[#4a5aee] transition"
+    >
+      Join the Network →
+    </button>
+  </div>
+
+  {showJoinCard && (
+    <NetworkJoinGate
+      compact
+      onClose={() => setShowJoinCard(false)}
+      onJoined={() => { setApplied(true); setShowJoinCard(false) }}
+    />
+  )}
+
 {filteredDeals.map(deal => {
               const CardWrapper = deal.locked ? 'div' : Link
               const wrapperProps = deal.locked

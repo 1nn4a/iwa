@@ -147,8 +147,18 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null)
+  const [scrolled, setScrolled] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
  const location = useLocation()
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 40)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
   function isSectionActive(section: NavSection) {
     if (section.to) return location.pathname === section.to
     return section.items.some(item => {
@@ -196,8 +206,7 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
 
   return (
     <>
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/8 bg-black/45 backdrop-blur-xl [transform:translateZ(0)]">
-    <div className={`flex items-center py-3 mx-auto max-w-[1180px] justify-between px-4 md:px-8 ${isGroupDomain ? 'md:w-full md:max-w-none md:justify-start md:px-5 lg:px-10' : ''}`}>
+<header className={`fixed left-0 top-0 z-50 w-full [transform:translateZ(0)] transition-colors duration-300 ${scrolled ? 'border-b border-white/8 bg-black/45 backdrop-blur-xl' : 'border-b border-transparent bg-transparent'}`}>    <div className={`flex items-center py-3 mx-auto max-w-[1180px] justify-between px-4 md:px-8 ${isGroupDomain ? 'md:w-full md:max-w-none md:justify-start md:px-5 lg:px-10' : ''}`}>
           <a href="https://www.innovatewithaima.com/" className="flex items-center gap-2 flex-shrink-0">
             <img src={logo} className="h-10" alt="AiMA" />
           </a>
