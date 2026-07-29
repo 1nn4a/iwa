@@ -501,7 +501,7 @@ export default function SubmitOpportunityPage() {
                         className="block text-[10px] font-semibold tracking-[0.1em] uppercase mb-[6px]"
                         style={{ color: '#8e8e93' }}
                       >
-                        What needs to be done *
+                        Details *
                       </label>
                       <textarea
                         id="so-desc"
