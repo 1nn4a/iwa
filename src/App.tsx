@@ -24,6 +24,7 @@ import SubmitOpportunityPage from './pages/SubmitOpportunityPage'
  import DealsPage from './pages/DealsPage'
 import DealPage from './pages/DealPage'
 import JoinPage from './pages/JoinPage'
+import CookieBanner from './components/CookieBanner'
 function StartRedirect() {
   const navigate = useNavigate()
   useEffect(() => {
@@ -113,12 +114,13 @@ const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'
         </div>
 <Footer variant={isLightFooterPage ? 'light' : 'dark'} />
 {!isNoNavPage && <ScrollToTopButton />}
-        {!isNoNavPage && (
+ {!isNoNavPage && (
           <BlogSearchOverlay
             isOpen={blogSearchOpen}
             onClose={() => setBlogSearchOpen(false)}
           />
         )}
+        <CookieBanner />
       </div>
     </div>
   )

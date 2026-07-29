@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTurnstile } from '../hooks/useTurnstile'
+import { getCookieConsent } from '../hooks/useCookieConsent'
 import GlossyButton from './GlossyButton'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -68,11 +69,12 @@ export default function NetworkJoinGate({ onClose, onJoined, compact = false }: 
       const res = await fetch('/api/network-join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+       body: JSON.stringify({
           name: name.trim(),
           business_name: businessName.trim(),
           email: email.trim().toLowerCase(),
           turnstile_token,
+          cookie_consent: getCookieConsent(),
         }),
       })
      if (!res.ok) throw new Error('FAILED')

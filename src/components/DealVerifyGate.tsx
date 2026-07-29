@@ -1,6 +1,7 @@
 // src/components/DealVerifyGate.tsx
 import { useState } from 'react'
 import { useTurnstile } from '../hooks/useTurnstile'
+import { getCookieConsent } from '../hooks/useCookieConsent'
 import GlossyButton from './GlossyButton'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -27,12 +28,13 @@ export default function DealVerifyGate({ slug, onVerified }: { slug: string; onV
       const res = await fetch('/api/deal-access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+    body: JSON.stringify({
           name: name.trim(),
           business_name: businessName.trim(),
           email: email.trim().toLowerCase(),
           slug,
           turnstile_token,
+          cookie_consent: getCookieConsent(),
         }),
       })
       if (!res.ok) throw new Error('FAILED')
