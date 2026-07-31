@@ -8,4 +8,8 @@ binding = "iwa_product_interest"
 database_name = "iwa-product-interest"
 
 database_id = "f0a28bc4-9232-46f9-96c6-2bb866e8e773"
+[[send_email]]
+name = "SEND_EMAIL"
+destination_address = "prince@innovatewithaima.com"
+
 [vars]

@@ -29,7 +29,7 @@ const fadeUp = {
 const linkCards = [
  {
     key: 'aima',
-    title: 'AIMA API',
+    title: ' ',
     subtext: null,
     href: undefined,
     mobileImg: aimaMobileImg,
@@ -37,7 +37,7 @@ const linkCards = [
   },
   {
     key: 'cleaners',
-    title: 'Join a growing platform',
+    title: ' ',
     subtext: 'Grow your entire cleaning business online with LinksForCleaners',
     href: '/en/links-for-cleaners',
     mobileImg: linksCleanersMobile,
@@ -45,7 +45,7 @@ const linkCards = [
   },
   {
     key: 'tradies',
-    title: 'Invite Only',
+    title: ' ',
     subtext: null,
     href: '/product-trades-form',
     internal: true,
@@ -54,7 +54,7 @@ const linkCards = [
   },
   {
     key: 'managers',
-    title: 'Invite Only',
+    title: ' ',
     subtext: null,
     href: '/product-property-form',
     internal: true,
@@ -63,7 +63,7 @@ const linkCards = [
   },
   {
     key: 'aesthetics',
-    title: 'Invite Only',
+    title: ' ',
     subtext: null,
     href: '/product-beauty-form',
     internal: true,
