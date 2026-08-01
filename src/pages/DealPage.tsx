@@ -43,10 +43,41 @@ const [galleryIndex, setGalleryIndex] = useState(0)
       </Helmet>
       <div className="min-h-screen" style={{ background: '#FAF9F6' }}>
         <main className="mx-auto max-w-[1180px] px-4 pb-24 pt-32 md:px-8">
-          <div className="flex flex-wrap items-center gap-1.5 text-xs text-[#083a6f]/45">
+         <div className="flex flex-wrap items-center gap-1.5 text-xs text-[#083a6f]/45">
             <Link to="/deals" className="hover:text-[#5c6cff]">Deals</Link>
             <span>/</span>
             <span className="text-[#083a6f]/70">{deal.company}</span>
+          </div>
+
+         <div className="mt-6 lg:hidden">
+            {verified ? (
+              deal.redirectUrl ? (
+                
+                 <a href={deal.redirectUrl}
+                  target="_blank"
+                  rel="noopener sponsored"
+                  onClick={() => {
+                    fetch('/api/deal-click', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ slug: deal.slug }),
+                      keepalive: true,
+                    }).catch(() => {})
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full bg-[#5c6cff] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#5c6cff]/30 hover:bg-[#4a5aee] transition"
+                >
+                  Continue to Deal →
+                </a>
+              ) : (
+                <p className="text-sm font-medium text-[#083a6f]/70">
+                  Access granted — check your email for redemption details.
+                </p>
+              )
+            ) : (
+              <GlossyButton onClick={() => setGateOpen(true)}>
+                Get This Deal
+              </GlossyButton>
+            )}
           </div>
 
           <div className="mt-6 grid gap-10 md:grid-cols-[1fr_320px]">
