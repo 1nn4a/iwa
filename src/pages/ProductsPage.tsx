@@ -50,7 +50,7 @@ const businessSolutions: ProductCard[] = [
   {
   
   product_line: 'product_line_trade_services',
-  title: 'LinksForTradies',
+  title: 'Tradespeople',
   subtitle: 'Invite only',
   img: linksForTradiesImg,
   href: '/product-trades-form',
@@ -66,7 +66,7 @@ const businessSolutions: ProductCard[] = [
   },
   {
     product_line: 'product_line_property_management',
-    title: 'LinksForManagers',
+    title: 'Property Managers',
     subtitle: 'Invite only',
     img: linksForManagersImg,
     href: '/product-property-form',
@@ -74,7 +74,7 @@ const businessSolutions: ProductCard[] = [
   },
   {
     product_line: 'product_line_beauty_wellness',
-    title: 'LinksForAesthetics',
+    title: 'Aestheticians',
     subtitle: 'Invite only',
     img: linksForAestheticsImg,
     href: '/product-beauty-form',

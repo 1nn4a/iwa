@@ -20,6 +20,8 @@ export type Deal = {
   country: string
   footerLine: string
   locked?: boolean
+  redirectUrl?: string
+  gallery?: string[]
 }
 
  

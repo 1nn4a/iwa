@@ -5,6 +5,9 @@ import { Helmet } from 'react-helmet-async'
 import { useDeal, useDeals } from '../hooks/useDeals'
 import DealVerifyGate from '../components/DealVerifyGate'
 import GlossyButton from '../components/GlossyButton'
+import DealGalleryModal from '../components/DealGalleryModal'
+
+
 
 const glassCard =
   'relative overflow-hidden rounded-[18px] border border-white/60 bg-white/55 p-6 shadow-[0_8px_30px_rgba(8,58,111,0.06)] backdrop-blur-xl'
@@ -22,6 +25,9 @@ export default function DealPage() {
   const [gateOpen, setGateOpen] = useState(false)
   const [verified, setVerified] = useState(false)
   const [copied, setCopied] = useState(false)
+const [galleryOpen, setGalleryOpen] = useState(false)
+const [galleryIndex, setGalleryIndex] = useState(0)
+
 
   if (!loading && !deal) return <Navigate to="/deals" replace />
   if (!deal) return null
@@ -47,8 +53,13 @@ export default function DealPage() {
             {/* Main content */}
             <div>
               <div className="flex items-center gap-4">
-                {deal.logo ? (
-                  <img src={deal.logo} alt="" className="h-14 w-14 rounded-[14px] object-cover shadow-sm" />
+          {deal.logo ? (
+                  <img
+                    src={deal.logo}
+                    alt=""
+                    onClick={() => deal.gallery?.length && setGalleryOpen(true)}
+                    className={`h-14 w-14 rounded-[14px] object-cover shadow-sm ${deal.gallery?.length ? 'cursor-pointer' : ''}`}
+                  />
                 ) : (
                   <div className="h-14 w-14 rounded-[14px] bg-[#5c6cff]/12" />
                 )}
@@ -101,10 +112,21 @@ export default function DealPage() {
               <div className={glassCard}>
                 <div className={glassSheen} style={glassSheenStyle} />
                 <div className="relative">
-                  {verified ? (
-                    <p className="text-center text-sm font-medium text-[#083a6f]/70">
-                      Access granted — check your email for redemption details.
-                    </p>
+             {verified ? (
+                    deal.redirectUrl ? (
+                      
+                       <a href={deal.redirectUrl}
+                        target="_blank"
+                        rel="noopener sponsored"
+                        className="flex w-full items-center justify-center gap-2 rounded-full bg-[#5c6cff] px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-[#5c6cff]/30 hover:bg-[#4a5aee] transition"
+                      >
+                        Continue to Deal →
+                      </a>
+                    ) : (
+                      <p className="text-center text-sm font-medium text-[#083a6f]/70">
+                        Access granted — check your email for redemption details.
+                      </p>
+                    )
                   ) : (
                     <GlossyButton className="w-full" onClick={() => setGateOpen(true)}>
                       Get This Deal
@@ -223,7 +245,7 @@ export default function DealPage() {
                 <path d="M6 6l12 12M6 18L18 6" />
               </svg>
             </button>
-            <div className="relative">
+           <div className="relative">
               <DealVerifyGate
                 slug={deal.slug}
                 onVerified={() => {
@@ -234,6 +256,14 @@ export default function DealPage() {
             </div>
           </div>
         </div>
+      )}
+      {galleryOpen && deal.gallery && (
+        <DealGalleryModal
+          images={deal.gallery}
+          index={galleryIndex}
+          onIndexChange={setGalleryIndex}
+          onClose={() => setGalleryOpen(false)}
+        />
       )}
     </>
   )
