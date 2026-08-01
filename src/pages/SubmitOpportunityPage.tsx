@@ -297,11 +297,9 @@ export default function SubmitOpportunityPage() {
         className="min-h-[100dvh] flex flex-col"
         style={{ background: 'linear-gradient(180deg, #f2f2f7 0%, #e5e5ed 100%)' }}
       >
-        {/* Turnstile mount */}
-        <div ref={el => { turnstileContainer.current = el }} style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} />
+         <div ref={el => { turnstileContainer.current = el }} style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} />
 
-        {/* Top bar */}
-        <div
+         <div
           className="flex-shrink-0 flex items-center justify-between px-5 py-3 relative"
           style={{
             background:           'rgba(242,242,247,0.88)',
@@ -343,14 +341,12 @@ export default function SubmitOpportunityPage() {
           </button>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 flex items-start justify-center px-4 pt-6 pb-10">
+         <div className="flex-1 flex items-start justify-center px-4 pt-6 pb-10">
           <div className="w-full max-w-[480px] flex flex-col gap-4">
 
             <AnimatePresence mode="wait">
 
-              {/* ── LANDING ── */}
-              {screen === 'landing' && (
+               {screen === 'landing' && (
                 <motion.div
                   key="landing"
                   initial={{ opacity: 0, y: 10 }}
@@ -394,8 +390,7 @@ export default function SubmitOpportunityPage() {
                 </motion.div>
               )}
 
-              {/* ── FORM ── */}
-              {screen === 'form' && (
+               {screen === 'form' && (
                 <motion.div
                   key="form"
                   initial={{ opacity: 0, y: 10 }}
@@ -416,8 +411,7 @@ export default function SubmitOpportunityPage() {
                     </p>
                   </div>
 
-                  {/* Business name + Contact */}
-                  <GlassCard>
+                   <GlassCard>
                     <div className="px-4 pt-4 pb-3">
                       <label
                         htmlFor="so-business"
@@ -468,8 +462,7 @@ export default function SubmitOpportunityPage() {
                     </div>
                   </GlassCard>
 
-                  {/* Category */}
-                  <GlassCard>
+                   <GlassCard>
                     <div className="px-4 py-4">
                       <label
                         htmlFor="so-category"
@@ -493,8 +486,7 @@ export default function SubmitOpportunityPage() {
                     </div>
                   </GlassCard>
 
-                  {/* Description */}
-                  <GlassCard>
+                   <GlassCard>
                     <div className="px-4 py-4">
                       <label
                         htmlFor="so-desc"
@@ -518,8 +510,7 @@ export default function SubmitOpportunityPage() {
                     </div>
                   </GlassCard>
 
-                  {/* Timing */}
-                  <div>
+                   <div>
                     <p className="text-[10px] font-semibold tracking-[0.1em] uppercase mb-2 px-1" style={{ color: '#8e8e93' }}>
                       Any deadlines/Timing *
                     </p>
@@ -551,8 +542,7 @@ export default function SubmitOpportunityPage() {
                     <FieldError msg={timingErr} />
                   </div>
 
-                  {/* Consent */}
-                  <button
+                   <button
                     type="button"
                     onClick={() => setConsented(v => !v)}
                     className="flex items-start gap-3 text-left"
@@ -588,8 +578,7 @@ export default function SubmitOpportunityPage() {
                     </p>
                   </button>
 
-                  {/* Error */}
-                  <AnimatePresence>
+                   <AnimatePresence>
                     {phase === 'error' && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
@@ -614,8 +603,7 @@ export default function SubmitOpportunityPage() {
                     )}
                   </AnimatePresence>
 
-                  {/* Nav buttons */}
-                  <div className="flex gap-3">
+                   <div className="flex gap-3">
                     <button
                       type="button"
                       onClick={() => setScreen('landing')}
@@ -645,8 +633,7 @@ export default function SubmitOpportunityPage() {
                 </motion.div>
               )}
 
-              {/* ── SUCCESS ── */}
-              {screen === 'success' && (
+               {screen === 'success' && (
                 <motion.div
                   key="success"
                   initial={{ opacity: 0, scale: 0.95, y: 8 }}

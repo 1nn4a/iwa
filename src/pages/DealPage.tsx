@@ -6,7 +6,7 @@ import { useDeal, useDeals } from '../hooks/useDeals'
 import DealVerifyGate from '../components/DealVerifyGate'
 import GlossyButton from '../components/GlossyButton'
 import DealGalleryModal from '../components/DealGalleryModal'
-
+import DealInlineGallery from '../components/DealInlineGallery'
 
 
 const glassCard =
@@ -50,8 +50,7 @@ const [galleryIndex, setGalleryIndex] = useState(0)
           </div>
 
           <div className="mt-6 grid gap-10 md:grid-cols-[1fr_320px]">
-            {/* Main content */}
-            <div>
+             <div>
               <div className="flex items-center gap-4">
           {deal.logo ? (
                   <img
@@ -69,10 +68,16 @@ const [galleryIndex, setGalleryIndex] = useState(0)
                 </div>
               </div>
 
-              <h2 className="mt-10 text-xl font-semibold text-[#083a6f]">Overview</h2>
+            <h2 className="mt-10 text-xl font-semibold text-[#083a6f]">Overview</h2>
               {deal.overview.map((p, i) => (
                 <p key={i} className="mt-3 text-sm leading-7 text-[#083a6f]/70">{p}</p>
               ))}
+
+              {deal.gallery && deal.gallery.length > 0 && (
+                <div className="mt-8">
+                  <DealInlineGallery images={deal.gallery} />
+                </div>
+              )}
 
               {deal.featureSections.map((f, i) => (
                 <div key={i} className="mt-8">
@@ -107,17 +112,24 @@ const [galleryIndex, setGalleryIndex] = useState(0)
               </div>
             </div>
 
-            {/* Sidebar */}
-            <aside className="h-fit space-y-6">
+             <aside className="h-fit space-y-6">
               <div className={glassCard}>
                 <div className={glassSheen} style={glassSheenStyle} />
                 <div className="relative">
              {verified ? (
-                    deal.redirectUrl ? (
+                 deal.redirectUrl ? (
                       
                        <a href={deal.redirectUrl}
                         target="_blank"
                         rel="noopener sponsored"
+                        onClick={() => {
+                          fetch('/api/deal-click', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ slug: deal.slug }),
+                            keepalive: true,
+                          }).catch(() => {})
+                        }}
                         className="flex w-full items-center justify-center gap-2 rounded-full bg-[#5c6cff] px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-[#5c6cff]/30 hover:bg-[#4a5aee] transition"
                       >
                         Continue to Deal →
@@ -193,10 +205,10 @@ const [galleryIndex, setGalleryIndex] = useState(0)
                     Submit an opportunity for the network to consider.
                   </p>
                   <a
-                    href="https://innovatewithaima.com/group/submit-an-opportunity"
+                   href="https://innovatewithaima.com/group/submit-an-opportunity"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-[#5c6cff]/15 bg-[#5c6cff]/10 py-2.5 text-xs font-semibold text-[#5c6cff] backdrop-blur-md transition hover:bg-[#5c6cff]/20"
+                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#5c6cff] py-2.5 text-xs font-semibold text-white shadow-lg shadow-[#5c6cff]/30 transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"
                   >
                     Submit an Opportunity
                   </a>

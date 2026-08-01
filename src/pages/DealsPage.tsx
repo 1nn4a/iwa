@@ -58,10 +58,10 @@ const filteredDeals = deals.filter(d =>
 
   <div className="mx-4 mt-6 flex justify-end md:mx-8">
     
-      <a href="https://innovatewithaima.com/group/submit-an-opportunity"
+<a href="https://innovatewithaima.com/group/submit-an-opportunity"
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-[#5c6cff]/15 bg-[#5c6cff]/10 px-5 py-2.5 text-xs font-semibold text-[#5c6cff] backdrop-blur-md transition hover:bg-[#5c6cff]/20"
+      className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5c6cff] px-5 py-2.5 text-xs font-semibold text-white shadow-lg shadow-[#5c6cff]/30 transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"
     >
       Submit an Opportunity
     </a>
@@ -116,8 +116,8 @@ const filteredDeals = deals.filter(d =>
                       ) : (
                         <div className="h-10 w-10 rounded-[10px] bg-[#5c6cff]/12" />
                       )}
-                      {deal.savingsLabel && (
-                        <span className="rounded-full border border-[#5c6cff]/15 bg-[#5c6cff]/10 px-3 py-1 text-[11px] font-medium text-[#5c6cff] backdrop-blur-md">
+                 {deal.savingsLabel && (
+                        <span className="rounded-full bg-[#5c6cff] px-3 py-1 text-[11px] font-semibold text-white shadow-md shadow-[#5c6cff]/25">
                           {deal.savingsLabel}
                         </span>
                       )}
