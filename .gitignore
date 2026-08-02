@@ -13,13 +13,6 @@
 #
 # TURNSTILE_SECRET_KEY=0x4AAAAAAA_nice_try_this_isnt_real
 # SUPABASE_SERVICE_ROLE_KEY=eyJ.no.you.dont.get.one.pal
-# STRIPE_LIVE_KEY=sk_live_pleasedonthackmeimjustaguy
+# STRIPE_LIVE_KEY=sk_live_neek
 # DB_ROOT_PASSWORD=hunter2
-#
-#     ⢠⣶⣶⣦⡀
-#    ⣼⣿⣿⣿⣿⣷    you found the easter egg.
-#    ⣿⣿⠋⠉⠙⣿⣿   there is no prize.
-#    ⢹⣿    ⣿⡏   go build something instead.
-#     ⠙⢿⣶⣶⡿⠋
-#
 # ---------------------------------------------------------

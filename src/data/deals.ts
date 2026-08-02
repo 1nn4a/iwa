@@ -19,11 +19,11 @@ export type Deal = {
   yearFounded: string
   country: string
   footerLine: string
-  locked?: boolean
+   locked?: boolean
   redirectUrl?: string
+  hasRedirect?: boolean
   gallery?: string[]
 }
-
  
 export const deals: Deal[] = [
   {
@@ -59,6 +59,7 @@ export const deals: Deal[] = [
     yearFounded: '2025',
     country: 'United Kingdom',
     footerLine: 'Links For Cleaners is the foundation of your entire cleaning business online.',
+    hasRedirect: false,
   },
   {
     slug: 'links-for-cleaners-cleanfluencer-program',
@@ -93,6 +94,7 @@ export const deals: Deal[] = [
     yearFounded: '2026',
     country: 'United Kingdom',
     footerLine: 'The Links For Cleaners Cleanfluencer Program helps your recommendations keep working long after the job is done.',
+    hasRedirect: false,
   },
   {
     slug: 'locked-deal-1',
@@ -111,8 +113,9 @@ export const deals: Deal[] = [
     companySize: '',
     yearFounded: '',
     country: 'United Kingdom',
-    footerLine: '',
+ footerLine: '',
     locked: true,
+    hasRedirect: false,
   },
   {
     slug: 'locked-deal-2',
@@ -131,8 +134,9 @@ export const deals: Deal[] = [
     companySize: '',
     yearFounded: '',
     country: 'United Kingdom',
-    footerLine: '',
+   footerLine: '',
     locked: true,
+    hasRedirect: false,
   },
 ]
 

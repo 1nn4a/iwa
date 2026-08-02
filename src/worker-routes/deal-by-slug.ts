@@ -70,9 +70,9 @@ function mapRow(row: any) {
     companySize: row.companySize,
     yearFounded: row.yearFounded,
     country: row.country,
-    footerLine: row.footerLine,
-    redirectUrl: row.redirect_url ?? undefined,
+   footerLine: row.footerLine,
     gallery: row.gallery ? JSON.parse(row.gallery) : undefined,
     locked: !!row.locked,
+    hasRedirect: !!row.redirect_url,
   }
 }

@@ -50,10 +50,9 @@ const [galleryIndex, setGalleryIndex] = useState(0)
           </div>
 
          <div className="mt-6 lg:hidden">
-            {verified ? (
-              deal.redirectUrl ? (
-                
-                 <a href={deal.redirectUrl}
+             {verified ? (
+              deal.hasRedirect ? (                
+                 <a href={`/api/deals/${deal.slug}/go`}
                   target="_blank"
                   rel="noopener sponsored"
                   onClick={() => {
@@ -147,10 +146,9 @@ const [galleryIndex, setGalleryIndex] = useState(0)
               <div className={glassCard}>
                 <div className={glassSheen} style={glassSheenStyle} />
                 <div className="relative">
-             {verified ? (
-                 deal.redirectUrl ? (
-                      
-                       <a href={deal.redirectUrl}
+              {verified ? (
+              deal.hasRedirect ? (                      
+                       <a href={`/api/deals/${deal.slug}/go`}
                         target="_blank"
                         rel="noopener sponsored"
                         onClick={() => {
