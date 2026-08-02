@@ -46,9 +46,10 @@ const NAV_TREE_ALL: NavSection[] = [
       { label: 'Ambassador Programme', href: 'https://group.innovatewithaima.com/join' },    ],
   },
   {
-    label: 'Framework',
-    items: [
-       { label: 'Key Principles', to: '/definitions' },
+    label: 'Overview',
+   items: [
+       { label: 'Framework', to: '/definitions' },
+       { label: 'About', to: '/about' },
     ],
   },
 isGroupDomain

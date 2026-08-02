@@ -4,7 +4,9 @@ import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-route
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
+import homeBg from './assets/iwa@.20260701.png'
 import DefinitionsPage from './pages/DefinitionsPage'
+import AboutPage from './pages/AboutPage'
 import ApplyPage from './pages/ApplyPage'
 import TermsPage from './pages/TermsPage'
 import PrivacyPage from './pages/PrivacyPage'
@@ -72,17 +74,30 @@ const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'
  const isNoNavPage = isFormPage || location.pathname === '/group/submit-an-opportunity'
 
  const isLightFooterPage = isFormPage
+ const isHomePage = location.pathname === '/'
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="min-h-screen overflow-x-hidden">
+      <div className="min-h-screen flex flex-col overflow-x-hidden">
 {!isNoNavPage && <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />}
           <ScrollToTop />
-<div className={isNoPaddingPage ? '' : 'pt-20'}>
+<div className={`relative flex-1 flex flex-col ${isNoPaddingPage ? '' : 'pt-20'}`}>
+{isHomePage && (
+  <div
+    className="absolute inset-0 w-full h-full -z-10 pointer-events-none"
+    style={{
+      backgroundImage: `url(${homeBg})`,
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }}
+  />
+)}
           <main className="flex-1">
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/definitions" element={<DefinitionsPage />} />
-                <Route path="/apply" element={<ApplyPage />} />
+<Route path="/definitions" element={<DefinitionsPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                                <Route path="/apply" element={<ApplyPage />} />
                 <Route path="/terms" element={<TermsPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/cookies" element={<CookiesPage />} />
