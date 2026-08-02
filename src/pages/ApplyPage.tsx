@@ -234,7 +234,7 @@ return(
 <div>
 
 <h2 className="text-2xl font-semibold mb-6">
-Membership Details
+Contact Details
 </h2>
 
 <p className="text-white/70 leading-7">
