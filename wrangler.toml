@@ -5,4 +5,7 @@ pages_build_output_dir = "dist"
 binding = "iwa_product_interest"
 database_name = "iwa-product-interest"
 database_id = "f0a28bc4-9232-46f9-96c6-2bb866e8e773"
+  [[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "185c7f82e2734478b9200f348d68449f"
 [vars]

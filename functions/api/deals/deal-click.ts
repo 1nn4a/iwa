@@ -1,9 +1,23 @@
 // functions/api/deal-click.ts
+ 
+import { isRateLimited } from '../../../src/lib/rate-limit'
 interface Env {
   iwa_product_interest: D1Database
+  RATE_LIMIT_KV: KVNamespace
 }
 
+const ALLOWED_ORIGIN = 'https://group.innovatewithaima.com'
+
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+  const origin = request.headers.get('origin')
+  if (origin !== ALLOWED_ORIGIN) {
+    return new Response(null, { status: 204 })
+  }
+
+  if (await isRateLimited(env, request, 'deal-click', 30, 60)) {
+    return new Response(null, { status: 204 })
+  }
+
   let body: { slug?: string; email?: string }
   try {
     body = await request.json()

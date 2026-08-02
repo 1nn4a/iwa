@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /product-trades-form
+Disallow: /product-beauty-form
+Disallow: /product-property-form
+Disallow: /en/products
+
+Sitemap: https://innovatewithaima.com/sitemap.xml

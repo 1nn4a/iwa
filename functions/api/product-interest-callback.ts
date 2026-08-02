@@ -1,11 +1,23 @@
 import { handleProductInterestCallback } from '../../src/worker-routes/product-interest-callback'
 
+ import { isRateLimited } from '../../src/lib/rate-limit'
+
 interface Env {
   iwa_product_interest: D1Database
   TURNSTILE_SECRET_KEY: string
+  RATE_LIMIT_KV: KVNamespace
 }
 
+const ALLOWED_ORIGIN = 'https://www.innovatewithaima.com'
+
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+  const origin = request.headers.get('origin')
+  if (origin !== ALLOWED_ORIGIN) {
+    return new Response('Forbidden', { status: 403 })
+  }
+  if (await isRateLimited(env, request, 'product-interest-callback', 5, 300)) {
+    return new Response('Too Many Requests', { status: 429 })
+  }
   return handleProductInterestCallback(request, env)
 }
 
