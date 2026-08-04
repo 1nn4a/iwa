@@ -62,7 +62,7 @@ export default function AboutPage() {
             </div>
             <div className="text-sm leading-7 text-white/70 md:text-base">
               <p>
-                Founded in 2024, InnovateWithAiMA (IWA) is a digital infrastructure company building software, automation and growth systems for service businesses and creators.
+                Founded in 2023, InnovateWithAiMA (IWA) is a digital infrastructure company building software, automation and growth systems for service businesses and creators.
               </p>
               <p className="mt-4">
                 Guided by our mission to modernise how service businesses operate online, IWA develops products that help businesses attract customers, manage enquiries, automate repetitive work and create more opportunities for growth.
@@ -80,7 +80,7 @@ export default function AboutPage() {
           <div className="mt-10 rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-md md:p-10">
             <div className="text-center md:text-left">
               <p className="text-lg font-semibold md:text-xl">Building Digital Infrastructure</p>
-              <p className="mt-1 text-sm text-white/55">2024 – Present</p>
+              <p className="mt-1 text-sm text-white/55">2023 – Present</p>
             </div>
 
             <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
