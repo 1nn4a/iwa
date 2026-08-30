@@ -22,11 +22,11 @@ export default function ManagersModal({ isOpen, onClose }: Props) {
       onClose={onClose}
       videoSrc="https://fordesigners.online/product/video/Managers.MP4"
        title="Links For Managers"
-      subtitle="Invite Only - A property management profile that converts while you operate: listings, reviews and enquiries in one shareable link."
+      subtitle="Coming Soon - A property management profile that converts while you operate: listings, reviews and enquiries in one shareable link."
       brandName="Stay Updated"
       brandHref="https://instagram.com/innovatewithaima"
       brandLogo={aimaLogo}
-      ctaLabel="Apply for Invite"
+      ctaLabel="Apply for Early Access"
       ctaHref="/product-property-form"
       learnMoreHref="/product-property-form"
       shareUrl="https://innovatewithaima.com"

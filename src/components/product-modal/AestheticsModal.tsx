@@ -21,11 +21,11 @@ export default function AestheticsModal({ isOpen, onClose }: Props) {
       onClose={onClose}
       videoSrc="https://fordesigners.online/product/video/Aesthetics.MP4"
     title="Links For Aesthetics"
-      subtitle="Invite Only - An aesthetics profile that converts while you treat clients: services, reviews and bookings in one shareable link."
+      subtitle="Coming Soon - An aesthetics profile that converts while you treat clients: services, reviews and bookings in one shareable link."
       brandName="Stay Updated"
       brandHref="https://instagram.com/innovatewithaima"
       brandLogo={aimaLogo}
-      ctaLabel="Apply for Invite"
+      ctaLabel="Apply for Early Access"
       ctaHref="/product-beauty-form"
       learnMoreHref="/product-beauty-form"
       shareUrl="https://innovatewithaima.com"

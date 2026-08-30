@@ -24,7 +24,7 @@ export default function Footer({ variant = 'dark' }: FooterProps) {
   <img src={footer} className={`h-8 opacity-90 ${isLight ? 'invert' : ''}`} alt="Innovatewithaima" />
 </div>
   <p className={`text-sm ${isLight ? 'text-black/60' : 'text-white/60'}`}>
-A Private Professional Network for Specialist Businesses.
+We create focused products for service businesses, creators, and emerging companies.
   </p>
 </div>
 

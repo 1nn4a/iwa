@@ -21,11 +21,11 @@ export default function TradiesModal({ isOpen, onClose }: Props) {
       onClose={onClose}
       videoSrc="https://fordesigners.online/product/video/Trades.mp4"
    title="Links For Tradies"
-      subtitle="Invite Only - A tradesperson profile that converts while you're on the job: services, reviews and enquiries in one shareable link."
+      subtitle="Coming Soon - A tradesperson profile that converts while you're on the job: services, reviews and enquiries in one shareable link."
       brandName="Stay Updated"
       brandHref="https://instagram.com/innovatewithaima"
       brandLogo={aimaLogo}
-      ctaLabel="Apply for Invite"
+      ctaLabel="Apply for Early Access"
       ctaHref="/product-trades-form"
       learnMoreHref="/product-trades-form"
       shareUrl="https://innovatewithaima.com"
