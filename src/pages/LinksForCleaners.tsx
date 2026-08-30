@@ -20,6 +20,66 @@ type ChangelogEntry = {
 
 const changelog: ChangelogEntry[] = [
   {
+    version: 'v6.9.1',
+    title: 'Bug fix',
+    badge: 'Fix',
+    date: '28 August 2026',
+    sections: [
+      {
+        items: [
+          'Improved sign-in and page loading reliability, reducing unnecessary delays. A heads-up notice may appear on the sign-in page during temporary slowness.',
+        ],
+      },
+    ],
+  },
+  {
+    version: 'v6.9',
+    title: 'Before & After: Trends',
+    badge: 'New',
+    date: '13 August 2026',
+    sections: [
+      {
+        items: [
+          'New Trends tab for the Before & After tool: share your favourite transformations and see what others are posting',
+          'Post a finished before and after to Trends by tapping the heart and choosing a category',
+          'Browse before and afters from other cleaners, tap to view, then drag the slider to reveal the transformation',
+        ],
+      },
+    ],
+  },
+  {
+    version: 'v6.8',
+    title: 'Redesigned business dashboard',
+    badge: 'New',
+    date: '8 August 2026',
+    sections: [
+      {
+        label: 'Leads',
+        items: [
+          'Open leads now shown front and centre on the dashboard, with a quick activity trend',
+          'New dedicated Leads tab: filter by All, Open, Hot, or Closed',
+          'Tap a contact detail to copy, call, or email directly, and swipe to archive',
+          'Leads are now paginated for busier inboxes',
+        ],
+      },
+      {
+        label: 'Stats',
+        items: [
+          'New Stats tab: average quote value, conversion rate, and callback rate at a glance',
+          'Weekly volume chart and a breakdown of leads by clean type',
+        ],
+      },
+      {
+        label: 'Profile',
+        items: [
+          'Profile tab now shows a simple health score covering live status, pricing setup, and plan',
+          'Go live, pause, copy your profile link, or jump into pricing setup in one tap',
+          'Desktop now includes a sidebar with a quick overview, tips, and support links',
+        ],
+      },
+    ],
+  },
+  {
     version: 'v6.7.1',
     title: 'Bug fix',
     badge: 'Fix',

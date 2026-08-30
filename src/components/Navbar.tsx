@@ -308,14 +308,14 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
                 <a href="https://innovatewithaima.com/apply"
                 className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/16 transition-all"
               >
-                Enquire
+                AIMA API
               </a>
             ) : (
               <NavLink
                 to="/apply"
                 className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/16 transition-all"
               >
-                Enquire
+                AIMA API
               </NavLink>
             )}
 
@@ -391,11 +391,11 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
               <div className="pt-6">
          {isGroupDomain ? (
                   <a href="https://innovatewithaima.com/apply" className="navbar-white-btn">
-                    <span className="navbar-white-btn-content">Enquire</span>
+                    <span className="navbar-white-btn-content">AIMA API</span>
                   </a>
                 ) : (
                   <NavLink to="/apply" onClick={closeMobile} className="navbar-white-btn">
-                    <span className="navbar-white-btn-content">Enquire</span>
+                    <span className="navbar-white-btn-content">AIMA API</span>
                   </NavLink>
                 )}
               </div>

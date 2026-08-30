@@ -19,14 +19,14 @@ export default function AimaModal({ isOpen, onClose }: Props) {
       onClose={onClose}
       videoSrc="https://www.fordesigners.co.uk/product/video/aima.mp4"
       title="AIMA API"
-      subtitle="Details coming soon."
+      subtitle="Access to AIMA API is on a selective membership basis. Applications are reviewed individually. Acceptance is not guaranteed and depends on suitability, experience, and current network demand."
       brandName="AIMA API"
       brandHref="#"
       brandLogo={aimaLogo}
-      ctaLabel="Coming soon"
-      ctaHref="#"
-      learnMoreHref="#"
-      shareUrl="#"
+      ctaLabel="Membership"
+      ctaHref="https://innovatewithaima.com/group/submit-an-opportunity"
+      learnMoreHref="/apply"
+      shareUrl="https://www.innovatewithaima.com/apply"
       faqs={faqs}
     />
   );

@@ -87,8 +87,8 @@ export default function HomePage() {
   return (
     <>
    <Helmet>
-  <title>Client acquisition network for specialised businesses</title>
-  <meta name="description" content="Connect with skilled freelancers, contractors and entrepreneurs. We simplify client acquisition and manage relationships for reliable results." />
+  <title>Innovatewithaima</title>
+  <meta name="description" content="We build and operate a growing portfolio of focused software products designed to help businesses and creators attract customers, manage their work, and grow online." />
   <link rel="canonical" href="https://innovatewithaima.com/" />
 </Helmet>
    <main>
@@ -102,10 +102,10 @@ export default function HomePage() {
           >
            
             <h1 className="max-w-3xl mx-auto text-4xl leading-[0.95] font-semibold tracking-tight md:text-6xl">
-              A Private Professional Network for Specialist Businesses
+              UK software group building the next generation of business tools.
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-xs leading-6 text-white/65 md:text-sm">
-We enable specialist businesses and independent professionals to connect, share opportunities, and build long-term working relationships.            </p>
+We create focused products for service businesses, creators, and emerging companies.           </p>
           </motion.div>
 
  <div className="relative mt-10">
