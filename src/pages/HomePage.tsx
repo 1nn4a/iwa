@@ -102,7 +102,8 @@ export default function HomePage() {
           >
            
             <h1 className="max-w-3xl mx-auto text-4xl leading-[0.95] font-semibold tracking-tight md:text-6xl">
-              Arming Brands with Technology
+Technology that empowers brands
+
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-xs leading-6 text-white/65 md:text-sm">
 Innovatewithaima is a UK software group building the next generation of business tools. Our focused software products are designed to help brands attract customers, manage their work, and grow online.           </p>
