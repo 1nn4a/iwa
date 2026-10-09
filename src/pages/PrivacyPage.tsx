@@ -4,7 +4,7 @@ export default function PrivacyPage(){
 return(
 <>
 <Helmet>
-<title>Privacy Policy | Innovate With Aima</title>
+<title>iwagroup.co.uk - Innovatewithaima | Privacy Policy</title>
 <meta name="description" content="Privacy policy for Innovate With Aima explaining how we collect, use and protect personal data in accordance with UK data protection laws."/>
 <link rel="canonical" href="https://iwagroup.co.uk/privacy" />
 </Helmet>

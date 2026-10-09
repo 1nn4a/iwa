@@ -4,7 +4,7 @@ export default function CookiesPage(){
 return(
 <>
 <Helmet>
-<title>Cookies Policy | Innovate With Aima</title>
+<title>iwagroup.co.uk - Innovatewithaima | Cookies Policy</title>
 <meta name="description" content="Innovate With Aima does not use cookies, tracking, analytics or ads on this website."/>
 <link rel="canonical" href="https://iwagroup.co.uk/cookies" />
 </Helmet>

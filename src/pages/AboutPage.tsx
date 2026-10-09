@@ -43,7 +43,7 @@ export default function AboutPage() {
   return (
     <>
       <Helmet>
-        <title>About | Innovate With Aima</title>
+        <title>iwagroup.co.uk - Innovatewithaima | About</title>
         <meta name="description" content="InnovateWithAiMA (IWA) is a digital infrastructure company building software, automation and growth systems for service businesses and creators." />
         <link rel="canonical" href="https://iwagroup.co.uk/about" />
       </Helmet>

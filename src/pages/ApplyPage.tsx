@@ -60,7 +60,7 @@ export default function ApplyPage(){
 return(
 <>
 <Helmet>
-<title>Apply | Innovate With Aima</title>
+<title>iwagroup.co.uk - Innovatewithaima | Apply</title>
 <meta name="description" content="Apply to join the Innovate With Aima network. Membership is selective and reviewed individually." />
 <link rel="canonical" href="https://iwagroup.co.uk/apply" />
 </Helmet>

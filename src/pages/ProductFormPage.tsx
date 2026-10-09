@@ -540,7 +540,7 @@ if (!res.ok) {
   return (
     <>
    <Helmet>
-<title>{meta.title} -Access the right products · Innovate With Aima</title>
+<title>iwagroup.co.uk - Innovatewithaima | {meta.title}</title>
 <meta name="description" content={`Find out if ${meta.title} is right for you, part of the Innovate With Aima professional network.`} />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="canonical" href={`https://iwagroup.co.uk/product-${product}-form`} />

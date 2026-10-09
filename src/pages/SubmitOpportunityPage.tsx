@@ -286,7 +286,7 @@ export default function SubmitOpportunityPage() {
   return (
     <>
       <Helmet>
-        <title>Submit an Opportunity · Innovate With Aima</title>
+        <title>iwagroup.co.uk - Innovatewithaima | Submit an Opportunity</title>
         <meta name="description" content="Share active or upcoming work with the Innovate With Aima professional network." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://iwagroup.co.uk/group/submit-an-opportunity" />

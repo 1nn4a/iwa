@@ -74,6 +74,7 @@ export default function DefinitionsPage() {
 return (
     <>
     <Helmet>
+      <title>iwagroup.co.uk - Innovatewithaima | Definitions</title>
       <link rel="canonical" href="https://iwagroup.co.uk/definitions" />
     </Helmet>
     <main className="mx-auto max-w-[1180px] px-5 pt-28 md:px-8">

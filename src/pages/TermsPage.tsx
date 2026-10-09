@@ -4,7 +4,7 @@ export default function TermsPage() {
 return (
 <>
 <Helmet>
-<title>Terms & Conditions | Innovate With Aima</title>
+<title>iwagroup.co.uk - Innovatewithaima | Terms & Conditions</title>
 <meta name="description" content="Network participation terms and conditions for Innovate With Aima including membership, opportunities, payments, confidentiality and conduct requirements."/>
 <link rel="canonical" href="https://iwagroup.co.uk/terms" />
 </Helmet>
