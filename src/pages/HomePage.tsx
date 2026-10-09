@@ -89,7 +89,7 @@ export default function HomePage() {
    <Helmet>
   <title>Innovatewithaima</title>
   <meta name="description" content="We build and operate a growing portfolio of focused software products designed to help businesses and creators attract customers, manage their work, and grow online." />
-  <link rel="canonical" href="https://innovatewithaima.com/" />
+  <link rel="canonical" href="https://iwagroup.co.uk/" />
 </Helmet>
    <main>
 <section className="relative mx-auto max-w-[1180px] px-4 md:px-8 pt-10 md:pt-18">

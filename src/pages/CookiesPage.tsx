@@ -6,7 +6,7 @@ return(
 <Helmet>
 <title>Cookies Policy | Innovate With Aima</title>
 <meta name="description" content="Innovate With Aima does not use cookies, tracking, analytics or ads on this website."/>
-<link rel="canonical" href="https://innovatewithaima.com/cookies" />
+<link rel="canonical" href="https://iwagroup.co.uk/cookies" />
 </Helmet>
 
 <main className="mx-auto max-w-[900px] px-5 pt-32 pb-24">
@@ -33,9 +33,9 @@ Last updated: 29/07/2026</p>
 </section>
 
 <section>
-  <h2 className="text-xl font-semibold text-white mb-3">group.innovatewithaima.com</h2>
+  <h2 className="text-xl font-semibold text-white mb-3">group.iwagroup.co.uk</h2>
   <p>
-    Our network hub at <span className="text-white/90 font-medium">group.innovatewithaima.com</span> does use cookies and collects limited data including IP addresses when you submit forms. This is used to make the site work as you'd expect, improve your experience, analyse site usage, and assist our marketing efforts.
+    Our network hub at <span className="text-white/90 font-medium">group.iwagroup.co.uk</span> does use cookies and collects limited data including IP addresses when you submit forms. This is used to make the site work as you'd expect, improve your experience, analyse site usage, and assist our marketing efforts.
   </p>
   <p className="mt-4">
     When you visit that subdomain, you will be asked to either accept or reject all cookies before using the site. Your preference is stored locally on your device and can be changed by clearing your browser's local storage.

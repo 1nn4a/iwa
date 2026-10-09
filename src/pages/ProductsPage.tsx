@@ -144,7 +144,7 @@ export default function ProductsPage() {
   <Helmet>
   <title>Products</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="canonical" href="https://innovatewithaima.com/en/products" />
+  <link rel="canonical" href="https://iwagroup.co.uk/en/products" />
 </Helmet>
 
    <div

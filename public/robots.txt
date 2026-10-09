@@ -5,4 +5,4 @@ Disallow: /product-beauty-form
 Disallow: /product-property-form
 Disallow: /en/products
 
-Sitemap: https://innovatewithaima.com/sitemap.xml
+Sitemap: https://iwagroup.co.uk/sitemap.xml

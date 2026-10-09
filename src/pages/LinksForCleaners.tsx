@@ -283,9 +283,9 @@ export default function LinksForCleaners() {
         <meta property="og:description" content="Turn your social media following into cleaning clients. Instant quotes, Checkatrade reviews, and booking flows — built for UK cleaners." />
         <meta property="og:image" content={shareImg} />
         <meta property="og:type" content="website" />
-<meta property="og:url" content="https://innovatewithaima.com/en/links-for-cleaners" />
-<meta property="og:url" content="https://innovatewithaima.com/en/links-for-cleaners" />
-<link rel="canonical" href="https://innovatewithaima.com/en/links-for-cleaners" />
+<meta property="og:url" content="https://iwagroup.co.uk/en/links-for-cleaners" />
+<meta property="og:url" content="https://iwagroup.co.uk/en/links-for-cleaners" />
+<link rel="canonical" href="https://iwagroup.co.uk/en/links-for-cleaners" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="LinksForCleaners- Market Your Cleaning Business Online" />
         <meta name="twitter:description" content="Personalised marketing pages for UK cleaning businesses. Quotes, bookings, and affiliate earnings from one link." />

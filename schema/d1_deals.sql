@@ -38,7 +38,7 @@ INSERT INTO deals (
   'EngageBay CRM',
   'Free CRM with 250 Contacts',
   'Free Forever',
-  'https://group.innovatewithaima.com/deals/engagebay/logo.png',
+  'https://group.iwagroup.co.uk/deals/engagebay/logo.png',
   'Business Tools',
   '["EngageBay is an affordable, all-in-one platform that combines Marketing Automation, Sales CRM, Helpdesk, and AI-powered tools into a single unified system built for small and mid-sized businesses.","Instead of stitching together separate tools for marketing, sales, and support, EngageBay brings everything into one place — helping growing businesses reduce software fragmentation, lower operational costs, and simplify how they manage customers."]',
   '[{"heading":"Sales CRM","text":"Manage your pipeline, track contacts, and move deals forward with a CRM built to keep your sales process organised and visible in one place."},{"heading":"Marketing Automation","text":"Run email campaigns, build automated workflows, and score leads automatically, so your marketing keeps working without constant manual effort."},{"heading":"Helpdesk & Live Chat","text":"Support customers directly through built-in ticketing, a knowledge base, SLA tracking, and real-time live chat, all connected to the same customer record."},{"heading":"AI-Powered Productivity","text":"Use smart replies, predictive analytics, and automation tools to save time on repetitive tasks and focus on growing the business."}]',
@@ -53,7 +53,7 @@ INSERT INTO deals (
   'United States',
   'EngageBay replaces multiple tools with one platform, so your marketing, sales, and support finally work from the same customer view.',
   'https://tidd.ly/4w30ZS3',
-  '["https://group.innovatewithaima.com/deals/engagebay/gallery-1.png","https://group.innovatewithaima.com/deals/engagebay/gallery-2.png","https://group.innovatewithaima.com/deals/engagebay/gallery-3.png","https://group.innovatewithaima.com/deals/engagebay/gallery-4.png","https://group.innovatewithaima.com/deals/engagebay/gallery-5.png","https://group.innovatewithaima.com/deals/engagebay/gallery-6.png"]',
+  '["https://group.iwagroup.co.uk/deals/engagebay/gallery-1.png","https://group.iwagroup.co.uk/deals/engagebay/gallery-2.png","https://group.iwagroup.co.uk/deals/engagebay/gallery-3.png","https://group.iwagroup.co.uk/deals/engagebay/gallery-4.png","https://group.iwagroup.co.uk/deals/engagebay/gallery-5.png","https://group.iwagroup.co.uk/deals/engagebay/gallery-6.png"]',
   10
 );
 INSERT INTO deals (

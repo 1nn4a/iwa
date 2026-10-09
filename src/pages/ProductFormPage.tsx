@@ -543,7 +543,7 @@ if (!res.ok) {
 <title>{meta.title} -Access the right products · Innovate With Aima</title>
 <meta name="description" content={`Find out if ${meta.title} is right for you, part of the Innovate With Aima professional network.`} />
 <meta name="robots" content="noindex, nofollow" />
-<link rel="canonical" href={`https://innovatewithaima.com/product-${product}-form`} />
+<link rel="canonical" href={`https://iwagroup.co.uk/product-${product}-form`} />
  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </Helmet>
     <div

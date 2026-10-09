@@ -1,6 +1,6 @@
 //App.tsx
-import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -11,130 +11,91 @@ import ApplyPage from './pages/ApplyPage'
 import TermsPage from './pages/TermsPage'
 import PrivacyPage from './pages/PrivacyPage'
 import CookiesPage from './pages/CookiesPage'
-import BlogsPage from './pages/BlogsPage'
-import BlogPage from './pages/BlogPage'
 import ScrollToTop from './components/ScrollToTop'
-import { useLocation } from 'react-router-dom'
 import ScrollToTopButton from './components/ScrollToTopButton'
 import NotFound from './pages/NotFound'
-import BlogSearchOverlay from './components/BlogSearchOverlay'
 import ProductFormPage from './pages/ProductFormPage'
 import ProductsPage from './pages/ProductsPage'
 import LinksForCleaners from './pages/LinksForCleaners'
- import LinksForCleanersCreators from './pages/LinksForCleanersCreators'
+import LinksForCleanersCreators from './pages/LinksForCleanersCreators'
 import SubmitOpportunityPage from './pages/SubmitOpportunityPage'
- import DealsPage from './pages/DealsPage'
-import DealPage from './pages/DealPage'
 import JoinPage from './pages/JoinPage'
 import CookieBanner from './components/CookieBanner'
+
 function StartRedirect() {
-  const navigate = useNavigate()
   useEffect(() => {
-    if (
-      window.location.hostname === 'start.innovatewithaima.com' &&
-      !window.location.pathname.startsWith('/blog')
-    ) {
-      navigate('/blog', { replace: true })
-    }
-if (
-      window.location.hostname === 'group.innovatewithaima.com' &&
-      window.location.pathname === '/apply'
-    ) {
-      window.location.replace('https://innovatewithaima.com/apply')
+    if (window.location.hostname !== 'group.iwagroup.co.uk') return
+    const path = window.location.pathname
+
+    if (path === '/apply') {
+      window.location.replace('https://iwagroup.co.uk/apply')
       return
     }
-    if (
-      window.location.hostname === 'group.innovatewithaima.com' &&
-      window.location.pathname === '/'
-    ) {
-      window.location.replace('https://innovatewithaima.com/')
+    if (path === '/') {
+      window.location.replace('https://iwagroup.co.uk/')
       return
     }
-    if (
-      window.location.hostname === 'group.innovatewithaima.com' &&
-      !window.location.pathname.startsWith('/deals') &&
-      !window.location.pathname.startsWith('/join')
-    ) {
-      window.location.replace('https://innovatewithaima.com/group/submit-an-opportunity')
+    if (!path.startsWith('/join')) {
+      window.location.replace('https://iwagroup.co.uk/group/submit-an-opportunity')
       return
     }
-    if (window.location.hostname === 'group.innovatewithaima.com') {
-      document.body.classList.add('group-domain')
-    }
-  }, [navigate])
+    document.body.classList.add('group-domain')
+  }, [])
+
   return null
 }
 
-function AppShell({ blogSearchOpen, setBlogSearchOpen }: { blogSearchOpen: boolean, setBlogSearchOpen: (v: boolean) => void }) {
-const location = useLocation()
- const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
-const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme', '/group/submit-an-opportunity'].includes(location.pathname)
- const isFullBleedHeroPage = location.pathname === '/deals' || location.pathname.startsWith('/deals/') || location.pathname === '/join'
- const isNoPaddingPage = isFormPage || isProductLandingPage || isFullBleedHeroPage
- const isNoNavPage = isFormPage || location.pathname === '/group/submit-an-opportunity'
+function AppShell() {
+  const location = useLocation()
+  const isFormPage = location.pathname.startsWith('/product-') && location.pathname.endsWith('-form')
+  const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme', '/group/submit-an-opportunity'].includes(location.pathname)
+  const isFullBleedHeroPage = location.pathname === '/join'
+  const isNoPaddingPage = isFormPage || isProductLandingPage || isFullBleedHeroPage
+  const isNoNavPage = isFormPage || location.pathname === '/group/submit-an-opportunity'
+  const isLightFooterPage = isFormPage
+  const isHomePage = location.pathname === '/'
+  const isGroupHost = window.location.hostname === 'group.iwagroup.co.uk'
 
- const isLightFooterPage = isFormPage
- const isHomePage = location.pathname === '/'
   return (
     <div className="min-h-screen flex flex-col">
       <div className="min-h-screen flex flex-col overflow-x-hidden">
-{!isNoNavPage && <Navbar onOpenBlogSearch={() => setBlogSearchOpen(true)} />}
-          <ScrollToTop />
-<div className={`relative flex-1 flex flex-col ${isNoPaddingPage ? '' : 'pt-20'}`}>
-{isHomePage && (
-  <div
-    className="absolute inset-0 w-full h-full -z-10 pointer-events-none"
-    style={{
-      backgroundImage: `url(${homeBg})`,
-      backgroundSize: '100% 100%',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}
-  />
-)}
+        {!isNoNavPage && <Navbar />}
+        <ScrollToTop />
+        <div className={`relative flex-1 flex flex-col ${isNoPaddingPage ? '' : 'pt-20'}`}>
+          {isHomePage && (
+            <div
+              className="absolute inset-0 w-full h-full -z-10 pointer-events-none"
+              style={{
+                backgroundImage: `url(${homeBg})`,
+                backgroundSize: '100% 100%',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+          )}
           <main className="flex-1">
             <Routes>
-                <Route path="/" element={<HomePage />} />
-<Route path="/definitions" element={<DefinitionsPage />} />
-                <Route path="/about" element={<AboutPage />} />
-                                <Route path="/apply" element={<ApplyPage />} />
-                <Route path="/terms" element={<TermsPage />} />
-                <Route path="/privacy" element={<PrivacyPage />} />
-                <Route path="/cookies" element={<CookiesPage />} />
-                <Route path="/blog" element={<BlogsPage />} />
-<Route path="/blog/:slug" element={<BlogPage />} />
-<Route path="/en/products" element={<ProductsPage />} />
-<Route path="/en/links-for-cleaners" element={<LinksForCleaners />} />
-<Route path="/en/cleaning-programme" element={<LinksForCleanersCreators />} />
-<Route path="/product-trades-form"   element={<ProductFormPage product="trades"   />} />
-<Route path="/product-beauty-form"   element={<ProductFormPage product="beauty"   />} />
-<Route path="/product-property-form" element={<ProductFormPage product="property" />} />
-<Route path="/group/submit-an-opportunity" element={<SubmitOpportunityPage />} />
- {window.location.hostname === 'group.innovatewithaima.com' ? (
-  <>
-    <Route path="/deals" element={<DealsPage />} />
-    <Route path="/deals/:slug" element={<DealPage />} />
-    <Route path="/join" element={<JoinPage />} />
-  </>
-) : (
-  <>
-    <Route path="/deals" element={<Navigate to="/" replace />} />
-    <Route path="/deals/:slug" element={<Navigate to="/" replace />} />
-    <Route path="/join" element={<Navigate to="/" replace />} />
-  </>
-)}
-<Route path="*" element={<NotFound />} />
-             </Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/definitions" element={<DefinitionsPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/apply" element={<ApplyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/cookies" element={<CookiesPage />} />
+              <Route path="/en/products" element={<ProductsPage />} />
+              <Route path="/en/links-for-cleaners" element={<LinksForCleaners />} />
+              <Route path="/en/cleaning-programme" element={<LinksForCleanersCreators />} />
+              <Route path="/product-trades-form" element={<ProductFormPage product="trades" />} />
+              <Route path="/product-beauty-form" element={<ProductFormPage product="beauty" />} />
+              <Route path="/product-property-form" element={<ProductFormPage product="property" />} />
+              <Route path="/group/submit-an-opportunity" element={<SubmitOpportunityPage />} />
+              <Route path="/join" element={isGroupHost ? <JoinPage /> : <Navigate to="/" replace />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </main>
         </div>
-<Footer variant={isLightFooterPage ? 'light' : 'dark'} />
-{!isNoNavPage && <ScrollToTopButton />}
- {!isNoNavPage && (
-          <BlogSearchOverlay
-            isOpen={blogSearchOpen}
-            onClose={() => setBlogSearchOpen(false)}
-          />
-        )}
+        <Footer variant={isLightFooterPage ? 'light' : 'dark'} />
+        {!isNoNavPage && <ScrollToTopButton />}
         <CookieBanner />
       </div>
     </div>
@@ -142,11 +103,10 @@ const isProductLandingPage = ['/en/links-for-cleaners', '/en/cleaning-programme'
 }
 
 export default function App() {
-  const [blogSearchOpen, setBlogSearchOpen] = useState(false)
   return (
     <BrowserRouter>
       <StartRedirect />
-      <AppShell blogSearchOpen={blogSearchOpen} setBlogSearchOpen={setBlogSearchOpen} />
+      <AppShell />
     </BrowserRouter>
   )
 }

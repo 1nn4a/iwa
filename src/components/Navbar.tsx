@@ -3,9 +3,7 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../assets/logo.png'
 
-interface NavbarProps {
-  onOpenBlogSearch: () => void
-}
+ 
 
 interface NavItem {
   label: string
@@ -19,11 +17,11 @@ interface NavSection {
   items: NavItem[]
   to?: string
 }
-const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com'
+const isGroupDomain = typeof window !== 'undefined' && window.location.hostname === 'group.iwagroup.co.uk'
 
-const GROUP_DOMAIN_SAFE_PATHS = ['/deals', '/join', '/group/submit-an-opportunity']
+const GROUP_DOMAIN_SAFE_PATHS = ['/join', '/group/submit-an-opportunity']
 function isSafeOnGroupDomain(item: NavItem) {
-  const path = item.to ?? (item.href ? new URL(item.href, 'https://group.innovatewithaima.com').pathname : '')
+  const path = item.to ?? (item.href ? new URL(item.href, 'https://group.iwagroup.co.uk').pathname : '')
   return GROUP_DOMAIN_SAFE_PATHS.some(safe => path === safe || path.startsWith(safe + '/'))
 }
 
@@ -39,11 +37,10 @@ const NAV_TREE_ALL: NavSection[] = [
     label: 'Network',
     items: [
       isGroupDomain
-        ? { label: 'Membership', href: 'https://innovatewithaima.com/apply', external: true }
+        ? { label: 'Membership', href: 'https://iwagroup.co.uk/apply', external: true }
         : { label: 'Membership', to: '/apply' },
-      { label: 'Submit Opportunities', href: 'https://innovatewithaima.com/group/submit-an-opportunity', external: true },
-      { label: 'View Deals', href: 'https://group.innovatewithaima.com/deals' },
-      { label: 'Ambassador Programme', href: 'https://group.innovatewithaima.com/join' },    ],
+      { label: 'Submit Opportunities', href: 'https://iwagroup.co.uk/group/submit-an-opportunity', external: true },
+       { label: 'Ambassador Programme', href: 'https://group.iwagroup.co.uk/join' },    ],
   },
   {
     label: 'Overview',
@@ -56,7 +53,7 @@ isGroupDomain
   ? {
       label: 'Home',
       items: [
-        { label: 'Back to Home', href: 'https://innovatewithaima.com/', external: true },
+        { label: 'Back to Home', href: 'https://iwagroup.co.uk/', external: true },
       ],
     }
   : {
@@ -166,7 +163,7 @@ function NavItemLink({ item, onClick, className }: { item: NavItem; onClick: () 
     </a>
   )
 }
-export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
+export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null)
@@ -190,16 +187,7 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
       return false
     })
   }
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault()
-        onOpenBlogSearch()
-      }
-    }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [onOpenBlogSearch])
+  
 
   useEffect(() => {
     if (mobileOpen) {
@@ -230,7 +218,7 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
   return (
     <>
 <header className={`fixed left-0 top-0 z-50 w-full [transform:translateZ(0)] transition-colors duration-300 ${scrolled ? 'border-b border-white/8 bg-black/45 backdrop-blur-xl' : 'border-b border-transparent bg-transparent'}`}>    <div className={`flex items-center py-3 mx-auto max-w-[1180px] justify-between px-4 md:px-8 ${isGroupDomain ? 'md:w-full md:max-w-none md:justify-start md:px-5 lg:px-10' : ''}`}>
-          <a href="https://www.innovatewithaima.com/" className="flex items-center gap-2 flex-shrink-0">
+          <a href="https://iwagroup.co.uk/" className="flex items-center gap-2 flex-shrink-0">
             <img src={logo} className="h-10" alt="AiMA" />
           </a>
 
@@ -286,26 +274,13 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
               )
             })}
 
-            <button
-              onClick={onOpenBlogSearch}
-              aria-label="Search articles"
-              className="ml-2 inline-flex items-center gap-2 h-8 px-3 rounded-lg border border-white/10 bg-white/[0.04] text-xs font-semibold text-white/45 hover:bg-white/[0.09] hover:text-white/80 hover:border-white/18 transition-all cursor-pointer whitespace-nowrap"
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="M21 21l-4.35-4.35" />
-              </svg>
-              Search articles
-              <kbd className="inline-flex items-center px-1 py-0.5 rounded text-[9px] font-bold border border-white/10 bg-white/[0.04] text-white/28 leading-none">
-                ⌘K
-              </kbd>
-            </button>
+  
           </nav>
 
       <div className={`flex items-center gap-3 ${isGroupDomain ? 'md:ml-3' : ''}`}>
           {isGroupDomain ? (
               
-                <a href="https://innovatewithaima.com/apply"
+                <a href="https://iwagroup.co.uk/apply"
                 className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/16 transition-all"
               >
                 AIMA API
@@ -377,20 +352,11 @@ export default function Navbar({ onOpenBlogSearch }: NavbarProps) {
                 )
               })}
 
-              <button
-                onClick={() => { closeMobile(); onOpenBlogSearch() }}
-                className="flex items-center gap-3 py-5 text-xl font-semibold text-white text-left border-b border-white/10"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="M21 21l-4.35-4.35" />
-                </svg>
-                Search articles
-              </button>
+  
 
               <div className="pt-6">
          {isGroupDomain ? (
-                  <a href="https://innovatewithaima.com/apply" className="navbar-white-btn">
+                  <a href="https://iwagroup.co.uk/apply" className="navbar-white-btn">
                     <span className="navbar-white-btn-content">AIMA API</span>
                   </a>
                 ) : (

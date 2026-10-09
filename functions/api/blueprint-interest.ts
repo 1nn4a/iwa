@@ -1,7 +1,6 @@
 import { handleBlueprintInterest } from '../../src/worker-routes/blueprint-interest'
 
-// after
-import { isRateLimited } from '../../src/lib/rate-limit'
+ import { isRateLimited } from '../../src/lib/rate-limit'
 
 interface Env {
   iwa_product_interest: D1Database
@@ -9,7 +8,7 @@ interface Env {
   RATE_LIMIT_KV: KVNamespace
 }
 
-const ALLOWED_ORIGIN = 'https://www.innovatewithaima.com'
+const ALLOWED_ORIGIN = 'https://iwagroup.co.uk'
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const origin = request.headers.get('origin')
@@ -25,7 +24,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 export const onRequestOptions: PagesFunction = async () => {
   return new Response(null, {
     headers: {
-      'Access-Control-Allow-Origin':  'https://www.innovatewithaima.com',
+      'Access-Control-Allow-Origin':  'https://iwagroup.co.uk',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },

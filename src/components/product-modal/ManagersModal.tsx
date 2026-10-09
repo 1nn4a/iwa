@@ -29,7 +29,7 @@ export default function ManagersModal({ isOpen, onClose }: Props) {
       ctaLabel="Apply for Early Access"
       ctaHref="/product-property-form"
       learnMoreHref="/product-property-form"
-      shareUrl="https://innovatewithaima.com"
+      shareUrl="https://iwagroup.co.uk"
       shareTitle="Innovate With Aima"
       faqs={faqs}
    />

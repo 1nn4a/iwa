@@ -28,7 +28,7 @@ export default function TradiesModal({ isOpen, onClose }: Props) {
       ctaLabel="Apply for Early Access"
       ctaHref="/product-trades-form"
       learnMoreHref="/product-trades-form"
-      shareUrl="https://innovatewithaima.com"
+      shareUrl="https://iwagroup.co.uk"
       shareTitle="Innovate With Aima"
       faqs={faqs}
     />

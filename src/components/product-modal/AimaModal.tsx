@@ -24,9 +24,9 @@ export default function AimaModal({ isOpen, onClose }: Props) {
       brandHref="#"
       brandLogo={aimaLogo}
       ctaLabel="Membership"
-      ctaHref="https://innovatewithaima.com/group/submit-an-opportunity"
+      ctaHref="https://iwagroup.co.uk/group/submit-an-opportunity"
       learnMoreHref="/apply"
-      shareUrl="https://www.innovatewithaima.com/apply"
+      shareUrl="https://iwagroup.co.uk/apply"
       faqs={faqs}
     />
   );

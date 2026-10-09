@@ -28,7 +28,7 @@ export default function AestheticsModal({ isOpen, onClose }: Props) {
       ctaLabel="Apply for Early Access"
       ctaHref="/product-beauty-form"
       learnMoreHref="/product-beauty-form"
-      shareUrl="https://innovatewithaima.com"
+      shareUrl="https://iwagroup.co.uk"
       shareTitle="Innovate With Aima"
       faqs={faqs}
     />

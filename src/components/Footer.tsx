@@ -14,7 +14,7 @@ export default function Footer({ variant = 'dark' }: FooterProps) {
 
   return (
 <footer className={`border-t ${border} ${isLight ? 'bg-white text-black' : 'bg-[#083a6f] text-white'}`}>
-        <div className={`px-5 py-12 md:px-8 ${typeof window !== 'undefined' && window.location.hostname === 'group.innovatewithaima.com' ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
+        <div className={`px-5 py-12 md:px-8 ${typeof window !== 'undefined' && window.location.hostname === 'group.iwagroup.co.uk' ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
 
         <div className="flex flex-col md:flex-row md:justify-between gap-10">
 
@@ -32,17 +32,17 @@ We create focused products for service businesses, creators, and emerging compan
             <div>
               <p className={`text-[11px] font-semibold uppercase tracking-[0.08em] mb-3 ${label}`}>Legal</p>
               <div className="flex flex-col gap-2">
-                <a href="https://www.innovatewithaima.com/privacy" className={link}>Privacy Policy</a>
-                <a href="https://www.innovatewithaima.com/terms" className={link}>Terms & Conditions</a>
-                <a href="https://www.innovatewithaima.com/cookies" className={link}>Cookies</a>
+                <a href="https://iwagroup.co.uk/privacy" className={link}>Privacy Policy</a>
+                <a href="https://iwagroup.co.uk/terms" className={link}>Terms & Conditions</a>
+                <a href="https://iwagroup.co.uk/cookies" className={link}>Cookies</a>
               </div>
             </div>
 
             <div>
               <p className={`text-[11px] font-semibold uppercase tracking-[0.08em] mb-3 ${label}`}>Company</p>
               <div className="flex flex-col gap-2">
-                <a href="https://www.innovatewithaima.com/definitions" className={link}>Definitions</a>
-                <a href="https://start.innovatewithaima.com" target="_blank" rel="noopener noreferrer" className={link}>Blogs</a>
+                <a href="https://iwagroup.co.uk/definitions" className={link}>Definitions</a>
+  
               </div>
             </div>
 

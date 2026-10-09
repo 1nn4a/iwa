@@ -59,7 +59,7 @@ export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
       secondaryCtaLabel="See how it works"
       secondaryCtaHref="/en/links-for-cleaners"
       learnMoreHref="/en/links-for-cleaners"
-      shareUrl="https://www.innovatewithaima.com/en/links-for-cleaners"
+      shareUrl="https://iwagroup.co.uk/en/links-for-cleaners"
       shareTitle="LinksForCleaners"
       faqs={faqs}
     />

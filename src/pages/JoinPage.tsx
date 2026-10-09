@@ -27,7 +27,7 @@ export default function JoinPage() {
     <>
       <Helmet>
         <title>Join | Innovate With Aima Network</title>
-        <link rel="canonical" href="https://group.innovatewithaima.com/join" />
+        <link rel="canonical" href="https://group.iwagroup.co.uk/join" />
       </Helmet>
       <div className="min-h-screen" style={{ background: '#FAF9F6' }}>
         <main className="mx-auto max-w-[1180px] px-4 pb-24 pt-32 md:px-8">

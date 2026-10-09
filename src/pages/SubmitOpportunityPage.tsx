@@ -289,7 +289,7 @@ export default function SubmitOpportunityPage() {
         <title>Submit an Opportunity · Innovate With Aima</title>
         <meta name="description" content="Share active or upcoming work with the Innovate With Aima professional network." />
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://innovatewithaima.com/group/submit-an-opportunity" />
+        <link rel="canonical" href="https://iwagroup.co.uk/group/submit-an-opportunity" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Helmet>
 

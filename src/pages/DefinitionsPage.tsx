@@ -56,7 +56,7 @@ const defs = [
   },
   {
     title: '“WEBSITE”',
-    text: 'The Innovate With Aima website currently accessible at https://www.innovatewithaima.com',
+    text: 'The Innovate With Aima website currently accessible at https://iwagroup.co.uk',
   },
   {
     title: '“INNOVATEWITHAIMA”, “INNOVATE WITH AIMA”, “IWA”, “WE”, “US”, “OUR”',
@@ -74,7 +74,7 @@ export default function DefinitionsPage() {
 return (
     <>
     <Helmet>
-      <link rel="canonical" href="https://innovatewithaima.com/definitions" />
+      <link rel="canonical" href="https://iwagroup.co.uk/definitions" />
     </Helmet>
     <main className="mx-auto max-w-[1180px] px-5 pt-28 md:px-8">
       <motion.section

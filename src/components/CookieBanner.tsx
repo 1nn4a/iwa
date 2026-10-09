@@ -8,7 +8,7 @@ const sheen = {
 export default function CookieBanner() {
   const { consent, accept, reject } = useCookieConsent()
 
-  if (window.location.hostname !== 'group.innovatewithaima.com') return null
+  if (window.location.hostname !== 'group.iwagroup.co.uk') return null
   if (consent !== null) return null
 
   return (
@@ -28,7 +28,7 @@ export default function CookieBanner() {
             <p className="text-sm font-semibold text-[#083a6f]">We use cookies</p>
             <p className="mt-1.5 text-xs leading-5 text-[#083a6f]/60">
               We use cookies to make our site work as you'd expect, improve your experience, analyse site usage and assist our marketing efforts.{' '}
-              <a href="https://innovatewithaima.com/cookies" target="_blank" rel="noopener noreferrer" className="underline text-[#5c6cff]">Learn more</a>
+              <a href="https://iwagroup.co.uk/cookies" target="_blank" rel="noopener noreferrer" className="underline text-[#5c6cff]">Learn more</a>
             </p>
             <div className="mt-4 flex gap-2">
               <button
@@ -52,7 +52,7 @@ export default function CookieBanner() {
       <div className="hidden sm:flex fixed bottom-0 left-0 right-0 z-[100] items-center justify-between gap-6 border-t border-[#083a6f]/10 bg-white/88 px-6 py-3 shadow-[0_-4px_24px_rgba(8,58,111,0.08)] backdrop-blur-xl">
         <p className="text-xs text-[#083a6f]/65 max-w-2xl">
           <span className="font-semibold text-[#083a6f]">We use cookies</span> to make our site work as you'd expect, improve your experience, analyse site usage and assist our marketing efforts.{' '}
-          <a href="https://innovatewithaima.com/cookies" target="_blank" rel="noopener noreferrer" className="underline text-[#5c6cff] hover:text-[#4a5aee]">Learn more</a>
+          <a href="https://iwagroup.co.uk/cookies" target="_blank" rel="noopener noreferrer" className="underline text-[#5c6cff] hover:text-[#4a5aee]">Learn more</a>
         </p>
         <div className="flex flex-shrink-0 items-center gap-2">
           <button

@@ -35,7 +35,7 @@ function json(body: unknown, status = 200): Response {
     status,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://www.innovatewithaima.com',
+      'Access-Control-Allow-Origin': 'https://iwagroup.co.uk',
     },
   })
 }
@@ -51,7 +51,7 @@ export async function handleBlueprintInterest(
   if (request.method === 'OPTIONS') {
     return new Response(null, {
       headers: {
-        'Access-Control-Allow-Origin':  'https://www.innovatewithaima.com',
+        'Access-Control-Allow-Origin':  'https://iwagroup.co.uk',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
       },

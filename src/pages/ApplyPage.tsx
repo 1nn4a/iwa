@@ -62,7 +62,7 @@ return(
 <Helmet>
 <title>Apply | Innovate With Aima</title>
 <meta name="description" content="Apply to join the Innovate With Aima network. Membership is selective and reviewed individually." />
-<link rel="canonical" href="https://innovatewithaima.com/apply" />
+<link rel="canonical" href="https://iwagroup.co.uk/apply" />
 </Helmet>
 
 <div className="min-h-screen">
@@ -86,13 +86,7 @@ return(
       </p>
 
       
-       <a href="https://group.innovatewithaima.com/deals"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#083a6f] shadow-lg transition hover:-translate-y-0.5"
-      >
-        Access Deals
-      </a>
+   
     </div>
   </div>
 </div>
@@ -152,7 +146,7 @@ return(
 
         <div className="flex justify-start md:justify-end">
           <Link
-            to="https://www.innovatewithaima.com/apply"
+            to="https://iwagroup.co.uk/apply"
             className="rounded-full bg-[#5c6cff] px-4 md:px-8 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]"
           >
             Apply for Network Access
@@ -167,7 +161,7 @@ return(
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/68 md:text-base">
             For clarity and transparency, we define how the Innovate With Aima Network operates, including key roles, responsibilities, and terms used across the platform.
           </p>
-          <Link to="https://www.innovatewithaima.com/definitions" className="mt-8 inline-flex rounded-full bg-[#5c6cff] px-4 md:px-8 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]">
+          <Link to="https://iwagroup.co.uk/definitions" className="mt-8 inline-flex rounded-full bg-[#5c6cff] px-4 md:px-8 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]">
             Read Definitions
           </Link>
         </div>
@@ -220,7 +214,7 @@ return(
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/65 md:text-base">
             If your business has ongoing or repeat work, you can submit opportunities for review and distribution to relevant independent professionals in the network.
           </p>
-          <Link to="https://www.innovatewithaima.com/apply" className="mt-7 inline-flex rounded-full bg-[#5c6cff] px-4 md:px-8 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]">
+          <Link to="https://iwagroup.co.uk/apply" className="mt-7 inline-flex rounded-full bg-[#5c6cff] px-4 md:px-8 py-2 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#6f7fff]">
             Submit an Opportunity
           </Link>
         </div>
@@ -291,7 +285,7 @@ We aim to respond to all messages within 2 days.
 
 <div className="mt-20">
   
-   <a href="https://group.innovatewithaima.com/join"
+   <a href="https://group.iwagroup.co.uk/join"
     className="group relative block w-full max-w-[320px] aspect-[660/1020] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
   >
     <div

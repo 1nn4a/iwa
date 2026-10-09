@@ -1,8 +1,7 @@
 // functions/api/ambassador-positions.ts
 import { handleAmbassadorPositions } from '../../src/worker-routes/ambassador-positions'
 
-// after
-import { isRateLimited } from '../../src/lib/rate-limit'
+ import { isRateLimited } from '../../src/lib/rate-limit'
 
 interface Env {
   iwa_product_interest: D1Database
@@ -10,7 +9,7 @@ interface Env {
   RATE_LIMIT_KV: KVNamespace
 }
 
-const ALLOWED_ORIGIN = 'https://group.innovatewithaima.com'
+const ALLOWED_ORIGIN = 'https://group.iwagroup.co.uk'
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   const origin = request.headers.get('origin')
@@ -26,7 +25,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 export const onRequestOptions: PagesFunction = async () => {
   return new Response(null, {
     headers: {
-      'Access-Control-Allow-Origin':  'https://group.innovatewithaima.com',
+      'Access-Control-Allow-Origin':  'https://group.iwagroup.co.uk',
       'Access-Control-Allow-Methods': 'GET, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },
