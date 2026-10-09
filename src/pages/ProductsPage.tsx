@@ -1,16 +1,16 @@
-// ProductsPage.tsx
+﻿// ProductsPage.tsx
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-import bgImg from '../assets/iwa@.20260701.png';
-import linksForBrandImg from '../assets/linksfor@.q01072026.jpg';
-import cleanfluencerImg from '../assets/linksforcleaners@.cprogramme.jpg';
-import linksForTradiesImg from '../assets/linksfortradies@.q3062026.jpg';
-import linksForCleanersImg from '../assets/linksforcleaners@.instantq.jpg';
-import linksForManagersImg from '../assets/linksformangers@.q3062026.jpg';
-import linksForAestheticsImg from '../assets/linksforaesthetics@.q3010726.jpg';
+import bgImg from '../assets/iwa@.20260701.webp';
+import linksForBrandImg from '../assets/linksfor@.q01072026.webp';
+import cleanfluencerImg from '../assets/linksforcleaners@.cprogramme.webp';
+import linksForTradiesImg from '../assets/linksfortradies@.q3062026.webp';
+import linksForCleanersImg from '../assets/linksforcleaners@.instantq.webp';
+import linksForManagersImg from '../assets/linksformangers@.q3062026.webp';
+import linksForAestheticsImg from '../assets/linksforaesthetics@.q3010726.webp';
 import GlossyButton from '../components/GlossyButton';
 
 const fadeUp = {

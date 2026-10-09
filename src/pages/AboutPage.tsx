@@ -1,6 +1,6 @@
-// src/pages/AboutPage.tsx
+﻿// src/pages/AboutPage.tsx
 import { Helmet } from 'react-helmet-async';
-import iwaCardImg from '../assets/iwa.png';
+import iwaCardImg from '../assets/iwa.webp';
 
 const timeline = [
   {

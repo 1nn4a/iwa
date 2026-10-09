@@ -1,10 +1,10 @@
-//App.tsx
+﻿//App.tsx
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
-import homeBg from './assets/iwa@.20260701.png'
+import homeBg from './assets/iwa@.20260701.webp'
 import DefinitionsPage from './pages/DefinitionsPage'
 import AboutPage from './pages/AboutPage'
 import ApplyPage from './pages/ApplyPage'

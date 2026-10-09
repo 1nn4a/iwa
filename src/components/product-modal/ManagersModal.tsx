@@ -1,6 +1,6 @@
-// components/product-modal/ManagersModal.tsx
+﻿// components/product-modal/ManagersModal.tsx
 import ProductModal, { type ProductModalFaq } from './ProductModal';
-import aimaLogo from '../../assets/iwa.png';
+import aimaLogo from '../../assets/iwa.webp';
 
 const faqs: ProductModalFaq[] = [
   { q: 'Who can apply for Links For Managers?', a: 'Access is invite-only and reviewed individually. Applications are accepted from property managers who meet our suitability criteria.' },

@@ -1,6 +1,6 @@
-// Footer.tsx
-import footer from '../assets/footer.png'
-import logo from '../assets/logo.png'
+﻿// Footer.tsx
+import footer from '../assets/footer.webp'
+import logo from '../assets/logo.webp'
 
 interface FooterProps {
   variant?: 'dark' | 'light'

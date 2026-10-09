@@ -1,9 +1,9 @@
-// LinksForCleaners.tsx
+﻿// LinksForCleaners.tsx
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-import heroImg from '../assets/linksforcleaners@.instantq.jpg';
+import heroImg from '../assets/linksforcleaners@.instantq.webp';
 import shareImg from '../assets/lfc01062602xiwa.jpg';
 import QuickNav from '../components/QuickNav';
 import Blueprints from '../components/Blueprints';

@@ -1,6 +1,6 @@
-// components/product-modal/AimaModal.tsx
+﻿// components/product-modal/AimaModal.tsx
 import ProductModal, { type ProductModalFaq } from './ProductModal';
-import aimaLogo from '../../assets/aima.png';
+import aimaLogo from '../../assets/aima.webp';
 
 // Not currently linked from the site — kept in reserve, content pending.
 const faqs: ProductModalFaq[] = [

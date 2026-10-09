@@ -1,8 +1,8 @@
-//src/pages/SubmitOpportunityPage.tsx / new page — landing + form + success / INCOMPLETE / ACTION
+﻿//src/pages/SubmitOpportunityPage.tsx / new page — landing + form + success / INCOMPLETE / ACTION
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import logo from '../assets/aima.png'
+import logo from '../assets/aima.webp'
 import GlossyButton from '../components/GlossyButton'
 
 declare global {

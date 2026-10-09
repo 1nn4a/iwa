@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Helmet } from "react-helmet-async"
 import { Link } from 'react-router-dom'
-import applyHero from '../assets/deals-hero.jpg'
-import iwaCardImg from '../assets/iwa.png'
-import hero from '../assets/iwa.png'
+import applyHero from '../assets/deals-hero.webp'
+import iwaCardImg from '../assets/iwa.webp'
+import hero from '../assets/iwa.webp'
 import GlossyButton from '../components/GlossyButton'
+import LazyImage from '../components/LazyImage'
+import BgImage from '../components/BgImage'
 
 const membershipCards = [
   {
@@ -203,7 +205,7 @@ return(
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-white/10">
-            <img src={hero} className="w-full h-full object-cover" />
+            <LazyImage src={hero} alt="" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -288,12 +290,11 @@ We aim to respond to all messages within 2 days.
    <a href="https://group.iwagroup.co.uk/join"
     className="group relative block w-full max-w-[320px] aspect-[660/1020] rounded-[45px] overflow-hidden bg-[#5c6cff] text-left"
   >
-    <div
-      className="absolute inset-0 bg-cover bg-center select-none"
-      style={{ backgroundImage: `url(${iwaCardImg})`, WebkitTouchCallout: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
-      onContextMenu={(e) => e.preventDefault()}
-      draggable={false}
-    />
+ <BgImage
+  src={iwaCardImg}
+  className="absolute inset-0 select-none"
+  style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
+/>
     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
     <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">
       <h3 className="pl-[130px] pt-16 text-left text-lg font-black font-['Inter'] text-white leading-tight [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">

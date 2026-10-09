@@ -1,6 +1,6 @@
-// components/product-modal/AestheticsModal.tsx
+﻿// components/product-modal/AestheticsModal.tsx
 import ProductModal, { type ProductModalFaq } from './ProductModal';
-import aimaLogo from '../../assets/iwa.png';
+import aimaLogo from '../../assets/iwa.webp';
 
 const faqs: ProductModalFaq[] = [
   { q: 'Who can apply for Links For Aesthetics?', a: 'Access is invite-only and reviewed individually. Applications are accepted from aesthetics professionals who meet our suitability criteria.' },

@@ -1,12 +1,13 @@
-//ProductFormPage.tsx
+﻿//ProductFormPage.tsx
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import logo from '../assets/aima.png'
-import marketingCard1 from '../assets/lfc01062602xiwa.jpg'
-import marketingCard2 from '../assets/lfc01062603xiwa.jpg'
+import logo from '../assets/aima.webp'
+import marketingCard1 from '../assets/lfc01062602xiwa.webp'
+import marketingCard2 from '../assets/lfc01062603xiwa.webp'
 import GlossyButton from '../components/GlossyButton';
+import LazyImage from '../components/LazyImage'
 
  
  declare global {
@@ -129,13 +130,12 @@ function MarketingCards() {
           }}
           aria-label="Visit LinksForCleaners"
         >
-          <img
+          <LazyImage
             src={src}
             alt="LinksForCleaners"
             className="w-full h-full object-cover"
             width={1672}
             height={941}
-            loading="lazy"
           />
           <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.2)' }} />
         </a>

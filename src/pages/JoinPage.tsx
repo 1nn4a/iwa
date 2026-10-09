@@ -1,7 +1,8 @@
-// src/pages/JoinPage.tsx
+﻿// src/pages/JoinPage.tsx
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import dealsHero from '../assets/deals-hero.jpg'
+import dealsHero from '../assets/deals-hero.webp'
+import LazyImage from '../components/LazyImage'
 interface AmbassadorPosition {
   slug: string
   title: string
@@ -33,9 +34,10 @@ export default function JoinPage() {
         <main className="mx-auto max-w-[1180px] px-4 pb-24 pt-32 md:px-8">
 <div className="relative left-1/2 -ml-[50vw] -mt-32 w-screen overflow-hidden">
             <div className="relative h-[280px] w-full sm:h-[340px] md:h-[400px]">
-           <img
+              <LazyImage
                 src={dealsHero}
                 alt=""
+                priority
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-black/45" />

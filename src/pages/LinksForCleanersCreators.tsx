@@ -1,10 +1,10 @@
-// LinksForCleanersCreators.tsx
+﻿// LinksForCleanersCreators.tsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-import heroDesktopImg from '../assets/linksforcleaners@.dprogramme.jpg';
-import heroMobileImg from '../assets/linksforcleaners@.pprogramme.jpg';
+import heroDesktopImg from '../assets/linksforcleaners@.dprogramme.webp';
+import heroMobileImg from '../assets/linksforcleaners@.pprogramme.webp';
 import shareImg from '../assets/linksforcleaners@.cprogramme.jpg';
 // import QuickNav from '../components/QuickNav';
 import GlossyButton from '../components/GlossyButton';

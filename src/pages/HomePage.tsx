@@ -1,19 +1,20 @@
-//HomePage.tsx
+﻿//HomePage.tsx
 import { motion } from 'framer-motion';
 
 import { Link, useSearchParams } from 'react-router-dom';
-import linksCleanersMobile from '../assets/linksforcleaners@.q3062026.jpg'
-import linksTradiesMobile from '../assets/linksfortradies@.q3062026.jpg'
-import linksManagersMobile from '../assets/linksformangers@.q3062026.jpg'
-import aimaDesktopImg from '../assets/aima@.q602014412.jpg'
-import aimaMobileImg from '../assets/aima@.q3010726.jpg'
-import linksAestheticsMobile from '../assets/linksforaesthetics@.q3010726.jpg'
+import linksCleanersMobile from '../assets/linksforcleaners@.q3062026.webp'
+import linksTradiesMobile from '../assets/linksfortradies@.q3062026.webp'
+import linksManagersMobile from '../assets/linksformangers@.q3062026.webp'
+import aimaDesktopImg from '../assets/aima@.q602014412.webp'
+import aimaMobileImg from '../assets/aima@.q3010726.webp'
+import linksAestheticsMobile from '../assets/linksforaesthetics@.q3010726.webp'
 import GlossyButton from '../components/GlossyButton';
 import LinksForCleanersModal from '../components/product-modal/LinksForCleanersModal';
 import AimaModal from '../components/product-modal/AimaModal';
 import TradiesModal from '../components/product-modal/TradiesModal';
 import ManagersModal from '../components/product-modal/ManagersModal';
 import AestheticsModal from '../components/product-modal/AestheticsModal';
+import BgImage from '../components/BgImage';
 
 
 import { Helmet } from "react-helmet-async"
@@ -114,12 +115,11 @@ Innovatewithaima is a UK software group building the next generation of business
           {linkCards.map((card) => {
             const inner = (
               <>
-                <div
-                  className="absolute inset-0 bg-cover bg-center select-none"
-                  style={{ backgroundImage: `url(${card.mobileImg})`, WebkitTouchCallout: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
-                  onContextMenu={(e) => e.preventDefault()}
-                  draggable={false}
-                />
+               <BgImage
+  src={card.mobileImg}
+  className="absolute inset-0 select-none"
+  style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
+/>
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 {card.title && (
                   <div className="absolute top-0 left-0 right-0 h-2/3 flex items-start pointer-events-none">

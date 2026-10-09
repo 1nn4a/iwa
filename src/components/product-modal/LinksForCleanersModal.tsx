@@ -1,4 +1,4 @@
-// components/product-modal/LinksForCleanersModal.tsx
+﻿// components/product-modal/LinksForCleanersModal.tsx
 import ProductModal, { type ProductModalFaq } from './ProductModal';
 const faqs: ProductModalFaq[] = [
   {
@@ -33,13 +33,13 @@ interface Props {
   onClose: () => void;
 }
 
-import img6113 from '../../assets/IMG_6113.jpg';
-import img6114 from '../../assets/IMG_6114.jpg';
-import img6115 from '../../assets/IMG_6115.jpg';
-import img6116 from '../../assets/IMG_6116.jpg';
-import img6117 from '../../assets/IMG_6117.jpg';
- import img6120 from '../../assets/IMG_6120.jpg';
-import img6121 from '../../assets/IMG_6121.jpg';
+import img6113 from '../../assets/IMG_6113.webp';
+import img6114 from '../../assets/IMG_6114.webp';
+import img6115 from '../../assets/IMG_6115.webp';
+import img6116 from '../../assets/IMG_6116.webp';
+import img6117 from '../../assets/IMG_6117.webp';
+ import img6120 from '../../assets/IMG_6120.webp';
+import img6121 from '../../assets/IMG_6121.webp';
 
 const PREVIEW_IMAGES = [img6113,img6114,img6115,img6116,img6117,img6120,img6121];
 export default function LinksForCleanersModal({ isOpen, onClose }: Props) {
