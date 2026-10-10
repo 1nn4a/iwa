@@ -187,7 +187,7 @@ export default function Navbar() {
                   </button>
 
                   {isOpen && (
-                    <div className="absolute left-0 top-full mt-2 min-w-[200px] rounded-xl border border-white/10 bg-black/90 backdrop-blur-xl shadow-xl shadow-black/40 py-2">
+                    <div className={`absolute top-full mt-2 min-w-[200px] rounded-xl border border-white/10 bg-black/90 backdrop-blur-xl shadow-xl shadow-black/40 py-2 ${isGroupDomain ? 'right-0' : 'left-0'}`}>
                       {section.items.map(item => (
                         <NavItemLink
                           key={item.label}
