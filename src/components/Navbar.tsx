@@ -26,14 +26,14 @@ function isSafeOnGroupDomain(item: NavItem) {
 
 const NAV_TREE_ALL: NavSection[] = [
   {
-    label: 'Solutions',
+    label: 'Products',
     items: [
       { label: 'Links for Cleaners', to: '/en/links-for-cleaners' },
       { label: 'Browse all', to: '/en/products' },
     ],
   },
   {
-    label: 'Network',
+    label: 'Talent',
     items: [
       isGroupDomain
         ? { label: 'Membership', href: 'https://iwagroup.co.uk/apply', external: true }
@@ -44,10 +44,8 @@ const NAV_TREE_ALL: NavSection[] = [
   },
   {
     label: 'Overview',
-    items: [
-      { label: 'Framework', to: '/definitions' },
-      { label: 'About', to: '/about' },
-    ],
+    items: [],
+    to: '/about',
   },
   isGroupDomain
     ? {
@@ -64,7 +62,7 @@ const NAV_TREE_ALL: NavSection[] = [
 const NAV_TREE: NavSection[] = isGroupDomain
   ? NAV_TREE_ALL
       .map(section => ({ ...section, items: section.items.filter(isSafeOnGroupDomain) }))
-      .filter(section => section.to || section.items.length > 0)
+      .filter(section => section.to ? GROUP_DOMAIN_SAFE_PATHS.includes(section.to) : section.items.length > 0)
   : NAV_TREE_ALL
 
 function ChevronIcon({ open }: { open: boolean }) {
@@ -230,8 +228,20 @@ export default function Navbar() {
         <div className="md:hidden fixed inset-0 top-[65px] z-50 bg-black overflow-y-auto">
           <nav className="max-w-[1180px] mx-auto px-4 py-4 flex flex-col" aria-label="Mobile navigation">
             {NAV_TREE.map(section => {
-              const isOpen = openMobileSection === section.label
               const isActiveSection = isSectionActive(section)
+              if (section.to && section.items.length === 0) {
+                return (
+                  <NavLink
+                    key={section.label}
+                    to={section.to}
+                    onClick={closeMobile}
+                    className={`block border-b border-white/10 py-5 text-xl font-bold ${isActiveSection ? 'text-[#8da2ff]' : 'text-white'}`}
+                  >
+                    {section.label}
+                  </NavLink>
+                )
+              }
+              const isOpen = openMobileSection === section.label
               return (
                 <div key={section.label} className="border-b border-white/10">
                   <button
