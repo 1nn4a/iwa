@@ -1,8 +1,4 @@
 ﻿// Footer.tsx
-interface FooterProps {
-  variant?: 'dark' | 'light'
-}
-
 type FooterLink = { label: string; href: string; external?: boolean }
 type FooterColumn = { title: string; links: FooterLink[] }
 
@@ -51,42 +47,48 @@ const COLUMNS: FooterColumn[] = [
   },
 ]
 
+interface FooterProps {
+  variant?: 'dark' | 'light'
+}
+
 export default function Footer({ variant = 'dark' }: FooterProps) {
   const isLight = variant === 'light'
   const heading = isLight ? 'text-black' : 'text-white'
-  const link = isLight ? 'text-black/60 hover:text-black' : 'text-white/60 hover:text-white'
+  const link = isLight ? 'text-black/65 active:text-black hover:text-black' : 'text-white/65 active:text-white hover:text-white'
   const border = isLight ? 'border-black/10' : 'border-white/10'
-  const muted = isLight ? 'text-black/40' : 'text-white/40'
+  const muted = isLight ? 'text-black/45' : 'text-white/45'
   const isGroupHost = typeof window !== 'undefined' && window.location.hostname === 'group.iwagroup.co.uk'
+  const container = isGroupHost ? 'w-full' : 'mx-auto max-w-[1180px]'
 
   return (
     <footer className={`border-t ${border} ${isLight ? 'bg-white text-black' : 'bg-[#083a6f] text-white'}`}>
-      <div className={`px-5 pt-12 md:px-8 ${isGroupHost ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 text-sm sm:grid-cols-3 lg:grid-cols-5">
+      <div className={`${container} px-5 pt-10 pb-8 md:px-8 md:pt-12`}>
+        <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
           {COLUMNS.map(col => (
-            <div key={col.title}>
-              <p className={`mb-4 text-[15px] font-bold ${heading}`}>{col.title}</p>
-              <div className="flex flex-col gap-3">
+            <section key={col.title} aria-label={col.title}>
+              <h3 className={`mb-3 text-base font-bold leading-snug ${heading}`}>{col.title}</h3>
+              <ul className="flex flex-col">
                 {col.links.map(item => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target={item.external ? '_blank' : undefined}
-                    rel={item.external ? 'noopener noreferrer' : undefined}
-                    className={`break-all ${link}`}
-                  >
-                    {item.label}
-                  </a>
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      target={item.external ? '_blank' : undefined}
+                      rel={item.external ? 'noopener noreferrer' : undefined}
+                      className={`inline-flex min-h-[36px] items-center break-words text-sm leading-snug transition-colors ${link}`}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
           ))}
         </div>
       </div>
 
-      <div className={`mt-12 border-t ${border}`}>
-        <div className={`px-5 py-5 md:px-8 ${isGroupHost ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
-          <p className={`text-xs ${muted}`}>
+      <div className={`border-t ${border}`}>
+        <div className={`${container} px-5 py-5 md:px-8`}>
+          <p className={`text-xs leading-relaxed ${muted}`}>
             Copyright © 2023-2026 Innovatewithaima ltd All Rights Reserved.
           </p>
         </div>

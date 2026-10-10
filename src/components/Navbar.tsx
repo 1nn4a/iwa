@@ -151,12 +151,12 @@ export default function Navbar() {
   return (
     <>
       <header className={`fixed left-0 top-0 z-50 w-full [transform:translateZ(0)] transition-colors duration-300 ${scrolled ? 'border-b border-white/8 bg-black/45 backdrop-blur-xl' : 'border-b border-transparent bg-transparent'}`}>
-        <div className="flex w-full items-center justify-between gap-6 px-4 py-3 md:px-10 lg:px-16">
-          <a href="https://iwagroup.co.uk/" className="flex flex-shrink-0 items-center gap-2">
+        <div className={`flex items-center py-3 mx-auto max-w-[1180px] justify-between px-4 md:px-8 ${isGroupDomain ? 'md:w-full md:max-w-none md:justify-start md:px-5 lg:px-10' : ''}`}>
+          <a href="https://iwagroup.co.uk/" className="flex items-center gap-2 flex-shrink-0">
             <img src={logo} className="h-10" alt="AiMA" />
           </a>
 
-          <nav ref={navRef} className="hidden flex-1 items-center justify-evenly md:flex" aria-label="Primary navigation">
+          <nav ref={navRef} className={`hidden items-center gap-1 md:flex ${isGroupDomain ? 'ml-auto' : ''}`} aria-label="Primary navigation">
             {NAV_TREE.map(section => {
               const isActiveSection = isSectionActive(section)
               if (section.to) {
@@ -165,10 +165,8 @@ export default function Navbar() {
                     key={section.label}
                     to={section.to}
                     end
-                    className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                      isActiveSection
-                        ? 'text-white bg-[#5c6cff] shadow-md shadow-[#5c6cff]/30'
-                        : 'text-white/65 hover:text-white hover:bg-white/6'
+                    className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 rounded-lg text-base font-bold ${
+                      isActiveSection ? 'text-white bg-[#5c6cff] shadow-md shadow-[#5c6cff]/30' : 'text-white/65'
                     }`}
                   >
                     {section.label}
@@ -181,10 +179,8 @@ export default function Navbar() {
                   <button
                     type="button"
                     onClick={() => setOpenMenu(isOpen ? null : section.label)}
-                    className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                      isActiveSection
-                        ? 'text-white bg-[#5c6cff] shadow-md shadow-[#5c6cff]/30'
-                        : 'text-white/65 hover:text-white hover:bg-white/6'
+                    className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 rounded-lg text-base font-bold ${
+                      isActiveSection ? 'text-white bg-[#5c6cff] shadow-md shadow-[#5c6cff]/30' : 'text-white/65'
                     }`}
                     aria-expanded={isOpen}
                   >
@@ -241,7 +237,7 @@ export default function Navbar() {
                   <button
                     type="button"
                     onClick={() => setOpenMobileSection(isOpen ? null : section.label)}
-                    className={`flex w-full items-center justify-between py-5 text-xl font-semibold ${isActiveSection ? 'text-[#8da2ff]' : 'text-white'}`}
+                    className={`flex w-full items-center justify-between py-5 text-xl font-bold ${isActiveSection ? 'text-[#8da2ff]' : 'text-white'}`}
                     aria-expanded={isOpen}
                   >
                     {section.label}
