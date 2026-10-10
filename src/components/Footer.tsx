@@ -1,89 +1,95 @@
 ﻿// Footer.tsx
-import footer from '../assets/footer.webp'
-import logo from '../assets/logo.webp'
-
 interface FooterProps {
   variant?: 'dark' | 'light'
 }
 
+type FooterLink = { label: string; href: string; external?: boolean }
+type FooterColumn = { title: string; links: FooterLink[] }
+
+const COLUMNS: FooterColumn[] = [
+  {
+    title: 'About iwagroup.co.uk',
+    links: [
+      { label: 'About', href: 'https://iwagroup.co.uk/about' },
+      { label: 'Definitions', href: 'https://iwagroup.co.uk/definitions' },
+      { label: 'Apply', href: 'https://iwagroup.co.uk/apply' },
+      { label: 'Submit an Opportunity', href: 'https://iwagroup.co.uk/group/submit-an-opportunity' },
+      { label: 'Privacy Policy', href: 'https://iwagroup.co.uk/privacy' },
+      { label: 'Terms & Conditions', href: 'https://iwagroup.co.uk/terms' },
+      { label: 'Cookies', href: 'https://iwagroup.co.uk/cookies' },
+    ],
+  },
+  {
+    title: 'Products',
+    links: [
+      { label: 'Links For Cleaners', href: 'https://iwagroup.co.uk/en/links-for-cleaners' },
+      { label: 'Links For Managers', href: 'https://iwagroup.co.uk/product-property-form' },
+      { label: 'Tradespeople', href: 'https://iwagroup.co.uk/product-trades-form' },
+      { label: 'Aestheticians', href: 'https://iwagroup.co.uk/product-beauty-form' },
+      { label: 'Influencers', href: 'https://iwagroup.co.uk/en/cleaning-programme' },
+    ],
+  },
+  {
+    title: 'Talents',
+    links: [
+      { label: 'Ambassador Programme', href: 'https://group.iwagroup.co.uk/join' },
+      { label: 'Apply', href: 'https://iwagroup.co.uk/apply' },
+    ],
+  },
+  {
+    title: 'Follow us',
+    links: [
+      { label: 'IWA Official LinkedIn', href: 'https://www.linkedin.com/company/innovatewithaima', external: true },
+      { label: 'Instagram', href: 'https://www.instagram.com/innovatewithaima/', external: true },
+    ],
+  },
+  {
+    title: 'Contact us',
+    links: [
+      { label: 'contact@innovatewithaima.com', href: 'mailto:contact@innovatewithaima.com' },
+    ],
+  },
+]
+
 export default function Footer({ variant = 'dark' }: FooterProps) {
   const isLight = variant === 'light'
-  const label = isLight ? 'text-black/40' : 'text-white/40'
-  const link = isLight ? 'text-black/70 hover:text-black' : 'text-white/70 hover:text-white'
-  const border = isLight ? 'border-black/10' : 'border-white/8'
+  const heading = isLight ? 'text-black' : 'text-white'
+  const link = isLight ? 'text-black/60 hover:text-black' : 'text-white/60 hover:text-white'
+  const border = isLight ? 'border-black/10' : 'border-white/10'
+  const muted = isLight ? 'text-black/40' : 'text-white/40'
+  const isGroupHost = typeof window !== 'undefined' && window.location.hostname === 'group.iwagroup.co.uk'
 
   return (
-<footer className={`border-t ${border} ${isLight ? 'bg-white text-black' : 'bg-[#083a6f] text-white'}`}>
-        <div className={`px-5 py-12 md:px-8 ${typeof window !== 'undefined' && window.location.hostname === 'group.iwagroup.co.uk' ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
-
-        <div className="flex flex-col md:flex-row md:justify-between gap-10">
-
- <div className="max-w-xs">
-<div className="flex items-center gap-3 mb-3">
-  <img src={logo} className={`h-8 opacity-90 ${isLight ? 'invert' : ''}`} alt="" />
-  <img src={footer} className={`h-8 opacity-90 ${isLight ? 'invert' : ''}`} alt="Innovatewithaima" />
-</div>
-  <p className={`text-sm ${isLight ? 'text-black/60' : 'text-white/60'}`}>
-We create focused products for service businesses, creators, and emerging companies.
-  </p>
-</div>
-
-           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-sm">
-            <div>
-              <p className={`text-[11px] font-semibold uppercase tracking-[0.08em] mb-3 ${label}`}>Legal</p>
-              <div className="flex flex-col gap-2">
-                <a href="https://iwagroup.co.uk/privacy" className={link}>Privacy Policy</a>
-                <a href="https://iwagroup.co.uk/terms" className={link}>Terms & Conditions</a>
-                <a href="https://iwagroup.co.uk/cookies" className={link}>Cookies</a>
-              </div>
-            </div>
-
-            <div>
-              <p className={`text-[11px] font-semibold uppercase tracking-[0.08em] mb-3 ${label}`}>Company</p>
-              <div className="flex flex-col gap-2">
-                <a href="https://iwagroup.co.uk/definitions" className={link}>Definitions</a>
-  
-              </div>
-            </div>
-
-            <div className="col-span-2 sm:col-span-2">
-              <div className="flex items-center justify-between mb-3">
-                <p className={`text-[11px] font-semibold uppercase tracking-[0.08em] ${label}`}>Contact us</p>
-                <div className="flex gap-3">
-                  
-                   <a href="https://www.instagram.com/innovatewithaima/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                    className={`flex h-8 w-8 items-center justify-center rounded-full ${isLight ? 'bg-black/5' : 'bg-white/10'}`}
+    <footer className={`border-t ${border} ${isLight ? 'bg-white text-black' : 'bg-[#083a6f] text-white'}`}>
+      <div className={`px-5 pt-12 md:px-8 ${isGroupHost ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 text-sm sm:grid-cols-3 lg:grid-cols-5">
+          {COLUMNS.map(col => (
+            <div key={col.title}>
+              <p className={`mb-4 text-[15px] font-bold ${heading}`}>{col.title}</p>
+              <div className="flex flex-col gap-3">
+                {col.links.map(item => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                    className={`break-all ${link}`}
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                      <rect x="3" y="3" width="18" height="18" rx="5" />
-                      <circle cx="12" cy="12" r="4" />
-                      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                    </svg>
+                    {item.label}
                   </a>
-                  
-                   <a href="https://www.linkedin.com/company/innovatewithaima"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    className={`flex h-8 w-8 items-center justify-center rounded-full ${isLight ? 'bg-black/5' : 'bg-white/10'}`}
-                  >
-                   <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor">
-  <path d="M100.28 448H7.4V148.9h92.88zm-46.44-341C24.22 107 0 82.76 0 53.19a53.19 53.19 0 01106.38 0c0 29.57-24.22 53.81-52.54 53.81zM447.9 448h-92.68V302.4c0-34.7-.7-79.34-48.29-79.34-48.29 0-55.68 37.7-55.68 76.66V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
-</svg>
-                  </a>
-                </div>
+                ))}
               </div>
-              <p className={`text-sm ${isLight ? 'text-black/60' : 'text-white/60'}`}>
-                © 2026 Innovatewithaima. All rights reserved.
-              </p>
             </div>
-          </div>
-
+          ))}
         </div>
+      </div>
 
+      <div className={`mt-12 border-t ${border}`}>
+        <div className={`px-5 py-5 md:px-8 ${isGroupHost ? 'w-full' : 'mx-auto max-w-[1180px]'}`}>
+          <p className={`text-xs ${muted}`}>
+            Copyright © 2023-2026 Innovatewithaima ltd All Rights Reserved.
+          </p>
+        </div>
       </div>
     </footer>
   )
