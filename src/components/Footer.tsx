@@ -42,7 +42,7 @@ const COLUMNS: FooterColumn[] = [
   {
     title: 'Contact us',
     links: [
-      { label: 'contact@innovatewithaima.com', href: 'mailto:contact@innovatewithaima.com' },
+      { label: 'contact@iwagroup.co.uk', href: 'mailto:contact@iwagroup.co.uk' },
     ],
   },
 ]
