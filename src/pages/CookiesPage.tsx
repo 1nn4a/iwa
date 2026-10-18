@@ -23,7 +23,7 @@ Last updated: 29/07/2026</p>
 <div className="space-y-8 text-white/75 leading-7">
 
 <section>
-  <h2 className="text-xl font-semibold text-white mb-3">innovatewithaima.com</h2>
+  <h2 className="text-xl font-semibold text-white mb-3">iwagroup.co.uk</h2>
   <p>
     This website doesn't currently use cookies, tracking, analytics, ads, or other technology that stores information on your device.
   </p>

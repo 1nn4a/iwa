@@ -15,10 +15,99 @@ type ChangelogEntry = {
   title: string;
   badge: 'New' | 'Fix';
   date: string;
+  link?: string;
   sections: { label?: string; items: string[] }[];
 };
 
 const changelog: ChangelogEntry[] = [
+  {
+    version: 'v6.18',
+    title: 'Profile design improvements',
+    badge: 'New',
+    date: '1 October 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/profile-design-improvements-october-2026',
+    sections: [{ items: ['Themes, gallery styles and custom fonts now apply consistently across your whole profile'] }],
+  },
+  {
+    version: 'v6.17',
+    title: 'Daily update',
+    badge: 'New',
+    date: '24 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/daily-update-changes-september-2026',
+    sections: [{ items: ['Daily email now shows yesterday\'s activity compared with the day before, only sent when there is activity'] }],
+  },
+  {
+    version: 'v6.16',
+    title: 'Optional two-factor authentication',
+    badge: 'New',
+    date: '21 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/two-factor-authentication-optional-september-2026',
+    sections: [{ items: ['Two-factor authentication is now optional, switch it on any time from Account'] }],
+  },
+  {
+    version: 'v6.15',
+    title: 'Voice replies in Messages',
+    badge: 'New',
+    date: '19 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/voice-to-text-messages-september-2026',
+    sections: [{ items: ['Dictate replies with the microphone, check them, then send'] }],
+  },
+  {
+    version: 'v6.14',
+    title: 'Before & After editor: fonts',
+    badge: 'New',
+    date: '16 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/before-after-editor-new-fonts-september-2026',
+    sections: [{ items: ['More fonts to choose from when adding text to your videos (beta)'] }],
+  },
+  {
+    version: 'v6.13',
+    title: 'Won / Lost leads',
+    badge: 'New',
+    date: '15 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/lead-outcomes-won-lost-september-2026',
+    sections: [{ items: ['Mark leads Won or Lost, new leads stay hidden until opened, quote requests kept separate'] }],
+  },
+  {
+    version: 'v6.12.1',
+    title: 'Bug fix',
+    badge: 'Fix',
+    date: '13 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/bug-service-estimator-not-saving-september-2026',
+    sections: [{ items: ['Fixed saving prices in the Service Estimator. Nothing for you to do.'] }],
+  },
+  {
+    version: 'v6.12',
+    title: 'Desktop dashboard panels',
+    badge: 'New',
+    date: '12 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/business-dashboard-desktop-september-2026',
+    sections: [{ items: ['Leads, booking link and stats now open in draggable panels on desktop'] }],
+  },
+  {
+    version: 'v6.11.1',
+    title: 'Bug fix',
+    badge: 'Fix',
+    date: '5 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/bug-deleting-links-september-2026',
+    sections: [{ items: ['Fixed deleting links failing on some profiles. Nothing for you to do.'] }],
+  },
+  {
+    version: 'v6.11',
+    title: 'Before & After editor (beta)',
+    badge: 'New',
+    date: '3 September 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/before-after-video-editor-beta',
+    sections: [{ items: ['Trim, add text and change speed on your videos before downloading'] }],
+  },
+  {
+    version: 'v6.10',
+    title: 'Account, Admin and Plan moved',
+    badge: 'New',
+    date: '31 August 2026',
+    link: 'https://profile.forcleaners.co.uk/docs/where-things-moved-account-admin-plan-settings',
+    sections: [{ items: ['Avatar now opens Account settings, Admin and Sign out live in the sidebar, plan has its own page'] }],
+  },
   {
     version: 'v6.9.1',
     title: 'Bug fix',
@@ -478,6 +567,17 @@ export default function LinksForCleaners() {
                     </ul>
                   </div>
                 ))}
+
+                {entry.link && (
+                  <a
+                    href={entry.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="lfc-entry-link"
+                  >
+                    View update →
+                  </a>
+                )}
               </article>
             ))}
           </div>
@@ -764,6 +864,20 @@ export default function LinksForCleaners() {
   line-height: 1.6;
   color: rgba(255,255,255,0.7);
   margin-bottom: 6px;
+}
+
+.lfc-entry-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8da2ff;
+  text-decoration: none;
+}
+
+.lfc-entry-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 
