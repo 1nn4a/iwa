@@ -981,8 +981,8 @@ if (!res.ok) {
                             role="alert"
                           >
                             Something went wrong on our end. Please contact us at{' '}
-                            <a href="mailto:contact@innovatewithaima.com" style={{ color: '#c0392b', textDecoration: 'underline' }}>
-                              contact@innovatewithaima.com
+                            <a href="mailto:contact@iwagroup.co.uk" style={{ color: '#c0392b', textDecoration: 'underline' }}>
+                              contact@iwagroup.co.uk
                             </a>{' '}
                             and we'll sort it out.
                           </motion.div>
@@ -1145,8 +1145,8 @@ if (!res.ok) {
                             {apiError ? (
                               <>
                                 Something went wrong on our end. Please contact us at{' '}
-                                <a href="mailto:contact@innovatewithaima.com" style={{ color: '#c0392b', textDecoration: 'underline' }}>
-                                  contact@innovatewithaima.com
+                                <a href="mailto:contact@iwagroup.co.uk" style={{ color: '#c0392b', textDecoration: 'underline' }}>
+                                  contact@iwagroup.co.uk
                                 </a>{' '}
                                 and we'll sort it out.
                               </>

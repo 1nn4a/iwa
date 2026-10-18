@@ -592,8 +592,8 @@ export default function SubmitOpportunityPage() {
                         {apiError ? (
                           <>
                             Something went wrong. Please contact us at{' '}
-                            <a href="mailto:contact@innovatewithaima.com" style={{ color: '#c0392b', textDecoration: 'underline' }}>
-                              contact@innovatewithaima.com
+                            <a href="mailto:contact@iwagroup.co.uk" style={{ color: '#c0392b', textDecoration: 'underline' }}>
+                              contact@iwagroup.co.uk
                             </a>.
                           </>
                         ) : (

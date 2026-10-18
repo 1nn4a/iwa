@@ -258,10 +258,10 @@ and depends on suitability, experience, and current network demand.
 Application enquiries
 </p>
 
-<a href="mailto:apply@innovatewithaima.com"
+<a href="mailto:apply@iwagroup.co.uk"
 className="text-2xl font-medium text-[#8da2ff] hover:underline break-all"
 >
-apply@innovatewithaima.com
+apply@iwagroup.co.uk
 </a>
 </div>
 
@@ -270,10 +270,10 @@ apply@innovatewithaima.com
 Other enquiries
 </p>
 
-<a href="mailto:business@innovatewithaima.com"
+<a href="mailto:business@iwagroup.co.uk"
 className="text-2xl font-medium text-[#8da2ff] hover:underline break-all"
 >
-business@innovatewithaima.com
+business@iwagroup.co.uk
 </a>
 </div>
 

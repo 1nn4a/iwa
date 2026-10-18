@@ -30,7 +30,7 @@ Last updated: 06/07/2026
 Innovatewithaima Ltd<br/>
 Registered Office: Innovatewithaima, 124 City Road, London, England, EC1V 2NX<br/>
 Registered in England and Wales | Company No. 15198798<br/>
-Contact email: contact@innovatewithaima.com
+Contact email: contact@iwagroup.co.uk
 </p>
 
 <p className="mt-2">
@@ -129,7 +129,7 @@ No system can be 100% secure; by using our services, you acknowledge this residu
 </ul>
 
 <p className="mt-2">
-Requests can be made via contact@innovatewithaima.com. We will respond within legal timeframes.
+Requests can be made via contact@iwagroup.co.uk. We will respond within legal timeframes.
 </p>
 </section>
 
@@ -157,7 +157,7 @@ For any questions, concerns, or data requests, contact us at:
 </p>
 
 <p className="mt-2">
-contact@innovatewithaima.com
+contact@iwagroup.co.uk
 </p>
 
 </section>
