@@ -4,19 +4,14 @@ type FooterColumn = { title: string; links: FooterLink[] }
 
 const COLUMNS: FooterColumn[] = [
   {
-    title: 'About iwagroup.co.uk',
+    title: 'Company',
     links: [
-      { label: 'About', href: 'https://iwagroup.co.uk/about' },
-      { label: 'Definitions', href: 'https://iwagroup.co.uk/definitions' },
-      { label: 'Apply', href: 'https://iwagroup.co.uk/apply' },
-      { label: 'Submit an Opportunity', href: 'https://iwagroup.co.uk/group/submit-an-opportunity' },
-      { label: 'Privacy Policy', href: 'https://iwagroup.co.uk/privacy' },
-      { label: 'Terms & Conditions', href: 'https://iwagroup.co.uk/terms' },
-      { label: 'Cookies', href: 'https://iwagroup.co.uk/cookies' },
+      { label: 'About Us', href: 'https://iwagroup.co.uk/about' },
+      { label: 'Contact Us', href: 'mailto:contact@iwagroup.co.uk' },
     ],
   },
   {
-    title: 'Products',
+    title: 'Platforms',
     links: [
       { label: 'Links For Cleaners', href: 'https://iwagroup.co.uk/en/links-for-cleaners' },
       { label: 'Links For Managers', href: 'https://iwagroup.co.uk/product-property-form' },
@@ -26,23 +21,26 @@ const COLUMNS: FooterColumn[] = [
     ],
   },
   {
-    title: 'Talents',
+    title: 'Opportunities',
     links: [
       { label: 'Ambassador Programme', href: 'https://group.iwagroup.co.uk/join' },
       { label: 'Apply', href: 'https://iwagroup.co.uk/apply' },
+      { label: 'Submit an Opportunity', href: 'https://iwagroup.co.uk/group/submit-an-opportunity' },
     ],
   },
   {
-    title: 'Follow us',
+    title: 'Follow Us',
     links: [
-      { label: 'IWA Official LinkedIn', href: 'https://www.linkedin.com/company/innovatewithaima', external: true },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/innovatewithaima', external: true },
       { label: 'Instagram', href: 'https://www.instagram.com/innovatewithaima/', external: true },
     ],
   },
   {
-    title: 'Contact us',
+    title: 'Legal',
     links: [
-      { label: 'contact@iwagroup.co.uk', href: 'mailto:contact@iwagroup.co.uk' },
+      { label: 'Privacy Policy', href: 'https://iwagroup.co.uk/privacy' },
+      { label: 'Website Terms', href: 'https://iwagroup.co.uk/terms' },
+      { label: 'Cookies', href: 'https://iwagroup.co.uk/cookies' },
     ],
   },
 ]
@@ -88,9 +86,16 @@ export default function Footer({ variant = 'dark' }: FooterProps) {
 
       <div className={`border-t ${border}`}>
         <div className={`${container} px-5 py-5 md:px-8`}>
-          <p className={`text-xs leading-relaxed ${muted}`}>
-            Copyright © 2023-2026 Innovatewithaima ltd All Rights Reserved.
-          </p>
+       <div className={`text-xs leading-relaxed ${muted}`}>
+  <p>
+    © 2026 Innovatewithaima Ltd. All rights reserved.
+  </p>
+  <p className="mt-2">
+    Innovatewithaima Ltd · Registered in England and Wales ·
+    Company No. 15198798 · Registered Office: 124 City Road,
+    London, EC1V 2NX.
+  </p>
+</div>
         </div>
       </div>
     </footer>
